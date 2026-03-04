@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>钢结构研究院 | 探索钢铁建筑的奥秘</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary: #1a365d;
+            --secondary: #2c5282;
+            --accent: #e53e3e;
+            --light: #f7fafc;
+            --dark: #1a202c;
+            --chalk-white: #f8f9fa;
+            --chalk-yellow: #ffd700;
+            --chalk-blue: #87ceeb;
+            --chalk-pink: #ffb6c1;
+            --chalk-green: #98fb98;
+        }
+        
+        body {
+            font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            line-height: 1.8;
+            color: var(--dark);
+            background: var(--light);
+        }
+        
+        /* 导航 */
+        nav {
+            background: var(--primary);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            max-width: 1200px;
+            margin: 0 auto;
+            gap: 2rem;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        
+        nav a:hover {
+            color: var(--chalk-yellow);
+        }
+        
+        /* 头部 */
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+        
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        /* 主内容 */
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        /* 文章卡片 */
+        .articles {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .article-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+        
+        .article-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        
+        .article-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .article-card .content {
+            padding: 1.5rem;
+        }
+        
+        .article-card h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .article-card .meta {
+            color: #718096;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        .article-card p {
+            color: #4a5568;
+        }
+        
+        .tag {
+            display: inline-block;
+            background: var(--secondary);
+            color: white;
+            padding: 0.2rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-right: 0.5rem;
+        }
+        
+        /* 黑板报区域 */
+        .blackboard-section {
+            background: #1a472a;
+            border-radius: 12px;
+            padding: 3rem;
+            margin: 3rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .blackboard-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(ellipse at center, #1f5233 0%, #1a472a 100%);
+            z-index: 0;
+        }
+        
+        .blackboard-section h2 {
+            color: var(--chalk-white);
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 1;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .chalk-diagram {
+            background: rgba(0,0,0,0.2);
+            border-radius: 8px;
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .chalk-line {
+            color: var(--chalk-white);
+            font-family: 'Comic Sans MS', cursive;
+            font-size: 1.1rem;
+            margin: 0.5rem 0;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+        
+        .chalk-line.yellow { color: var(--chalk-yellow); }
+        .chalk-line.blue { color: var(--chalk-blue); }
+        .chalk-line.pink { color: var(--chalk-pink); }
+        .chalk-line.green { color: var(--chalk-green); }
+        
+        /* 页脚 */
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+        
+        /* 响应式 */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .articles {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* 动画 */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .article-card {
+            animation: fadeIn 0.5s ease-out;
+        }
+        
+        .article-card:nth-child(2) { animation-delay: 0.1s; }
+        .article-card:nth-child(3) { animation-delay: 0.2s; }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="#">首页</a></li>
+            <li><a href="#articles">文章</a></li>
+            <li><a href="#principles">原理图解</a></li>
+            <li><a href="#about">关于</a></li>
+        </ul>
+    </nav>
+    
+    <header>
+        <h1>🏗️ 钢结构研究院</h1>
+        <p>探索钢铁建筑的奥秘 · 结构之美 · 工程之魂</p>
+    </header>
+    
+    <main>
+        <!-- 简介 -->
+        <section id="about" style="padding: 2rem 0;">
+            <h2 style="color: var(--primary); margin-bottom: 1rem;">关于本站</h2>
+            <p>这是一个专注于钢结构建筑的知识分享平台。从历史建筑到现代工程，从结构原理到设计理念，带你领略钢铁建筑的魅力。</p>
+        </section>
+        
+        <!-- 黑板报原理区 -->
+        <section id="principles" class="blackboard-section">
+            <h2>📝 今日图解：钢结构基本原理</h2>
+            <div class="chalk-diagram">
+                <p class="chalk-line yellow">🔹 钢结构的特点：</p>
+                <p class="chalk-line">　• 强度高、重量轻 → 大跨度建筑</p>
+                <p class="chalk-line">　• 韧性好 → 抗震性能优越</p>
+                <p class="chalk-line">　• 可工厂预制 → 施工速度快</p>
+                <p class="chalk-line">　• 可回收利用 → 环保可持续</p>
+                <br>
+                <p class="chalk-line blue">🔹 常见结构形式：</p>
+                <p class="chalk-line pink">　→ 框架结构 (Frame Structure)</p>
+                <p class="chalk-line green">　→ 网架结构 (Space Frame)</p>
+                <p class="chalk-line yellow">　→ 索膜结构 (Cable-Membrane)</p>
+            </div>
+        </section>
+        
+        <!-- 文章列表 -->
+        <section id="articles">
+            <h2 style="color: var(--primary); margin-bottom: 1rem;">📚 精选文章</h2>
+            <div class="articles">
+                <article class="article-card">
+                    <img src="https://images.unsplash.com/photo-1541123603104-512919d6a96c?w=400" alt="米兰展览馆">
+                    <div class="content">
+                        <span class="tag">历史建筑</span>
+                        <h3>米兰展览馆的"变形记"</h3>
+                        <p class="meta">2026年3月4日 · 阅读 1,234</p>
+                        <p>从1933年的艺术殿堂到2026年冬奥速滑场，一座90年钢铁画廊的重生之旅。</p>
+                    </div>
+                </article>
+                
+                <article class="article-card">
+                    <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=400" alt="现代钢结构">
+                    <div class="content">
+                        <span class="tag">结构设计</span>
+                        <h3>钢结构设计要点</h3>
+                        <p class="meta">2026年3月3日 · 阅读 892</p>
+                        <p>揭秘钢结构设计的核心要素，从材料选择到节点设计。</p>
+                    </div>
+                </article>
+                
+                <article class="article-card">
+                    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=400" alt="超高层建筑">
+                    <div class="content">
+                        <span class="tag">超高层</span>
+                        <h3>超高层钢结构施工</h3>
+                        <p class="meta">2026年3月2日 · 阅读 756</p>
+                        <p>探秘摩天大楼是如何一砖一瓦"长"高的。</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <p>🏗️ 钢结构研究院 · 让建筑更美好</p>
+        <p style="font-size: 0.9rem; opacity: 0.7; margin-top: 0.5rem;">© 2026 Steel Structure Institute. All rights reserved.</p>
+    </footer>
+    
+    <script>
+        // 简单的交互效果
+        document.querySelectorAll('.article-card').forEach(card => {
+            card.addEventListener('click', () => {
+                alert('文章详情页开发中...');
+            });
+        });
+        
+        // 平滑滚动
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const target = document.querySelector(link.getAttribute('href'));
+                target.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    </script>
+</body>
+</html>
