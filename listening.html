@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>听力练习中心 | Listening Practice Center</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --primary: #1a365d;
+            --secondary: #2c5282;
+            --easy: #48bb78;
+            --medium: #ed8936;
+            --hard: #e53e3e;
+            --chalk-white: #f8f9fa;
+            --chalk-yellow: #ffd700;
+            --chalk-blue: #87ceeb;
+            --chalk-pink: #ffb6c1;
+            --chalk-green: #98fb98;
+        }
+        
+        body {
+            font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            line-height: 1.8;
+            background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
+            min-height: 100vh;
+            color: #1a202c;
+        }
+        
+        nav {
+            background: rgba(26, 54, 93, 0.95);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            max-width: 1200px;
+            margin: 0 auto;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+        }
+        
+        nav a:hover {
+            background: rgba(255,255,255,0.1);
+        }
+        
+        header {
+            background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+        
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        header p {
+            opacity: 0.9;
+            font-size: 1.1rem;
+        }
+        
+        main {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        /* 难度选择 */
+        .difficulty-tabs {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            justify-content: center;
+        }
+        
+        .difficulty-tab {
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: none;
+            font-size: 1rem;
+        }
+        
+        .difficulty-tab.easy {
+            background: white;
+            color: var(--easy);
+        }
+        
+        .difficulty-tab.medium {
+            background: white;
+            color: var(--medium);
+        }
+        
+        .difficulty-tab.hard {
+            background: white;
+            color: var(--hard);
+        }
+        
+        .difficulty-tab.active {
+            color: white;
+        }
+        
+        .difficulty-tab.active.easy {
+            background: var(--easy);
+        }
+        
+        .difficulty-tab.active.medium {
+            background: var(--medium);
+        }
+        
+        .difficulty-tab.active.hard {
+            background: var(--hard);
+        }
+        
+        /* 听力卡片 */
+        .listening-section {
+            display: none;
+        }
+        
+        .listening-section.active {
+            display: block;
+        }
+        
+        .lesson-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+        
+        .lesson-header {
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
+            color: white;
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .lesson-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+        
+        .lesson-duration {
+            background: rgba(255,255,255,0.2);
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.9rem;
+        }
+        
+        .lesson-body {
+            padding: 1.5rem;
+        }
+        
+        /* 音频播放器 */
+        .audio-player {
+            background: #f7fafc;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+        
+        .audio-controls {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .play-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--secondary);
+            color: white;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .play-btn:hover {
+            background: var(--primary);
+            transform: scale(1.1);
+        }
+        
+        .audio-info {
+            flex: 1;
+        }
+        
+        .audio-title {
+            font-weight: 600;
+            color: var(--primary);
+        }
+        
+        .audio-time {
+            color: #718096;
+            font-size: 0.9rem;
+        }
+        
+        .progress-bar {
+            background: #e2e8f0;
+            height: 8px;
+            border-radius: 4px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        
+        .progress-fill {
+            background: linear-gradient(90deg, var(--secondary), var(--primary));
+            height: 100%;
+            border-radius: 4px;
+            transition: width 0.1s linear;
+            width: 0%;
+        }
+        
+        /* 文本内容 */
+        .text-content {
+            margin-top: 1.5rem;
+        }
+        
+        .text-block {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            border-left: 4px solid var(--secondary);
+        }
+        
+        .text-block.en {
+            background: #f0fff4;
+            border-left-color: var(--easy);
+        }
+        
+        .text-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        .text-block.en .text-label {
+            color: var(--easy);
+        }
+        
+        .text-block.zh .text-label {
+            color: #718096;
+        }
+        
+        .text-content p {
+            color: #2d3748;
+            line-height: 1.8;
+        }
+        
+        /* 词汇表 */
+        .vocab-list {
+            background: #f7fafc;
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-top: 1rem;
+        }
+        
+        .vocab-title {
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .vocab-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .vocab-item:last-child {
+            border-bottom: none;
+        }
+        
+        .vocab-word {
+            font-weight: 600;
+            color: var(--secondary);
+            min-width: 150px;
+        }
+        
+        .vocab-meaning {
+            color: #4a5568;
+        }
+        
+        /* 黑板报风格 */
+        .chalk-board {
+            background: #1a472a;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 1.5rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .chalk-board::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(ellipse at center, #1f5233 0%, #1a472a 100%);
+            z-index: 0;
+        }
+        
+        .chalk-board > * {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .chalk-title {
+            color: var(--chalk-white);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+        
+        .chalk-line {
+            color: var(--chalk-white);
+            font-family: 'Comic Sans MS', cursive;
+            margin: 0.5rem 0;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+        
+        .chalk-line.yellow { color: var(--chalk-yellow); }
+        .chalk-line.blue { color: var(--chalk-blue); }
+        .chalk-line.pink { color: var(--chalk-pink); }
+        
+        footer {
+            background: #1a202c;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+        
+        @media (max-width: 768px) {
+            header h1 { font-size: 1.8rem; }
+            nav ul { flex-direction: column; gap: 0.5rem; text-align: center; }
+            main { padding: 1rem; }
+            .difficulty-tabs { flex-direction: column; }
+            .lesson-header { flex-direction: column; gap: 0.5rem; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">首页</a></li>
+            <li><a href="glossary.html">术语表</a></li>
+            <li><a href="listening.html" style="background: var(--secondary);">听力中心</a></li>
+            <li><a href="english.html">英语学习</a></li>
+        </ul>
+    </nav>
+    
+    <header>
+        <h1>🎧 听力练习中心</h1>
+        <p>Listening Practice Center - 钢结构专业英语听力</p>
+    </header>
+    
+    <main>
+        <!-- 难度选择 -->
+        <div class="difficulty-tabs">
+            <button class="difficulty-tab easy active" onclick="showDifficulty('easy')">🌱 初级 Beginner</button>
+            <button class="difficulty-tab medium" onclick="showDifficulty('medium')">🌿 中级 Intermediate</button>
+            <button class="difficulty-tab hard" onclick="showDifficulty('hard')">🌳 高级 Advanced</button>
+        </div>
+        
+        <!-- 初级听力 -->
+        <div class="listening-section active" id="easy">
+            
+            <div class="lesson-card">
+                <div class="lesson-header">
+                    <span class="lesson-title">Lesson 1: 什么是钢结构？</span>
+                    <span class="lesson-duration">⏱ 01:30</span>
+                </div>
+                <div class="lesson-body">
+                    <div class="audio-player">
+                        <div class="audio-controls">
+                            <button class="play-btn" onclick="togglePlay(this)">▶</button>
+                            <div class="audio-info">
+                                <p class="audio-title">What is Steel Structure?</p>
+                                <p class="audio-time">00:00 / 01:30</p>
+                            </div>
+                        </div>
+                        <div class="progress-bar" onclick="seekProgress(this, event)">
+                            <div class="progress-fill"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="text-content">
+                        <div class="text-block en">
+                            <p class="text-label">📖 English Text</p>
+                            <p>Steel structure is a type of building structure. It uses steel beams and steel columns. Steel is strong and light. Many buildings use steel structures. Bridges also use steel. Steel structure is very important in construction.</p>
+                        </div>
+                        <div class="text-block zh">
+                            <p class="text-label">📖 中文翻译</p>
+                            <p>钢结构是一种建筑结构类型。它使用钢梁和钢柱。钢材既坚固又轻盈。许多建筑物使用钢结构。桥梁也使用钢材。钢结构在建筑中非常重要。</p>
+                        </div>
+                    </div>
+                    
+                    <div class="vocab-list">
+                        <p class="vocab-title">📝 核心词汇</p>
+                        <div class="vocab-item">
+                            <span class="vocab-word">steel structure</span>
+                            <span class="vocab-meaning">钢结构</span>
+                        </div>
+                        <div class="vocab-item">
+                            <span class="vocab-word">steel beam</span>
+                            <span class="vocab-meaning">钢梁</span>
+                        </div>
+                        <div class="vocab-item">
+                            <span class="vocab-word">steel column</span>
+                            <span class="vocab-meaning">钢柱</span>
+                        </div>
+                        <div class="vocab-item">
+                            <span class="vocab-word">construction</span>
+                            <span class="vocab-meaning">建筑、施工</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="lesson-card">
+                <div class="lesson-header">
+                    <span class="lesson-title">Lesson 2: 简单的对话</span>
+                    <span class="lesson-duration">⏱ 02:00</span>
+                </div>
+                <div class="lesson-body">
+                    <div class="audio-player">
+                        <div class="audio-controls">
+                            <button class="play-btn" onclick="togglePlay(this)">▶</button>
+                            <div class="audio-info">
+                                <p class="audio-title">Simple Conversation</p>
+                                <p class="audio-time">00:00 / 02:00</p>
+                            </div>
+                        </div>
+                        <div class="progress-bar" onclick="seekProgress(this, event)">
+                            <div class="progress-fill"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="chalk-board">
+                        <p class="chalk-title">📝 对话内容</p>
+                        <p class="chalk-line yellow">A: What is this building made of?</p>
+                        <p class="chalk-line">B: It's made of steel and concrete.</p>
+                        <p class="chalk-line blue">A: Why do you use steel?</p>
+                        <p class="chalk-line pink">B: Because steel is very strong and light.</p>
+                    </div>
+                    
+                    <div class="text-content">
+                        <div class="text-block en">
+                            <p class="text-label">📖 English Text</p>
+                            <p>A: What is this building made of? <br>B: It's made of steel and concrete. <br>A: Why do you use steel? <br>B: Because steel is very strong and light. It is good for tall buildings.</p>
+                        </div>
+                        <div class="text-block zh">
+                            <p class="text-label">📖 中文翻译</p>
+                            <p>A: 这栋楼是什么建造的？<br>B: 是用钢和混凝土建造的。<br>A: 为什么要用钢材？<br>B: 因为钢材非常坚固又轻便。它适合建造高层建筑。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        
+        <!-- 中级听力 -->
+        <div class="listening-section" id="medium">
+            
+            <div class="lesson-card">
+                <div class="lesson-header">
+                    <span class="lesson-title">Lesson 3: 钢结构连接</span>
+                    <span class="lesson-duration">⏱ 03:00</span>
+                </div>
+                <div class="lesson-body">
+                    <div class="audio-player">
+                        <div class="audio-controls">
+                            <button class="play-btn" onclick="togglePlay(this)">▶</button>
+                            <div class="audio-info">
+                                <p class="audio-title">Steel Connections</p>
+                                <p class="audio-time">00:00 / 03:00</p>
+                            </div>
+                        </div>
+                        <div class="progress-bar" onclick="seekProgress(this, event)">
+                            <div class="progress-fill"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="text-content">
+                        <div class="text-block en">
+                            <p class="text-label">📖 English Text</p>
+                            <p>There are two main types of connections in steel structures: welded connections and bolted connections. Welded connections are made by melting the steel parts together. This creates a strong and tight joint. Bolted connections use high-strength bolts to hold the steel members together. They are easier to assemble and disassemble. Engineers must choose the right connection type based on the project requirements.</p>
+                        </div>
+                        <div class="text-block zh">
+                            <p class="text-label">📖 中文翻译</p>
+                            <p>钢结构中有两种主要的连接方式：焊接连接和螺栓连接。焊接连接通过熔化钢材部件将其连接在一起，形成牢固密封的节点。螺栓连接使用高强度螺栓将钢材连接起来。它们更容易组装和拆卸。工程师必须根据项目要求选择合适的连接类型。</p>
+                        </div>
+                    </div>
+                    
+                    <div class="vocab-list">
+                        <p class="vocab-title">📝 核心词汇</p>
+                        <div class="vocab-item">
+                            <span class="vocab-word">connection</span>
+                            <span class="vocab-meaning">连接</span>
+                        </div>
+                        <div class="vocab-item">
+                            <span class="vocab-word">welded connection</span>
+                            <span class="vocab-meaning">焊接连接</span>
+                        </div>
+                        <div class="vocab-item">
+                            <span class="vocab-word">bolted connection</span>
+                            <span class="vocab-meaning">螺栓连接</span>
+                        </div>
+                        <div class="vocab-item">
+                            <span class="vocab-word">high-strength bolt</span>
+                            <span class="vocab-meaning">高强螺栓</span>
+                        </div>
+                        <div class="vocab-item">
+                            <span class="vocab-word">joint</span>
+                            <span class="vocab-meaning">节点、接头</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="lesson-card">
+                <div class="lesson-header">
+                    <span class="lesson-title">Lesson 4: 设计考虑</span>
+                    <span class="lesson-duration">⏱ 03:30</span>
+                </div>
+                <div class="lesson-body">
+                    <div class="audio-player">
+                        <div class="audio-controls">
+                            <button class="play-btn" onclick="togglePlay(this)">▶</button>
+                            <div class="audio-info">
+                                <p class="audio-title">Design Considerations</p>
+                                <p class="audio-time">00:00 / 03:30</p>
+                            </div>
+                        </div>
+                        <div class="progress-bar" onclick="seekProgress(this, event)">
+                            <div class="progress-fill"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="chalk-board">
+                        <p class="chalk-title">📝 设计要点</p>
+                        <p class="chalk-line yellow">→ Load-bearing capacity 承载能力</p>
+                        <p class="chalk-line">→ Structural stability 结构稳定性</p>
+                        <p class="chalk-line blue">→ Material selection 材料选择</p>
+                        <p class="chalk-line pink">→ Cost efficiency 成本效益</p>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        
+        <!-- 高级听力 -->
+        <div class="listening-section" id="hard">
+            
+            <div class="lesson-card">
+                <div class="lesson-header">
+                    <span class="lesson-title">Lesson 5: 结构分析</span>
+                    <span class="lesson-duration">⏱ 05:00</span>
+                </div>
+                <div class="lesson-body">
+                    <div class="audio-player">
+                        <div class="audio-controls">
+                            <button class="play-btn" onclick="togglePlay(this)">▶</button>
+                            <div class="audio-info">
+                                <p class="audio-title">Structural Analysis</p>
+                                <p class="audio-time">00:00 / 05:00</p>
+                            </div>
+                        </div>
+                        <div class="progress-bar" onclick="seekProgress(this, event)">
+                            <div class="progress-fill"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="text-content">
+                        <div class="text-block en">
+                            <p class="text-label">📖 English Text</p>
+                            <p>Structural analysis is a fundamental process in steel structure design. Engineers use mathematical models to predict how structures will behave under various loading conditions. The primary loads include dead loads, live loads, wind loads, and seismic loads. Finite element analysis (FEA) is a powerful computational method used to simulate complex structural behaviors. By analyzing stress distribution and deformation, engineers can optimize the design to ensure safety and economy.</p>
+                        </div>
+                        <div class="text-block zh">
+                            <p class="text-label">📖 中文翻译</p>
+                            <p>结构分析是钢结构设计中的基础过程。工程师使用数学模型来预测结构在各种荷载条件下的行为。主要荷载包括恒荷载、活荷载、风荷载和地震荷载。有限元分析(FEA)是一种强大的计算方法，用于模拟复杂的结构行为。通过分析应力分布和变形，工程师可以优化设计以确保安全性和经济性。</p>
+                        </div>
+                    </div>
+                    
+                    <div class="vocab-list">
+                        <p class="vocab-title">📝 核心词汇</p>
+                        <div class="vocab-item">
+                            <span class="vocab-word">structural analysis</span>
+                            <span class="vocab-meaning">结构分析</span>
+                        </div>
+                        <div class="vocab-item">
+                            <span class="vocab-word">loading conditions</span>
+                            <span class="vocab-meaning">荷载条件</span>
+                        </div>
+                        <div class="vocab-item">
+                            <span class="vocab-word">finite element analysis</span>
+                            <span class="vocab-meaning">有限元分析</span>
+                        </div>
+                        <div class="vocab-item">
+                            <span class="vocab-word">stress distribution</span>
+                            <span class="vocab-meaning">应力分布</span>
+                        </div>
+                        <div class="vocab-item">
+                            <span class="vocab-word">deformation</span>
+                            <span class="vocab-meaning">变形</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="lesson-card">
+                <div class="lesson-header">
+                    <span class="lesson-title">Lesson 6: 抗震设计</span>
+                    <span class="lesson-duration">⏱ 05:30</span>
+                </div>
+                <div class="lesson-body">
+                    <div class="audio-player">
+                        <div class="audio-controls">
+                            <button class="play-btn" onclick="togglePlay(this)">▶</button>
+                            <div class="audio-info">
+                                <p class="audio-title">Seismic Design</p>
+                                <p class="audio-time">00:00 / 05:30</p>
+                            </div>
+                        </div>
+                        <div class="progress-bar" onclick="seekProgress(this, event)">
+                            <div class="progress-fill"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="chalk-board">
+                        <p class="chalk-title">📝 抗震设计原则</p>
+                        <p class="chalk-line yellow">→ Ductility 延性</p>
+                        <p class="chalk-line">→ Energy dissipation 能量耗散</p>
+                        <p class="chalk-line blue">→ Redundancy 冗余度</p>
+                        <p class="chalk-line pink">→ Regularity 规则性</p>
+                    </div>
+                    
+                    <div class="text-content">
+                        <div class="text-block en">
+                            <p class="text-label">📖 English Text</p>
+                            <p>Seismic design of steel structures requires careful consideration of ductility and energy dissipation capacity. Moment-resisting frames are commonly used because they can undergo large deformations without collapse. Steel moment frames rely on the bending strength of beams and columns, as well as the rigidity of connections. The ductile behavior of steel allows the structure to absorb seismic energy through inelastic deformation, protecting the building from sudden failure.</p>
+                        </div>
+                        <div class="text-block zh">
+                            <p class="text-label">📖 中文翻译</p>
+                            <p>钢结构抗震设计需要仔细考虑延性和能量耗散能力。框架支撑体系常用作抗震结构，因为它们可以在不倒塌的情况下发生大变形。钢框架依靠梁柱的弯曲强度以及连接的刚性。钢材的延性行为允许结构通过非弹性变形吸收地震能量，保护建筑物免受突然破坏。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </main>
+    
+    <footer>
+        <p>🏗️ 钢结构研究院 · Steel Structure Institute</p>
+        <p style="font-size: 0.9rem; opacity: 0.7; margin-top: 0.5rem;">© 2026 听力练习中心 · 持续更新中</p>
+    </footer>
+    
+    <script>
+        // 切换难度
+        function showDifficulty(level) {
+            // 更新标签
+            document.querySelectorAll('.difficulty-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.querySelector('.difficulty-tab.' + level).classList.add('active');
+            
+            // 更新内容
+            document.querySelectorAll('.listening-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById(level).classList.add('active');
+        }
+        
+        // 模拟播放
+        let currentInterval = null;
+        
+        function togglePlay(btn) {
+            const progressBar = btn.closest('.audio-player').querySelector('.progress-fill');
+            const audioTime = btn.closest('.audio-player').querySelector('.audio-time');
+            
+            if (btn.textContent === '▶') {
+                btn.textContent = '⏸';
+                
+                let width = 0;
+                // 获取总时长（从文本中解析）
+                const durationText = audioTime.textContent.split('/')[1].trim();
+                const minutes = parseInt(durationText.split(':')[0]);
+                const seconds = parseInt(durationText.split(':')[1]);
+                const totalSeconds = minutes * 60 + seconds;
+                
+                currentInterval = setInterval(() => {
+                    width += 0.5;
+                    progressBar.style.width = width + '%';
+                    
+                    // 更新时间
+                    const currentSec = Math.floor(width / 100 * totalSeconds);
+                    const curMin = Math.floor(currentSec / 60);
+                    const curSec = currentSec % 60;
+                    audioTime.textContent = 
+                        String(curMin).padStart(2, '0') + ':' + 
+                        String(curSec).padStart(2, '0') + ' / ' + durationText;
+                    
+                    if (width >= 100) {
+                        clearInterval(currentInterval);
+                        btn.textContent = '▶';
+                        width = 0;
+                        progressBar.style.width = '0%';
+                    }
+                }, totalSeconds * 2); // 模拟播放速度
+            } else {
+                btn.textContent = '▶';
+                if (currentInterval) {
+                    clearInterval(currentInterval);
+                }
+            }
+        }
+        
+        // 点击进度条跳转
+        function seekProgress(bar, event) {
+            const rect = bar.getBoundingClientRect();
+            const percent = (event.clientX - rect.left) / rect.width * 100;
+            bar.querySelector('.progress-fill').style.width = percent + '%';
+        }
+    </script>
+</body>
+</html>
