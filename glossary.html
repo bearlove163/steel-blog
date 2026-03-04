@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>钢结构英文术语 | Steel Structure Glossary</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --primary: #1a365d;
+            --secondary: #2c5282;
+            --chalk-white: #f8f9fa;
+            --chalk-yellow: #ffd700;
+            --chalk-blue: #87ceeb;
+            --chalk-pink: #ffb6c1;
+            --chalk-green: #98fb98;
+            --chalk-orange: #ffa500;
+            --chalk-purple: #dda0dd;
+        }
+        
+        body {
+            font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            line-height: 1.8;
+            background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
+            min-height: 100vh;
+            color: #1a202c;
+        }
+        
+        nav {
+            background: rgba(26, 54, 93, 0.95);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            max-width: 1200px;
+            margin: 0 auto;
+            gap: 2rem;
+            justify-content: center;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+        }
+        
+        nav a:hover {
+            background: rgba(255,255,255,0.1);
+        }
+        
+        header {
+            background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+        
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        header p {
+            opacity: 0.9;
+            font-size: 1.1rem;
+        }
+        
+        main {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        /* 搜索框 */
+        .search-box {
+            background: white;
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        
+        .search-box input {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            font-size: 1.1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            outline: none;
+            transition: all 0.3s;
+        }
+        
+        .search-box input:focus {
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 3px rgba(44, 82, 130, 0.1);
+        }
+        
+        /* 分类标签 */
+        .categories {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-bottom: 2rem;
+            justify-content: center;
+        }
+        
+        .category-tag {
+            background: white;
+            padding: 0.5rem 1.2rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+        
+        .category-tag:hover, .category-tag.active {
+            background: var(--secondary);
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        /* 术语卡片 */
+        .term-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+        
+        .term-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+        }
+        
+        .term-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        
+        .term-header {
+            background: linear-gradient(135deg, #2c5282 0%, #1a365d 100%);
+            color: white;
+            padding: 1.2rem 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .term-en {
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+        
+        .term-zh {
+            background: rgba(255,255,255,0.2);
+            padding: 0.3rem 0.8rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+        }
+        
+        .term-body {
+            padding: 1.5rem;
+        }
+        
+        .term-definition {
+            color: #4a5568;
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+        
+        /* 黑板报风格示例 */
+        .chalk-example {
+            background: #1a472a;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-top: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .chalk-example::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(ellipse at center, #1f5233 0%, #1a472a 100%);
+            z-index: 0;
+        }
+        
+        .chalk-example > * {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .chalk-title {
+            color: var(--chalk-white);
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+        
+        .chalk-line {
+            color: var(--chalk-white);
+            font-family: 'Comic Sans MS', cursive;
+            margin: 0.4rem 0;
+            font-size: 0.95rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+        
+        .chalk-line.yellow { color: var(--chalk-yellow); }
+        .chalk-line.blue { color: var(--chalk-blue); }
+        .chalk-line.pink { color: var(--chalk-pink); }
+        .chalk-line.green { color: var(--chalk-green); }
+        .chalk-line.orange { color: var(--chalk-orange); }
+        
+        .term-example {
+            background: #f7fafc;
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--secondary);
+        }
+        
+        .term-example-label {
+            font-size: 0.8rem;
+            color: #718096;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .term-example p {
+            color: #2d3748;
+            font-style: italic;
+        }
+        
+        footer {
+            background: #1a202c;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+        
+        @media (max-width: 768px) {
+            header h1 { font-size: 1.8rem; }
+            nav ul { flex-direction: column; gap: 0.5rem; text-align: center; }
+            main { padding: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">首页</a></li>
+            <li><a href="glossary.html">英文术语</a></li>
+            <li><a href="#principles">原理图解</a></li>
+            <li><a href="#about">关于</a></li>
+        </ul>
+    </nav>
+    
+    <header>
+        <h1>📚 钢结构英文术语</h1>
+        <p>Steel Structure Glossary - 专业术语中英对照</p>
+    </header>
+    
+    <main>
+        <!-- 搜索框 -->
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="🔍 搜索术语... (Search terms...)">
+        </div>
+        
+        <!-- 分类标签 -->
+        <div class="categories">
+            <span class="category-tag active" data-category="all">全部 All</span>
+            <span class="category-tag" data-category="structure">结构 Structure</span>
+            <span class="category-tag" data-category="material">材料 Material</span>
+            <span class="category-tag" data-category="connection">连接 Connection</span>
+            <span class="category-tag" data-category="design">设计 Design</span>
+            <span class="category-tag" data-category="construction">施工 Construction</span>
+        </div>
+        
+        <!-- 术语列表 -->
+        <div class="term-grid" id="termGrid">
+            
+            <!-- 术语 1 -->
+            <div class="term-card" data-category="structure">
+                <div class="term-header">
+                    <span class="term-en">Space Frame</span>
+                    <span class="term-zh">网架结构</span>
+                </div>
+                <div class="term-body">
+                    <p class="term-definition">
+                        由多根杆件按照一定的网格形式通过节点连结而成的空间结构体系。常见形式包括网架、网壳等。
+                    </p>
+                    <div class="chalk-example">
+                        <p class="chalk-title">📝 图解：网架结构示意</p>
+                        <p class="chalk-line yellow">→ Space Frame = 空间 + 框架</p>
+                        <p class="chalk-line">→ 由双向/三向交叉杆件组成</p>
+                        <p class="chalk-line blue">→ 优点：大跨度、轻量化、美观</p>
+                        <p class="chalk-line pink">→ 常见应用：体育馆、机场、展厅</p>
+                    </div>
+                    <div class="term-example" style="margin-top: 1rem;">
+                        <p class="term-example-label">Example 例句</p>
+                        <p>"The space frame roof spans 100 meters without internal supports."</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 术语 2 -->
+            <div class="term-card" data-category="connection">
+                <div class="term-header">
+                    <span class="term-en">Welded Connection</span>
+                    <span class="term-zh">焊接连接</span>
+                </div>
+                <div class="term-body">
+                    <p class="term-definition">
+                        通过加热使金属熔化并连接在一起的连接方式。是钢结构中最主要的连接形式之一。
+                    </p>
+                    <div class="chalk-example">
+                        <p class="chalk-title">📝 图解：焊接类型</p>
+                        <p class="chalk-line yellow">→ Fillet Weld: 角焊缝</p>
+                        <p class="chalk-line blue">→ Butt Weld: 对接焊缝</p>
+                        <p class="chalk-line green">→ groove: 坡口</p>
+                        <p class="chalk-line pink">→ Weld Metal: 焊缝金属</p>
+                    </div>
+                    <div class="term-example" style="margin-top: 1rem;">
+                        <p class="term-example-label">Example 例句</p>
+                        <p>"All welds shall be inspected by ultrasonic testing."</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 术语 3 -->
+            <div class="term-card" data-category="material">
+                <div class="term-header">
+                    <span class="term-en">High-Strength Steel</span>
+                    <span class="term-zh">高强度钢</span>
+                </div>
+                <div class="term-body">
+                    <p class="term-definition">
+                        指屈服强度不低于460MPa的钢材，用于需要承受大荷载的钢结构工程。
+                    </p>
+                    <div class="chalk-example">
+                        <p class="chalk-title">📝 图解：钢材等级</p>
+                        <p class="chalk-line yellow">→ Q235: fy = 235 MPa (普通)</p>
+                        <p class="chalk-line blue">→ Q345: fy = 345 MPa (常用)</p>
+                        <p class="chalk-line green">→ Q460: fy = 460 MPa (高强)</p>
+                        <p class="chalk-line pink">→ fy = 屈服强度 Yield Strength</p>
+                    </div>
+                    <div class="term-example" style="margin-top: 1rem;">
+                        <p class="term-example-label">Example 例句</p>
+                        <p>"High-strength steel Q460 was used for the main columns."</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 术语 4 -->
+            <div class="term-card" data-category="structure">
+                <div class="term-header">
+                    <span class="term-en">Moment Frame</span>
+                    <span class="term-zh">框架体系</span>
+                </div>
+                <div class="term-body">
+                    <p class="term-definition">
+                        依靠梁柱节点的刚性连接来抵抗荷载的结构体系，能提供较大的侧向刚度。
+                    </p>
+                    <div class="chalk-example">
+                        <p class="chalk-title">📝 图解：框架体系</p>
+                        <p class="chalk-line yellow">→ Moment = 力矩</p>
+                        <p class="chalk-line blue">→ Rigid Connection: 刚性连接</p>
+                        <p class="chalk-line green">→ 抵抗弯矩 → 提供抗侧力</p>
+                        <p class="chalk-line pink">→ vs 铰接框架: 刚度更大</p>
+                    </div>
+                    <div class="term-example" style="margin-top: 1rem;">
+                        <p class="term-example-label">Example 例句</p>
+                        <p>"The moment frame provides lateral resistance for the building."</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 术语 5 -->
+            <div class="term-card" data-category="design">
+                <div class="term-header">
+                    <span class="term-en">Load Combination</span>
+                    <span class="term-zh">荷载组合</span>
+                </div>
+                <div class="term-body">
+                    <p class="term-definition">
+                        结构设计时，考虑不同荷载同时出现的可能性而进行的荷载叠加组合。
+                    </p>
+                    <div class="chalk-example">
+                        <p class="chalk-title">📝 图解：基本荷载组合</p>
+                        <p class="chalk-line yellow">→ D + L: 恒载 + 活载</p>
+                        <p class="chalk-line blue">→ D + L + E: 恒 + 活 + 地震</p>
+                        <p class="chalk-line green">→ 1.3D + 1.5L (LRFD)</p>
+                        <p class="chalk-line pink">→ D=Dead, L=Live, E=Earthquake</p>
+                    </div>
+                    <div class="term-example" style="margin-top: 1rem;">
+                        <p class="term-example-label">Example 例句</p>
+                        <p>"Design shall consider all possible load combinations."</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 术语 6 -->
+            <div class="term-card" data-category="construction">
+                <div class="term-header">
+                    <span class="term-en">Steel Erection</span>
+                    <span class="term-zh">钢结构吊装</span>
+                </div>
+                <div class="term-body">
+                    <p class="term-definition">
+                        将工厂预制的钢结构构件运至现场，通过吊装设备安装到位的施工过程。
+                    </p>
+                    <div class="chalk-example">
+                        <p class="chalk-title">📝 图解：吊装流程</p>
+                        <p class="chalk-line yellow">→ 1. 定位 Alignment</p>
+                        <p class="chalk-line blue">→ 2. 吊装 Lifting</p>
+                        <p class="chalk-line green">→ 3. 临时固定 Temporary Fixing</p>
+                        <p class="chalk-line pink">→ 4. 终拧 Final Bolting</p>
+                    </div>
+                    <div class="term-example" style="margin-top: 1rem;">
+                        <p class="term-example-label">Example 例句</p>
+                        <p>"Steel erection began after the foundation was completed."</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 术语 7 -->
+            <div class="term-card" data-category="connection">
+                <div class="term-header">
+                    <span class="term-en">Bolted Connection</span>
+                    <span class="term-zh">螺栓连接</span>
+                </div>
+                <div class="term-body">
+                    <p class="term-definition">
+                        使用螺栓将钢结构构件连接在一起的连接方式，分为普通螺栓和高强度螺栓。
+                    </p>
+                    <div class="chalk-example">
+                        <p class="chalk-title">📝 图解：螺栓类型</p>
+                        <p class="chalk-line yellow">→ High-Strength Bolt: 高强螺栓</p>
+                        <p class="chalk-line blue">→ Friction Type: 摩擦型</p>
+                        <p class="chalk-line green">→ Bearing Type: 承压型</p>
+                        <p class="chalk-line pink">→ Pretension: 预拉力</p>
+                    </div>
+                    <div class="term-example" style="margin-top: 1rem;">
+                        <p class="term-example-label">Example 例句</p>
+                        <p>"High-strength bolts shall be tightened to the specified torque."</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 术语 8 -->
+            <div class="term-card" data-category="structure">
+                <div class="term-header">
+                    <span class="term-en">Truss</span>
+                    <span class="term-zh">桁架</span>
+                </div>
+                <div class="term-body">
+                    <p class="term-definition">
+                        由直杆组成的三角形单元构成的平面或空间结构，主要承受轴向力。
+                    </p>
+                    <div class="chalk-example">
+                        <p class="chalk-title">📝 图解：桁架形式</p>
+                        <p class="chalk-line yellow">→ Warren Truss: 瓦尔伦桁架</p>
+                        <p class="chalk-line blue">→ Pratt Truss: 普拉特桁架</p>
+                        <p class="chalk-line green">→ Howe Truss: 豪威桁架</p>
+                        <p class="chalk-line pink">→ 三角形: 稳定结构</p>
+                    </div>
+                    <div class="term-example" style="margin-top: 1rem;">
+                        <p class="term-example-label">Example 例句</p>
+                        <p>"The roof truss spans 30 meters with steel members."</p>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </main>
+    
+    <footer>
+        <p>🏗️ 钢结构研究院 · Steel Structure Institute</p>
+        <p style="font-size: 0.9rem; opacity: 0.7; margin-top: 0.5rem;">© 2026 专业术语 · 持续更新中</p>
+    </footer>
+    
+    <script>
+        // 搜索功能
+        const searchInput = document.getElementById('searchInput');
+        const termCards = document.querySelectorAll('.term-card');
+        
+        searchInput.addEventListener('input', (e) => {
+            const searchText = e.target.value.toLowerCase();
+            
+            termCards.forEach(card => {
+                const en = card.querySelector('.term-en').textContent.toLowerCase();
+                const zh = card.querySelector('.term-zh').textContent;
+                const def = card.querySelector('.term-definition').textContent.toLowerCase();
+                
+                if (en.includes(searchText) || zh.includes(searchText) || def.includes(searchText)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+        
+        // 分类筛选
+        const categoryTags = document.querySelectorAll('.category-tag');
+        
+        categoryTags.forEach(tag => {
+            tag.addEventListener('click', () => {
+                categoryTags.forEach(t => t.classList.remove('active'));
+                tag.classList.add('active');
+                
+                const category = tag.dataset.category;
+                
+                termCards.forEach(card => {
+                    if (category === 'all' || card.dataset.category === category) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
