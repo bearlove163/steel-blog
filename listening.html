@@ -942,6 +942,21 @@
         // 语音合成功能
         const synth = window.speechSynthesis;
         let currentUtterance = null;
+        let voicesLoaded = false;
+        
+        // 加载语音
+        function loadVoices() {
+            const voices = synth.getVoices();
+            if (voices.length > 0) {
+                voicesLoaded = true;
+                console.log('Voices loaded:', voices.length);
+            }
+        }
+        
+        // 初始化语音
+        if (synth.onvoiceschanged !== undefined) {
+            synth.onvoiceschanged = loadVoices;
+        }
         
         // 朗读文本
         function speak(text, lang = 'en-US') {
@@ -952,18 +967,26 @@
             
             const utterance = new SpeechSynthesisUtterance(text);
             utterance.lang = lang;
-            utterance.rate = 0.9; // 语速稍慢
+            utterance.rate = 0.85; // 语速慢
             utterance.pitch = 1;
+            utterance.volume = 1;
             
-            // 选择英语语音
+            // 等待语音加载
             const voices = synth.getVoices();
             const englishVoice = voices.find(v => v.lang.includes('en')) || voices[0];
             if (englishVoice) {
                 utterance.voice = englishVoice;
             }
             
+            // 错误处理
+            utterance.onerror = function(event) {
+                console.error('Speech error:', event.error);
+                alert('语音播放失败，请点击页面任意位置后重试');
+            };
+            
             synth.speak(utterance);
             currentUtterance = utterance;
+            return utterance;
         }
         
         // 停止朗读
@@ -992,30 +1015,49 @@
         }
         
         // 朗读课程内容
-        function playLesson(btn, lessonId) {
+        function playLesson(btn) {
             const card = btn.closest('.lesson-card');
             const enText = card.querySelector('.text-block.en p').innerText;
+            const title = card.querySelector('.lesson-title').textContent;
             
-            if (btn.textContent === '▶' || btn.textContent === '🔊') {
+            // 停止之前的朗读
+            stopSpeaking();
+            
+            if (btn.textContent === '🔊' || btn.textContent === '▶') {
                 btn.textContent = '⏸';
-                speak(enText, 'en-US');
+                btn.title = '点击停止';
+                
+                const utterance = speak(enText, 'en-US');
                 
                 // 朗读结束后更新按钮
-                currentUtterance.onend = function() {
+                utterance.onend = function() {
                     btn.textContent = '🔊';
+                    btn.title = '点击播放';
+                };
+                
+                utterance.onerror = function(event) {
+                    btn.textContent = '🔊';
+                    btn.title = '点击播放';
                 };
             } else {
                 btn.textContent = '🔊';
+                btn.title = '点击播放';
                 stopSpeaking();
             }
         }
         
-        // 初始化语音
-        if (synth.onvoiceschanged !== undefined) {
-            synth.onvoiceschanged = function() {
-                console.log('Voices loaded:', synth.getVoices().length);
-            };
-        }
+        // 点击页面任意位置初始化语音（解决移动端问题）
+        document.addEventListener('click', function initSpeech() {
+            loadVoices();
+            // 尝试获取语音
+            if (synth.getVoices().length === 0) {
+                // 如果语音未加载，创建一个测试 utterance 来触发加载
+                const testUtterance = new SpeechSynthesisUtterance('');
+                testUtterance.lang = 'en-US';
+                synth.speak(testUtterance);
+                synth.cancel();
+            }
+        }, { once: true });
     </script>
 </body>
 </html>
