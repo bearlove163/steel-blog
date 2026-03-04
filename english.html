@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>英语学习专栏 | English Learning Hub</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --primary: #1a365d;
+            --secondary: #2c5282;
+            --accent: #e53e3e;
+            --chalk-white: #f8f9fa;
+            --chalk-yellow: #ffd700;
+            --chalk-blue: #87ceeb;
+            --chalk-pink: #ffb6c1;
+            --chalk-green: #98fb98;
+            --chalk-purple: #dda0dd;
+        }
+        
+        body {
+            font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            line-height: 1.8;
+            background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
+            min-height: 100vh;
+            color: #1a202c;
+        }
+        
+        nav {
+            background: rgba(26, 54, 93, 0.95);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            max-width: 1200px;
+            margin: 0 auto;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+        }
+        
+        nav a:hover {
+            background: rgba(255,255,255,0.1);
+        }
+        
+        header {
+            background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+        
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        header p {
+            opacity: 0.9;
+            font-size: 1.1rem;
+        }
+        
+        main {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        /* 学习模块 */
+        .learning-modules {
+            display: grid;
+            gap: 2rem;
+        }
+        
+        .module-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        
+        .module-header {
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
+            color: white;
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .module-icon {
+            font-size: 2.5rem;
+        }
+        
+        .module-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+        }
+        
+        .module-body {
+            padding: 1.5rem;
+        }
+        
+        /* 听力练习 */
+        .audio-player {
+            background: #f7fafc;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+        
+        .audio-controls {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .play-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--secondary);
+            color: white;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .play-btn:hover {
+            background: var(--primary);
+            transform: scale(1.1);
+        }
+        
+        .audio-text {
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--secondary);
+            margin: 1rem 0;
+        }
+        
+        .audio-text.en {
+            font-size: 1.1rem;
+            color: #2d3748;
+        }
+        
+        .audio-text.zh {
+            color: #718096;
+            font-size: 0.95rem;
+        }
+        
+        /* 术语卡片 */
+        .term-list {
+            display: grid;
+            gap: 1rem;
+        }
+        
+        .term-item {
+            background: #f7fafc;
+            padding: 1rem;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        
+        .term-item:hover {
+            background: #edf2f7;
+            transform: translateX(5px);
+        }
+        
+        .term-item .en {
+            font-weight: 600;
+            color: var(--primary);
+            min-width: 200px;
+        }
+        
+        .term-item .zh {
+            color: #4a5568;
+        }
+        
+        /* 每日一句 */
+        .daily-sentence {
+            background: #1a472a;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 1rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .daily-sentence::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(ellipse at center, #1f5233 0%, #1a472a 100%);
+            z-index: 0;
+        }
+        
+        .daily-sentence > * {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .daily-label {
+            color: var(--chalk-yellow);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .daily-en {
+            color: var(--chalk-white);
+            font-size: 1.3rem;
+            font-style: italic;
+            margin-bottom: 1rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+        
+        .daily-zh {
+            color: var(--chalk-blue);
+            font-size: 1rem;
+        }
+        
+        /* 对话练习 */
+        .dialogue-item {
+            background: #f7fafc;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+        
+        .dialogue-speaker {
+            font-weight: 600;
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .dialogue-text {
+            color: #2d3748;
+            margin-bottom: 0.5rem;
+        }
+        
+        .dialogue-text.zh {
+            color: #718096;
+            font-size: 0.9rem;
+        }
+        
+        /* 进度条 */
+        .progress-bar {
+            background: #e2e8f0;
+            height: 8px;
+            border-radius: 4px;
+            overflow: hidden;
+            margin: 1rem 0;
+        }
+        
+        .progress-fill {
+            background: linear-gradient(90deg, var(--secondary), var(--primary));
+            height: 100%;
+            border-radius: 4px;
+            transition: width 0.5s ease;
+        }
+        
+        footer {
+            background: #1a202c;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+        
+        @media (max-width: 768px) {
+            header h1 { font-size: 1.8rem; }
+            nav ul { flex-direction: column; gap: 0.5rem; text-align: center; }
+            main { padding: 1rem; }
+            .term-item { flex-direction: column; align-items: flex-start; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">首页</a></li>
+            <li><a href="glossary.html">术语表</a></li>
+            <li><a href="english.html">英语学习</a></li>
+            <li><a href="#about">关于</a></li>
+        </ul>
+    </nav>
+    
+    <header>
+        <h1>📚 英语学习专栏</h1>
+        <p>English Learning Hub - 钢结构专业英语 + 日常口语</p>
+    </header>
+    
+    <main>
+        <div class="learning-modules">
+            
+            <!-- 每日一句 -->
+            <div class="module-card">
+                <div class="module-header">
+                    <span class="module-icon">📝</span>
+                    <span class="module-title">每日一句 Daily Sentence</span>
+                </div>
+                <div class="module-body">
+                    <div class="daily-sentence">
+                        <p class="daily-label">🎯 Today's Quote</p>
+                        <p class="daily-en">"The steel framework provides the skeleton of the building, while concrete flesh gives it strength."</p>
+                        <p class="daily-zh">"钢结构为建筑提供骨架，而混凝土则赋予它力量。"</p>
+                    </div>
+                    
+                    <div class="daily-sentence" style="background: #2c3e50;">
+                        <p class="daily-label">💬 日常口语 Daily Conversation</p>
+                        <p class="daily-en">"Could you explain how the moment frame works in earthquake resistance?"</p>
+                        <p class="daily-zh">"你能解释一下框架结构是如何抗震的吗？"</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 听力练习 -->
+            <div class="module-card">
+                <div class="module-header">
+                    <span class="module-icon">🎧</span>
+                    <span class="module-title">听力练习 Listening Practice</span>
+                </div>
+                <div class="module-body">
+                    <div class="audio-player">
+                        <h3 style="color: var(--primary); margin-bottom: 0.5rem;">Lesson 1: Steel Structure Basics</h3>
+                        <p style="color: #718096; margin-bottom: 1rem;">基础钢结构词汇与表达</p>
+                        
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 0%;" id="progress1"></div>
+                        </div>
+                        
+                        <div class="audio-controls">
+                            <button class="play-btn" onclick="togglePlay(1)">▶</button>
+                            <span style="color: #718096;">00:00 / 02:30</span>
+                        </div>
+                        
+                        <div class="audio-text en">
+                            <strong>Text:</strong> Steel structure is a structure mainly made of steel materials, including steel columns, steel beams, steel trusses, and other components. It is characterized by high strength, light weight, and good ductility.
+                        </div>
+                        <div class="audio-text zh">
+                            <strong>中文:</strong> 钢结构是一种主要由钢材组成的结构，包括钢柱、钢梁、钢桁架等构件。其特点是强度高、重量轻、韧性好。
+                        </div>
+                    </div>
+                    
+                    <div class="audio-player">
+                        <h3 style="color: var(--primary); margin-bottom: 0.5rem;">Lesson 2: Connection Methods</h3>
+                        <p style="color: #718096; margin-bottom: 1rem;">连接方式：焊接与螺栓</p>
+                        
+                        <div class="audio-controls">
+                            <button class="play-btn" onclick="togglePlay(2)">▶</button>
+                            <span style="color: #718096;">00:00 / 03:00</span>
+                        </div>
+                        
+                        <div class="audio-text en">
+                            <strong>Text:</strong> There are two main connection methods in steel structures: welded connections and bolted connections. Welded connections offer good tightness, while bolted connections are convenient for assembly and disassembly.
+                        </div>
+                        <div class="audio-text zh">
+                            <strong>中文:</strong> 钢结构中有两种主要的连接方式：焊接连接和螺栓连接。焊接连接密封性好，而螺栓连接便于组装和拆卸。
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 钢结构术语 -->
+            <div class="module-card">
+                <div class="module-header">
+                    <span class="module-icon">🏗️</span>
+                    <span class="module-title">专业术语 Professional Terms</span>
+                </div>
+                <div class="module-body">
+                    <p style="color: #718096; margin-bottom: 1rem;">点击术语查看详细解释 → <a href="glossary.html" style="color: var(--secondary);">进入术语表</a></p>
+                    
+                    <div class="term-list">
+                        <div class="term-item" onclick="location.href='glossary.html'">
+                            <span class="en">Space Frame</span>
+                            <span class="zh">网架结构</span>
+                        </div>
+                        <div class="term-item" onclick="location.href='glossary.html'">
+                            <span class="en">Moment Frame</span>
+                            <span class="zh">框架体系</span>
+                        </div>
+                        <div class="term-item" onclick="location.href='glossary.html'">
+                            <span class="en">Welded Connection</span>
+                            <span class="zh">焊接连接</span>
+                        </div>
+                        <div class="term-item" onclick="location.href='glossary.html'">
+                            <span class="en">High-Strength Steel</span>
+                            <span class="zh">高强度钢</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 情景对话 -->
+            <div class="module-card">
+                <div class="module-header">
+                    <span class="module-icon">🗣️</span>
+                    <span class="module-title">情景对话 Scenario Dialogue</span>
+                </div>
+                <div class="module-body">
+                    <div class="dialogue-item">
+                        <p class="dialogue-speaker">👤 Engineer A:</p>
+                        <p class="dialogue-text">"We need to increase the section size of these columns to handle the additional loads."</p>
+                        <p class="dialogue-text zh">"我们需要增加这些柱子的截面尺寸来承受额外的荷载。"</p>
+                    </div>
+                    
+                    <div class="dialogue-item">
+                        <p class="dialogue-speaker">👤 Engineer B:</p>
+                        <p class="dialogue-text">"Good point. Let's also check the connection details - the welds might need reinforcement."</p>
+                        <p class="dialogue-text zh">"好主意。我们也检查一下连接节点——焊缝可能需要加强。"</p>
+                    </div>
+                    
+                    <div class="dialogue-item">
+                        <p class="dialogue-speaker">👤 Engineer A:</p>
+                        <p class="dialogue-text">"Agreed. I'll run the structural analysis again with the updated model."</p>
+                        <p class="dialogue-text zh">"同意。我会用更新后的模型重新进行结构分析。"</p>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </main>
+    
+    <footer>
+        <p>🏗️ 钢结构研究院 · Steel Structure Institute</p>
+        <p style="font-size: 0.9rem; opacity: 0.7; margin-top: 0.5rem;">© 2026 英语学习专栏 · 持续更新中</p>
+    </footer>
+    
+    <script>
+        function togglePlay(lessonId) {
+            const btn = document.querySelectorAll('.play-btn')[lessonId - 1];
+            const progress = document.getElementById('progress' + lessonId);
+            
+            if (btn.textContent === '▶') {
+                btn.textContent = '⏸';
+                // 模拟播放进度
+                let width = 0;
+                const interval = setInterval(() => {
+                    width += 1;
+                    progress.style.width = width + '%';
+                    if (width >= 100) {
+                        clearInterval(interval);
+                        btn.textContent = '▶';
+                    }
+                }, 1500);
+            } else {
+                btn.textContent = '▶';
+            }
+        }
+    </script>
+</body>
+</html>
