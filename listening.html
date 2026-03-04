@@ -409,7 +409,7 @@
                 <div class="lesson-body">
                     <div class="audio-player">
                         <div class="audio-controls">
-                            <button class="play-btn" onclick="togglePlay(this)">▶</button>
+                            <button class="play-btn" onclick="playLesson(this)">▶</button>
                             <div class="audio-info">
                                 <p class="audio-title">What is Steel Structure?</p>
                                 <p class="audio-time">00:00 / 01:30</p>
@@ -461,7 +461,7 @@
                 <div class="lesson-body">
                     <div class="audio-player">
                         <div class="audio-controls">
-                            <button class="play-btn" onclick="togglePlay(this)">▶</button>
+                            <button class="play-btn" onclick="playLesson(this)">▶</button>
                             <div class="audio-info">
                                 <p class="audio-title">Simple Conversation</p>
                                 <p class="audio-time">00:00 / 02:00</p>
@@ -506,7 +506,7 @@
                 <div class="lesson-body">
                     <div class="audio-player">
                         <div class="audio-controls">
-                            <button class="play-btn" onclick="togglePlay(this)">▶</button>
+                            <button class="play-btn" onclick="playLesson(this)">▶</button>
                             <div class="audio-info">
                                 <p class="audio-title">Steel Connections</p>
                                 <p class="audio-time">00:00 / 03:00</p>
@@ -562,7 +562,7 @@
                 <div class="lesson-body">
                     <div class="audio-player">
                         <div class="audio-controls">
-                            <button class="play-btn" onclick="togglePlay(this)">▶</button>
+                            <button class="play-btn" onclick="playLesson(this)">▶</button>
                             <div class="audio-info">
                                 <p class="audio-title">Design Considerations</p>
                                 <p class="audio-time">00:00 / 03:30</p>
@@ -596,7 +596,7 @@
                 <div class="lesson-body">
                     <div class="audio-player">
                         <div class="audio-controls">
-                            <button class="play-btn" onclick="togglePlay(this)">▶</button>
+                            <button class="play-btn" onclick="playLesson(this)">▶</button>
                             <div class="audio-info">
                                 <p class="audio-title">Structural Analysis</p>
                                 <p class="audio-time">00:00 / 05:00</p>
@@ -652,7 +652,7 @@
                 <div class="lesson-body">
                     <div class="audio-player">
                         <div class="audio-controls">
-                            <button class="play-btn" onclick="togglePlay(this)">▶</button>
+                            <button class="play-btn" onclick="playLesson(this)">▶</button>
                             <div class="audio-info">
                                 <p class="audio-title">Seismic Design</p>
                                 <p class="audio-time">00:00 / 05:30</p>
@@ -693,8 +693,45 @@
     </footer>
     
     <script>
+        // 语音合成功能
+        const synth = window.speechSynthesis;
+        let currentUtterance = null;
+        
+        // 朗读文本
+        function speak(text, lang = 'en-US') {
+            // 如果正在朗读，先停止
+            if (synth.speaking) {
+                synth.cancel();
+            }
+            
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = lang;
+            utterance.rate = 0.9; // 语速稍慢
+            utterance.pitch = 1;
+            
+            // 选择英语语音
+            const voices = synth.getVoices();
+            const englishVoice = voices.find(v => v.lang.includes('en')) || voices[0];
+            if (englishVoice) {
+                utterance.voice = englishVoice;
+            }
+            
+            synth.speak(utterance);
+            currentUtterance = utterance;
+        }
+        
+        // 停止朗读
+        function stopSpeaking() {
+            if (synth.speaking) {
+                synth.cancel();
+            }
+        }
+        
         // 切换难度
         function showDifficulty(level) {
+            // 停止当前朗读
+            stopSpeaking();
+            
             // 更新标签
             document.querySelectorAll('.difficulty-tab').forEach(tab => {
                 tab.classList.remove('active');
@@ -708,55 +745,30 @@
             document.getElementById(level).classList.add('active');
         }
         
-        // 模拟播放
-        let currentInterval = null;
-        
-        function togglePlay(btn) {
-            const progressBar = btn.closest('.audio-player').querySelector('.progress-fill');
-            const audioTime = btn.closest('.audio-player').querySelector('.audio-time');
+        // 朗读课程内容
+        function playLesson(btn, lessonId) {
+            const card = btn.closest('.lesson-card');
+            const enText = card.querySelector('.text-block.en p').innerText;
             
-            if (btn.textContent === '▶') {
+            if (btn.textContent === '▶' || btn.textContent === '🔊') {
                 btn.textContent = '⏸';
+                speak(enText, 'en-US');
                 
-                let width = 0;
-                // 获取总时长（从文本中解析）
-                const durationText = audioTime.textContent.split('/')[1].trim();
-                const minutes = parseInt(durationText.split(':')[0]);
-                const seconds = parseInt(durationText.split(':')[1]);
-                const totalSeconds = minutes * 60 + seconds;
-                
-                currentInterval = setInterval(() => {
-                    width += 0.5;
-                    progressBar.style.width = width + '%';
-                    
-                    // 更新时间
-                    const currentSec = Math.floor(width / 100 * totalSeconds);
-                    const curMin = Math.floor(currentSec / 60);
-                    const curSec = currentSec % 60;
-                    audioTime.textContent = 
-                        String(curMin).padStart(2, '0') + ':' + 
-                        String(curSec).padStart(2, '0') + ' / ' + durationText;
-                    
-                    if (width >= 100) {
-                        clearInterval(currentInterval);
-                        btn.textContent = '▶';
-                        width = 0;
-                        progressBar.style.width = '0%';
-                    }
-                }, totalSeconds * 2); // 模拟播放速度
+                // 朗读结束后更新按钮
+                currentUtterance.onend = function() {
+                    btn.textContent = '🔊';
+                };
             } else {
-                btn.textContent = '▶';
-                if (currentInterval) {
-                    clearInterval(currentInterval);
-                }
+                btn.textContent = '🔊';
+                stopSpeaking();
             }
         }
         
-        // 点击进度条跳转
-        function seekProgress(bar, event) {
-            const rect = bar.getBoundingClientRect();
-            const percent = (event.clientX - rect.left) / rect.width * 100;
-            bar.querySelector('.progress-fill').style.width = percent + '%';
+        // 初始化语音
+        if (synth.onvoiceschanged !== undefined) {
+            synth.onvoiceschanged = function() {
+                console.log('Voices loaded:', synth.getVoices().length);
+            };
         }
     </script>
 </body>
