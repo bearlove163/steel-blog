@@ -1,10 +1,10 @@
-<<<<<<< HEAD
+<html lang="zh-CN"><head></head><body>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
 =======
 
->>>>>>> fa19e9a (添加图片和修改后的文件)
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; fa19e9a (添加图片和修改后的文件)
+
+
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>听力练习中心 | Listening Practice Center</title>
@@ -388,10 +388,49 @@
             .difficulty-tabs { flex-direction: column; }
             .lesson-header { flex-direction: column; gap: 0.5rem; text-align: center; }
         }
+    
+        @media (max-width: 768px) {
+            header h1 { font-size: 1.8rem; }
+            nav ul { flex-direction: column; gap: 0.5rem; text-align: center; }
+            main { padding: 1rem; }
+            .difficulty-tabs { flex-direction: column; }
+            .lesson-header { flex-direction: column; gap: 0.5rem; text-align: center; }
+            .vocab-image { width: 40px; height: 40px; }
+            .vocab-item { gap: 0.8rem; padding: 0.4rem 0; }
+            .vocab-word { min-width: 120px; font-size: 0.9rem; }
+            .audio-player { padding: 1rem; }
+            .audio-controls { flex-direction: column; gap: 0.5rem; }
+            .play-btn { width: 45px; height: 45px; }
+            .text-block { padding: 1rem; }
+            .text-block p { font-size: 0.95rem; line-height: 1.6; }
+            .chalk-board { padding: 1.5rem; }
+            .chalk-line { font-size: 0.9rem; }
+            footer { padding: 1.5rem; font-size: 0.9rem; }
+        }
+        
+        @media (max-width: 480px) {
+            header h1 { font-size: 1.5rem; }
+            nav ul { gap: 0.3rem; }
+            main { padding: 0.8rem; }
+            .difficulty-tab { padding: 0.6rem 1.5rem; font-size: 0.9rem; }
+            .lesson-header { padding: 1rem; }
+            .lesson-title { font-size: 1.1rem; }
+            .lesson-body { padding: 1rem; }
+            .audio-player { padding: 0.8rem; }
+            .text-block { padding: 0.8rem; }
+            .text-block p { font-size: 0.9rem; line-height: 1.5; }
+            .vocab-list { padding: 1rem; }
+            .vocab-title { font-size: 1rem; }
+            .vocab-word { min-width: 100px; font-size: 0.85rem; }
+            .vocab-meaning { font-size: 0.85rem; }
+            .chalk-board { padding: 1rem; }
+            .chalk-line { font-size: 0.85rem; }
+            footer { padding: 1rem; font-size: 0.85rem; }
+        }
     </style>
-</head>
-<body>
-    <nav>
+
+
+    <nav class="responsive-nav">
         <ul>
             <li><a href="index.html">首页</a></li>
             <li><a href="glossary.html">术语表</a></li>
@@ -422,7 +461,7 @@
                     <span class="lesson-duration">⏱ 01:30</span>
                 </div>
                 <div class="lesson-body">
-                    <div class="audio-player">
+                    <div class="audio-player responsive-audio">
                         <div class="audio-controls">
                             <button class="play-btn" onclick="playLesson(this)">🔊</button>
                             <div class="audio-info">
@@ -449,34 +488,34 @@
                     <div class="vocab-list">
                         <p class="vocab-title">📝 核心词汇</p>
                         <div class="vocab-item">
-<<<<<<< HEAD
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
 =======
-                            <img src="images/steel_structure.png" alt="Steel structure" class="vocab-image">
->>>>>>> fa19e9a (添加图片和修改后的文件)
+                            <img src="images/steel_structure.png" alt="Steel structure" class="vocab-image" srcset="images/steel_structure.png 1x, images/steel_structure@2x.png 2x" sizes="(max-width: 480px) 40px, 50px">
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; fa19e9a (添加图片和修改后的文件)
                             <span class="vocab-word">steel structure</span>
                             <span class="vocab-meaning">钢结构</span>
                         </div>
                         <div class="vocab-item">
-<<<<<<< HEAD
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
 =======
-                            <img src="images/steel_beam.png" alt="Steel beam" class="vocab-image">
->>>>>>> fa19e9a (添加图片和修改后的文件)
+                            <img src="images/steel_beam.png" alt="Steel beam" class="vocab-image" srcset="images/steel_beam.png 1x, images/steel_beam@2x.png 2x" sizes="(max-width: 480px) 40px, 50px">
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; fa19e9a (添加图片和修改后的文件)
                             <span class="vocab-word">steel beam</span>
                             <span class="vocab-meaning">钢梁</span>
                         </div>
                         <div class="vocab-item">
-<<<<<<< HEAD
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
 =======
-                            <img src="images/steel_column.png" alt="Steel column" class="vocab-image">
->>>>>>> fa19e9a (添加图片和修改后的文件)
+                            <img src="images/steel_column.png" alt="Steel column" class="vocab-image" srcset="images/steel_column.png 1x, images/steel_column@2x.png 2x" sizes="(max-width: 480px) 40px, 50px">
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; fa19e9a (添加图片和修改后的文件)
                             <span class="vocab-word">steel column</span>
                             <span class="vocab-meaning">钢柱</span>
                         </div>
                         <div class="vocab-item">
-<<<<<<< HEAD
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
 =======
-                            <img src="images/construction.png" alt="Construction" class="vocab-image">
->>>>>>> fa19e9a (添加图片和修改后的文件)
+                            <img src="images/construction.png" alt="Construction" class="vocab-image" srcset="images/construction.png 1x, images/construction@2x.png 2x" sizes="(max-width: 480px) 40px, 50px">
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; fa19e9a (添加图片和修改后的文件)
                             <span class="vocab-word">construction</span>
                             <span class="vocab-meaning">建筑、施工</span>
                         </div>
@@ -490,7 +529,7 @@
                     <span class="lesson-duration">⏱ 02:00</span>
                 </div>
                 <div class="lesson-body">
-                    <div class="audio-player">
+                    <div class="audio-player responsive-audio">
                         <div class="audio-controls">
                             <button class="play-btn" onclick="playLesson(this)">🔊</button>
                             <div class="audio-info">
@@ -530,7 +569,7 @@
                     <span class="lesson-duration">⏱ 02:30</span>
                 </div>
                 <div class="lesson-body">
-                    <div class="audio-player">
+                    <div class="audio-player responsive-audio">
                         <div class="audio-controls">
                             <button class="play-btn" onclick="playLesson(this)">🔊</button>
                             <div class="audio-info">
@@ -554,26 +593,26 @@
                     <div class="vocab-list">
                         <p class="vocab-title">📝 核心词汇</p>
                         <div class="vocab-item">
-<<<<<<< HEAD
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
 =======
-                            <img src="images/advantage.png" alt="Advantage" class="vocab-image">
->>>>>>> fa19e9a (添加图片和修改后的文件)
+                            <img src="images/advantage.png" alt="Advantage" class="vocab-image" srcset="images/advantage.png 1x, images/advantage@2x.png 2x" sizes="(max-width: 480px) 40px, 50px">
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; fa19e9a (添加图片和修改后的文件)
                             <span class="vocab-word">advantage</span>
                             <span class="vocab-meaning">优点</span>
                         </div>
                         <div class="vocab-item">
-<<<<<<< HEAD
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
 =======
-                            <img src="images/ductile.png" alt="Ductile" class="vocab-image">
->>>>>>> fa19e9a (添加图片和修改后的文件)
+                            <img src="images/ductile.png" alt="Ductile" class="vocab-image" srcset="images/ductile.png 1x, images/ductile@2x.png 2x" sizes="(max-width: 480px) 40px, 50px">
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; fa19e9a (添加图片和修改后的文件)
                             <span class="vocab-word">ductile</span>
                             <span class="vocab-meaning">可延展的</span>
                         </div>
                         <div class="vocab-item">
-<<<<<<< HEAD
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
 =======
-                            <img src="images/recycled.png" alt="Recycled" class="vocab-image">
->>>>>>> fa19e9a (添加图片和修改后的文件)
+                            <img src="images/recycled.png" alt="Recycled" class="vocab-image" srcset="images/recycled.png 1x, images/recycled@2x.png 2x" sizes="(max-width: 480px) 40px, 50px">
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; fa19e9a (添加图片和修改后的文件)
                             <span class="vocab-word">recycled</span>
                             <span class="vocab-meaning">可回收的</span>
                         </div>
@@ -587,7 +626,7 @@
                     <span class="lesson-duration">⏱ 03:00</span>
                 </div>
                 <div class="lesson-body">
-                    <div class="audio-player">
+                    <div class="audio-player responsive-audio">
                         <div class="audio-controls">
                             <button class="play-btn" onclick="playLesson(this)">🔊</button>
                             <div class="audio-info">
@@ -629,7 +668,7 @@
                     <span class="lesson-duration">⏱ 03:00</span>
                 </div>
                 <div class="lesson-body">
-                    <div class="audio-player">
+                    <div class="audio-player responsive-audio">
                         <div class="audio-controls">
                             <button class="play-btn" onclick="playLesson(this)">🔊</button>
                             <div class="audio-info">
@@ -653,42 +692,42 @@
                     <div class="vocab-list">
                         <p class="vocab-title">📝 核心词汇</p>
                         <div class="vocab-item">
-<<<<<<< HEAD
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
 =======
-                            <img src="images/connection.png" alt="Connection" class="vocab-image">
->>>>>>> fa19e9a (添加图片和修改后的文件)
+                            <img src="images/connection.png" alt="Connection" class="vocab-image" srcset="images/connection.png 1x, images/connection@2x.png 2x" sizes="(max-width: 480px) 40px, 50px">
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; fa19e9a (添加图片和修改后的文件)
                             <span class="vocab-word">connection</span>
                             <span class="vocab-meaning">连接</span>
                         </div>
                         <div class="vocab-item">
-<<<<<<< HEAD
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
 =======
-                            <img src="images/welded_connection.png" alt="Welded connection" class="vocab-image">
->>>>>>> fa19e9a (添加图片和修改后的文件)
+                            <img src="images/welded_connection.png" alt="Welded connection" class="vocab-image" srcset="images/welded_connection.png 1x, images/welded_connection@2x.png 2x" sizes="(max-width: 480px) 40px, 50px">
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; fa19e9a (添加图片和修改后的文件)
                             <span class="vocab-word">welded connection</span>
                             <span class="vocab-meaning">焊接连接</span>
                         </div>
                         <div class="vocab-item">
-<<<<<<< HEAD
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
 =======
-                            <img src="images/bolted_connection.png" alt="Bolted connection" class="vocab-image">
->>>>>>> fa19e9a (添加图片和修改后的文件)
+                            <img src="images/bolted_connection.png" alt="Bolted connection" class="vocab-image" srcset="images/bolted_connection.png 1x, images/bolted_connection@2x.png 2x" sizes="(max-width: 480px) 40px, 50px">
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; fa19e9a (添加图片和修改后的文件)
                             <span class="vocab-word">bolted connection</span>
                             <span class="vocab-meaning">螺栓连接</span>
                         </div>
                         <div class="vocab-item">
-<<<<<<< HEAD
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
 =======
-                            <img src="images/high-strength_bolt.png" alt="High-strength bolt" class="vocab-image">
->>>>>>> fa19e9a (添加图片和修改后的文件)
+                            <img src="images/high-strength_bolt.png" alt="High-strength bolt" class="vocab-image" srcset="images/high-strength_bolt.png 1x, images/high-strength_bolt@2x.png 2x" sizes="(max-width: 480px) 40px, 50px">
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; fa19e9a (添加图片和修改后的文件)
                             <span class="vocab-word">high-strength bolt</span>
                             <span class="vocab-meaning">高强螺栓</span>
                         </div>
                         <div class="vocab-item">
-<<<<<<< HEAD
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
 =======
-                            <img src="images/joint.png" alt="Joint" class="vocab-image">
->>>>>>> fa19e9a (添加图片和修改后的文件)
+                            <img src="images/joint.png" alt="Joint" class="vocab-image" srcset="images/joint.png 1x, images/joint@2x.png 2x" sizes="(max-width: 480px) 40px, 50px">
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; fa19e9a (添加图片和修改后的文件)
                             <span class="vocab-word">joint</span>
                             <span class="vocab-meaning">节点、接头</span>
                         </div>
@@ -702,7 +741,7 @@
                     <span class="lesson-duration">⏱ 03:30</span>
                 </div>
                 <div class="lesson-body">
-                    <div class="audio-player">
+                    <div class="audio-player responsive-audio">
                         <div class="audio-controls">
                             <button class="play-btn" onclick="playLesson(this)">🔊</button>
                             <div class="audio-info">
@@ -739,7 +778,7 @@
                     <span class="lesson-duration">⏱ 03:30</span>
                 </div>
                 <div class="lesson-body">
-                    <div class="audio-player">
+                    <div class="audio-player responsive-audio">
                         <div class="audio-controls">
                             <button class="play-btn" onclick="playLesson(this)">🔊</button>
                             <div class="audio-info">
@@ -765,7 +804,7 @@
                     <span class="lesson-duration">⏱ 04:00</span>
                 </div>
                 <div class="lesson-body">
-                    <div class="audio-player">
+                    <div class="audio-player responsive-audio">
                         <div class="audio-controls">
                             <button class="play-btn" onclick="playLesson(this)">🔊</button>
                             <div class="audio-info">
@@ -789,42 +828,42 @@
                     <div class="vocab-list">
                         <p class="vocab-title">📝 核心词汇</p>
                         <div class="vocab-item">
-<<<<<<< HEAD
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
 =======
-                            <img src="images/dead_load.png" alt="Dead load" class="vocab-image">
->>>>>>> fa19e9a (添加图片和修改后的文件)
+                            <img src="images/dead_load.png" alt="Dead load" class="vocab-image" srcset="images/dead_load.png 1x, images/dead_load@2x.png 2x" sizes="(max-width: 480px) 40px, 50px">
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; fa19e9a (添加图片和修改后的文件)
                             <span class="vocab-word">dead load</span>
                             <span class="vocab-meaning">恒荷载</span>
                         </div>
                         <div class="vocab-item">
-<<<<<<< HEAD
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
 =======
-                            <img src="images/live_load.png" alt="Live load" class="vocab-image">
->>>>>>> fa19e9a (添加图片和修改后的文件)
+                            <img src="images/live_load.png" alt="Live load" class="vocab-image" srcset="images/live_load.png 1x, images/live_load@2x.png 2x" sizes="(max-width: 480px) 40px, 50px">
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; fa19e9a (添加图片和修改后的文件)
                             <span class="vocab-word">live load</span>
                             <span class="vocab-meaning">活荷载</span>
                         </div>
                         <div class="vocab-item">
-<<<<<<< HEAD
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
 =======
-                            <img src="images/wind_load.png" alt="Wind load" class="vocab-image">
->>>>>>> fa19e9a (添加图片和修改后的文件)
+                            <img src="images/wind_load.png" alt="Wind load" class="vocab-image" srcset="images/wind_load.png 1x, images/wind_load@2x.png 2x" sizes="(max-width: 480px) 40px, 50px">
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; fa19e9a (添加图片和修改后的文件)
                             <span class="vocab-word">wind load</span>
                             <span class="vocab-meaning">风荷载</span>
                         </div>
                         <div class="vocab-item">
-<<<<<<< HEAD
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
 =======
-                            <img src="images/snow_load.png" alt="Snow load" class="vocab-image">
->>>>>>> fa19e9a (添加图片和修改后的文件)
+                            <img src="images/snow_load.png" alt="Snow load" class="vocab-image" srcset="images/snow_load.png 1x, images/snow_load@2x.png 2x" sizes="(max-width: 480px) 40px, 50px">
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; fa19e9a (添加图片和修改后的文件)
                             <span class="vocab-word">snow load</span>
                             <span class="vocab-meaning">雪荷载</span>
                         </div>
                         <div class="vocab-item">
-<<<<<<< HEAD
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
 =======
-                            <img src="images/seismic_load.png" alt="Seismic load" class="vocab-image">
->>>>>>> fa19e9a (添加图片和修改后的文件)
+                            <img src="images/seismic_load.png" alt="Seismic load" class="vocab-image" srcset="images/seismic_load.png 1x, images/seismic_load@2x.png 2x" sizes="(max-width: 480px) 40px, 50px">
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; fa19e9a (添加图片和修改后的文件)
                             <span class="vocab-word">seismic load</span>
                             <span class="vocab-meaning">地震荷载</span>
                         </div>
@@ -843,12 +882,12 @@
                     <span class="lesson-duration">⏱ 05:00</span>
                 </div>
                 <div class="lesson-body">
-                    <div class="audio-player">
+                    <div class="audio-player responsive-audio">
                         <div class="audio-controls">
                             <button class="play-btn" onclick="playLesson(this)">🔊</button>
                             <div class="audio-info">
                                 <p class="audio-title">Structural Analysis</p>
-<<<<<<< HEAD
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
                                 <p class="audio-time">00:00 / 05:00</p>
                             </div>
                         </div>
@@ -897,7 +936,7 @@
                     <span class="lesson-duration">⏱ 05:30</span>
                 </div>
                 <div class="lesson-body">
-                    <div class="audio-player">
+                    <div class="audio-player responsive-audio">
                         <div class="audio-controls">
                             <button class="play-btn" onclick="playLesson(this)">🔊</button>
                             <div class="audio-info">
@@ -934,7 +973,7 @@
                     <span class="lesson-duration">⏱ 06:00</span>
                 </div>
                 <div class="lesson-body">
-                    <div class="audio-player">
+                    <div class="audio-player responsive-audio">
                         <div class="audio-controls">
                             <button class="play-btn" onclick="playLesson(this)">🔊</button>
                             <div class="audio-info">
@@ -983,7 +1022,7 @@
                     <span class="lesson-duration">⏱ 06:00</span>
                 </div>
                 <div class="lesson-body">
-                    <div class="audio-player">
+                    <div class="audio-player responsive-audio">
                         <div class="audio-controls">
                             <button class="play-btn" onclick="playLesson(this)">🔊</button>
                             <div class="audio-info">
@@ -1021,7 +1060,7 @@
                     <span class="lesson-duration">⏱ 05:30</span>
                 </div>
                 <div class="lesson-body">
-                    <div class="audio-player">
+                    <div class="audio-player responsive-audio">
                         <div class="audio-controls">
                             <button class="play-btn" onclick="playLesson(this)">🔊</button>
                             <div class="audio-info">
@@ -1058,7 +1097,7 @@
                     <span class="lesson-duration">⏱ 05:00</span>
                 </div>
                 <div class="lesson-body">
-                    <div class="audio-player">
+                    <div class="audio-player responsive-audio">
                         <div class="audio-controls">
                             <button class="play-btn" onclick="playLesson(this)">🔊</button>
                             <div class="audio-info">
@@ -1107,7 +1146,7 @@
                     <span class="lesson-duration">⏱ 06:00</span>
                 </div>
                 <div class="lesson-body">
-                    <div class="audio-player">
+                    <div class="audio-player responsive-audio">
                         <div class="audio-controls">
                             <button class="play-btn" onclick="playLesson(this)">🔊</button>
                             <div class="audio-info">
@@ -1144,7 +1183,7 @@
                     <span class="lesson-duration">⏱ 06:30</span>
                 </div>
                 <div class="lesson-body">
-                    <div class="audio-player">
+                    <div class="audio-player responsive-audio">
                         <div class="audio-controls">
                             <button class="play-btn" onclick="playLesson(this)">🔊</button>
                             <div class="audio-info">
@@ -1193,7 +1232,7 @@
                     <span class="lesson-duration">⏱ 05:00</span>
                 </div>
                 <div class="lesson-body">
-                    <div class="audio-player">
+                    <div class="audio-player responsive-audio">
                         <div class="audio-controls">
                             <button class="play-btn" onclick="playLesson(this)">🔊</button>
                             <div class="audio-info">
@@ -1230,7 +1269,7 @@
                     <span class="lesson-duration">⏱ 05:30</span>
                 </div>
                 <div class="lesson-body">
-                    <div class="audio-player">
+                    <div class="audio-player responsive-audio">
                         <div class="audio-controls">
                             <button class="play-btn" onclick="playLesson(this)">🔊</button>
                             <div class="audio-info">
@@ -1402,8 +1441,9 @@
             }
         }, { once: true });
     </script>
-</body>
-</html>
+
+
 =======
                                 <p class="audio-time">00:00
->>>>>>> fa19e9a (添加图片和修改后的文件)
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; fa19e9a (添加图片和修改后的文件)
+</p></body></html>
