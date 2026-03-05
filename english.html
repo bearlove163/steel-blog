@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -302,6 +303,36 @@
             nav ul { flex-direction: column; gap: 0.5rem; text-align: center; }
             main { padding: 1rem; }
             .term-item { flex-direction: column; align-items: flex-start; }
+            .term-item .en { min-width: auto; }
+            .module-header { flex-direction: column; text-align: center; }
+            .module-icon { font-size: 2rem; }
+            .module-title { font-size: 1.2rem; }
+            .audio-player { padding: 1rem; }
+            .daily-sentence { padding: 1.5rem; }
+            .daily-en { font-size: 1.1rem; }
+            .daily-zh { font-size: 0.9rem; }
+            .dialogue-item { padding: 1rem; }
+            .dialogue-text { font-size: 0.95rem; }
+        }
+        
+        @media (max-width: 480px) {
+            header { padding: 2rem 1rem; }
+            header h1 { font-size: 1.5rem; }
+            header p { font-size: 1rem; }
+            nav { padding: 0.8rem; }
+            main { padding: 0.8rem; }
+            .module-body { padding: 1rem; }
+            .audio-player { padding: 0.8rem; }
+            .play-btn { width: 40px; height: 40px; font-size: 1rem; }
+            .audio-text { padding: 0.8rem; }
+            .audio-text.en { font-size: 1rem; }
+            .audio-text.zh { font-size: 0.9rem; }
+            .daily-sentence { padding: 1rem; }
+            .daily-label { font-size: 0.8rem; }
+            .daily-en { font-size: 1rem; }
+            .daily-zh { font-size: 0.85rem; }
+            .dialogue-item { padding: 0.8rem; }
+            .dialogue-text { font-size: 0.9rem; }
         }
     </style>
 </head>
