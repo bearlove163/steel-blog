@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>搜索 | Search - 钢结构研究院</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --primary: #1a365d;
+            --secondary: #2c5282;
+            --accent: #e53e3e;
+            --light: #f7fafc;
+            --dark: #1a202c;
+        }
+        
+        body {
+            font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            line-height: 1.8;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            min-height: 100vh;
+            color: var(--dark);
+        }
+        
+        /* 导航 */
+        nav {
+            background: rgba(26, 54, 93, 0.95);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            max-width: 1200px;
+            margin: 0 auto;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+        }
+        
+        nav a:hover, nav a.active {
+            background: rgba(255,255,255,0.1);
+        }
+        
+        /* 头部 */
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+        
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        /* 主内容 */
+        main {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        /* 搜索框 */
+        .search-container {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        
+        .search-box {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .search-box input {
+            flex: 1;
+            padding: 1rem 1.5rem;
+            font-size: 1.1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+        
+        .search-box input:focus {
+            border-color: var(--secondary);
+        }
+        
+        .search-box button {
+            padding: 1rem 2rem;
+            background: var(--secondary);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .search-box button:hover {
+            background: var(--primary);
+        }
+        
+        /* 搜索建议 */
+        .search-suggestions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        
+        .suggestion-title {
+            width: 100%;
+            color: #718096;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .suggestion-tag {
+            background: #edf2f7;
+            color: #4a5568;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .suggestion-tag:hover {
+            background: var(--secondary);
+            color: white;
+        }
+        
+        /* 搜索类型 */
+        .search-type {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .type-btn {
+            padding: 0.5rem 1rem;
+            border: 2px solid #e2e8f0;
+            background: white;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+        
+        .type-btn:hover, .type-btn.active {
+            border-color: var(--secondary);
+            background: var(--secondary);
+            color: white;
+        }
+        
+        /* 搜索结果 */
+        .results-container {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        
+        .result-count {
+            color: #718096;
+            margin-bottom: 1.5rem;
+        }
+        
+        .result-item {
+            padding: 1.5rem;
+            border-bottom: 1px solid #e2e8f0;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .result-item:hover {
+            background: #f7fafc;
+        }
+        
+        .result-item:last-child {
+            border-bottom: none;
+        }
+        
+        .result-title {
+            color: var(--primary);
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .result-title:hover {
+            color: var(--accent);
+        }
+        
+        .result-meta {
+            color: #718096;
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .result-summary {
+            color: #4a5568;
+            line-height: 1.6;
+        }
+        
+        .result-tags {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .result-tag {
+            background: #edf2f7;
+            color: #718096;
+            padding: 0.1rem 0.5rem;
+            border-radius: 10px;
+            font-size: 0.75rem;
+        }
+        
+        /* 无结果 */
+        .no-results {
+            text-align: center;
+            padding: 3rem;
+            color: #718096;
+        }
+        
+        .no-results-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+        
+        /* 页脚 */
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+        
+        /* 响应式 */
+        @media (max-width: 768px) {
+            nav ul { flex-direction: column; gap: 0.5rem; text-align: center; }
+            main { padding: 1rem; }
+            header h1 { font-size: 1.8rem; }
+            .search-box { flex-direction: column; }
+            .search-box button { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">首页</a></li>
+            <li><a href="news.html">新闻动态</a></li>
+            <li><a href="glossary.html">术语表</a></li>
+            <li><a href="listening.html">听力中心</a></li>
+            <li><a href="english.html">英语学习</a></li>
+            <li><a href="search.html" class="active">搜索</a></li>
+        </ul>
+    </nav>
+    
+    <header>
+        <h1>🔍 搜索</h1>
+        <p>搜索术语、文章、听力课程</p>
+    </header>
+    
+    <main>
+        <div class="search-container">
+            <div class="search-type">
+                <button class="type-btn active" onclick="setSearchType('all')">全部</button>
+                <button class="type-btn" onclick="setSearchType('terms')">术语</button>
+                <button class="type-btn" onclick="setSearchType('articles')">文章</button>
+                <button class="type-btn" onclick="setSearchType('lessons')">课程</button>
+                <button class="type-btn" onclick="setSearchType('news')">新闻</button>
+            </div>
+            
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="输入关键词搜索..." onkeyup="handleSearch(event)">
+                <button onclick="doSearch()">搜索</button>
+            </div>
+            
+            <div class="search-suggestions">
+                <span class="suggestion-title">热门搜索：</span>
+                <span class="suggestion-tag" onclick="quickSearch('钢结构')">钢结构</span>
+                <span class="suggestion-tag" onclick="quickSearch('焊接')">焊接</span>
+                <span class="suggestion-tag" onclick="quickSearch('抗震')">抗震</span>
+                <span class="suggestion-tag" onclick="quickSearch('BIM')">BIM</span>
+                <span class="suggestion-tag" onclick="quickSearch('防腐')">防腐</span>
+                <span class="suggestion-tag" onclick="quickSearch('屈曲')">屈曲</span>
+            </div>
+        </div>
+        
+        <div class="results-container" id="resultsContainer">
+            <div class="no-results">
+                <div class="no-results-icon">🔍</div>
+                <p>输入关键词开始搜索</p>
+            </div>
+        </div>
+    </main>
+    
+    <footer>
+        <p>🏗️ 钢结构研究院 · 让建筑更美好</p>
+        <p style="font-size: 0.9rem; opacity: 0.7; margin-top: 0.5rem;">© 2026 Steel Structure Institute. All rights reserved.</p>
+    </footer>
+    
+    <script>
+        let currentType = 'all';
+        
+        // 搜索数据
+        const searchData = {
+            terms: [
+                { term: 'Steel Structure', definition: '钢结构，由钢材组成的建筑结构体系', category: '基础' },
+                { term: 'Moment Frame', definition: '抗弯框架结构', category: '结构体系' },
+                { term: 'Welded Connection', definition: '焊接连接', category: '连接' },
+                { term: 'Buckling', definition: '屈曲，构件在压力作用下发生的失稳现象', category: '力学' },
+                { term: 'Fire Resistance', definition: '耐火性，结构在火灾中保持承载能力的时间', category: '性能' },
+                { term: 'Corrosion Protection', definition: '防腐保护，防止钢材锈蚀的措施', category: '维护' }
+            ],
+            articles: [
+                { title: '米兰展览馆的"变形记"', category: '历史建筑', summary: '从1933年的艺术殿堂到2026年冬奥速滑场...' },
+                { title: '钢结构设计要点', category: '结构设计', summary: '揭秘钢结构设计的核心要素...' },
+                { title: '超高层钢结构施工', category: '超高层', summary: '探秘摩天大楼是如何一砖一瓦"长"高的...' }
+            ],
+            lessons: [
+                { title: 'Lesson 1: 什么是钢结构？', level: '初级', duration: '01:30' },
+                { title: 'Lesson 5: 钢结构连接', level: '中级', duration: '03:00' },
+                { title: 'Lesson 9: 结构分析', level: '高级', duration: '05:00' }
+            ],
+            news: [
+                { title: '2026冬奥会场馆改造进入最后阶段', date: '2026-03-05', summary: '米兰展览馆改造项目已完成95%...' },
+                { title: '中国在建第一高楼突破500米大关', date: '2026-03-04', summary: '深圳第七高楼项目主体结构施工突破500米...' }
+            ]
+        };
+        
+        // 设置搜索类型
+        function setSearchType(type) {
+            currentType = type;
+            document.querySelectorAll('.type-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+        }
+        
+        // 快速搜索
+        function quickSearch(keyword) {
+            document.getElementById('searchInput').value = keyword;
+            doSearch();
+        }
+        
+        // 处理搜索（回车键）
+        function handleSearch(event) {
+            if (event.key === 'Enter') {
+                doSearch();
+            }
+        }
+        
+        // 执行搜索
+        function doSearch() {
+            const keyword = document.getElementById('searchInput').value.trim();
+            const container = document.getElementById('resultsContainer');
+            
+            if (!keyword) {
+                container.innerHTML = '<div class="no-results"><div class="no-results-icon">🔍</div><p>输入关键词开始搜索</p></div>';
+                return;
+            }
+            
+            const results = [];
+            
+            // 搜索术语
+            if (currentType === 'all' || currentType === 'terms') {
+                searchData.terms.forEach(item => {
+                    if (item.term.toLowerCase().includes(keyword.toLowerCase()) || 
+                        item.definition.includes(keyword)) {
+                        results.push({
+                            type: 'terms',
+                            title: item.term,
+                            meta: `分类：${item.category}`,
+                            summary: item.definition,
+                            link: 'glossary.html'
+                        });
+                    }
+                });
+            }
+            
+            // 搜索文章
+            if (currentType === 'all' || currentType === 'articles') {
+                searchData.articles.forEach(item => {
+                    if (item.title.includes(keyword) || item.summary.includes(keyword)) {
+                        results.push({
+                            type: 'articles',
+                            title: item.title,
+                            meta: `分类：${item.category}`,
+                            summary: item.summary,
+                            link: 'index.html'
+                        });
+                    }
+                });
+            }
+            
+            // 搜索课程
+            if (currentType === 'all' || currentType === 'lessons') {
+                searchData.lessons.forEach(item => {
+                    if (item.title.includes(keyword)) {
+                        results.push({
+                            type: 'lessons',
+                            title: item.title,
+                            meta: `难度：${item.level} · 时长：${item.duration}`,
+                            summary: '钢结构专业英语听力课程',
+                            link: 'listening.html'
+                        });
+                    }
+                });
+            }
+            
+            // 搜索新闻
+            if (currentType === 'all' || currentType === 'news') {
+                searchData.news.forEach(item => {
+                    if (item.title.includes(keyword) || item.summary.includes(keyword)) {
+                        results.push({
+                            type: 'news',
+                            title: item.title,
+                            meta: `日期：${item.date}`,
+                            summary: item.summary,
+                            link: 'news.html'
+                        });
+                    }
+                });
+            }
+            
+            // 渲染结果
+            if (results.length === 0) {
+                container.innerHTML = `<div class="no-results"><div class="no-results-icon">😕</div><p>未找到与"${keyword}"相关的内容</p></div>`;
+            } else {
+                container.innerHTML = `
+                    <p class="result-count">找到 ${results.length} 个结果</p>
+                    ${results.map(r => `
+                        <div class="result-item" onclick="window.location.href='${r.link}'">
+                            <h3 class="result-title">${r.title}</h3>
+                            <p class="result-meta">${r.meta}</p>
+                            <p class="result-summary">${r.summary}</p>
+                            <div class="result-tags">
+                                <span class="result-tag">${getTypeLabel(r.type)}</span>
+                            </div>
+                        </div>
+                    `).join('')}
+                `;
+            }
+        }
+        
+        // 获取类型标签
+        function getTypeLabel(type) {
+            const labels = {
+                terms: '术语',
+                articles: '文章',
+                lessons: '课程',
+                news: '新闻'
+            };
+            return labels[type] || type;
+        }
+    </script>
+</body>
+</html>

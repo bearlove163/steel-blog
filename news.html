@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>新闻动态 | Steel News</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --primary: #1a365d;
+            --secondary: #2c5282;
+            --accent: #e53e3e;
+            --success: #48bb78;
+            --warning: #ed8936;
+            --info: #4299e1;
+            --light: #f7fafc;
+            --dark: #1a202c;
+        }
+        
+        body {
+            font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            line-height: 1.8;
+            background: var(--light);
+            color: var(--dark);
+        }
+        
+        /* 导航 */
+        nav {
+            background: var(--primary);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            max-width: 1200px;
+            margin: 0 auto;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+        }
+        
+        nav a:hover {
+            background: rgba(255,255,255,0.1);
+        }
+        
+        nav a.active {
+            background: var(--secondary);
+        }
+        
+        /* 头部 */
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+        
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        /* 主内容 */
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        /* 日期筛选 */
+        .date-filter {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .date-btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            background: white;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .date-btn:hover, .date-btn.active {
+            background: var(--secondary);
+            color: white;
+        }
+        
+        /* 分类筛选 */
+        .category-filter {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .category-btn {
+            padding: 0.4rem 1rem;
+            border: 2px solid var(--secondary);
+            background: transparent;
+            color: var(--secondary);
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+        
+        .category-btn:hover, .category-btn.active {
+            background: var(--secondary);
+            color: white;
+        }
+        
+        /* 新闻列表 */
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        
+        .news-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+        }
+        
+        .news-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        
+        .news-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+        
+        .news-content {
+            padding: 1.5rem;
+        }
+        
+        .news-category {
+            display: inline-block;
+            padding: 0.2rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .news-category.sports { background: #e6fffa; color: #047481; }
+        .news-category.highrise { background: #fff5f5; color: #c53030; }
+        .news-category.bridge { background: #ebf8ff; color: #2b6cb0; }
+        .news-category.tech { background: #faf5ff; color: #6b46c1; }
+        .news-category.policy { background: #fffaf0; color: #c05621; }
+        
+        .news-title {
+            font-size: 1.2rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        .news-meta {
+            color: #718096;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+        }
+        
+        .news-summary {
+            color: #4a5568;
+            line-height: 1.6;
+        }
+        
+        .news-tags {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .news-tag {
+            background: #edf2f7;
+            color: #4a5568;
+            padding: 0.2rem 0.6rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
+        }
+        
+        /* 加载更多 */
+        .load-more {
+            text-align: center;
+            margin-top: 3rem;
+        }
+        
+        .load-more-btn {
+            padding: 1rem 3rem;
+            background: var(--secondary);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .load-more-btn:hover {
+            background: var(--primary);
+            transform: scale(1.05);
+        }
+        
+        /* 页脚 */
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+        
+        /* 响应式 */
+        @media (max-width: 768px) {
+            nav ul { flex-direction: column; gap: 0.5rem; text-align: center; }
+            main { padding: 1rem; }
+            .news-grid { grid-template-columns: 1fr; }
+            header h1 { font-size: 1.8rem; }
+        }
+        
+        /* 动画 */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .news-card {
+            animation: fadeIn 0.5s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">首页</a></li>
+            <li><a href="news.html" class="active">新闻动态</a></li>
+            <li><a href="glossary.html">术语表</a></li>
+            <li><a href="listening.html">听力中心</a></li>
+            <li><a href="english.html">英语学习</a></li>
+        </ul>
+    </nav>
+    
+    <header>
+        <h1>📰 新闻动态</h1>
+        <p>追踪钢结构行业最新资讯</p>
+    </header>
+    
+    <main>
+        <!-- 日期筛选 -->
+        <div class="date-filter">
+            <button class="date-btn active" onclick="filterByDate('all')">全部</button>
+            <button class="date-btn" onclick="filterByDate('today')">今天</button>
+            <button class="date-btn" onclick="filterByDate('week')">本周</button>
+            <button class="date-btn" onclick="filterByDate('month')">本月</button>
+        </div>
+        
+        <!-- 分类筛选 -->
+        <div class="category-filter">
+            <button class="category-btn active" onclick="filterByCategory('all')">全部</button>
+            <button class="category-btn" onclick="filterByCategory('sports')">体育场馆</button>
+            <button class="category-btn" onclick="filterByCategory('highrise')">超高层</button>
+            <button class="category-btn" onclick="filterByCategory('bridge')">桥梁工程</button>
+            <button class="category-btn" onclick="filterByCategory('tech')">技术创新</button>
+            <button class="category-btn" onclick="filterByCategory('policy')">政策法规</button>
+        </div>
+        
+        <!-- 新闻列表 -->
+        <div class="news-grid" id="newsGrid">
+            <!-- 新闻卡片将由 JavaScript 动态生成 -->
+        </div>
+        
+        <!-- 加载更多 -->
+        <div class="load-more">
+            <button class="load-more-btn" onclick="loadMore()">加载更多</button>
+        </div>
+    </main>
+    
+    <footer>
+        <p>🏗️ 钢结构研究院 · 让建筑更美好</p>
+        <p style="font-size: 0.9rem; opacity: 0.7; margin-top: 0.5rem;">© 2026 Steel Structure Institute. All rights reserved.</p>
+    </footer>
+    
+    <script>
+        // 新闻数据
+        const newsData = [
+            {
+                id: 1,
+                category: 'sports',
+                categoryName: '体育场馆',
+                title: '2026冬奥会场馆改造进入最后阶段',
+                date: '2026-03-05',
+                source: '建筑时报',
+                summary: '米兰展览馆改造项目已完成95%，预计3月底全面完工。新的速滑馆将采用创新的钢结构张拉体系...',
+                tags: ['冬奥会', '意大利', '改造工程']
+            },
+            {
+                id: 2,
+                category: 'highrise',
+                categoryName: '超高层',
+                title: '中国在建第一高楼突破500米大关',
+                date: '2026-03-04',
+                source: '工程日报',
+                summary: '位于深圳的第七高楼项目主体结构施工突破500米，采用了国产Q460高强度钢材...',
+                tags: ['超高层', '深圳', '高强度钢']
+            },
+            {
+                id: 3,
+                category: 'bridge',
+                categoryName: '桥梁工程',
+                title: '世界最大跨度悬索桥设计方案公布',
+                date: '2026-03-04',
+                source: '桥梁建设',
+                summary: '连接江苏与浙江的跨海大桥主跨达2300米，将采用新型高性能钢材和智能监测系统...',
+                tags: ['悬索桥', '跨海大桥', '智能监测']
+            },
+            {
+                id: 4,
+                category: 'tech',
+                categoryName: '技术创新',
+                title: '钢结构焊接机器人实现国产化突破',
+                date: '2026-03-03',
+                source: '科技日报',
+                summary: '国内首台自主研发的钢结构焊接机器人正式投产，焊接效率提升3倍，合格率高达99.8%...',
+                tags: ['焊接机器人', '智能制造', '国产化']
+            },
+            {
+                id: 5,
+                category: 'policy',
+                categoryName: '政策法规',
+                title: '新版钢结构设计标准将于7月实施',
+                date: '2026-03-02',
+                source: '住建部官网',
+                summary: '2026版《钢结构设计标准》新增抗震韧性设计要求，对高层钢结构提出更高安全标准...',
+                tags: ['设计标准', '抗震', '规范']
+            },
+            {
+                id: 6,
+                category: 'sports',
+                categoryName: '体育场馆',
+                title: '国家体育场钢结构检测完成',
+                date: '2026-03-01',
+                source: '体育建筑',
+                summary: '国家体育场（鸟巢）完成全面钢结构检测，结果显示结构安全性能良好...',
+                tags: ['体育场馆', '检测', '维护']
+            },
+            {
+                id: 7,
+                category: 'highrise',
+                categoryName: '超高层',
+                title: '模块化钢结构住宅技术取得新进展',
+                date: '2026-02-28',
+                source: '建筑技术',
+                summary: '新型模块化钢结构住宅体系实现工厂预制率达80%，现场施工周期缩短50%...',
+                tags: ['模块化', '住宅', '装配式']
+            },
+            {
+                id: 8,
+                category: 'bridge',
+                categoryName: '桥梁工程',
+                title: '钢结构桥梁防腐新材料通过鉴定',
+                date: '2026-02-27',
+                source: '材料工程',
+                summary: '石墨烯增强防腐涂层技术通过专家鉴定，耐久性提升至50年以上...',
+                tags: ['防腐', '新材料', '石墨烯']
+            },
+            {
+                id: 9,
+                category: 'tech',
+                categoryName: '技术创新',
+                title: 'BIM技术在钢结构工程中的应用白皮书发布',
+                date: '2026-02-26',
+                source: '数字建筑',
+                summary: '中国建筑金属结构协会发布BIM应用白皮书，全面推进钢结构数字化建造...',
+                tags: ['BIM', '数字化', '智能建造']
+            },
+            {
+                id: 10,
+                category: 'policy',
+                categoryName: '政策法规',
+                title: '绿色建筑评价标准新增钢结构专项指标',
+                date: '2026-02-25',
+                source: '绿色建筑',
+                summary: '新版绿色建筑评价标准明确钢结构建筑碳排放计算方法，推动行业可持续发展...',
+                tags: ['绿色建筑', '碳排放', '可持续发展']
+            }
+        ];
+        
+        let currentFilter = 'all';
+        let currentDateFilter = 'all';
+        let displayCount = 6;
+        
+        // 渲染新闻卡片
+        function renderNews() {
+            const grid = document.getElementById('newsGrid');
+            const filtered = newsData.filter(news => {
+                const categoryMatch = currentFilter === 'all' || news.category === currentFilter;
+                return categoryMatch;
+            });
+            
+            const toShow = filtered.slice(0, displayCount);
+            
+            grid.innerHTML = toShow.map(news => `
+                <article class="news-card" onclick="viewNews(${news.id})">
+                    <div class="news-image">
+                        ${getCategoryEmoji(news.category)}
+                    </div>
+                    <div class="news-content">
+                        <span class="news-category ${news.category}">${news.categoryName}</span>
+                        <h3 class="news-title">${news.title}</h3>
+                        <p class="news-meta">📅 ${news.date} · 📰 ${news.source}</p>
+                        <p class="news-summary">${news.summary}</p>
+                        <div class="news-tags">
+                            ${news.tags.map(tag => `<span class="news-tag">#${tag}</span>`).join('')}
+                        </div>
+                    </div>
+                </article>
+            `).join('');
+        }
+        
+        // 获取分类图标
+        function getCategoryEmoji(category) {
+            const emojis = {
+                sports: '🏟️',
+                highrise: '🏢',
+                bridge: '🌉',
+                tech: '🔧',
+                policy: '📋'
+            };
+            return emojis[category] || '📰';
+        }
+        
+        // 分类筛选
+        function filterByCategory(category) {
+            currentFilter = category;
+            displayCount = 6;
+            document.querySelectorAll('.category-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            renderNews();
+        }
+        
+        // 日期筛选
+        function filterByDate(date) {
+            currentDateFilter = date;
+            document.querySelectorAll('.date-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            // 实际应用中需要根据日期过滤
+            renderNews();
+        }
+        
+        // 加载更多
+        function loadMore() {
+            displayCount += 4;
+            renderNews();
+        }
+        
+        // 查看新闻详情
+        function viewNews(id) {
+            const news = newsData.find(n => n.id === id);
+            alert(`📰 ${news.title}\n\n${news.summary}\n\n来源：${news.source} · 日期：${news.date}`);
+        }
+        
+        // 初始化
+        renderNews();
+    </script>
+</body>
+</html>
