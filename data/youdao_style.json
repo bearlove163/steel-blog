@@ -1,0 +1,196 @@
+{
+  "version": "1.0",
+  "name": "钢结构专业英语词典",
+  "description": "有道词典风格的钢结构术语学习数据",
+  
+  "terms": [
+    {
+      "id": "steel_001",
+      "word": "Space Frame",
+      "phonetic": "[speis freim]",
+      "trans": "网架结构",
+      "pos": "n.",
+      "category": "结构",
+      "bilingual_examples": [
+        {
+          "en": "The space frame roof spans 100 meters without internal supports.",
+          "zh": "网架结构屋面可实现100米无支撑跨越。"
+        }
+      ],
+      "的记忆": "space(空间) + frame(框架)",
+      "related": ["Truss", "Space Structure"],
+      "difficulty": 1,
+      "tags": ["建筑", "大跨度", "屋盖"]
+    },
+    {
+      "id": "steel_002", 
+      "word": "Truss",
+      "phonetic": "[trʌs]",
+      "trans": "桁架",
+      "pos": "n.",
+      "category": "结构",
+      "bilingual_examples": [
+        {
+          "en": "The steel truss provides structural support for the bridge.",
+          "zh": "钢桁架为桥梁提供结构支撑。"
+        }
+      ],
+      "的记忆": "联想：truss谐音'翘起'",
+      "related": ["Space Frame", "Beam"],
+      "difficulty": 1,
+      "tags": ["桥梁", "受力"]
+    },
+    {
+      "id": "steel_003",
+      "word": "Cable Dome",
+      "phonetic": "['keibl dəum]",
+      "trans": "索穹顶",
+      "pos": "n.",
+      "category": "结构",
+      "bilingual_examples": [
+        {
+          "en": "The cable dome creates a tension-integrated roof system.",
+          "zh": "索穹顶形成张力集成屋盖系统。"
+        }
+      ],
+      "的记忆": "cable(索) + dome(穹顶)",
+      "related": ["Tensile Structure", "Geiger Dome"],
+      "difficulty": 2,
+      "tags": ["张力", "美国", "奥运场馆"]
+    },
+    {
+      "id": "steel_004",
+      "word": "Tensile Structure",
+      "phonetic": "['tensail 'strʌktʃə]",
+      "trans": "张拉结构",
+      "pos": "n.",
+      "category": "结构",
+      "bilingual_examples": [
+        {
+          "en": "Tensile structures use membranes and cables to create lightweight roofs.",
+          "zh": "张拉结构使用膜材和索形成轻盈的屋盖。"
+        }
+      ],
+      "的记忆": "tensile(张力的) + structure(结构)",
+      "related": ["Cable Dome", "Membrane"],
+      "difficulty": 2,
+      "tags": ["膜结构", "张力"]
+    },
+    {
+      "id": "steel_005",
+      "word": "Cable-Stayed Structure",
+      "phonetic": "['keibl sted 'strʌktʃə]",
+      "trans": "斜拉结构",
+      "pos": "n.",
+      "category": "结构",
+      "bilingual_examples": [
+        {
+          "en": "The cable-stayed structure is efficient for medium to long spans.",
+          "zh": "斜拉结构适用于中长跨度。"
+        }
+      ],
+      "的记忆": "cable(索) + stayed(拉住的)",
+      "related": ["Suspension", "Bridge"],
+      "difficulty": 2,
+      "tags": ["桥梁", "斜拉索"]
+    },
+    {
+      "id": "steel_006",
+      "word": "Suspension Structure",
+      "phonetic": "[səs'penʃən 'strʌktʃə]",
+      "trans": "悬索结构",
+      "pos": "n.",
+      "category": "结构",
+      "bilingual_examples": [
+        {
+          "en": "Suspension structures are ideal for very long span bridges.",
+          "zh": "悬索结构是大跨桥梁的理想选择。"
+        }
+      ],
+      "的记忆": "suspend(悬挂) + ion",
+      "related": ["Cable-Stayed", "Golden Gate"],
+      "difficulty": 2,
+      "tags": ["悬索桥", "大跨"]
+    },
+    {
+      "id": "steel_007",
+      "word": "Prestressed Steel",
+      "phonetic": "[pri:'strest sti:l]",
+      "trans": "预应力钢",
+      "pos": "n.",
+      "category": "结构",
+      "bilingual_examples": [
+        {
+          "en": "Prestressed steel improves structural performance under load.",
+          "zh": "预应力钢改善了结构在荷载下的性能。"
+        }
+      ],
+      "的记忆": "pre(前) + stressed(受力的) + steel(钢)",
+      "related": ["Tension Rod", "Post-tensioning"],
+      "difficulty": 2,
+      "tags": ["预应力", "张拉"]
+    },
+    {
+      "id": "steel_008",
+      "word": "Welded Connection",
+      "phonetic": "['weldid kə'nekʃən]",
+      "trans": "焊接连接",
+      "pos": "n.",
+      "category": "连接",
+      "bilingual_examples": [
+        {
+          "en": "Welded connections provide excellent structural continuity.",
+          "zh": "焊接连接提供优异的结构连续性。"
+        }
+      ],
+      "的记忆": "weld(焊接) + ed(过去式)",
+      "related": ["Bolted Connection", "Welding"],
+      "difficulty": 1,
+      "tags": ["焊接", "节点"]
+    },
+    {
+      "id": "steel_009",
+      "word": "Bolted Connection",
+      "phonetic": "['bəultid kə'nekʃən]",
+      "trans": "螺栓连接",
+      "pos": "n.",
+      "category": "连接",
+      "bilingual_examples": [
+        {
+          "en": "High-strength bolted connections are commonly used in steel structures.",
+          "zh": "高强度螺栓连接在钢结构中广泛应用。"
+        }
+      ],
+      "的记忆": "bolt(螺栓) + ed(被动)",
+      "related": ["Welded Connection", "High-strength Bolt"],
+      "difficulty": 1,
+      "tags": ["螺栓", "安装"]
+    },
+    {
+      "id": "steel_010",
+      "word": "Structural Steel",
+      "phonetic": "['strʌktʃərəl sti:l]",
+      "trans": "结构钢",
+      "pos": "n.",
+      "category": "材料",
+      "bilingual_examples": [
+        {
+          "en": "Structural steel has high strength and good ductility.",
+          "zh": "结构钢具有高强度和良好的延性。"
+        }
+      ],
+      "的记忆": "structural(结构的) + steel(钢)",
+      "related": ["H-Beam", "I-Beam"],
+      "difficulty": 1,
+      "tags": ["材料", "钢材"]
+    }
+  ],
+  
+  "learning_progress": {
+    "user_id": "default",
+    "total_words": 10,
+    "mastered": 0,
+    "learning": 10,
+    "review_dates": {}
+  }
+}
