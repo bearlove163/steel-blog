@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -18,11 +17,6 @@
             --accent: #e53e3e;
             --light: #f7fafc;
             --dark: #1a202c;
-            --chalk-white: #f8f9fa;
-            --chalk-yellow: #ffd700;
-            --chalk-blue: #87ceeb;
-            --chalk-pink: #ffb6c1;
-            --chalk-green: #98fb98;
         }
         
         body {
@@ -48,17 +42,21 @@
             max-width: 1200px;
             margin: 0 auto;
             gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
         }
         
         nav a {
             color: white;
             text-decoration: none;
             font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
             transition: all 0.3s;
         }
         
         nav a:hover {
-            color: var(--chalk-yellow);
+            background: rgba(255,255,255,0.1);
         }
         
         /* 头部 */
@@ -72,7 +70,6 @@
         header h1 {
             font-size: 3rem;
             margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
         }
         
         header p {
@@ -87,114 +84,98 @@
             padding: 2rem;
         }
         
-        /* 文章卡片 */
-        .articles {
+        /* 四大板块 */
+        .main-sections {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
         }
         
-        .article-card {
+        .section-card {
+            display: block;
             background: white;
-            border-radius: 12px;
-            overflow: hidden;
+            border-radius: 16px;
+            padding: 2rem;
+            text-decoration: none;
+            text-align: center;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-            cursor: pointer;
+            transition: all 0.3s;
         }
         
-        .article-card:hover {
+        .section-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 8px 25px rgba(0,0,0,0.15);
         }
         
-        .article-card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
+        .section-card .icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
         }
         
-        .article-card .content {
-            padding: 1.5rem;
-        }
-        
-        .article-card h3 {
+        .section-card h2 {
             color: var(--primary);
             margin-bottom: 0.5rem;
         }
         
-        .article-card .meta {
+        .section-card p {
             color: #718096;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
+        }
+        
+        .section-card.news { border-top: 4px solid #e53e3e; }
+        .section-card.english { border-top: 4px solid #38a169; }
+        .section-card.diagram { border-top: 4px solid #3182ce; }
+        .section-card.about { border-top: 4px solid #d69e2e; }
+        
+        /* 关于区块 */
+        .about-section {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            margin-top: 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .about-section h2 {
+            color: var(--primary);
             margin-bottom: 1rem;
         }
         
-        .article-card p {
+        .about-section p {
             color: #4a5568;
+            margin-bottom: 1rem;
         }
         
-        .tag {
-            display: inline-block;
-            background: var(--secondary);
-            color: white;
-            padding: 0.2rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            margin-right: 0.5rem;
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
         }
         
-        /* 黑板报区域 */
-        .blackboard-section {
-            background: #1a472a;
-            border-radius: 12px;
-            padding: 3rem;
-            margin: 3rem 0;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .blackboard-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(ellipse at center, #1f5233 0%, #1a472a 100%);
-            z-index: 0;
-        }
-        
-        .blackboard-section h2 {
-            color: var(--chalk-white);
-            text-align: center;
-            font-size: 2rem;
-            margin-bottom: 2rem;
-            position: relative;
-            z-index: 1;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-        
-        .chalk-diagram {
-            background: rgba(0,0,0,0.2);
+        .feature {
+            background: var(--light);
+            padding: 1rem;
             border-radius: 8px;
-            padding: 2rem;
-            position: relative;
-            z-index: 1;
+            text-align: center;
         }
         
-        .chalk-line {
-            color: var(--chalk-white);
-            font-family: 'Comic Sans MS', cursive;
-            font-size: 1.1rem;
+        .feature-icon {
+            font-size: 2rem;
+        }
+        
+        .feature h3 {
+            color: var(--primary);
+            font-size: 1rem;
             margin: 0.5rem 0;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
         }
         
-        .chalk-line.yellow { color: var(--chalk-yellow); }
-        .chalk-line.blue { color: var(--chalk-blue); }
-        .chalk-line.pink { color: var(--chalk-pink); }
-        .chalk-line.green { color: var(--chalk-green); }
+        .feature p {
+            font-size: 0.85rem;
+            color: #718096;
+            margin: 0;
+        }
         
         /* 页脚 */
         footer {
@@ -207,127 +188,10 @@
         
         /* 响应式 */
         @media (max-width: 768px) {
-            header h1 {
-                font-size: 2rem;
-            }
-            
-            nav ul {
-                flex-direction: column;
-                gap: 1rem;
-                text-align: center;
-            }
-            
-            .articles {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-            
-            main {
-                padding: 1rem;
-            }
-            
-            .blackboard-section {
-                padding: 2rem 1rem;
-            }
-            
-            .blackboard-section h2 {
-                font-size: 1.5rem;
-                margin-bottom: 1.5rem;
-            }
-            
-            .chalk-diagram {
-                padding: 1.5rem;
-            }
-            
-            .chalk-line {
-                font-size: 1rem;
-            }
-            
-            .article-card .content {
-                padding: 1rem;
-            }
+            nav ul { gap: 1rem; }
+            header h1 { font-size: 2rem; }
+            main { padding: 1rem; }
         }
-        
-        @media (max-width: 480px) {
-            header {
-                padding: 3rem 1rem;
-            }
-            
-            header h1 {
-                font-size: 1.8rem;
-            }
-            
-            header p {
-                font-size: 1rem;
-            }
-            
-            nav {
-                padding: 1rem;
-            }
-            
-            main {
-                padding: 0.8rem;
-            }
-            
-            .blackboard-section {
-                padding: 1.5rem 0.8rem;
-                margin: 2rem 0;
-            }
-            
-            .blackboard-section h2 {
-                font-size: 1.3rem;
-                margin-bottom: 1rem;
-            }
-            
-            .chalk-diagram {
-                padding: 1rem;
-            }
-            
-            .chalk-line {
-                font-size: 0.9rem;
-                margin: 0.4rem 0;
-            }
-            
-            .article-card img {
-                height: 150px;
-            }
-            
-            .article-card .content {
-                padding: 0.8rem;
-            }
-            
-            .article-card h3 {
-                font-size: 1.1rem;
-            }
-            
-            .article-card .meta {
-                font-size: 0.8rem;
-                margin-bottom: 0.8rem;
-            }
-            
-            .article-card p {
-                font-size: 0.9rem;
-                line-height: 1.6;
-            }
-            
-            .tag {
-                font-size: 0.7rem;
-                padding: 0.15rem 0.6rem;
-            }
-        }
-        
-        /* 动画 */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .article-card {
-            animation: fadeIn 0.5s ease-out;
-        }
-        
-        .article-card:nth-child(2) { animation-delay: 0.1s; }
-        .article-card:nth-child(3) { animation-delay: 0.2s; }
     </style>
 </head>
 <body>
@@ -335,9 +199,8 @@
         <ul>
             <li><a href="index.html">首页</a></li>
             <li><a href="news.html">新闻动态</a></li>
+            <li><a href="english.html">英文学习</a></li>
             <li><a href="glossary.html">术语表</a></li>
-            <li><a href="listening.html">听力中心</a></li>
-            <li><a href="english.html">英语学习</a></li>
         </ul>
     </nav>
     
@@ -347,272 +210,77 @@
     </header>
     
     <main>
-        <!-- 简介 -->
-        <section id="about" style="padding: 2rem 0;">
-            <h2 style="color: var(--primary); margin-bottom: 1rem;">关于本站</h2>
+        <!-- 四大板块入口 -->
+        <div class="main-sections">
+            <a href="news.html" class="section-card news">
+                <div class="icon">📰</div>
+                <h2>新闻动态</h2>
+                <p>追踪全球钢结构行业最新资讯</p>
+            </a>
+            
+            <a href="english.html" class="section-card english">
+                <div class="icon">📚</div>
+                <h2>英文学习</h2>
+                <p>钢结构专业英语词汇积累</p>
+            </a>
+            
+            <a href="glossary.html" class="section-card diagram">
+                <div class="icon">📖</div>
+                <h2>术语表</h2>
+                <p>中英对照术语速查</p>
+            </a>
+            
+            <a href="#about" class="section-card about">
+                <div class="icon">ℹ️</div>
+                <h2>关于</h2>
+                <p>了解本站更多信息</p>
+            </a>
+        </div>
+        
+        <!-- 关于区块 -->
+        <section id="about" class="about-section">
+            <h2>关于钢结构研究院</h2>
             <p>这是一个专注于钢结构建筑的知识分享平台。从历史建筑到现代工程，从结构原理到设计理念，带你领略钢铁建筑的魅力。</p>
-        </section>
-        
-        <!-- 黑板报原理区 -->
-        <section id="principles" class="blackboard-section">
-            <h2>📝 今日图解：钢结构基本原理</h2>
-            <div class="chalk-diagram">
-                <p class="chalk-line yellow">🔹 钢结构的特点：</p>
-                <p class="chalk-line">　• 强度高、重量轻 → 大跨度建筑</p>
-                <p class="chalk-line">　• 韧性好 → 抗震性能优越</p>
-                <p class="chalk-line">　• 可工厂预制 → 施工速度快</p>
-                <p class="chalk-line">　• 可回收利用 → 环保可持续</p>
-                <br>
-                <p class="chalk-line blue">🔹 常见结构形式：</p>
-                <p class="chalk-line pink">　→ 框架结构 (Frame Structure)</p>
-                <p class="chalk-line green">　→ 网架结构 (Space Frame)</p>
-                <p class="chalk-line yellow">　→ 索膜结构 (Cable-Membrane)</p>
-            </div>
+            <p>我们关注：</p>
             
-            <!-- 钢结构术语图解 -->
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 2rem;">
-                <div style="text-align: center;">
-                    <img src="images/term_space_frame.png" alt="Space Frame 网架结构" style="width: 100%; max-width: 300px; border-radius: 8px; border: 2px solid rgba(255,255,255,0.3);">
-                    <p style="color: #fff; margin-top: 0.5rem; font-size: 0.9rem;">网架结构 (Space Frame)</p>
+            <div class="features">
+                <div class="feature">
+                    <div class="feature-icon">🌍</div>
+                    <h3>全球视野</h3>
+                    <p>追踪国际顶级项目</p>
                 </div>
-                <div style="text-align: center;">
-                    <img src="images/term_truss.png" alt="Truss 桁架" style="width: 100%; max-width: 300px; border-radius: 8px; border: 2px solid rgba(255,255,255,0.3);">
-                    <p style="color: #fff; margin-top: 0.5rem; font-size: 0.9rem;">桁架 (Truss)</p>
+                <div class="feature">
+                    <div class="feature-icon">🏟️</div>
+                    <h3>体育场馆</h3>
+                    <p>奥运、世博场馆</p>
                 </div>
-                <div style="text-align: center;">
-                    <img src="images/term_steel_column.png" alt="Steel Column 钢柱" style="width: 100%; max-width: 300px; border-radius: 8px; border: 2px solid rgba(255,255,255,0.3);">
-                    <p style="color: #fff; margin-top: 0.5rem; font-size: 0.9rem;">钢柱 (Steel Column)</p>
+                <div class="feature">
+                    <div class="feature-icon">🌉</div>
+                    <h3>桥梁工程</h3>
+                    <p>跨海、悬索斜拉桥</p>
                 </div>
-                <div style="text-align: center;">
-                    <img src="images/term_steel_beam.png" alt="Steel Beam 钢梁" style="width: 100%; max-width: 300px; border-radius: 8px; border: 2px solid rgba(255,255,255,0.3);">
-                    <p style="color: #fff; margin-top: 0.5rem; font-size: 0.9rem;">钢梁 (Steel Beam)</p>
+                <div class="feature">
+                    <div class="feature-icon">🏢</div>
+                    <h3>超高层</h3>
+                    <p>摩天大楼结构设计</p>
                 </div>
-            </div>
-            
-            <!-- 钢结构连接图解 -->
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 2rem;">
-                <div style="text-align: center;">
-                    <img src="images/term_welded_connection.png" alt="Welded Connection 焊接连接" style="width: 100%; max-width: 300px; border-radius: 8px; border: 2px solid rgba(255,255,255,0.3);">
-                    <p style="color: #fff; margin-top: 0.5rem; font-size: 0.9rem;">焊接连接</p>
+                <div class="feature">
+                    <div class="feature-icon">绳</div>
+                    <h3>预应力结构</h3>
+                    <p>张弦、索穹顶技术</p>
                 </div>
-                <div style="text-align: center;">
-                    <img src="images/term_bolted_connection.png" alt="Bolted Connection 螺栓连接" style="width: 100%; max-width: 300px; border-radius: 8px; border: 2px solid rgba(255,255,255,0.3);">
-                    <p style="color: #fff; margin-top: 0.5rem; font-size: 0.9rem;">螺栓连接</p>
+                <div class="feature">
+                    <div class="feature-icon">🏗️</div>
+                    <h3>设计事务所</h3>
+                    <p>SOM、Populous、SBP</p>
                 </div>
-                <div style="text-align: center;">
-                    <img src="images/term_moment_frame.png" alt="Moment Frame 框架" style="width: 100%; max-width: 300px; border-radius: 8px; border: 2px solid rgba(255,255,255,0.3);">
-                    <p style="color: #fff; margin-top: 0.5rem; font-size: 0.9rem;">框架结构</p>
-                </div>
-            </div>
-        </section>
-        
-        <!-- 文章列表 -->
-        <section id="articles">
-            <h2 style="color: var(--primary); margin-bottom: 1rem;">📚 精选文章</h2>
-            <div class="articles">
-                <article class="article-card">
-                    <img src="https://images.unsplash.com/photo-1541123603104-512919d6a96c?w=400" alt="米兰展览馆">
-                    <div class="content">
-                        <span class="tag">历史建筑</span>
-                        <h3>米兰展览馆的"变形记"</h3>
-                        <p class="meta">2026年3月4日 · 阅读 1,234</p>
-                        <p>从1933年的艺术殿堂到2026年冬奥速滑场，一座90年钢铁画廊的重生之旅。</p>
-                    </div>
-                </article>
-                
-                <article class="article-card">
-                    <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=400" alt="现代钢结构">
-                    <div class="content">
-                        <span class="tag">结构设计</span>
-                        <h3>钢结构设计要点</h3>
-                        <p class="meta">2026年3月3日 · 阅读 892</p>
-                        <p>揭秘钢结构设计的核心要素，从材料选择到节点设计。</p>
-                    </div>
-                </article>
-                
-                <article class="article-card">
-                    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=400" alt="超高层建筑">
-                    <div class="content">
-                        <span class="tag">超高层</span>
-                        <h3>超高层钢结构施工</h3>
-                        <p class="meta">2026年3月2日 · 阅读 756</p>
-                        <p>探秘摩天大楼是如何一砖一瓦"长"高的。</p>
-                    </div>
-                </article>
-                
-                <article class="article-card" onclick="window.location.href='glossary.html'">
-                    <img src="images/term_space_frame.png" alt="术语学习">
-                    <div class="content">
-                        <span class="tag">术语学习</span>
-                        <h3>钢结构术语图解</h3>
-                        <p class="meta">2026年3月6日 · 更新</p>
-                        <p>系统学习钢结构专业术语，英文+中文对照，图文并茂。</p>
-                    </div>
-                </article>
-                
-                <article class="article-card" onclick="window.location.href='news.html'">
-                    <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=400" alt="行业新闻">
-                    <div class="content">
-                        <span class="tag">行业动态</span>
-                        <h3>最新行业资讯</h3>
-                        <p class="meta">每日更新</p>
-                        <p>追踪钢结构行业最新动态，了解行业发展趋势。</p>
-                    </div>
-                </article>
-            </div>
-            
-            <!-- 快速入口 -->
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 2rem;">
-                <a href="glossary.html" style="display: block; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 1.5rem; border-radius: 12px; text-decoration: none; text-align: center;">
-                    <h3 style="margin-bottom: 0.5rem;">📖 术语表</h3>
-                    <p style="font-size: 0.9rem; opacity: 0.9;">钢结构专业术语学习</p>
-                </a>
-                <a href="news.html" style="display: block; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white; padding: 1.5rem; border-radius: 12px; text-decoration: none; text-align: center;">
-                    <h3 style="margin-bottom: 0.5rem;">📰 新闻动态</h3>
-                    <p style="font-size: 0.9rem; opacity: 0.9;">行业最新资讯追踪</p>
-                </a>
-                <a href="listening.html" style="display: block; background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); color: white; padding: 1.5rem; border-radius: 12px; text-decoration: none; text-align: center;">
-                    <h3 style="margin-bottom: 0.5rem;">🎧 听力中心</h3>
-                    <p style="font-size: 0.9rem; opacity: 0.9;">钢结构英语听力练习</p>
-                </a>
-                <a href="english.html" style="display: block; background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); color: white; padding: 1.5rem; border-radius: 12px; text-decoration: none; text-align: center;">
-                    <h3 style="margin-bottom: 0.5rem;">📚 英语学习</h3>
-                    <p style="font-size: 0.9rem; opacity: 0.9;">专业英语词汇积累</p>
-                </a>
             </div>
         </section>
     </main>
     
     <footer>
-        <p>🏗️ 钢结构研究院 · 让建筑更美好</p>
-        <p style="font-size: 0.9rem; opacity: 0.7; margin-top: 0.5rem;">© 2026 Steel Structure Institute. All rights reserved.</p>
+        <p>🏗️ 钢结构研究院 · Steel Structure Institute</p>
+        <p style="font-size: 0.9rem; opacity: 0.7; margin-top: 0.5rem;">让建筑更美好 © 2026</p>
     </footer>
-    
-    <script>
-        // 文章数据
-        const articles = [
-            {
-                id: 1,
-                title: '米兰展览馆的"变形记"',
-                category: '历史建筑',
-                date: '2026年3月4日',
-                views: 1234,
-                content: '从1933年的艺术殿堂到2026年冬奥速滑场，一座90年钢铁画廊的重生之旅。米兰展览馆（Palazzo della Triennale）建于1933年，是意大利最重要的现代建筑之一。2026年冬奥会期间，这里被改造成速度滑冰场馆，保留了原有钢结构框架的同时，融入了现代化的设施和技术。'
-            },
-            {
-                id: 2,
-                title: '钢结构设计要点',
-                category: '结构设计',
-                date: '2026年3月3日',
-                views: 892,
-                content: '揭秘钢结构设计的核心要素，从材料选择到节点设计。钢结构设计需要考虑多个关键因素：荷载分析、结构体系选择、构件设计、连接设计等。合理的结构设计不仅能保证建筑的安全性，还能实现美观和经济性的统一。'
-            },
-            {
-                id: 3,
-                title: '超高层钢结构施工',
-                category: '超高层',
-                date: '2026年3月2日',
-                views: 756,
-                content: '探秘摩天大楼是如何一砖一瓦"长"高的。超高层钢结构施工涉及深基坑支护、钢结构制作、吊装安装、焊接施工等多个关键技术环节。现代超高层建筑普遍采用"钢结构框架+混凝土核心筒"的结构体系。'
-            }
-        ];
-        
-        // 简单的交互效果
-        document.querySelectorAll('.article-card').forEach((card, index) => {
-            card.addEventListener('click', () => {
-                const article = articles[index];
-                showArticleModal(article);
-            });
-        });
-        
-        // 显示文章弹窗
-        function showArticleModal(article) {
-            const modal = document.createElement('div');
-            modal.style.cssText = `
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background: rgba(0,0,0,0.7);
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                z-index: 1000;
-            `;
-            
-            modal.innerHTML = `
-                <div style="background: white; border-radius: 16px; max-width: 600px; width: 90%; max-height: 80vh; overflow-y: auto; padding: 2rem; position: relative;">
-                    <button onclick="this.closest('[style*=\\"position: fixed\\"]').remove()" style="position: absolute; top: 1rem; right: 1rem; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: #718096;">✕</button>
-                    <span style="background: #2c5282; color: white; padding: 0.2rem 0.8rem; border-radius: 20px; font-size: 0.8rem;">${article.category}</span>
-                    <h2 style="color: #1a365d; margin: 1rem 0;">${article.title}</h2>
-                    <p style="color: #718096; font-size: 0.9rem; margin-bottom: 1rem;">📅 ${article.date} · 👁 ${article.views} 次阅读</p>
-                    <div style="line-height: 1.8; color: #4a5568;">
-                        <p>${article.content}</p>
-                        <p style="margin-top: 1rem;">（更多内容持续更新中...）</p>
-                    </div>
-                </div>
-            `;
-            
-            document.body.appendChild(modal);
-            
-            // 点击背景关闭
-            modal.addEventListener('click', (e) => {
-                if (e.target === modal) {
-                    modal.remove();
-                }
-            });
-        }
-        
-        // 平滑滚动
-        document.querySelectorAll('nav a').forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                const target = document.querySelector(link.getAttribute('href'));
-                target.scrollIntoView({ behavior: 'smooth' });
-            });
-        });
-    </script>
 </body>
 </html>
-                
-                <article class="article-card">
-                    <img src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?w=400" alt="钢结构桥梁">
-                    <div class="content">
-                        <span class="tag">桥梁工程</span>
-                        <h3>世界著名钢结构桥梁</h3>
-                        <p class="meta">2026年3月1日 · 阅读 623</p>
-                        <p>盘点世界TOP10钢结构桥梁，感受钢铁的力量与美感。</p>
-                    </div>
-                </article>
-                
-                <article class="article-card">
-                    <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=400" alt="钢结构施工">
-                    <div class="content">
-                        <span class="tag">施工技术</span>
-                        <h3>钢结构焊接技术详解</h3>
-                        <p class="meta">2026年2月28日 · 阅读 541</p>
-                        <p>从焊条选择到焊接工艺，全面掌握钢结构焊接技术。</p>
-                    </div>
-                </article>
-
-                <!-- 新增初级文章 -->
-                <article class="article-card">
-                    <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=400" alt="钢结构入门">
-                    <div class="content">
-                        <span class="tag">入门</span>
-                        <h3>钢结构入门：什么是钢结构？</h3>
-                        <p class="meta">2026年3月6日 · 阅读 1,567</p>
-                        <p>钢结构是由钢材组成的建筑结构体系，主要包括钢柱、钢梁、钢桁架等构件。</p>
-                    </div>
-                </article>
-
-                <article class="article-card">
-                    <img src="https://images.unsplash.com/photo-1541123603104-512919d6a96c?w=400" alt="钢材类型">
-                    <div class="content">
-                        <span class="tag">材料</span>
-                        <h3>钢材类型与特点</h3>
-                        <p class="meta">2026年3月7日 · 阅读 1,234</p>
-                        <p>介绍常用钢材类型：Q235、Q345、Q460等及其应用场景。</p>
-                    </div>
-                </article>
