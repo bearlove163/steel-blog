@@ -1,0 +1,18 @@
+{
+  "name": "steel-structure-learning-api",
+  "version": "1.0.0",
+  "description": "钢结构学习平台后端API",
+  "main": "api/server.js",
+  "scripts": {
+    "start": "node api/server.js",
+    "dev": "node api/server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "sqlite3": "^5.1.6",
+    "cors": "^2.8.5"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}

@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI智能闪卡 | Steel Structure Learning</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --primary: #1a365d;
+            --secondary: #2c5282;
+            --success: #38a169;
+            --warning: #d69e2e;
+            --accent: #e53e3e;
+        }
+        
+        body {
+            font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
+            min-height: 100vh;
+            color: #1a202c;
+        }
+        
+        nav {
+            background: rgba(26, 54, 93, 0.95);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            max-width: 1200px;
+            margin: 0 auto;
+            gap: 2rem;
+            justify-content: center;
+        }
+        
+        nav a { color: white; text-decoration: none; font-weight: 500; }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        main { max-width: 800px; margin: 0 auto; padding: 2rem; }
+        
+        /* 加载动画 */
+        .loading {
+            text-align: center;
+            padding: 3rem;
+            color: white;
+        }
+        
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid rgba(255,255,255,0.3);
+            border-top-color: white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+        
+        @keyframes spin { to { transform: rotate(360deg); } }
+        
+        /* 统计卡片 */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .stat-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .stat-number { font-size: 2rem; font-weight: 700; color: var(--primary); }
+        .stat-label { color: #718096; font-size: 0.85rem; }
+        
+        /* 进度条 */
+        .progress-bar {
+            background: white;
+            border-radius: 12px;
+            padding: 1rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .progress-info { display: flex; justify-content: space-between; margin-bottom: 0.5rem; font-weight: 600; }
+        
+        .progress-track {
+            height: 12px;
+            background: #e2e8f0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--success), #68d391);
+            border-radius: 6px;
+            transition: width 0.3s;
+        }
+        
+        /* 闪卡 */
+        .flashcard-container {
+            perspective: 1000px;
+            margin-bottom: 2rem;
+        }
+        
+        .flashcard {
+            width: 100%;
+            min-height: 350px;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.6s;
+            cursor: pointer;
+        }
+        
+        .flashcard.flipped { transform: rotateY(180deg); }
+        
+        .flashcard-face {
+            position: absolute;
+            width: 100%;
+            min-height: 350px;
+            backface-visibility: hidden;
+            border-radius: 20px;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        
+        .flashcard-front { background: white; }
+        .flashcard-back { 
+            background: linear-gradient(135deg, var(--primary), var(--secondary)); 
+            color: white; 
+            transform: rotateY(180deg); 
+        }
+        
+        .flashcard-en { font-size: 2rem; font-weight: 700; color: var(--primary); margin-bottom: 0.5rem; }
+        .flashcard-zh { font-size: 1.8rem; font-weight: 600; margin-bottom: 1rem; }
+        .flashcard-example { font-size: 0.95rem; color: #718096; margin-top: 1rem; font-style: italic; }
+        .flashcard-back .flashcard-example { color: rgba(255,255,255,0.8); }
+        .flashcard-hint { position: absolute; bottom: 1rem; color: #a0aec0; font-size: 0.9rem; }
+        
+        .category-tag {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-bottom: 1rem;
+        }
+        
+        .cat-structure { background: #e6fffa; color: #234e52; }
+        .cat-connection { background: #fff5f5; color: #c53030; }
+        .cat-material { background: #ebf8ff; color: #2b6cb0; }
+        .cat-design { background: #faf5ff; color: #6b46c1; }
+        .cat-construction { background: #fffaf0; color: #c05621; }
+        
+        /* 按钮 */
+        .controls { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+        
+        .btn {
+            padding: 1rem 1.5rem;
+            border: none;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .btn:hover { transform: translateY(-2px); }
+        .btn-prev { background: #e2e8f0; color: var(--primary); }
+        .btn-next { background: var(--secondary); color: white; }
+        .btn-flip { background: var(--accent); color: white; }
+        .btn-know { background: var(--success); color: white; }
+        .btn-dont-know { background: var(--warning); color: white; }
+        
+        /* 模式选择 */
+        .mode-tabs {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            background: white;
+            padding: 0.5rem;
+            border-radius: 12px;
+            justify-content: center;
+        }
+        
+        .mode-tab {
+            padding: 0.8rem 1.5rem;
+            border: none;
+            background: transparent;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            color: #718096;
+        }
+        
+        .mode-tab.active {
+            background: var(--primary);
+            color: white;
+        }
+        
+        /* 测验模式 */
+        .quiz-container { display: none; }
+        .quiz-container.active { display: block; }
+        
+        .quiz-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        
+        .quiz-question { font-size: 1.3rem; font-weight: 600; color: var(--primary); margin-bottom: 1.5rem; }
+        
+        .quiz-options { display: grid; gap: 0.8rem; }
+        
+        .quiz-option {
+            padding: 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+        }
+        
+        .quiz-option:hover { border-color: var(--secondary); background: #ebf8ff; }
+        .quiz-option.correct { border-color: var(--success); background: #f0fff4; }
+        .quiz-option.wrong { border-color: var(--accent); background: #fff5f5; }
+        
+        footer {
+            background: #1a202c;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+        
+        @media (max-width: 768px) {
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .flashcard-face { padding: 1.5rem; min-height: 280px; }
+            .flashcard-en { font-size: 1.5rem; }
+            .flashcard-zh { font-size: 1.3rem; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">首页</a></li>
+            <li><a href="news.html">新闻动态</a></li>
+            <li><a href="glossary.html">术语表</a></li>
+            <li><a href="flashcard.html">闪卡学习</a></li>
+        </ul>
+    </nav>
+    
+    <header>
+        <h1>🧠 AI智能闪卡学习</h1>
+        <p>智能复习 · 记忆曲线 · 进度追踪</p>
+    </header>
+    
+    <main>
+        <!-- 加载中 -->
+        <div class="loading" id="loading">
+            <div class="spinner"></div>
+            <p>加载中...</p>
+        </div>
+        
+        <!-- 学习内容 -->
+        <div id="learningContent" style="display: none;">
+            <!-- 统计 -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number" id="totalTerms">-</div>
+                    <div class="stat-label">总词汇</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="learnedTerms">-</div>
+                    <div class="stat-label">已掌握</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="todayReview">-</div>
+                    <div class="stat-label">今日复习</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="streakDays">-</div>
+                    <div class="stat-label">连续天数</div>
+                </div>
+            </div>
+            
+            <!-- 进度条 -->
+            <div class="progress-bar">
+                <div class="progress-info">
+                    <span>学习进度</span>
+                    <span id="progressText">0 / 0</span>
+                </div>
+                <div class="progress-track">
+                    <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+                </div>
+            </div>
+            
+            <!-- 模式切换 -->
+            <div class="mode-tabs">
+                <button class="mode-tab active" onclick="switchMode('flashcard')">📇 闪卡模式</button>
+                <button class="mode-tab" onclick="switchMode('quiz')">📝 测验模式</button>
+                <button class="mode-tab" onclick="switchMode('review')">📋 复习模式</button>
+            </div>
+            
+            <!-- 闪卡 -->
+            <div class="flashcard-container" id="flashcardMode">
+                <div class="flashcard" id="flashcard" onclick="flipCard()">
+                    <div class="flashcard-face flashcard-front">
+                        <span class="category-tag" id="cardCategory">结构</span>
+                        <div class="flashcard-en" id="cardEn">-</div>
+                        <div class="flashcard-hint">👆 点击翻转</div>
+                    </div>
+                    <div class="flashcard-face flashcard-back">
+                        <div class="flashcard-zh" id="cardZh">-</div>
+                        <div class="flashcard-example" id="cardExample">-</div>
+                    </div>
+                </div>
+                
+                <div class="controls">
+                    <button class="btn btn-prev" onclick="prevCard()">⬆️ 上一张</button>
+                    <button class="btn btn-flip" onclick="flipCard()">🔄 翻转</button>
+                    <button class="btn btn-dont-know" onclick="markDontKnow()">❌ 不认识</button>
+                    <button class="btn btn-know" onclick="markKnow()">✅ 认识</button>
+                    <button class="btn btn-next" onclick="nextCard()">⬇️ 下一张</button>
+                </div>
+            </div>
+            
+            <!-- 测验 -->
+            <div class="quiz-container" id="quizMode">
+                <div class="quiz-card">
+                    <div class="quiz-question" id="quizQuestion">加载中...</div>
+                    <div class="quiz-options" id="quizOptions"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <footer>
+        <p>🏗️ 钢结构研究院 · AI智能学习系统</p>
+        <p style="font-size: 0.9rem; opacity: 0.7;">前后端分离架构 · 数据持久化</p>
+    </footer>
+    
+    <script>
+        // API配置 - 部署时可改为云服务器地址
+        const API_BASE = window.location.origin + '/api';
+        
+        // 数据存储
+        let terms = [];
+        let reviewTerms = [];
+        let currentIndex = 0;
+        let knownTerms = new Set();
+        let stats = { totalTerms: 0, learnedTerms: 0, streakDays: 0 };
+        
+        // 初始化
+        async function init() {
+            try {
+                await Promise.all([loadTerms(), loadStats()]);
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('learningContent').style.display = 'block';
+                updateCard();
+                updateStats();
+            } catch (err) {
+                console.error('加载失败:', err);
+                // 如果API不可用，使用本地数据
+                loadLocalData();
+            }
+        }
+        
+        // 加载术语
+        async function loadTerms() {
+            const res = await fetch(`${API_BASE}/terms?limit=50`);
+            const data = await res.json();
+            terms = data.data || [];
+            reviewTerms = [...terms];
+        }
+        
+        // 加载统计
+        async function loadStats() {
+            const res = await fetch(`${API_BASE}/stats`);
+            const data = await res.json();
+            stats = data.data || stats;
+        }
+        
+        // 备用：加载本地数据
+        function loadLocalData() {
+            // 这里可以嵌入默认数据
+            terms = [
+                { id: 1, english: 'Space Frame', chinese: '网架结构', category: 'structure', example_en: 'The space frame roof spans 100 meters.' },
+                { id: 2, english: 'Truss', chinese: '桁架', category: 'structure', example_en: 'The steel truss provides support.' },
+                { id: 3, english: 'Cable Dome', chinese: '索穹顶', category: 'structure', example_en: 'Cable dome uses tension cables.' },
+                { id: 4, english: 'Welded Connection', chinese: '焊接连接', category: 'connection', example_en: 'Welded joints are strong.' },
+                { id: 5, english: 'Bolted Connection', chinese: '螺栓连接', category: 'connection', example_en: 'Bolted connections are quick.' }
+            ];
+            reviewTerms = [...terms];
+            document.getElementById('loading').style.display = 'none';
+            document.getElementById('learningContent').style.display = 'block';
+            updateCard();
+        }
+        
+        // 更新卡片
+        function updateCard() {
+            if (reviewTerms.length === 0) return;
+            const card = reviewTerms[currentIndex];
+            
+            document.getElementById('cardEn').textContent = card.english;
+            document.getElementById('cardZh').textContent = card.chinese;
+            document.getElementById('cardExample').textContent = card.example_en || '';
+            
+            // 分类标签
+            const catEl = document.getElementById('cardCategory');
+            catEl.textContent = getCategoryName(card.category);
+            catEl.className = 'category-tag cat-' + card.category;
+            
+            document.getElementById('flashcard').classList.remove('flipped');
+            updateProgress();
+        }
+        
+        function getCategoryName(cat) {
+            const names = { structure: '结构', connection: '连接', material: '材料', design: '设计', construction: '施工' };
+            return names[cat] || '其他';
+        }
+        
+        // 更新统计
+        function updateStats() {
+            document.getElementById('totalTerms').textContent = stats.totalTerms || terms.length;
+            document.getElementById('learnedTerms').textContent = knownTerms.size;
+            document.getElementById('todayReview').textContent = reviewTerms.length;
+            document.getElementById('streakDays').textContent = stats.streakDays || 0;
+            
+            const progress = knownTerms.size / (terms.length || 1) * 100;
+            document.getElementById('progressFill').style.width = progress + '%';
+            document.getElementById('progressText').textContent = `${knownTerms.size} / ${terms.length}`;
+        }
+        
+        // 翻转
+        function flipCard() {
+            document.getElementById('flashcard').classList.toggle('flipped');
+        }
+        
+        // 导航
+        function nextCard() {
+            currentIndex = (currentIndex + 1) % reviewTerms.length;
+            updateCard();
+        }
+        
+        function prevCard() {
+            currentIndex = (currentIndex - 1 + reviewTerms.length) % reviewTerms.length;
+            updateCard();
+        }
+        
+        // 标记
+        async function markKnow() {
+            const card = reviewTerms[currentIndex];
+            knownTerms.add(card.id);
+            
+            // 发送到API
+            try {
+                await fetch(`${API_BASE}/progress`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        term_id: card.id,
+                        status: 'known',
+                        next_review: getNextReviewDate(1)
+                    })
+                });
+            } catch (e) {}
+            
+            updateStats();
+            nextCard();
+        }
+        
+        async function markDontKnow() {
+            const card = reviewTerms[currentIndex];
+            knownTerms.delete(card.id);
+            
+            try {
+                await fetch(`${API_BASE}/progress`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        term_id: card.id,
+                        status: 'learning',
+                        next_review: getNextReviewDate(0)
+                    })
+                });
+            } catch (e) {}
+            
+            updateStats();
+            nextCard();
+        }
+        
+        // 计算下次复习日期
+        function getNextReviewDate(level) {
+            const days = [1, 3, 7, 14, 30][level] || 1;
+            const date = new Date();
+            date.setDate(date.getDate() + days);
+            return date.toISOString().split('T')[0];
+        }
+        
+        // 更新进度
+        function updateProgress() {
+            const progress = ((currentIndex + 1) / reviewTerms.length * 100).toFixed(0);
+            document.getElementById('progressFill').style.width = progress + '%';
+            document.getElementById('progressText').textContent = `${currentIndex + 1} / ${reviewTerms.length}`;
+        }
+        
+        // 切换模式
+        function switchMode(mode) {
+            document.querySelectorAll('.mode-tab').forEach(t => t.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            document.getElementById('flashcardMode').style.display = mode === 'flashcard' ? 'block' : 'none';
+            document.getElementById('quizMode').classList.toggle('active', mode === 'quiz');
+            
+            if (mode === 'quiz') generateQuiz();
+        }
+        
+        // 生成测验
+        function generateQuiz() {
+            if (terms.length < 4) return;
+            
+            const correct = terms[Math.floor(Math.random() * terms.length)];
+            const others = terms.filter(t => t.id !== correct.id).sort(() => Math.random() - 0.5).slice(0, 3);
+            const options = [correct, ...others].sort(() => Math.random() - 0.5);
+            
+            document.getElementById('quizQuestion').textContent = correct.english + ' 的中文是？';
+            
+            document.getElementById('quizOptions').innerHTML = options.map(opt => 
+                `<div class="quiz-option" onclick="checkAnswer(this, '${opt.chinese}', '${correct.chinese}')">${opt.chinese}</div>`
+            ).join('');
+        }
+        
+        function checkAnswer(el, answer, correct) {
+            document.querySelectorAll('.quiz-option').forEach(opt => opt.style.pointerEvents = 'none');
+            
+            if (answer === correct) {
+                el.classList.add('correct');
+                markKnow();
+                setTimeout(generateQuiz, 1000);
+            } else {
+                el.classList.add('wrong');
+                document.querySelectorAll('.quiz-option').forEach(opt => {
+                    if (opt.textContent === correct) opt.classList.add('correct');
+                });
+                setTimeout(generateQuiz, 1500);
+            }
+        }
+        
+        // 启动
+        init();
+    </script>
+</body>
+</html>
