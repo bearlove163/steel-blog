@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图片库 | 钢结构研究院</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --primary: #1a365d; --accent: #e53e3e; --light: #f7fafc; }
+        body { font-family: 'PingFang SC', sans-serif; background: var(--light); }
+        nav { background: var(--primary); padding: 0.8rem; position: sticky; top: 0; z-index: 100; }
+        nav ul { display: flex; list-style: none; max-width: 1200px; margin: 0 auto; gap: 1rem; justify-content: center; }
+        nav a { color: white; text-decoration: none; padding: 0.5rem 1rem; border-radius: 20px; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+        h1 { color: var(--primary); text-align: center; margin-bottom: 2rem; }
+        .search-box { background: white; padding: 1.5rem; border-radius: 12px; margin-bottom: 2rem; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .search-input { width: 100%; padding: 0.8rem; font-size: 1rem; border: 2px solid #ddd; border-radius: 8px; margin-bottom: 1rem; }
+        .category-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+        .category-tag { padding: 0.5rem 1rem; background: var(--light); border: 1px solid #ddd; border-radius: 20px; cursor: pointer; }
+        .category-tag.active { background: var(--primary); color: white; }
+        .image-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1.5rem; }
+        .image-card { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .image-placeholder { width: 100%; height: 150px; background: linear-gradient(135deg, #667eea, #764ba2); display: flex; align-items: center; justify-content: center; font-size: 3rem; }
+        .image-info { padding: 1rem; }
+        .image-title { font-weight: 600; margin-bottom: 0.5rem; }
+        .image-desc { font-size: 0.85rem; color: #666; }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">首页</a></li>
+            <li><a href="news.html">新闻</a></li>
+            <li><a href="glossary.html">术语</a></li>
+            <li><a href="flashcard.html">闪卡</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <h1>📷 钢结构图片库</h1>
+        <div class="search-box">
+            <input type="text" class="search-input" id="searchInput" placeholder="搜索图片关键词...">
+            <div class="category-tags">
+                <span class="category-tag active" data-category="all">全部</span>
+                <span class="category-tag" data-category="stadium">体育场馆</span>
+                <span class="category-tag" data-category="bridge">桥梁</span>
+                <span class="category-tag" data-category="highrise">超高层</span>
+            </div>
+        </div>
+        <div class="image-grid" id="imageGrid">
+            <div class="image-card" data-category="stadium"><div class="image-placeholder">🏟️</div><div class="image-info"><div class="image-title">国家体育场(鸟巢)</div><div class="image-desc">北京2008奥运主场馆</div></div></div>
+            <div class="image-card" data-category="stadium"><div class="image-placeholder">🏛️</div><div class="image-info"><div class="image-title">国家速滑馆</div><div class="image-desc">北京2022冬奥会</div></div></div>
+            <div class="image-card" data-category="bridge"><div class="image-placeholder">🌉</div><div class="image-info"><div class="image-title">港珠澳大桥</div><div class="image-desc">世界最长跨海大桥</div></div></div>
+            <div class="image-card" data-category="highrise"><div class="image-placeholder">🏢</div><div class="image-info"><div class="image-title">上海中心大厦</div><div class="image-desc">中国第一高楼</div></div></div>
+            <div class="image-card" data-category="stadium"><div class="image-placeholder">⛺</div><div class="image-info"><div class="image-title">水立方</div><div class="image-desc">ETFE张拉膜结构</div></div></div>
+            <div class="image-card" data-category="highrise"><div class="image-placeholder">🛫</div><div class="image-info"><div class="image-title">大兴机场</div><div class="image-desc">全球最大单体航站楼</div></div></div>
+        </div>
+    </div>
+    <script>
+        const searchInput = document.getElementById('searchInput');
+        const cards = document.querySelectorAll('.image-card');
+        searchInput.addEventListener('input', function() {
+            const keyword = this.value.toLowerCase();
+            cards.forEach(card => {
+                const title = card.querySelector('.image-title').textContent.toLowerCase();
+                card.style.display = title.includes(keyword) ? 'block' : 'none';
+            });
+        });
+    </script>
+</body>
+</html>
