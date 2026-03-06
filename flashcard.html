@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI闪卡学习 | Steel Structure Flashcards</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --primary: #1a365d;
+            --secondary: #2c5282;
+            --accent: #e53e3e;
+            --success: #38a169;
+            --warning: #d69e2e;
+            --light: #f7fafc;
+        }
+        
+        body {
+            font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
+            min-height: 100vh;
+            color: #1a202c;
+        }
+        
+        nav {
+            background: rgba(26, 54, 93, 0.95);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            max-width: 1200px;
+            margin: 0 auto;
+            gap: 2rem;
+            justify-content: center;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        header h1 { font-size: 2rem; margin-bottom: 0.5rem; }
+        
+        main {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        /* 学习进度 */
+        .progress-bar {
+            background: white;
+            border-radius: 12px;
+            padding: 1rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .progress-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        .progress-track {
+            height: 12px;
+            background: #e2e8f0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--success), #68d391);
+            border-radius: 6px;
+            transition: width 0.3s;
+        }
+        
+        /* 闪卡 */
+        .flashcard-container {
+            perspective: 1000px;
+            margin-bottom: 2rem;
+        }
+        
+        .flashcard {
+            width: 100%;
+            min-height: 400px;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.6s;
+            cursor: pointer;
+        }
+        
+        .flashcard.flipped {
+            transform: rotateY(180deg);
+        }
+        
+        .flashcard-face {
+            position: absolute;
+            width: 100%;
+            min-height: 400px;
+            backface-visibility: hidden;
+            border-radius: 20px;
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        
+        .flashcard-front {
+            background: white;
+        }
+        
+        .flashcard-back {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            transform: rotateY(180deg);
+        }
+        
+        .flashcard-en {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .flashcard-zh {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .flashcard-image {
+            max-width: 250px;
+            margin: 1rem 0;
+            border-radius: 12px;
+        }
+        
+        .flashcard-example {
+            font-size: 1rem;
+            color: #718096;
+            margin-top: 1rem;
+            font-style: italic;
+        }
+        
+        .flashcard-hint {
+            position: absolute;
+            bottom: 1rem;
+            color: #a0aec0;
+            font-size: 0.9rem;
+        }
+        
+        /* 按钮控制 */
+        .controls {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        .btn-prev { background: #e2e8f0; color: var(--primary); }
+        .btn-next { background: var(--secondary); color: white; }
+        .btn-flip { background: var(--accent); color: white; }
+        .btn-know { background: var(--success); color: white; }
+        .btn-dont-know { background: var(--warning); color: white; }
+        
+        /* 测验模式 */
+        .quiz-container {
+            display: none;
+        }
+        
+        .quiz-container.active {
+            display: block;
+        }
+        
+        .quiz-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+        
+        .quiz-question {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 2rem;
+        }
+        
+        .quiz-options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+        
+        .quiz-option {
+            padding: 1.5rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 1.1rem;
+        }
+        
+        .quiz-option:hover {
+            border-color: var(--secondary);
+            background: #ebf8ff;
+        }
+        
+        .quiz-option.correct {
+            border-color: var(--success);
+            background: #f0fff4;
+        }
+        
+        .quiz-option.wrong {
+            border-color: var(--accent);
+            background: #fff5f5;
+        }
+        
+        /* 学习统计 */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .stat-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .stat-label {
+            color: #718096;
+            font-size: 0.9rem;
+        }
+        
+        /* 模式切换 */
+        .mode-switch {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+        
+        .mode-btn {
+            padding: 0.8rem 1.5rem;
+            border: 2px solid white;
+            background: transparent;
+            color: white;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+        
+        .mode-btn.active {
+            background: white;
+            color: var(--primary);
+        }
+        
+        footer {
+            background: #1a202c;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+        
+        @media (max-width: 768px) {
+            .quiz-options { grid-template-columns: 1fr; }
+            .stats { grid-template-columns: 1fr; }
+            .flashcard-face { padding: 2rem; min-height: 300px; }
+            .flashcard-en { font-size: 2rem; }
+            .flashcard-zh { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">首页</a></li>
+            <li><a href="news.html">新闻动态</a></li>
+            <li><a href="glossary.html">术语表</a></li>
+            <li><a href="listening.html">听力中心</a></li>
+        </ul>
+    </nav>
+    
+    <header>
+        <h1>🧠 AI闪卡学习</h1>
+        <p>点击卡片翻转 · 掌握钢结构专业术语</p>
+        
+        <div class="mode-switch">
+            <button class="mode-btn active" onclick="switchMode('flashcard')">📇 闪卡模式</button>
+            <button class="mode-btn" onclick="switchMode('quiz')">📝 测验模式</button>
+        </div>
+    </header>
+    
+    <main>
+        <!-- 学习进度 -->
+        <div class="progress-bar">
+            <div class="progress-info">
+                <span>学习进度</span>
+                <span id="progressText">0 / 20</span>
+            </div>
+            <div class="progress-track">
+                <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+            </div>
+        </div>
+        
+        <!-- 统计 -->
+        <div class="stats">
+            <div class="stat-card">
+                <div class="stat-number" id="totalCards">20</div>
+                <div class="stat-label">总词汇量</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="knownCards">0</div>
+                <div class="stat-label">已掌握</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="streakDays">0</div>
+                <div class="stat-label">连续学习</div>
+            </div>
+        </div>
+        
+        <!-- 闪卡模式 -->
+        <div class="flashcard-container" id="flashcardMode">
+            <div class="flashcard" id="flashcard" onclick="flipCard()">
+                <div class="flashcard-face flashcard-front">
+                    <div class="flashcard-en" id="cardEn">Space Frame</div>
+                    <div class="flashcard-hint">👆 点击查看答案</div>
+                </div>
+                <div class="flashcard-face flashcard-back">
+                    <div class="flashcard-zh" id="cardZh">网架结构</div>
+                    <img class="flashcard-image" id="cardImg" src="" alt="">
+                    <div class="flashcard-example" id="cardExample">The space frame roof spans 100 meters.</div>
+                </div>
+            </div>
+            
+            <div class="controls">
+                <button class="btn btn-prev" onclick="prevCard()">⬆️ 上一张</button>
+                <button class="btn btn-flip" onclick="flipCard()">🔄 翻转</button>
+                <button class="btn btn-dont-know" onclick="markDontKnow()">❌ 不认识</button>
+                <button class="btn btn-know" onclick="markKnow()">✅ 认识</button>
+                <button class="btn btn-next" onclick="nextCard()">⬇️ 下一张</button>
+            </div>
+        </div>
+        
+        <!-- 测验模式 -->
+        <div class="quiz-container" id="quizMode">
+            <div class="quiz-card">
+                <div class="quiz-question" id="quizQuestion">Space Frame 的中文意思是？</div>
+                <div class="quiz-options" id="quizOptions">
+                    <!-- 选项由JS生成 -->
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <footer>
+        <p>🏗️ 钢结构研究院 · AI智能学习</p>
+        <p style="font-size: 0.9rem; opacity: 0.7; margin-top: 0.5rem;">持续学习 · 轻松掌握专业术语</p>
+    </footer>
+    
+    <script>
+        // 闪卡数据
+        const flashcards = [
+            { en: "Space Frame", zh: "网架结构", img: "images/term_space_frame.png", example: "The space frame roof spans 100 meters without internal supports." },
+            { en: "Truss", zh: "桁架", img: "images/term_truss.png", example: "The steel truss provides structural support for the bridge." },
+            { en: "Cable Dome", zh: "索穹顶", img: "images/term_cable_dome.png", example: "The cable dome creates a tension-integrated roof system." },
+            { en: "Tensile Structure", zh: "张拉结构", img: "", example: "Tensile structures use membranes and cables." },
+            { en: "Cable-Stayed Structure", zh: "斜拉结构", img: "images/term_cable_stayed.png", example: "The cable-stayed bridge is efficient for medium spans." },
+            { en: "Tension Rod", zh: "张弦杆", img: "images/term_tension_rod.png", example: "The tension rod system provides support for the roof." },
+            { en: "Suspended Structure", zh: "悬吊结构", img: "", example: "The suspended structure maximizes ground floor space." },
+            { en: "Cable Truss", zh: "索桁架", img: "", example: "The cable truss combines advantages of cables and trusses." },
+            { en: "Suspension Structure", zh: "悬索结构", img: "images/term_suspension_bridge.png", example: "Suspension bridges are ideal for very long spans." },
+            { en: "Prestressed Steel", zh: "预应力钢", img: "", example: "Prestressed steel improves structural performance." },
+            { en: "Welded Connection", zh: "焊接连接", img: "images/term_welded_connection.png", example: "Welded connections provide excellent structural continuity." },
+            { en: "Bolted Connection", zh: "螺栓连接", img: "images/term_bolted_connection.png", example: "High-strength bolted connections are commonly used." },
+            { en: "Structural Steel", zh: "结构钢", img: "", example: "Structural steel has high strength and good ductility." },
+            { en: "H-Beam", zh: "H型钢", img: "", example: "The H-beam is widely used in steel frame construction." },
+            { en: "Frame Structure", zh: "框架结构", img: "images/term_steel_frame.png", example: "The frame structure allows for flexible interior layouts." },
+            { en: "Load Bearing", zh: "承重", img: "", example: "The walls provide load bearing function." },
+            { en: "Span", zh: "跨度", img: "", example: "The span of the bridge is 500 meters." },
+            { en: "Deflection", zh: "挠度", img: "", example: "Deflection must be within acceptable limits." },
+            { en: "Erection", zh: "吊装/安装", img: "", example: "Steel erection was completed in three months." },
+            { en: "Welding", zh: "焊接", img: "", example: "Welding is a common method for connecting steel members." }
+        ];
+        
+        let currentIndex = 0;
+        let knownCards = new Set();
+        let currentQuizCorrect = null;
+        
+        // 初始化
+        function init() {
+            updateCard();
+            updateStats();
+            loadProgress();
+        }
+        
+        // 更新卡片
+        function updateCard() {
+            const card = flashcards[currentIndex];
+            document.getElementById('cardEn').textContent = card.en;
+            document.getElementById('cardZh').textContent = card.zh;
+            document.getElementById('cardExample').textContent = card.example;
+            
+            const imgEl = document.getElementById('cardImg');
+            if (card.img) {
+                imgEl.src = card.img;
+                imgEl.style.display = 'block';
+            } else {
+                imgEl.style.display = 'none';
+            }
+            
+            document.getElementById('flashcard').classList.remove('flipped');
+            updateProgress();
+        }
+        
+        // 翻转卡片
+        function flipCard() {
+            document.getElementById('flashcard').classList.toggle('flipped');
+        }
+        
+        // 下一张
+        function nextCard() {
+            currentIndex = (currentIndex + 1) % flashcards.length;
+            updateCard();
+        }
+        
+        // 上一张
+        function prevCard() {
+            currentIndex = (currentIndex - 1 + flashcards.length) % flashcards.length;
+            updateCard();
+        }
+        
+        // 标记认识
+        function markKnow() {
+            knownCards.add(currentIndex);
+            saveProgress();
+            updateStats();
+            nextCard();
+        }
+        
+        // 标记不认识
+        function markDontKnow() {
+            knownCards.delete(currentIndex);
+            saveProgress();
+            updateStats();
+            nextCard();
+        }
+        
+        // 更新进度
+        function updateProgress() {
+            const progress = ((currentIndex + 1) / flashcards.length * 100).toFixed(0);
+            document.getElementById('progressFill').style.width = progress + '%';
+            document.getElementById('progressText').textContent = (currentIndex + 1) + ' / ' + flashcards.length;
+        }
+        
+        // 更新统计
+        function updateStats() {
+            document.getElementById('totalCards').textContent = flashcards.length;
+            document.getElementById('knownCards').textContent = knownCards.size;
+        }
+        
+        // 切换模式
+        function switchMode(mode) {
+            document.querySelectorAll('.mode-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            if (mode === 'flashcard') {
+                document.getElementById('flashcardMode').style.display = 'block';
+                document.getElementById('quizMode').classList.remove('active');
+            } else {
+                document.getElementById('flashcardMode').style.display = 'none';
+                document.getElementById('quizMode').classList.add('active');
+                generateQuiz();
+            }
+        }
+        
+        // 生成测验
+        function generateQuiz() {
+            const correct = flashcards[currentIndex];
+            const others = flashcards.filter((_, i) => i !== currentIndex).sort(() => Math.random() - 0.5).slice(0, 3);
+            const options = [correct, ...others].sort(() => Math.random() - 0.5);
+            
+            document.getElementById('quizQuestion').textContent = correct.en + ' 的中文意思是？';
+            
+            const optionsHtml = options.map(opt => 
+                `<div class="quiz-option" onclick="checkAnswer(this, '${opt.zh}', '${correct.zh}')">${opt.zh}</div>`
+            ).join('');
+            
+            document.getElementById('quizOptions').innerHTML = optionsHtml;
+            currentQuizCorrect = correct.zh;
+        }
+        
+        // 检查答案
+        function checkAnswer(el, answer, correct) {
+            document.querySelectorAll('.quiz-option').forEach(opt => {
+                opt.style.pointerEvents = 'none';
+                if (opt.textContent === correct) {
+                    opt.classList.add('correct');
+                }
+            });
+            
+            if (answer === correct) {
+                markKnow();
+                setTimeout(generateQuiz, 1000);
+            } else {
+                el.classList.add('wrong');
+                setTimeout(generateQuiz, 1500);
+            }
+        }
+        
+        // 保存进度到localStorage
+        function saveProgress() {
+            localStorage.setItem('steelFlashcards', JSON.stringify([...knownCards]));
+            localStorage.setItem('steelStreak', new Date().toDateString());
+        }
+        
+        // 加载进度
+        function loadProgress() {
+            const saved = localStorage.getItem('steelFlashcards');
+            if (saved) {
+                knownCards = new Set(JSON.parse(saved));
+            }
+            updateStats();
+            
+            // 计算连续学习天数
+            const today = new Date().toDateString();
+            const yesterday = new Date(Date.now() - 86400000).toDateString();
+            const lastDay = localStorage.getItem('steelStreak');
+            
+            if (lastDay === today || lastDay === yesterday) {
+                document.getElementById('streakDays').textContent = '1';
+            }
+        }
+        
+        init();
+    </script>
+</body>
+</html>
