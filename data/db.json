@@ -1,35 +1,329 @@
 {
   "terms": [
-    {"id": 1, "en": "Space Frame", "zh": "网架结构", "category": "structure", "example_en": "The space frame roof spans 100 meters.", "example_zh": "网架结构屋面可实现100米跨越。", "difficulty": 1},
-    {"id": 2, "en": "Truss", "zh": "桁架", "category": "structure", "example_en": "The steel truss provides support.", "example_zh": "钢桁架提供支撑。", "difficulty": 1},
-    {"id": 3, "en": "Cable Dome", "zh": "索穹顶", "category": "structure", "example_en": "Cable dome creates tension roof.", "zh": "索穹顶形成张力屋盖。", "difficulty": 2},
-    {"id": 4, "en": "Tensile Structure", "zh": "张拉结构", "category": "structure", "example_en": "Tensile structures use cables.", "example_zh": "张拉结构使用索。", "difficulty": 2},
-    {"id": 5, "en": "Cable-Stayed", "zh": "斜拉结构", "category": "structure", "example_en": "Cable-stayed bridges are efficient.", "example_zh": "斜拉桥效率高。", "difficulty": 2},
-    {"id": 6, "en": "Suspension", "zh": "悬索结构", "category": "structure", "example_en": "Suspension bridges span long distances.", "example_zh": "悬索桥跨度大。", "difficulty": 2},
-    {"id": 7, "en": "Prestressed", "zh": "预应力", "category": "structure", "example_en": "Prestressed steel improves performance.", "example_zh": "预应力钢改善性能。", "difficulty": 2},
-    {"id": 8, "en": "Welded Connection", "zh": "焊接连接", "category": "connection", "example_en": "Welded joints are strong.", "example_zh": "焊接节点强度高。", "difficulty": 1},
-    {"id": 9, "en": "Bolted Connection", "zh": "螺栓连接", "category": "connection", "example_en": "Bolted connections are common.", "example_zh": "螺栓连接常见。", "difficulty": 1},
-    {"id": 10, "en": "Structural Steel", "zh": "结构钢", "category": "material", "example_en": "Structural steel is strong.", "example_zh": "结构钢强度高。", "difficulty": 1}
+    {
+      "id": 1,
+      "en": "Space Frame",
+      "zh": "网架结构",
+      "category": "structure",
+      "example_en": "The space frame roof spans 100 meters.",
+      "example_zh": "网架结构屋面可实现100米跨越。",
+      "difficulty": 1
+    },
+    {
+      "id": 2,
+      "en": "Truss",
+      "zh": "桁架",
+      "category": "structure",
+      "example_en": "The steel truss provides support.",
+      "example_zh": "钢桁架提供支撑。",
+      "difficulty": 1
+    },
+    {
+      "id": 3,
+      "en": "Cable Dome",
+      "zh": "索穹顶形成张力屋盖。",
+      "category": "structure",
+      "example_en": "Cable dome creates tension roof.",
+      "difficulty": 2
+    },
+    {
+      "id": 4,
+      "en": "Tensile Structure",
+      "zh": "张拉结构",
+      "category": "structure",
+      "example_en": "Tensile structures use cables.",
+      "example_zh": "张拉结构使用索。",
+      "difficulty": 2
+    },
+    {
+      "id": 5,
+      "en": "Cable-Stayed",
+      "zh": "斜拉结构",
+      "category": "structure",
+      "example_en": "Cable-stayed bridges are efficient.",
+      "example_zh": "斜拉桥效率高。",
+      "difficulty": 2
+    },
+    {
+      "id": 6,
+      "en": "Suspension",
+      "zh": "悬索结构",
+      "category": "structure",
+      "example_en": "Suspension bridges span long distances.",
+      "example_zh": "悬索桥跨度大。",
+      "difficulty": 2
+    },
+    {
+      "id": 7,
+      "en": "Prestressed",
+      "zh": "预应力",
+      "category": "structure",
+      "example_en": "Prestressed steel improves performance.",
+      "example_zh": "预应力钢改善性能。",
+      "difficulty": 2
+    },
+    {
+      "id": 8,
+      "en": "Welded Connection",
+      "zh": "焊接连接",
+      "category": "connection",
+      "example_en": "Welded joints are strong.",
+      "example_zh": "焊接节点强度高。",
+      "difficulty": 1
+    },
+    {
+      "id": 9,
+      "en": "Bolted Connection",
+      "zh": "螺栓连接",
+      "category": "connection",
+      "example_en": "Bolted connections are common.",
+      "example_zh": "螺栓连接常见。",
+      "difficulty": 1
+    },
+    {
+      "id": 10,
+      "en": "Structural Steel",
+      "zh": "结构钢",
+      "category": "material",
+      "example_en": "Structural steel is strong.",
+      "example_zh": "结构钢强度高。",
+      "difficulty": 1
+    }
   ],
   "lessons": [
-    {"id": 1, "title": "什么是钢结构？", "title_en": "What is Steel Structure?", "level": "easy", "duration": "01:30", "content_en": "Steel structure is a type of building structure using steel beams and columns.", "content_zh": "钢结构是一种使用钢梁和钢柱的建筑结构类型。", "vocabulary": "steel structure, beam, column"},
-    {"id": 2, "title": "钢结构的优点", "title_en": "Advantages of Steel", "level": "easy", "duration": "02:30", "content_en": "Steel is strong, light, ductile and recyclable.", "content_zh": "钢材坚固、轻盈、可延展、可回收。", "vocabulary": "advantage, strong, ductile"},
-    {"id": 3, "title": "钢结构连接", "title_en": "Steel Connections", "level": "medium", "duration": "03:00", "content_en": "Two main connections: welded and bolted.", "content_zh": "两种主要连接方式：焊接和螺栓连接。", "vocabulary": "connection, welded, bolted"},
-    {"id": 4, "title": "焊接工艺", "title_en": "Welding Processes", "level": "medium", "duration": "03:30", "content_en": "Common welding: SMAW, GMAW, FCAW.", "content_zh": "常见焊接：焊条电弧焊、气体保护焊、药芯焊丝焊。", "vocabulary": "welding, electrode, shield"},
-    {"id": 5, "title": "荷载类型", "title_en": "Types of Loads", "level": "medium", "duration": "04:00", "content_en": "Dead, live, wind, snow, seismic loads.", "content_zh": "恒荷载、活荷载、风荷载、雪荷载、地震荷载。", "vocabulary": "load, dead load, wind"},
-    {"id": 6, "title": "结构分析", "title_en": "Structural Analysis", "level": "hard", "duration": "05:00", "content_en": "FEA is used for complex structural analysis.", "content_zh": "有限元分析用于复杂结构分析。", "vocabulary": "FEA, analysis, stress"},
-    {"id": 7, "title": "稳定性和屈曲", "title_en": "Stability and Buckling", "level": "hard", "duration": "04:30", "content_en": "Buckling is a failure mode for compression members.", "zh": "屈曲是受压构件的破坏模式。", "vocabulary": "buckling, stability"},
-    {"id": 8, "title": "超高层钢结构", "title_en": "High-rise Steel Structures", "level": "hard", "duration": "05:00", "content_en": "Core-outrigger systems are common in supertall.", "content_zh": "核心筒-伸臂系统常用于超高层。", "vocabulary": "high-rise, outrigger"},
-    {"id": 9, "title": "钢结构防腐", "title_en": "Corrosion Protection", "level": "medium", "duration": "03:30", "content_en": "Main methods: coating, cathodic protection.", "content_zh": "主要方法：涂层、阴极保护。", "vocabulary": "corrosion, coating"},
-    {"id": 10, "title": "钢结构施工", "title_en": "Steel Construction", "level": "medium", "duration": "04:00", "content_en": "Fabrication, erection, connection.", "content_zh": "制作、吊装、连接。", "vocabulary": "fabrication, erection"},
-    {"id": 11, "title": "有限元分析", "title_en": "Introduction to FEA", "level": "hard", "duration": "05:00", "content_en": "FEA divides structure into small elements.", "content_zh": "有限元分析将结构分割成小单元。", "vocabulary": "FEA, mesh, node"},
-    {"id": 12, "title": "钢结构桥梁", "title_en": "Steel Bridges", "level": "medium", "duration": "04:30", "content_en": "Types: beam, truss, arch, suspension, cable-stayed.", "content_zh": "类型：梁桥、桁架桥、拱桥、悬索桥、斜拉桥。", "vocabulary": "bridge, span"},
-    {"id": 13, "title": "FIDIC合同简介", "title_en": "Introduction to FIDIC", "level": "medium", "duration": "05:00", "content_en": "FIDIC is International Federation of Consulting Engineers. Red, Yellow, Silver Books.", "content_zh": "FIDIC是国际咨询工程师联合会。红皮书、黄皮书、银皮书。", "vocabulary": "FIDIC, contract"},
-    {"id": 14, "title": "FIDIC投标流程", "title_en": "FIDIC Tender Process", "level": "hard", "duration": "06:00", "content_en": "Tender process: documents, site visit, submission, evaluation.", "content_zh": "投标流程：招标文件、现场考察、提交、评标。", "vocabulary": "tender, bid"},
-    {"id": 15, "title": "FIDIC变更与索赔", "title_en": "FIDIC Variations and Claims", "level": "hard", "duration": "06:00", "content_en": "Variations by Engineer. Claims within 28 days.", "content_zh": "变更由工程师指令。索赔在28天内提出。", "vocabulary": "variation, claim"},
-    {"id": 16, "title": "FIDIC付款机制", "title_en": "FIDIC Payment", "level": "medium", "duration": "05:00", "content_en": "Monthly interim payments. 56 days for employer to pay.", "content_zh": "月度进度款。业主56天内付款。", "vocabulary": "payment, interim"},
-    {"id": 17, "title": "FIDIC缺陷责任", "title_en": "FIDIC Defects Liability", "level": "medium", "duration": "05:00", "content_en": "Defects liability period is 12 months after taking over.", "content_zh": "缺陷责任期为接收后12个月。", "vocabulary": "defects, liability"},
-    {"id": 18, "title": "国际工程英语", "title_en": "International Engineering English", "level": "medium", "duration": "05:00", "content_en": "Technical English for reports, meetings, contracts.", "content_zh": "技术英语用于报告、会议、合同。", "vocabulary": "technical, communication"}
+    {
+      "id": 1,
+      "title": "什么是钢结构？",
+      "title_en": "What is Steel Structure?",
+      "level": "easy",
+      "duration": "01:30",
+      "content_en": "Steel structure is a type of building structure using steel beams and columns.",
+      "content_zh": "钢结构是一种使用钢梁和钢柱的建筑结构类型。",
+      "vocabulary": "steel structure, beam, column"
+    },
+    {
+      "id": 2,
+      "title": "钢结构的优点",
+      "title_en": "Advantages of Steel",
+      "level": "easy",
+      "duration": "02:30",
+      "content_en": "Steel is strong, light, ductile and recyclable.",
+      "content_zh": "钢材坚固、轻盈、可延展、可回收。",
+      "vocabulary": "advantage, strong, ductile"
+    },
+    {
+      "id": 3,
+      "title": "钢结构连接",
+      "title_en": "Steel Connections",
+      "level": "medium",
+      "duration": "03:00",
+      "content_en": "Two main connections: welded and bolted.",
+      "content_zh": "两种主要连接方式：焊接和螺栓连接。",
+      "vocabulary": "connection, welded, bolted"
+    },
+    {
+      "id": 4,
+      "title": "焊接工艺",
+      "title_en": "Welding Processes",
+      "level": "medium",
+      "duration": "03:30",
+      "content_en": "Common welding: SMAW, GMAW, FCAW.",
+      "content_zh": "常见焊接：焊条电弧焊、气体保护焊、药芯焊丝焊。",
+      "vocabulary": "welding, electrode, shield"
+    },
+    {
+      "id": 5,
+      "title": "荷载类型",
+      "title_en": "Types of Loads",
+      "level": "medium",
+      "duration": "04:00",
+      "content_en": "Dead, live, wind, snow, seismic loads.",
+      "content_zh": "恒荷载、活荷载、风荷载、雪荷载、地震荷载。",
+      "vocabulary": "load, dead load, wind"
+    },
+    {
+      "id": 6,
+      "title": "结构分析",
+      "title_en": "Structural Analysis",
+      "level": "hard",
+      "duration": "05:00",
+      "content_en": "FEA is used for complex structural analysis.",
+      "content_zh": "有限元分析用于复杂结构分析。",
+      "vocabulary": "FEA, analysis, stress"
+    },
+    {
+      "id": 7,
+      "title": "稳定性和屈曲",
+      "title_en": "Stability and Buckling",
+      "level": "hard",
+      "duration": "04:30",
+      "content_en": "Buckling is a failure mode for compression members.",
+      "zh": "屈曲是受压构件的破坏模式。",
+      "vocabulary": "buckling, stability"
+    },
+    {
+      "id": 8,
+      "title": "超高层钢结构",
+      "title_en": "High-rise Steel Structures",
+      "level": "hard",
+      "duration": "05:00",
+      "content_en": "Core-outrigger systems are common in supertall.",
+      "content_zh": "核心筒-伸臂系统常用于超高层。",
+      "vocabulary": "high-rise, outrigger"
+    },
+    {
+      "id": 9,
+      "title": "钢结构防腐",
+      "title_en": "Corrosion Protection",
+      "level": "medium",
+      "duration": "03:30",
+      "content_en": "Main methods: coating, cathodic protection.",
+      "content_zh": "主要方法：涂层、阴极保护。",
+      "vocabulary": "corrosion, coating"
+    },
+    {
+      "id": 10,
+      "title": "钢结构施工",
+      "title_en": "Steel Construction",
+      "level": "medium",
+      "duration": "04:00",
+      "content_en": "Fabrication, erection, connection.",
+      "content_zh": "制作、吊装、连接。",
+      "vocabulary": "fabrication, erection"
+    },
+    {
+      "id": 11,
+      "title": "有限元分析",
+      "title_en": "Introduction to FEA",
+      "level": "hard",
+      "duration": "05:00",
+      "content_en": "FEA divides structure into small elements.",
+      "content_zh": "有限元分析将结构分割成小单元。",
+      "vocabulary": "FEA, mesh, node"
+    },
+    {
+      "id": 12,
+      "title": "钢结构桥梁",
+      "title_en": "Steel Bridges",
+      "level": "medium",
+      "duration": "04:30",
+      "content_en": "Types: beam, truss, arch, suspension, cable-stayed.",
+      "content_zh": "类型：梁桥、桁架桥、拱桥、悬索桥、斜拉桥。",
+      "vocabulary": "bridge, span"
+    },
+    {
+      "id": 13,
+      "title": "FIDIC合同简介",
+      "title_en": "Introduction to FIDIC",
+      "level": "medium",
+      "duration": "05:00",
+      "content_en": "FIDIC is International Federation of Consulting Engineers. Red, Yellow, Silver Books.",
+      "content_zh": "FIDIC是国际咨询工程师联合会。红皮书、黄皮书、银皮书。",
+      "vocabulary": "FIDIC, contract"
+    },
+    {
+      "id": 14,
+      "title": "FIDIC投标流程",
+      "title_en": "FIDIC Tender Process",
+      "level": "hard",
+      "duration": "06:00",
+      "content_en": "Tender process: documents, site visit, submission, evaluation.",
+      "content_zh": "投标流程：招标文件、现场考察、提交、评标。",
+      "vocabulary": "tender, bid"
+    },
+    {
+      "id": 15,
+      "title": "FIDIC变更与索赔",
+      "title_en": "FIDIC Variations and Claims",
+      "level": "hard",
+      "duration": "06:00",
+      "content_en": "Variations by Engineer. Claims within 28 days.",
+      "content_zh": "变更由工程师指令。索赔在28天内提出。",
+      "vocabulary": "variation, claim"
+    },
+    {
+      "id": 16,
+      "title": "FIDIC付款机制",
+      "title_en": "FIDIC Payment",
+      "level": "medium",
+      "duration": "05:00",
+      "content_en": "Monthly interim payments. 56 days for employer to pay.",
+      "content_zh": "月度进度款。业主56天内付款。",
+      "vocabulary": "payment, interim"
+    },
+    {
+      "id": 17,
+      "title": "FIDIC缺陷责任",
+      "title_en": "FIDIC Defects Liability",
+      "level": "medium",
+      "duration": "05:00",
+      "content_en": "Defects liability period is 12 months after taking over.",
+      "content_zh": "缺陷责任期为接收后12个月。",
+      "vocabulary": "defects, liability"
+    },
+    {
+      "id": 18,
+      "title": "国际工程英语",
+      "title_en": "International Engineering English",
+      "level": "medium",
+      "duration": "05:00",
+      "content_en": "Technical English for reports, meetings, contracts.",
+      "content_zh": "技术英语用于报告、会议、合同。",
+      "vocabulary": "technical, communication"
+    },
+    {
+      "id": 19,
+      "title": "土力学基础",
+      "title_en": "Soil Mechanics Basics",
+      "level": "medium",
+      "duration": "05:00",
+      "content_en": "Soil mechanics studies soil behavior under load. Key properties include shear strength, compressibility, and permeability.",
+      "content_zh": "土力学研究土在荷载下的行为。主要特性包括抗剪强度、可压缩性和渗透性。",
+      "vocabulary": "soil, shear, strength"
+    },
+    {
+      "id": 20,
+      "title": "基础工程英语",
+      "title_en": "Foundation Engineering English",
+      "level": "medium",
+      "duration": "05:00",
+      "content_en": "Foundation engineering ensures structural stability. Types include shallow foundations and deep foundations.",
+      "content_zh": "基础工程确保结构稳定。类型包括浅基础和深基础。",
+      "vocabulary": "foundation, pile, caisson"
+    },
+    {
+      "id": 21,
+      "title": "道路工程英语",
+      "title_en": "Road Engineering English",
+      "level": "medium",
+      "duration": "05:00",
+      "content_en": "Road engineering includes pavement design, subgrade preparation, and drainage systems.",
+      "content_zh": "道路工程包括路面设计、路基准备和排水系统。",
+      "vocabulary": "pavement, asphalt, subgrade"
+    },
+    {
+      "id": 22,
+      "title": "桥梁工程英语",
+      "title_en": "Bridge Engineering English",
+      "level": "hard",
+      "duration": "05:00",
+      "content_en": "Bridge engineering covers design of suspension, cable-stayed, and arch bridges.",
+      "content_zh": "桥梁工程涵盖悬索桥、斜拉桥和拱桥的设计。",
+      "vocabulary": "bridge, span, cable"
+    },
+    {
+      "id": 23,
+      "title": "隧道工程英语",
+      "title_en": "Tunnel Engineering English",
+      "level": "hard",
+      "duration": "05:00",
+      "content_en": "Tunnel construction uses methods like NATM and TBM. Safety is critical underground.",
+      "content_zh": "隧道施工使用NATM和TBM等方法。地下安全至关重要。",
+      "vocabulary": "tunnel, excavation, support"
+    }
   ],
-  "userProgress": {"totalLearned": 0, "lastUpdate": "2026-03-06"}
+  "userProgress": {
+    "totalLearned": 0,
+    "lastUpdate": "2026-03-06"
+  }
 }

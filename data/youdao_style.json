@@ -10002,10 +10002,410 @@
       "tags": [
         "施工"
       ]
+    },
+    {
+      "id": "term_501",
+      "word": "Soil Mechanics",
+      "phonetic": "[soilmechanics]",
+      "trans": "土力学",
+      "pos": "n.",
+      "category": "岩土",
+      "bilingual_examples": [
+        {
+          "en": "Soil Mechanics is important.",
+          "zh": "土力学很重要。"
+        }
+      ],
+      "记忆": "土+力学",
+      "related": [],
+      "difficulty": 2,
+      "tags": [
+        "岩土"
+      ]
+    },
+    {
+      "id": "term_502",
+      "word": "Rock Mechanics",
+      "phonetic": "[rockmechanics]",
+      "trans": "岩石力学",
+      "pos": "n.",
+      "category": "岩土",
+      "bilingual_examples": [
+        {
+          "en": "Rock Mechanics is important.",
+          "zh": "岩石力学很重要。"
+        }
+      ],
+      "记忆": "岩石+力学",
+      "related": [],
+      "difficulty": 2,
+      "tags": [
+        "岩土"
+      ]
+    },
+    {
+      "id": "term_503",
+      "word": "Foundation Engineering",
+      "phonetic": "[foundationengineering]",
+      "trans": "基础工程",
+      "pos": "n.",
+      "category": "岩土",
+      "bilingual_examples": [
+        {
+          "en": "Foundation Engineering is important.",
+          "zh": "基础工程很重要。"
+        }
+      ],
+      "记忆": "基础+工程",
+      "related": [],
+      "difficulty": 2,
+      "tags": [
+        "岩土"
+      ]
+    },
+    {
+      "id": "term_504",
+      "word": "Deep Foundation",
+      "phonetic": "[deepfoundation]",
+      "trans": "深基础",
+      "pos": "n.",
+      "category": "岩土",
+      "bilingual_examples": [
+        {
+          "en": "Deep Foundation is important.",
+          "zh": "深基础很重要。"
+        }
+      ],
+      "记忆": "深+基础",
+      "related": [],
+      "difficulty": 2,
+      "tags": [
+        "岩土"
+      ]
+    },
+    {
+      "id": "term_505",
+      "word": "Shallow Foundation",
+      "phonetic": "[shallowfoundation]",
+      "trans": "浅基础",
+      "pos": "n.",
+      "category": "岩土",
+      "bilingual_examples": [
+        {
+          "en": "Shallow Foundation is important.",
+          "zh": "浅基础很重要。"
+        }
+      ],
+      "记忆": "浅+基础",
+      "related": [],
+      "difficulty": 2,
+      "tags": [
+        "岩土"
+      ]
+    },
+    {
+      "id": "term_506",
+      "word": "Pile Foundation",
+      "phonetic": "[pilefoundation]",
+      "trans": "桩基础",
+      "pos": "n.",
+      "category": "岩土",
+      "bilingual_examples": [
+        {
+          "en": "Pile Foundation is important.",
+          "zh": "桩基础很重要。"
+        }
+      ],
+      "记忆": "桩+基础",
+      "related": [],
+      "difficulty": 2,
+      "tags": [
+        "岩土"
+      ]
+    },
+    {
+      "id": "term_507",
+      "word": "Caisson",
+      "phonetic": "[caisson]",
+      "trans": "沉井",
+      "pos": "n.",
+      "category": "岩土",
+      "bilingual_examples": [
+        {
+          "en": "Caisson is important.",
+          "zh": "沉井很重要。"
+        }
+      ],
+      "记忆": "沉井",
+      "related": [],
+      "difficulty": 2,
+      "tags": [
+        "岩土"
+      ]
+    },
+    {
+      "id": "term_508",
+      "word": "Cofferdam",
+      "phonetic": "[cofferdam]",
+      "trans": "围堰",
+      "pos": "n.",
+      "category": "岩土",
+      "bilingual_examples": [
+        {
+          "en": "Cofferdam is important.",
+          "zh": "围堰很重要。"
+        }
+      ],
+      "记忆": "围+堰",
+      "related": [],
+      "difficulty": 2,
+      "tags": [
+        "岩土"
+      ]
+    },
+    {
+      "id": "term_509",
+      "word": "Slope",
+      "phonetic": "[slope]",
+      "trans": "边坡",
+      "pos": "n.",
+      "category": "岩土",
+      "bilingual_examples": [
+        {
+          "en": "Slope is important.",
+          "zh": "边坡很重要。"
+        }
+      ],
+      "记忆": "边+坡",
+      "related": [],
+      "difficulty": 2,
+      "tags": [
+        "岩土"
+      ]
+    },
+    {
+      "id": "term_510",
+      "word": "Retaining Wall",
+      "phonetic": "[retainingwall]",
+      "trans": "挡土墙",
+      "pos": "n.",
+      "category": "岩土",
+      "bilingual_examples": [
+        {
+          "en": "Retaining Wall is important.",
+          "zh": "挡土墙很重要。"
+        }
+      ],
+      "记忆": "挡+土+墙",
+      "related": [],
+      "difficulty": 2,
+      "tags": [
+        "岩土"
+      ]
+    },
+    {
+      "id": "term_511",
+      "word": "Highway Engineering",
+      "phonetic": "[highwayengineering]",
+      "trans": "公路工程",
+      "pos": "n.",
+      "category": "道路",
+      "bilingual_examples": [
+        {
+          "en": "Highway Engineering is important.",
+          "zh": "公路工程很重要。"
+        }
+      ],
+      "记忆": "公路+工程",
+      "related": [],
+      "difficulty": 2,
+      "tags": [
+        "道路"
+      ]
+    },
+    {
+      "id": "term_512",
+      "word": "Pavement",
+      "phonetic": "[pavement]",
+      "trans": "路面",
+      "pos": "n.",
+      "category": "道路",
+      "bilingual_examples": [
+        {
+          "en": "Pavement is important.",
+          "zh": "路面很重要。"
+        }
+      ],
+      "记忆": "铺面",
+      "related": [],
+      "difficulty": 2,
+      "tags": [
+        "道路"
+      ]
+    },
+    {
+      "id": "term_513",
+      "word": "Asphalt",
+      "phonetic": "[asphalt]",
+      "trans": "沥青",
+      "pos": "n.",
+      "category": "道路",
+      "bilingual_examples": [
+        {
+          "en": "Asphalt is important.",
+          "zh": "沥青很重要。"
+        }
+      ],
+      "记忆": "沥青",
+      "related": [],
+      "difficulty": 2,
+      "tags": [
+        "道路"
+      ]
+    },
+    {
+      "id": "term_514",
+      "word": "Concrete Pavement",
+      "phonetic": "[concretepavement]",
+      "trans": "混凝土路面",
+      "pos": "n.",
+      "category": "道路",
+      "bilingual_examples": [
+        {
+          "en": "Concrete Pavement is important.",
+          "zh": "混凝土路面很重要。"
+        }
+      ],
+      "记忆": "混凝土+路面",
+      "related": [],
+      "difficulty": 2,
+      "tags": [
+        "道路"
+      ]
+    },
+    {
+      "id": "term_515",
+      "word": "Subgrade",
+      "phonetic": "[subgrade]",
+      "trans": "路基",
+      "pos": "n.",
+      "category": "道路",
+      "bilingual_examples": [
+        {
+          "en": "Subgrade is important.",
+          "zh": "路基很重要。"
+        }
+      ],
+      "记忆": "路+基",
+      "related": [],
+      "difficulty": 2,
+      "tags": [
+        "道路"
+      ]
+    },
+    {
+      "id": "term_516",
+      "word": "Bridge Engineering",
+      "phonetic": "[bridgeengineering]",
+      "trans": "桥梁工程",
+      "pos": "n.",
+      "category": "道路",
+      "bilingual_examples": [
+        {
+          "en": "Bridge Engineering is important.",
+          "zh": "桥梁工程很重要。"
+        }
+      ],
+      "记忆": "桥梁+工程",
+      "related": [],
+      "difficulty": 2,
+      "tags": [
+        "道路"
+      ]
+    },
+    {
+      "id": "term_517",
+      "word": "Culvert",
+      "phonetic": "[culvert]",
+      "trans": "涵洞",
+      "pos": "n.",
+      "category": "道路",
+      "bilingual_examples": [
+        {
+          "en": "Culvert is important.",
+          "zh": "涵洞很重要。"
+        }
+      ],
+      "记忆": "涵+洞",
+      "related": [],
+      "difficulty": 2,
+      "tags": [
+        "道路"
+      ]
+    },
+    {
+      "id": "term_518",
+      "word": "Tunnel",
+      "phonetic": "[tunnel]",
+      "trans": "隧道",
+      "pos": "n.",
+      "category": "道路",
+      "bilingual_examples": [
+        {
+          "en": "Tunnel is important.",
+          "zh": "隧道很重要。"
+        }
+      ],
+      "记忆": "隧+道",
+      "related": [],
+      "difficulty": 2,
+      "tags": [
+        "道路"
+      ]
+    },
+    {
+      "id": "term_519",
+      "word": "Excavation",
+      "phonetic": "[excavation]",
+      "trans": "开挖",
+      "pos": "n.",
+      "category": "道路",
+      "bilingual_examples": [
+        {
+          "en": "Excavation is important.",
+          "zh": "开挖很重要。"
+        }
+      ],
+      "记忆": "开+挖",
+      "related": [],
+      "difficulty": 2,
+      "tags": [
+        "道路"
+      ]
+    },
+    {
+      "id": "term_520",
+      "word": "Embankment",
+      "phonetic": "[embankment]",
+      "trans": "路堤",
+      "pos": "n.",
+      "category": "道路",
+      "bilingual_examples": [
+        {
+          "en": "Embankment is important.",
+          "zh": "路堤很重要。"
+        }
+      ],
+      "记忆": "路+堤",
+      "related": [],
+      "difficulty": 2,
+      "tags": [
+        "道路"
+      ]
     }
   ],
   "learning_progress": {
-    "total_words": 500,
+    "total_words": 520,
     "mastered": 0,
     "learning": 500
   }
