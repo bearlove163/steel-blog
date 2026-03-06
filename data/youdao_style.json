@@ -1,8 +1,7 @@
 {
   "version": "1.0",
   "name": "钢结构专业英语词典",
-  "description": "有道词典风格的钢结构术语学习数据",
-  
+  "description": "有道词典风格的钢结构术语学习数据",  
   "terms": [
     {
       "id": "steel_001",
@@ -12,10 +11,7 @@
       "pos": "n.",
       "category": "结构",
       "bilingual_examples": [
-        {
-          "en": "The space frame roof spans 100 meters without internal supports.",
-          "zh": "网架结构屋面可实现100米无支撑跨越。"
-        }
+        {"en": "The space frame roof spans 100 meters without internal supports.", "zh": "网架结构屋面可实现100米无支撑跨越。"}
       ],
       "的记忆": "space(空间) + frame(框架)",
       "related": ["Truss", "Space Structure"],
@@ -30,10 +26,7 @@
       "pos": "n.",
       "category": "结构",
       "bilingual_examples": [
-        {
-          "en": "The steel truss provides structural support for the bridge.",
-          "zh": "钢桁架为桥梁提供结构支撑。"
-        }
+        {"en": "The steel truss provides structural support for the bridge.", "zh": "钢桁架为桥梁提供结构支撑。"}
       ],
       "的记忆": "联想：truss谐音'翘起'",
       "related": ["Space Frame", "Beam"],
@@ -48,10 +41,7 @@
       "pos": "n.",
       "category": "结构",
       "bilingual_examples": [
-        {
-          "en": "The cable dome creates a tension-integrated roof system.",
-          "zh": "索穹顶形成张力集成屋盖系统。"
-        }
+        {"en": "The cable dome creates a tension-integrated roof system.", "zh": "索穹顶形成张力集成屋盖系统。"}
       ],
       "的记忆": "cable(索) + dome(穹顶)",
       "related": ["Tensile Structure", "Geiger Dome"],
@@ -66,10 +56,7 @@
       "pos": "n.",
       "category": "结构",
       "bilingual_examples": [
-        {
-          "en": "Tensile structures use membranes and cables to create lightweight roofs.",
-          "zh": "张拉结构使用膜材和索形成轻盈的屋盖。"
-        }
+        {"en": "Tensile structures use membranes and cables to create lightweight roofs.", "zh": "张拉结构使用膜材和索形成轻盈的屋盖。"}
       ],
       "的记忆": "tensile(张力的) + structure(结构)",
       "related": ["Cable Dome", "Membrane"],
@@ -84,10 +71,7 @@
       "pos": "n.",
       "category": "结构",
       "bilingual_examples": [
-        {
-          "en": "The cable-stayed structure is efficient for medium to long spans.",
-          "zh": "斜拉结构适用于中长跨度。"
-        }
+        {"en": "The cable-stayed structure is efficient for medium to long spans.", "zh": "斜拉结构适用于中长跨度。"}
       ],
       "的记忆": "cable(索) + stayed(拉住的)",
       "related": ["Suspension", "Bridge"],
@@ -102,10 +86,7 @@
       "pos": "n.",
       "category": "结构",
       "bilingual_examples": [
-        {
-          "en": "Suspension structures are ideal for very long span bridges.",
-          "zh": "悬索结构是大跨桥梁的理想选择。"
-        }
+        {"en": "Suspension structures are ideal for very long span bridges.", "zh": "悬索结构是大跨桥梁的理想选择。"}
       ],
       "的记忆": "suspend(悬挂) + ion",
       "related": ["Cable-Stayed", "Golden Gate"],
@@ -120,10 +101,7 @@
       "pos": "n.",
       "category": "结构",
       "bilingual_examples": [
-        {
-          "en": "Prestressed steel improves structural performance under load.",
-          "zh": "预应力钢改善了结构在荷载下的性能。"
-        }
+        {"en": "Prestressed steel improves structural performance under load.", "zh": "预应力钢改善了结构在荷载下的性能。"}
       ],
       "的记忆": "pre(前) + stressed(受力的) + steel(钢)",
       "related": ["Tension Rod", "Post-tensioning"],
@@ -138,10 +116,7 @@
       "pos": "n.",
       "category": "连接",
       "bilingual_examples": [
-        {
-          "en": "Welded connections provide excellent structural continuity.",
-          "zh": "焊接连接提供优异的结构连续性。"
-        }
+        {"en": "Welded connections provide excellent structural continuity.", "zh": "焊接连接提供优异的结构连续性。"}
       ],
       "的记忆": "weld(焊接) + ed(过去式)",
       "related": ["Bolted Connection", "Welding"],
@@ -156,10 +131,7 @@
       "pos": "n.",
       "category": "连接",
       "bilingual_examples": [
-        {
-          "en": "High-strength bolted connections are commonly used in steel structures.",
-          "zh": "高强度螺栓连接在钢结构中广泛应用。"
-        }
+        {"en": "High-strength bolted connections are commonly used in steel structures.", "zh": "高强度螺栓连接在钢结构中广泛应用。"}
       ],
       "的记忆": "bolt(螺栓) + ed(被动)",
       "related": ["Welded Connection", "High-strength Bolt"],
@@ -174,23 +146,320 @@
       "pos": "n.",
       "category": "材料",
       "bilingual_examples": [
-        {
-          "en": "Structural steel has high strength and good ductility.",
-          "zh": "结构钢具有高强度和良好的延性。"
-        }
+        {"en": "Structural steel has high strength and good ductility.", "zh": "结构钢具有高强度和良好的延性。"}
       ],
       "的记忆": "structural(结构的) + steel(钢)",
       "related": ["H-Beam", "I-Beam"],
       "difficulty": 1,
       "tags": ["材料", "钢材"]
+    },
+    {
+      "id": "steel_011",
+      "word": "H-Beam",
+      "phonetic": "[eitʃ bi:m]",
+      "trans": "H型钢",
+      "pos": "n.",
+      "category": "材料",
+      "bilingual_examples": [
+        {"en": "The H-beam is widely used in steel frame construction.", "zh": "H型钢广泛应用于钢框架结构。"}
+      ],
+      "的记忆": "H(字母形状) + beam(梁)",
+      "related": ["I-Beam", "Box Section"],
+      "difficulty": 1,
+      "tags": ["型钢", "梁"]
+    },
+    {
+      "id": "steel_012",
+      "word": "Finite Element Analysis",
+      "phonetic": "['fainait 'elimənt ə'næləsɪs]",
+      "trans": "有限元分析",
+      "pos": "n.",
+      "category": "设计",
+      "bilingual_examples": [
+        {"en": "FEA is used to analyze complex structural behaviors.", "zh": "有限元分析用于分析复杂结构行为。"}
+      ],
+      "的记忆": "finite(有限的) + element(单元) + analysis(分析)",
+      "related": ["FEM", "Simulation"],
+      "difficulty": 3,
+      "tags": ["分析", "计算", "CAE"]
+    },
+    {
+      "id": "steel_013",
+      "word": "Buckling",
+      "phonetic": "['bʌklɪŋ]",
+      "trans": "屈曲",
+      "pos": "n.",
+      "category": "设计",
+      "bilingual_examples": [
+        {"en": "Buckling is a failure mode for compression members.", "zh": "屈曲是受压构件的破坏模式。"}
+      ],
+      "记忆": "buck(公羊) + ling → 像公羊一样顶撞 → 屈曲",
+      "related": ["Stability", "Compression"],
+      "difficulty": 2,
+      "tags": ["稳定", "受压"]
+    },
+    {
+      "id": "steel_014",
+      "word": "Deflection",
+      "phonetic": "[dɪ'flekʃən]",
+      "trans": "挠度",
+      "pos": "n.",
+      "category": "设计",
+      "bilingual_examples": [
+        {"en": "Deflection must be within acceptable limits.", "zh": "挠度必须在允许范围内。"}
+      ],
+      "记忆": "deflect(偏转) + ion",
+      "related": ["Deformation", "Serviceability"],
+      "difficulty": 2,
+      "tags": ["变形", "位移"]
+    },
+    {
+      "id": "steel_015",
+      "word": "Yield Strength",
+      "phonetic": "[ji:ld streŋθ]",
+      "trans": "屈服强度",
+      "pos": "n.",
+      "category": "设计",
+      "bilingual_examples": [
+        {"en": "Yield strength is the stress at which material begins to deform plastically.", "zh": "屈服强度是材料开始塑性变形的应力。"}
+      ],
+      "记忆": "yield(屈服) + strength(强度)",
+      "related": ["Ultimate Strength", "Steel Grade"],
+      "difficulty": 2,
+      "tags": ["强度", "材料"]
+    },
+    {
+      "id": "steel_016",
+      "word": "Erection",
+      "phonetic": "[ɪ'rekʃən]",
+      "trans": "吊装/安装",
+      "pos": "n.",
+      "category": "施工",
+      "bilingual_examples": [
+        {"en": "Steel erection was completed in three months.", "zh": "钢结构吊装在三个月内完成。"}
+      ],
+      "记忆": "erect(竖立) + ion",
+      "related": ["Construction", "Lifting"],
+      "difficulty": 1,
+      "tags": ["施工", "安装"]
+    },
+    {
+      "id": "steel_017",
+      "word": "Welding",
+      "phonetic": "['weldɪŋ]",
+      "trans": "焊接",
+      "pos": "n.",
+      "category": "施工",
+      "bilingual_examples": [
+        {"en": "Welding is a common method for connecting steel members.", "zh": "焊接是连接钢构件的常用方法。"}
+      ],
+      "记忆": "weld(焊接) + ing(动名词)",
+      "related": ["Welded Connection", "Weld Defect"],
+      "difficulty": 1,
+      "tags": ["焊接", "工艺"]
+    },
+    {
+      "id": "steel_018",
+      "word": "Shear Force",
+      "phonetic": "[ʃɪə fɔ:s]",
+      "trans": "剪力",
+      "pos": "n.",
+      "category": "设计",
+      "bilingual_examples": [
+        {"en": "Shear force acts parallel to the cross-section.", "zh": "剪力平行于横截面作用。"}
+      ],
+      "记忆": "shear(剪切) + force(力)",
+      "related": ["Bending Moment", "Shear Stress"],
+      "difficulty": 2,
+      "tags": ["内力", "受力"]
+    },
+    {
+      "id": "steel_019",
+      "word": "Bending Moment",
+      "phonetic": "['bendɪŋ 'məumənt]",
+      "trans": "弯矩",
+      "pos": "n.",
+      "category": "设计",
+      "bilingual_examples": [
+        {"en": "Bending moment causes the beam to bend.", "zh": "弯矩使梁弯曲。"}
+      ],
+      "记忆": "bending(弯曲) + moment(矩)",
+      "related": ["Shear Force", "Moment Diagram"],
+      "difficulty": 2,
+      "tags": ["内力", "弯矩"]
+    },
+    {
+      "id": "steel_020",
+      "word": "Foundation",
+      "phonetic": "[faun'deɪʃən]",
+      "trans": "基础",
+      "pos": "n.",
+      "category": "施工",
+      "bilingual_examples": [
+        {"en": "The foundation supports the entire structure.", "zh": "基础支撑整个结构。"}
+      ],
+      "记忆": "found(建立) + ation",
+      "related": ["Footing", " Pile Foundation"],
+      "difficulty": 1,
+      "tags": ["基础", "地基"]
+    },
+    {
+      "id": "steel_021",
+      "word": "Corrosion",
+      "phonetic": "[kə'rəuʒən]",
+      "trans": "腐蚀",
+      "pos": "n.",
+      "category": "材料",
+      "bilingual_examples": [
+        {"en": "Corrosion weakens steel structures over time.", "zh": "腐蚀会随时间削弱钢结构。"}
+      ],
+      "记忆": "corrode(腐蚀) + sion",
+      "related": ["Rust", "Protection"],
+      "difficulty": 1,
+      "tags": ["腐蚀", "耐久"]
+    },
+    {
+      "id": "steel_022",
+      "word": "Seismic Design",
+      "phonetic": "['saɪzmɪk dɪ'zaɪn]",
+      "trans": "抗震设计",
+      "pos": "n.",
+      "category": "设计",
+      "bilingual_examples": [
+        {"en": "Seismic design ensures structures can resist earthquakes.", "zh": "抗震设计确保结构能抵抗地震。"}
+      ],
+      "记忆": "seismic(地震的) + design(设计)",
+      "related": ["Earthquake", "Response Spectrum"],
+      "difficulty": 2,
+      "tags": ["抗震", "地震"]
+    },
+    {
+      "id": "steel_023",
+      "word": "Fatigue",
+      "phonetic": "[fə'ti:ɡ]",
+      "trans": "疲劳",
+      "pos": "n.",
+      "category": "设计",
+      "bilingual_examples": [
+        {"en": "Fatigue failure occurs under repeated loading.", "zh": "疲劳破坏发生在重复荷载作用下。"}
+      ],
+      "记忆": "fat(胖) + i → 胖了容易累 → 疲劳",
+      "related": ["S-N Curve", "Endurance Limit"],
+      "difficulty": 3,
+      "tags": ["疲劳", "破坏"]
+    },
+    {
+      "id": "steel_024",
+      "word": "Fire Resistance",
+      "phonetic": "['faɪə rɪ'zɪstəns]",
+      "trans": "耐火性",
+      "pos": "n.",
+      "category": "设计",
+      "bilingual_examples": [
+        {"en": "Fire resistance is critical for steel structures.", "zh": "耐火性对钢结构至关重要。"}
+      ],
+      "记忆": "fire(火) + resistance(抵抗)",
+      "related": ["Fire Protection", "Fire Rating"],
+      "difficulty": 2,
+      "tags": ["防火", "安全"]
+    },
+    {
+      "id": "steel_025",
+      "word": "Moment Connection",
+      "phonetic": "['məumənt kə'nekʃən]",
+      "trans": "刚接/弯矩连接",
+      "pos": "n.",
+      "category": "连接",
+      "bilingual_examples": [
+        {"en": "Moment connections transfer bending moments between members.", "zh": "刚接传递构件间的弯矩。"}
+      ],
+      "记忆": "moment(矩) + connection(连接)",
+      "related": ["Pinned Connection", "Rigid Frame"],
+      "difficulty": 2,
+      "tags": ["节点", "刚度"]
+    },
+    {
+      "id": "steel_026",
+      "word": "Pinned Connection",
+      "phonetic": "[pind kə'nekʃən]",
+      "trans": "铰接",
+      "pos": "n.",
+      "category": "连接",
+      "bilingual_examples": [
+        {"en": "Pinned connections allow rotation between members.", "zh": "铰接允许构件间转动。"}
+      ],
+      "记忆": "pin(钉) + ned → 像钉子一样连接但可转动",
+      "related": ["Moment Connection", "Hinge"],
+      "difficulty": 2,
+      "tags": ["节点", "转动"]
+    },
+    {
+      "id": "steel_027",
+      "word": "Anchor Bolt",
+      "phonetic": "['æŋkə bəult]",
+      "trans": "锚栓",
+      "pos": "n.",
+      "category": "连接",
+      "bilingual_examples": [
+        {"en": "Anchor bolts secure the column to the foundation.", "zh": "锚栓将柱固定在基础上。"}
+      ],
+      "记忆": "anchor(锚) + bolt(螺栓)",
+      "related": ["Base Plate", "Foundation"],
+      "difficulty": 2,
+      "tags": ["锚固", "基础"]
+    },
+    {
+      "id": "steel_028",
+      "word": "Column Base",
+      "phonetic": "['kɔləm beɪs]",
+      "trans": "柱脚",
+      "pos": "n.",
+      "category": "连接",
+      "bilingual_examples": [
+        {"en": "Column bases connect columns to foundations.", "zh": "柱脚将柱与基础连接。"}
+      ],
+      "记忆": "column(柱) + base(底部)",
+      "related": ["Anchor Bolt", "Base Plate"],
+      "difficulty": 2,
+      "tags": ["节点", "基础"]
+    },
+    {
+      "id": "steel_029",
+      "word": "Lateral Load",
+      "phonetic": "['lætərəl ləud]",
+      "trans": "侧向荷载",
+      "pos": "n.",
+      "category": "设计",
+      "bilingual_examples": [
+        {"en": "Lateral loads include wind and seismic forces.", "zh": "侧向荷载包括风和地震力。"}
+      ],
+      "记忆": "lateral(侧向的) + load(荷载)",
+      "related": ["Wind Load", "Seismic Load"],
+      "difficulty": 2,
+      "tags": ["荷载", "侧向"]
+    },
+    {
+      "id": "steel_030",
+      "word": "Crane",
+      "phonetic": "[kreɪn]",
+      "trans": "起重机",
+      "pos": "n.",
+      "category": "施工",
+      "bilingual_examples": [
+        {"en": "Cranes are essential for steel erection.", "zh": "起重机对钢结构吊装至关重要。"}
+      ],
+      "记忆": "谐音'可累人' → 起重机很辛苦",
+      "related": ["Tower Crane", "Mobile Crane"],
+      "difficulty": 1,
+      "tags": ["施工", "设备"]
     }
   ],
   
   "learning_progress": {
     "user_id": "default",
-    "total_words": 10,
+    "total_words": 30,
     "mastered": 0,
-    "learning": 10,
+    "learning": 30,
     "review_dates": {}
   }
 }
