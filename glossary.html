@@ -62,7 +62,6 @@
             padding: 2rem;
         }
         
-        /* 搜索框 */
         .search-box {
             background: white;
             border-radius: 12px;
@@ -84,31 +83,6 @@
             border-color: var(--secondary);
         }
         
-        /* 分类 */
-        .categories {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.8rem;
-            margin-bottom: 2rem;
-            justify-content: center;
-        }
-        
-        .category-tag {
-            background: white;
-            padding: 0.5rem 1.2rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            cursor: pointer;
-            border: 2px solid transparent;
-            transition: all 0.3s;
-        }
-        
-        .category-tag:hover, .category-tag.active {
-            background: var(--secondary);
-            color: white;
-        }
-        
-        /* 术语表格 */
         .term-table {
             width: 100%;
             background: white;
@@ -146,10 +120,8 @@
             color: #2d3748;
         }
         
-        .term-type {
+        .term-category {
             min-width: 80px;
-            color: #718096;
-            font-size: 0.9rem;
         }
         
         .term-example {
@@ -163,7 +135,6 @@
             padding: 0.2rem 0.6rem;
             border-radius: 4px;
             font-size: 0.75rem;
-            margin-right: 0.5rem;
         }
         
         .cat-structure { background: #e6fffa; color: #234e52; }
@@ -172,7 +143,6 @@
         .cat-design { background: #faf5ff; color: #6b46c1; }
         .cat-construction { background: #fffaf0; color: #c05621; }
         
-        /* 页脚 */
         footer {
             background: #1a202c;
             color: white;
@@ -181,7 +151,6 @@
             margin-top: 3rem;
         }
         
-        /* 响应式 */
         @media (max-width: 768px) {
             .term-table th, .term-table td {
                 padding: 0.8rem 0.5rem;
@@ -198,7 +167,7 @@
             <li><a href="news.html">新闻动态</a></li>
             <li><a href="glossary.html">术语表</a></li>
             <li><a href="listening.html">听力中心</a></li>
-            <li><a href="english.html">英语学习</a></li>
+            <li><a href="english.html">英文学习</a></li>
         </ul>
     </nav>
     
@@ -212,137 +181,52 @@
             <input type="text" id="searchInput" placeholder="🔍 搜索术语... (Search terms...)" oninput="filterTerms()">
         </div>
         
-        <table class="term-table" id="termTable">
+        <table class="term-table">
             <thead>
                 <tr>
-                    <th style="width: 20%;">English</th>
+                    <th style="width: 18%;">English</th>
                     <th style="width: 15%;">中文</th>
-                    <th style="width: 10%;">词性</th>
+                    <th style="width: 10%;">分类</th>
                     <th>例句 Example</th>
                 </tr>
             </thead>
             <tbody id="termBody">
-                <!-- 术语数据 -->
-                <tr data-category="structure">
-                    <td class="term-en"><span class="category-label cat-structure">结构</span>Space Frame</td>
-                    <td class="term-zh">网架结构</td>
-                    <td class="term-type">名词</td>
-                    <td class="term-example">The <strong>space frame</strong> roof spans 100 meters without internal supports.</td>
-                </tr>
-                <tr data-category="structure">
-                    <td class="term-en"><span class="category-label cat-structure">结构</span>Truss</td>
-                    <td class="term-zh">桁架</td>
-                    <td class="term-type">名词</td>
-                    <td class="term-example">The steel <strong>truss</strong> provides structural support for the bridge.</td>
-                </tr>
-                <tr data-category="structure">
-                    <td class="term-en"><span class="category-label cat-structure">结构</span>Frame Structure</td>
-                    <td class="term-zh">框架结构</td>
-                    <td class="term-type">名词</td>
-                    <td class="term-example">The <strong>frame structure</strong> allows for flexible interior layouts.</td>
-                </tr>
-                <tr data-category="connection">
-                    <td class="term-en"><span class="category-label cat-connection">连接</span>Welded Connection</td>
-                    <td class="term-zh">焊接连接</td>
-                    <td class="term-type">名词</td>
-                    <td class="term-example">The <strong>welded connection</strong> provides excellent structural continuity.</td>
-                </tr>
-                <tr data-category="connection">
-                    <td class="term-en"><span class="category-label cat-connection">连接</span>Bolted Connection</td>
-                    <td class="term-zh">螺栓连接</td>
-                    <td class="term-type">名词</td>
-                    <td class="term-example">High-strength <strong>bolted connections</strong> are commonly used in steel structures.</td>
-                </tr>
-                <tr data-category="material">
-                    <td class="term-en"><span class="category-label cat-material">材料</span>Structural Steel</td>
-                    <td class="term-zh">结构钢</td>
-                    <td class="term-type">名词</td>
-                    <td class="term-example"><strong>Structural steel</strong> has high strength and good ductility.</td>
-                </tr>
-                <tr data-category="material">
-                    <td class="term-en"><span class="category-label cat-material">材料</span>H-Beam</td>
-                    <td class="term-zh">H型钢</td>
-                    <td class="term-type">名词</td>
-                    <td class="term-example">The <strong>H-beam</strong> is widely used in steel frame construction.</td>
-                </tr>
-                <tr data-category="design">
-                    <td class="term-en"><span class="category-label cat-design">设计</span>Load Bearing</td>
-                    <td class="term-zh">承重</td>
-                    <td class="term-type">名词</td>
-                    <td class="term-example">The walls provide <strong>load bearing</strong> function for the building.</td>
-                </tr>
-                <tr data-category="construction">
-                    <td class="term-en"><span class="category-label cat-construction">施工</span>Erection</td>
-                    <td class="term-zh">吊装/安装</td>
-                    <td class="term-type">名词</td>
-                    <td class="term-example">Steel <strong>erection</strong> was completed in three months.</td>
-                </tr>
-                <tr data-category="structure">
-                    <td class="term-en"><span class="category-label cat-structure">结构</span>Cable Dome</td>
-                    <td class="term-zh">索穹顶</td>
-                    <td class="term-type">名词</td>
-                    <td class="term-example">The <strong>cable dome</strong> structure creates a tension-integrated roof system.</td>
-                </tr>
-                <tr data-category="structure">
-                    <td class="term-en"><span class="category-label cat-structure">结构</span>Tensile Structure</td>
-                    <td class="term-zh">张拉结构</td>
-                    <td class="term-type">名词</td>
-                    <td class="term-example"><strong>Tensile structures</strong> use membranes and cables to create lightweight roofs.</td>
-                </tr>
-                <tr data-category="structure">
-                    <td class="term-en"><span class="category-label cat-structure">结构</span>Cable-Stayed Structure</td>
-                    <td class="term-zh">斜拉结构</td>
-                    <td class="term-type">名词</td>
-                    <td class="term-example">The <strong>cable-stayed structure</strong> is efficient for medium to long spans.</td>
-                </tr>
-                <tr data-category="structure">
-                    <td class="term-en"><span class="category-label cat-structure">结构</span>Tension Rod</td>
-                    <td class="term-zh">张弦杆</td>
-                    <td class="term-type">名词</td>
-                    <td class="term-example">The <strong>tension rod</strong> system provides support for the long-span roof.</td>
-                </tr>
-                <tr data-category="structure">
-                    <td class="term-en"><span class="category-label cat-structure">结构</span>Suspended Structure</td>
-                    <td class="term-zh">悬吊结构</td>
-                    <td class="term-type">名词</td>
-                    <td class="term-example">The <strong>suspended structure</strong> maximizes ground floor space.</td>
-                </tr>
-                <tr data-category="structure">
-                    <td class="term-en"><span class="category-label cat-structure">结构</span>Cable Truss</td>
-                    <td class="term-zh">索桁架</td>
-                    <td class="term-type">名词</td>
-                    <td class="term-example">The <strong>cable truss</strong> combines the advantages of cables and trusses.</td>
-                </tr>
-                <tr data-category="structure">
-                    <td class="term-en"><span class="category-label cat-structure">结构</span>Suspension Structure</td>
-                    <td class="term-zh">悬索结构</td>
-                    <td class="term-type">名词</td>
-                    <td class="term-example">The <strong>suspension structure</strong> is ideal for very long span bridges.</td>
-                </tr>
-                <tr data-category="structure">
-                    <td class="term-en"><span class="category-label cat-structure">结构</span>Prestressed Steel</td>
-                    <td class="term-zh">预应力钢</td>
-                    <td class="term-type">名词</td>
-                    <td class="term-example"><strong>Prestressed steel</strong> improves structural performance under load.</td>
-                </tr>
-                <tr data-category="material">
-                    <td class="term-en"><span class="category-label cat-material">材料</span>Stainless Steel</td>
-                    <td class="term-zh">不锈钢</td>
-                    <td class="term-type">名词</td>
-                    <td class="term-example"><strong>Stainless steel</strong> is corrosion-resistant and durable.</td>
-                </tr>
-                <tr data-category="material">
-                    <td class="term-en"><span class="category-label cat-material">材料</span>Carbon Steel</td>
-                    <td class="term-zh">碳素钢</td>
-                    <td class="term-type">名词</td>
-                    <td class="term-example"><strong>Carbon steel</strong> is the most common structural material.</td>
-                </tr>
-                <tr data-category="material">
-                    <td class="term-en"><span class="category-label cat-material">材料</span>Alloy Steel</td>
-                    <td class="term-zh">合金钢</td>
-                    <td class="term-type">名词</td>
-                    <td class="term-example"><strong>Alloy steel</strong> has enhanced mechanical properties.</td>
-                </tr>
+                <!-- 结构 Structure -->
+                <tr><td class="term-en">Space Frame</td><td class="term-zh">网架结构</td><td class="term-category"><span class="category-label cat-structure">结构</span></td><td class="term-example">The <strong>space frame</strong> roof spans 100 meters without internal supports.</td></tr>
+                <tr><td class="term-en">Truss</td><td class="term-zh">桁架</td><td class="term-category"><span class="category-label cat-structure">结构</span></td><td class="term-example">The steel <strong>truss</strong> provides structural support for the bridge.</td></tr>
+                <tr><td class="term-en">Frame Structure</td><td class="term-zh">框架结构</td><td class="term-category"><span class="category-label cat-structure">结构</span></td><td class="term-example">The <strong>frame structure</strong> allows for flexible interior layouts.</td></tr>
+                <tr><td class="term-en">Cable Dome</td><td class="term-zh">索穹顶</td><td class="term-category"><span class="category-label cat-structure">结构</span></td><td class="term-example">The <strong>cable dome</strong> creates a tension-integrated roof system.</td></tr>
+                <tr><td class="term-en">Tensile Structure</td><td class="term-zh">张拉结构</td><td class="term-category"><span class="category-label cat-structure">结构</span></td><td class="term-example"><strong>Tensile structures</strong> use membranes and cables to create lightweight roofs.</td></tr>
+                <tr><td class="term-en">Cable-Stayed Structure</td><td class="term-zh">斜拉结构</td><td class="term-category"><span class="category-label cat-structure">结构</span></td><td class="term-example">The <strong>cable-stayed structure</strong> is efficient for medium to long spans.</td></tr>
+                <tr><td class="term-en">Tension Rod</td><td class="term-zh">张弦杆</td><td class="term-category"><span class="category-label cat-structure">结构</span></td><td class="term-example">The <strong>tension rod</strong> system provides support for the long-span roof.</td></tr>
+                <tr><td class="term-en">Suspended Structure</td><td class="term-zh">悬吊结构</td><td class="term-category"><span class="category-label cat-structure">结构</span></td><td class="term-example">The <strong>suspended structure</strong> maximizes ground floor space.</td></tr>
+                <tr><td class="term-en">Cable Truss</td><td class="term-zh">索桁架</td><td class="term-category"><span class="category-label cat-structure">结构</span></td><td class="term-example">The <strong>cable truss</strong> combines the advantages of cables and trusses.</td></tr>
+                <tr><td class="term-en">Suspension Structure</td><td class="term-zh">悬索结构</td><td class="term-category"><span class="category-label cat-structure">结构</span></td><td class="term-example">The <strong>suspension structure</strong> is ideal for very long span bridges.</td></tr>
+                <tr><td class="term-en">Prestressed Steel</td><td class="term-zh">预应力钢</td><td class="term-category"><span class="category-label cat-structure">结构</span></td><td class="term-example"><strong>Prestressed steel</strong> improves structural performance under load.</td></tr>
+                
+                <!-- 连接 Connection -->
+                <tr><td class="term-en">Welded Connection</td><td class="term-zh">焊接连接</td><td class="term-category"><span class="category-label cat-connection">连接</span></td><td class="term-example">The <strong>welded connection</strong> provides excellent structural continuity.</td></tr>
+                <tr><td class="term-en">Bolted Connection</td><td class="term-zh">螺栓连接</td><td class="term-category"><span class="category-label cat-connection">连接</span></td><td class="term-example">High-strength <strong>bolted connections</strong> are commonly used in steel structures.</td></tr>
+                <tr><td class="term-en">Rivet</td><td class="term-zh">铆钉连接</td><td class="term-category"><span class="category-label cat-connection">连接</span></td><td class="term-example"><strong>Riveted connections</strong> were common in historic steel structures.</td></tr>
+                
+                <!-- 材料 Material -->
+                <tr><td class="term-en">Structural Steel</td><td class="term-zh">结构钢</td><td class="term-category"><span class="category-label cat-material">材料</span></td><td class="term-example"><strong>Structural steel</strong> has high strength and good ductility.</td></tr>
+                <tr><td class="term-en">H-Beam</td><td class="term-zh">H型钢</td><td class="term-category"><span class="category-label cat-material">材料</span></td><td class="term-example">The <strong>H-beam</strong> is widely used in steel frame construction.</td></tr>
+                <tr><td class="term-en">Stainless Steel</td><td class="term-zh">不锈钢</td><td class="term-category"><span class="category-label cat-material">材料</span></td><td class="term-example"><strong>Stainless steel</strong> is corrosion-resistant and durable.</td></tr>
+                <tr><td class="term-en">Carbon Steel</td><td class="term-zh">碳素钢</td><td class="term-category"><span class="category-label cat-material">材料</span></td><td class="term-example"><strong>Carbon steel</strong> is the most common structural material.</td></tr>
+                <tr><td class="term-en">Alloy Steel</td><td class="term-zh">合金钢</td><td class="term-category"><span class="category-label cat-material">材料</span></td><td class="term-example"><strong>Alloy steel</strong> has enhanced mechanical properties.</td></tr>
+                <tr><td class="term-en">Steel Tube</td><td class="term-zh">钢管</td><td class="term-category"><span class="category-label cat-material">材料</span></td><td class="term-example"><strong>Steel tubes</strong> are used in columns and trusses.</td></tr>
+                
+                <!-- 设计 Design -->
+                <tr><td class="term-en">Load Bearing</td><td class="term-zh">承重</td><td class="term-category"><span class="category-label cat-design">设计</span></td><td class="term-example">The walls provide <strong>load bearing</strong> function for the building.</td></tr>
+                <tr><td class="term-en">Span</td><td class="term-zh">跨度</td><td class="term-category"><span class="category-label cat-design">设计</span></td><td class="term-example">The <strong>span</strong> of the bridge is 500 meters.</td></tr>
+                <tr><td class="term-en">Deflection</td><td class="term-zh">挠度</td><td class="term-category"><span class="category-label cat-design">设计</span></td><td class="term-example"><strong>Deflection</strong> must be within acceptable limits.</td></tr>
+                <tr><td class="term-en">Stress</td><td class="term-zh">应力</td><td class="term-category"><span class="category-label cat-design">设计</span></td><td class="term-example">The <strong>stress</strong> in the beam is within the allowable limit.</td></tr>
+                
+                <!-- 施工 Construction -->
+                <tr><td class="term-en">Erection</td><td class="term-zh">吊装/安装</td><td class="term-category"><span class="category-label cat-construction">施工</span></td><td class="term-example">Steel <strong>erection</strong> was completed in three months.</td></tr>
+                <tr><td class="term-en">Welding</td><td class="term-zh">焊接</td><td class="term-category"><span class="category-label cat-construction">施工</span></td><td class="term-example"><strong>Welding</strong> is a common method for connecting steel members.</td></tr>
+                <tr><td class="term-en">Grouting</td><td class="term-zh">灌浆</td><td class="term-category"><span class="category-label cat-construction">施工</span></td><td class="term-example"><strong>Grouting</strong> fills the gap between steel and concrete.</td></tr>
             </tbody>
         </table>
     </main>
@@ -353,7 +237,6 @@
     </footer>
     
     <script>
-        // 搜索功能
         function filterTerms() {
             const input = document.getElementById('searchInput').value.toLowerCase();
             const rows = document.querySelectorAll('#termBody tr');
@@ -361,23 +244,6 @@
             rows.forEach(row => {
                 const text = row.textContent.toLowerCase();
                 row.style.display = text.includes(input) ? '' : 'none';
-            });
-        }
-        
-        // 分类筛选
-        function filterCategory(category) {
-            document.querySelectorAll('.category-tag').forEach(tag => {
-                tag.classList.remove('active');
-            });
-            event.target.classList.add('active');
-            
-            const rows = document.querySelectorAll('#termBody tr');
-            rows.forEach(row => {
-                if (category === 'all' || row.dataset.category === category) {
-                    row.style.display = '';
-                } else {
-                    row.style.display = 'none';
-                }
             });
         }
     </script>
