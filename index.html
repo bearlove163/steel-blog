@@ -140,6 +140,69 @@
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
         
+        /* 精选文章 */
+        .featured-articles {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            margin-top: 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .featured-articles h2 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .article-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1.5rem;
+            background: var(--light);
+            border-radius: 12px;
+            text-decoration: none;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+        
+        .article-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-3px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .article-icon {
+            font-size: 2.5rem;
+        }
+        
+        .article-content h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .article-content p {
+            color: #4a5568;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .article-tag {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 0.2rem 0.8rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+        }
+        
         .about-section h2 {
             color: var(--primary);
             margin-bottom: 1rem;
@@ -202,6 +265,7 @@
         <ul>
             <li><a href="index.html">首页</a></li>
             <li><a href="news.html">新闻动态</a></li>
+            <li><a href="m-plus-museum.html">文章</a></li>
             <li><a href="glossary.html">术语表</a></li>
             <li><a href="flashcard.html">闪卡学习</a></li>
             <li><a href="english.html">英文学习</a></li>
@@ -240,6 +304,21 @@
                 <p>了解本站更多信息</p>
             </a>
         </div>
+        
+        <!-- 精选文章 -->
+        <section class="featured-articles">
+            <h2>📝 精选文章</h2>
+            <div class="articles-grid">
+                <a href="m-plus-museum.html" class="article-card">
+                    <div class="article-icon">🏛️</div>
+                    <div class="article-content">
+                        <h3>香港M+博物馆</h3>
+                        <p>架在地铁上的建筑奇迹 - 如何在地铁隧道上方建造65000㎡博物馆</p>
+                        <span class="article-tag">结构工程</span>
+                    </div>
+                </a>
+            </div>
+        </section>
         
         <!-- 关于区块 -->
         <section id="about" class="about-section">
