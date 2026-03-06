@@ -45,5 +45,15 @@
     {"id": "steel_039", "word": "Composite Beam", "phonetic": "[ˈkɒmpəzaɪt]", "trans": "组合梁", "pos": "n.", "category": "结构", "bilingual_examples": [{"en": "Composite beams use steel.", "zh": "组合梁使用钢和混凝土。"}], "记忆": "composite(组合)", "related": ["Stud"], "difficulty": 2, "tags": ["钢砼"]},
     {"id": "steel_040", "word": "Shear Stud", "phonetic": "[ʃɪə stʌd]", "trans": "抗剪栓钉", "pos": "n.", "category": "连接", "bilingual_examples": [{"en": "Studs connect steel.", "zh": "栓钉连接钢和混凝土。"}], "记忆": "shear(剪)+stud", "related": ["Composite"], "difficulty": 2, "tags": ["组合"]}
   ],
-  "learning_progress": {"total_words": 40, "mastered": 0, "learning": 40}
+  "learning_progress": {"total_words": 40, "mastered": 0, ,"learning_progress": {"total_words": 50, "mastered": 0, "learning": 50}}
 }
+,
+    {"id": "steel_041", "word": "Floor Deck", "phonetic": "[flɔ: dek]", "trans": "楼承板", "pos": "n.", "category": "材料", "bilingual_examples": [{"en": "Floor deck serves as formwork.", "zh": "楼承板兼作模板。"}], "记忆": "floor(楼)+deck(板)", "related": ["Composite"], "difficulty": 2, "tags": ["楼板"]},
+    {"id": "steel_042", "word": "Plate Girder", "phonetic": "[pleɪt ˈɡɑ:də]", "trans": "板梁", "pos": "n.", "category": "材料", "bilingual_examples": [{"en": "Plate girders are welded.", "zh": "板梁是焊接的。"}], "记忆": "plate(板)+girder(梁)", "related": ["Girder"], "difficulty": 2, "tags": ["焊接"]},
+    {"id": "steel_043", "word": "Crane Beam", "phonetic": "[kreɪn bi:m]", "trans": "吊车梁", "pos": "n.", "category": "材料", "bilingual_examples": [{"en": "Crane beams support cranes.", "zh": "吊车梁支撑起重机。"}], "记忆": "crane(起重机)+beam", "related": ["Runway"], "difficulty": 2, "tags": ["工业"]},
+    {"id": "steel_044", "word": "Gantry Crane", "phonetic": "[ˈɡæntri]", "trans": "门式起重机", "pos": "n.", "category": "施工", "bilingual_examples": [{"en": "Gantry cranes lift heavy.", "zh": "门式起重机吊重物。"}], "记忆": "gantry(龙门架)", "related": ["Tower"], "difficulty": 2, "tags": ["设备"]},
+    {"id": "steel_045", "word": "Tower Crane", "phonetic": "[ˈtaʊə]", "trans": "塔式起重机", "pos": "n.", "category": "施工", "bilingual_examples": [{"en": "Tower cranes build tall.", "zh": "塔式起重机建高层。"}], "记忆": "tower(塔)", "related": ["Gantry"], "difficulty": 1, "tags": ["高层"]},
+    {"id": "steel_046", "word": "Span", "phonetic": "[spæn]", "trans": "跨度", "pos": "n.", "category": "设计", "bilingual_examples": [{"en": "The span is 100m.", "zh": "跨度是100米。"}], "记忆": "span(跨越)", "related": ["Long Span"], "difficulty": 1, "tags": ["跨度"]},
+    {"id": "steel_047", "word": "Stress", "phonetic": "[stres]", "trans": "应力", "pos": "n.", "category": "设计", "bilingual_examples": [{"en": "Stress must be limited.", "zh": "应力必须限制。"}], "记忆": "stress(压力)", "related": ["Strain"], "difficulty": 1, "tags": ["内力"]},
+    {"id": "steel_048", "word": "Strain", "phonetic": "[streɪn]", "trans": "应变", "pos": "n.", "category": "设计", "bilingual_examples": [{"en": "Strain measures deformation.", "zh": "应变测量变形。"}], "记忆": "strain(拉紧)", "related": ["Stress"], "difficulty": 2, "tags": ["变形"]},
+,"learning_progress": {"total_words": 50, "mastered": 0, "learning": 50}}
