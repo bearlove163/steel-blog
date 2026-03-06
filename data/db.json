@@ -1,0 +1,34 @@
+{
+  "terms": [
+    {"id": 1, "en": "Space Frame", "zh": "网架结构", "category": "structure", "example_en": "The space frame roof spans 100 meters.", "example_zh": "网架结构屋面跨度可达100米。", "difficulty": 1},
+    {"id": 2, "en": "Truss", "zh": "桁架", "category": "structure", "example_en": "The steel truss provides support.", "example_zh": "钢桁架提供支撑。", "difficulty": 1},
+    {"id": 3, "en": "Cable Dome", "zh": "索穹顶", "category": "structure", "example_en": "Cable dome uses tension cables.", "example_zh": "索穹顶使用张力索。", "difficulty": 2},
+    {"id": 4, "en": "Tensile Structure", "zh": "张拉结构", "category": "structure", "example_en": "Tensile structures are lightweight.", "example_zh": "张拉结构轻盈美观。", "difficulty": 2},
+    {"id": 5, "en": "Cable-Stayed", "zh": "斜拉结构", "category": "structure", "example_en": "Cable-stayed bridges are elegant.", "example_zh": "斜拉桥造型优雅。", "difficulty": 2},
+    {"id": 6, "en": "Suspension", "zh": "悬索结构", "category": "structure", "example_en": "Suspension bridges span long distances.", "example_zh": "悬索桥跨度大。", "difficulty": 2},
+    {"id": 7, "en": "Prestressed", "zh": "预应力", "category": "structure", "example_en": "Prestressed concrete improves strength.", "example_zh": "预应力提高强度。", "difficulty": 2},
+    {"id": 8, "en": "Welded Connection", "zh": "焊接连接", "category": "connection", "example_en": "Welded joints are strong.", "example_zh": "焊接节点强度高。", "difficulty": 1},
+    {"id": 9, "en": "Bolted Connection", "zh": "螺栓连接", "category": "connection", "example_en": "Bolted connections are quick.", "example_zh": "螺栓连接快捷。", "difficulty": 1},
+    {"id": 10, "en": "Structural Steel", "zh": "结构钢", "category": "material", "example_en": "Structural steel is strong.", "example_zh": "结构钢强度高。", "difficulty": 1},
+    {"id": 11, "en": "H-Beam", "zh": "H型钢", "category": "material", "example_en": "H-beam is widely used.", "example_zh": "H型钢应用广泛。", "difficulty": 1},
+    {"id": 12, "en": "Frame Structure", "zh": "框架结构", "category": "structure", "example_en": "Frame structures are flexible.", "example_zh": "框架结构灵活。", "difficulty": 1},
+    {"id": 13, "en": "Load Bearing", "zh": "承重", "category": "design", "example_en": "Load bearing walls support weight.", "example_zh": "承重墙支撑重量。", "difficulty": 1},
+    {"id": 14, "en": "Span", "zh": "跨度", "category": "design", "example_en": "The span is 50 meters.", "example_zh": "跨度50米。", "difficulty": 1},
+    {"id": 15, "en": "Deflection", "zh": "挠度", "category": "design", "example_en": "Deflection must be limited.", "example_zh": "挠度必须限制。", "difficulty": 2},
+    {"id": 16, "en": "Erection", "zh": "吊装", "category": "construction", "example_en": "Steel erection takes months.", "example_zh": "钢结构吊装需数月。", "difficulty": 2},
+    {"id": 17, "en": "Welding", "zh": "焊接", "category": "construction", "example_en": "Welding requires skill.", "example_zh": "焊接需要技术。", "difficulty": 1},
+    {"id": 18, "en": "Buckling", "zh": "屈曲", "category": "design", "example_en": "Buckling is a failure mode.", "example_zh": "屈曲是一种破坏模式。", "difficulty": 2},
+    {"id": 19, "en": "Stress", "zh": "应力", "category": "design", "example_en": "Stress must be checked.", "example_zh": "必须验算应力。", "difficulty": 1},
+    {"id": 20, "en": "Strain", "zh": "应变", "category": "design", "example_en": "Strain measures deformation.", "example_zh": "应变测量变形。", "difficulty": 2}
+  ],
+  "lessons": [
+    {"id": 1, "title": "什么是钢结构？", "title_en": "What is Steel Structure?", "level": "easy", "duration": "01:30", "content_en": "Steel structure is a type of building structure.", "content_zh": "钢结构是一种建筑结构类型。"},
+    {"id": 2, "title": "钢结构的优点", "title_en": "Advantages of Steel", "level": "easy", "duration": "02:30", "content_en": "Steel has many advantages.", "content_zh": "钢材有许多优点。"},
+    {"id": 3, "title": "钢结构连接", "title_en": "Steel Connections", "level": "medium", "duration": "03:00", "content_en": "There are two main types.", "content_zh": "主要有两种类型。"}
+  ],
+  "userProgress": {
+    "streak": 0,
+    "totalLearned": 0,
+    "lastDate": null
+  }
+}
