@@ -12,7 +12,14 @@ const PORT = process.env.PORT || 3000;
 // 中间件
 app.use(cors());
 app.use(express.json());
-app.use(express.static('public'));
+
+// 静态资源：前端页面与资源均位于项目根目录
+app.use(express.static('.', { index: false }));
+
+// 显式指定首页为根目录的 index.html（钢结构研究院主页）
+app.get('/', (req, res) => {
+    res.sendFile(path.resolve(__dirname, '../index.html'));
+});
 
 // 数据库初始化
 const db = new sqlite3.Database('./steel.db');
