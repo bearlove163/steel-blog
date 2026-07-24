@@ -1,0 +1,794 @@
+<!-- 时间戳: 2607231713 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>越南建筑市场调研报告 · 极简瑞士风</title>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<style>
+  :root{
+    --white:#ffffff;
+    --gray-line:#f5f5f5;
+    --gray-text:#888888;
+    --black:#000000;
+    --red:#e63946;
+    --maxw:1180px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--white);
+    color:var(--black);
+    font-family:'Helvetica Neue','Arial','Noto Sans SC',sans-serif;
+    font-size:14px;
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+    letter-spacing:0.01em;
+  }
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 40px;}
+
+  /* 顶部导航条 */
+  .topbar{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    background:rgba(255,255,255,0.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--gray-line);
+  }
+  .topbar-inner{
+    max-width:var(--maxw);margin:0 auto;padding:0 40px;
+    height:52px;display:flex;align-items:center;justify-content:space-between;
+    font-size:11px;letter-spacing:0.12em;text-transform:uppercase;
+  }
+  .topbar-inner .brand{font-weight:700;color:var(--black);}
+  .topbar-inner .brand span{color:var(--red);}
+  .topbar-inner .meta{color:var(--gray-text);}
+  .nav-dots{display:flex;gap:18px;}
+  .nav-dots a{color:var(--gray-text);text-decoration:none;transition:color .2s;}
+  .nav-dots a:hover{color:var(--red);}
+
+  /* Hero 标题区 */
+  .hero{
+    padding:180px 0 120px;
+    border-bottom:1px solid var(--gray-line);
+  }
+  .hero .kicker{
+    font-size:11px;letter-spacing:0.3em;text-transform:uppercase;
+    color:var(--red);margin-bottom:48px;font-weight:600;
+  }
+  .hero h1{
+    font-size:64px;font-weight:700;line-height:1.05;letter-spacing:-0.02em;
+    margin-bottom:28px;
+  }
+  .hero h1 .accent{color:var(--red);}
+  .hero .sub{
+    font-size:18px;color:var(--gray-text);font-weight:300;max-width:680px;
+    line-height:1.6;
+  }
+  .hero .rule{width:60px;height:2px;background:var(--red);margin:48px 0 0;}
+
+  /* 章节通用 */
+  section.chapter{padding:100px 0;border-bottom:1px solid var(--gray-line);}
+  .ch-head{display:flex;align-items:flex-start;gap:48px;margin-bottom:72px;}
+  .ch-num{
+    font-size:128px;font-weight:200;line-height:0.85;color:var(--red);
+    letter-spacing:-0.04em;flex-shrink:0;
+  }
+  .ch-title-wrap{padding-top:12px;}
+  .ch-label{
+    font-size:11px;letter-spacing:0.25em;text-transform:uppercase;
+    color:var(--gray-text);margin-bottom:14px;
+  }
+  .ch-title{font-size:34px;font-weight:700;letter-spacing:-0.01em;line-height:1.2;}
+  .ch-desc{font-size:14px;color:var(--gray-text);margin-top:14px;max-width:560px;line-height:1.7;}
+
+  /* 正文段落 */
+  .prose{max-width:720px;font-size:14.5px;line-height:1.85;color:#222;}
+  .prose p{margin-bottom:20px;}
+  .prose strong{font-weight:700;color:var(--black);}
+  .prose .hl{color:var(--red);font-weight:600;}
+
+  /* 关键发现块 */
+  .finding{
+    border-left:2px solid var(--red);
+    padding:24px 0 24px 32px;margin:40px 0;
+  }
+  .finding .tag{
+    font-size:11px;letter-spacing:0.2em;text-transform:uppercase;
+    color:var(--red);font-weight:600;margin-bottom:10px;
+  }
+  .finding p{font-size:15px;line-height:1.75;}
+
+  /* 大号数据展示 */
+  .stats-grid{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
+    background:var(--gray-line);margin:48px 0;
+  }
+  .stat-cell{
+    background:var(--white);padding:40px 28px;
+  }
+  .stat-num{
+    font-size:42px;font-weight:300;color:var(--red);line-height:1;
+    letter-spacing:-0.02em;margin-bottom:12px;
+  }
+  .stat-label{
+    font-size:11px;letter-spacing:0.08em;color:var(--gray-text);
+    text-transform:uppercase;line-height:1.5;
+  }
+
+  /* 两栏布局 */
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:64px;margin:48px 0;}
+  .col-block .col-title{
+    font-size:12px;letter-spacing:0.2em;text-transform:uppercase;
+    font-weight:700;margin-bottom:24px;padding-bottom:14px;
+    border-bottom:1px solid var(--black);
+  }
+  .col-block ul{list-style:none;}
+  .col-block li{
+    padding:16px 0;border-bottom:1px solid var(--gray-line);
+    font-size:13.5px;line-height:1.6;
+  }
+  .col-block li .li-h{font-weight:700;display:block;margin-bottom:4px;}
+  .col-block li .li-d{color:var(--gray-text);font-size:12.5px;}
+
+  /* 政策红利条 */
+  .policy-bar{
+    background:var(--gray-line);padding:32px 40px;margin:48px 0;
+    display:flex;align-items:center;gap:24px;
+  }
+  .policy-bar .pb-tag{
+    font-size:11px;letter-spacing:0.2em;text-transform:uppercase;
+    color:var(--red);font-weight:700;flex-shrink:0;
+  }
+  .policy-bar .pb-text{font-size:14px;color:var(--black);}
+
+  /* 无边框表格 */
+  table.swiss{width:100%;border-collapse:collapse;margin:40px 0;font-size:13.5px;}
+  table.swiss thead th{
+    text-align:left;padding:14px 0;font-size:11px;letter-spacing:0.15em;
+    text-transform:uppercase;color:var(--gray-text);font-weight:600;
+    border-bottom:1.5px solid var(--black);
+  }
+  table.swiss tbody td{
+    padding:18px 0;border-bottom:1px solid var(--gray-line);
+    vertical-align:top;line-height:1.6;
+  }
+  table.swiss tbody tr:last-child td{border-bottom:1.5px solid var(--black);}
+  table.swiss td .t-main{font-weight:700;color:var(--black);}
+  table.swiss td .t-sub{color:var(--gray-text);font-size:12px;margin-top:3px;}
+
+  /* Mermaid 容器 */
+  .mermaid-box{
+    margin:48px 0;padding:48px;background:var(--white);
+    border:1px solid var(--gray-line);text-align:center;
+  }
+  .mermaid-box .mb-title{
+    font-size:11px;letter-spacing:0.2em;text-transform:uppercase;
+    color:var(--gray-text);margin-bottom:32px;
+  }
+  .mermaid{display:flex;justify-content:center;}
+
+  /* 技术实力数据条 */
+  .tech-stats{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:48px;
+    margin:56px 0;padding:48px 0;border-top:1.5px solid var(--black);
+    border-bottom:1.5px solid var(--black);
+  }
+  .tech-stat .ts-num{font-size:48px;font-weight:200;color:var(--red);line-height:1;letter-spacing:-0.03em;}
+  .tech-stat .ts-lbl{font-size:11px;letter-spacing:0.1em;color:var(--gray-text);margin-top:10px;text-transform:uppercase;line-height:1.5;}
+
+  /* 技术亮点标签 */
+  .tags{display:flex;flex-wrap:wrap;gap:10px;margin:32px 0;}
+  .tag-pill{
+    padding:8px 16px;border:1px solid var(--black);font-size:12px;
+    letter-spacing:0.04em;
+  }
+  .tag-pill.red{border-color:var(--red);color:var(--red);}
+
+  /* SWOT 四象限 */
+  .swot{
+    display:grid;grid-template-columns:1fr 1fr;gap:1px;
+    background:var(--black);margin:48px 0;
+  }
+  .swot-cell{background:var(--white);padding:40px 36px;min-height:200px;}
+  .swot-cell .sc-head{
+    display:flex;align-items:baseline;gap:12px;margin-bottom:20px;
+    padding-bottom:14px;border-bottom:1px solid var(--gray-line);
+  }
+  .swot-cell .sc-letter{font-size:28px;font-weight:300;color:var(--red);line-height:1;}
+  .swot-cell .sc-name{font-size:13px;letter-spacing:0.15em;text-transform:uppercase;font-weight:700;}
+  .swot-cell ul{list-style:none;}
+  .swot-cell li{font-size:13px;line-height:1.7;color:#333;padding:4px 0;}
+  .swot-cell li::before{content:"—  ";color:var(--red);}
+
+  /* 合作路径表特殊 */
+  .path-table table.swiss td .stage{
+    display:inline-block;font-size:11px;letter-spacing:0.1em;
+    text-transform:uppercase;font-weight:700;padding:3px 10px;
+    border:1px solid var(--black);margin-right:10px;
+  }
+  .path-table table.swiss td .stage.red{border-color:var(--red);color:var(--red);}
+
+  /* 结论区 */
+  .conclusion{
+    padding:80px 0;margin-top:40px;border-top:1.5px solid var(--black);
+  }
+  .conclusion .c-label{
+    font-size:11px;letter-spacing:0.25em;text-transform:uppercase;
+    color:var(--red);font-weight:600;margin-bottom:20px;
+  }
+  .conclusion .c-main{font-size:28px;font-weight:700;line-height:1.4;margin-bottom:32px;letter-spacing:-0.01em;}
+  .conclusion .c-stars{color:var(--red);font-size:24px;}
+  .conclusion .c-list{list-style:none;margin:32px 0;}
+  .conclusion .c-list li{
+    display:flex;gap:16px;padding:14px 0;border-bottom:1px solid var(--gray-line);
+    font-size:14px;
+  }
+  .conclusion .c-list li .idx{color:var(--red);font-weight:700;flex-shrink:0;}
+  .key-action{
+    background:var(--black);color:var(--white);padding:40px;margin-top:48px;
+  }
+  .key-action .ka-tag{
+    font-size:11px;letter-spacing:0.25em;text-transform:uppercase;
+    color:var(--red);margin-bottom:14px;font-weight:600;
+  }
+  .key-action .ka-text{font-size:18px;line-height:1.6;font-weight:300;}
+  .key-action .ka-text b{color:var(--white);font-weight:600;}
+
+  /* 页脚 */
+  footer{
+    padding:60px 0 80px;border-top:1px solid var(--gray-line);
+  }
+  footer .foot-inner{
+    display:flex;justify-content:space-between;align-items:center;
+    font-size:11px;letter-spacing:0.08em;color:var(--gray-text);
+    text-transform:uppercase;
+  }
+  footer .foot-inner .f-red{color:var(--red);}
+
+  /* 淡入动画 */
+  .fade{opacity:0;transition:opacity 1.2s ease;}
+  .fade.in{opacity:1;}
+
+  /* 响应式 */
+  @media(max-width:900px){
+    .wrap{padding:0 24px;}
+    .hero{padding:120px 0 80px;}
+    .hero h1{font-size:40px;}
+    .ch-head{flex-direction:column;gap:20px;}
+    .ch-num{font-size:88px;}
+    .ch-title{font-size:26px;}
+    .stats-grid,.tech-stats{grid-template-columns:repeat(2,1fr);}
+    .two-col{grid-template-columns:1fr;gap:40px;}
+    .swot{grid-template-columns:1fr;}
+    .nav-dots{display:none;}
+    .foot-inner{flex-direction:column;gap:12px;text-align:center;}
+  }
+</style>
+</head>
+<body>
+
+<!-- 顶部导航 -->
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">VIETNAM <span>·</span> MARKET REPORT</div>
+    <div class="nav-dots">
+      <a href="#ch1">01</a>
+      <a href="#ch2">02</a>
+      <a href="#ch3">03</a>
+      <a href="#ch4">04</a>
+      <a href="#ch5">05</a>
+      <a href="#ch6">06</a>
+    </div>
+    <div class="meta">2026 · 07 · 23</div>
+  </div>
+</div>
+
+<!-- Hero -->
+<header class="hero">
+  <div class="wrap">
+    <div class="kicker fade">Research Report / 建筑市场调研</div>
+    <h1 class="fade">越南建筑市场<br>调研<span class="accent">报告</span></h1>
+    <p class="sub fade">聚焦河内 · 胡志明 ｜ 大勇钢构发展路径与精工钢构合作评估</p>
+    <div class="rule fade"></div>
+  </div>
+</header>
+
+<!-- 一、执行摘要 -->
+<section class="chapter" id="ch1">
+  <div class="wrap">
+    <div class="ch-head fade">
+      <div class="ch-num">01</div>
+      <div class="ch-title-wrap">
+        <div class="ch-label">Executive Summary</div>
+        <h2 class="ch-title">执行摘要</h2>
+      </div>
+    </div>
+    <div class="prose fade">
+      <p>越南正处于<span class="hl">"基建大年"</span>，2024年外商投资项目新增资金约 <strong>253.5亿美元</strong>，同比增长 <strong>9.4%</strong>。河内与胡志明市双核驱动，大规模地铁、跨海通道、体育城等项目密集上马。2026年新版《投资法》生效，外资准入从<span class="hl">"严进宽管"转向"宽进严管"</span>，为中企带来重大机遇。</p>
+      <p>大勇（Dai Dung）集团是越南钢结构与重型工程领域的<strong>绝对龙头</strong>，业务遍及50余国，承担了河内国家展览中心、铜鼓体育场穹顶等国家级地标。其外资合作网络已覆盖中国（中交疏浚、法奥机器人、天意机械）、美国、日本、芬兰、澳大利亚等国企业。</p>
+    </div>
+    <div class="finding fade">
+      <div class="tag">Key Finding / 关键发现</div>
+      <p>精工钢构已于 <strong>2026年7月</strong> 签约越南铜鼓体育场开合屋盖项目——而该项目的穹顶钢结构总承包商正是<strong>大勇集团</strong>。两家企业已在同一超级工程中形成<span class="hl">产业链上下游关系</span>。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 二、越南建筑市场动态 -->
+<section class="chapter" id="ch2">
+  <div class="wrap">
+    <div class="ch-head fade">
+      <div class="ch-num">02</div>
+      <div class="ch-title-wrap">
+        <div class="ch-label">Market Dynamics</div>
+        <h2 class="ch-title">越南建筑市场动态</h2>
+      </div>
+    </div>
+
+    <div class="ch-label fade" style="margin-bottom:0;">Core Data / 核心数据</div>
+    <div class="stats-grid fade">
+      <div class="stat-cell">
+        <div class="stat-num">253.5亿</div>
+        <div class="stat-label">USD / 2024年外资新增</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">+9.4%</div>
+        <div class="stat-label">外资同比增长</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">670亿</div>
+        <div class="stat-label">USD / 高铁项目批准</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">925万亿</div>
+        <div class="stat-label">VND / 奥林匹克体育城</div>
+      </div>
+    </div>
+
+    <div class="two-col fade">
+      <div class="col-block">
+        <div class="col-title">河内市场热点</div>
+        <ul>
+          <li><span class="li-h">5条地铁 + 3个保障房</span><span class="li-d">一次性开建，投入130万亿越盾</span></li>
+          <li><span class="li-h">铜鼓体育场（Hung Vuong Stadium）</span><span class="li-d">容纳13.5万座</span></li>
+          <li><span class="li-h">国家展览中心</span><span class="li-d">总用钢量约24,000吨</span></li>
+          <li><span class="li-h">南北高铁项目</span><span class="li-d">国会批准670亿美元</span></li>
+        </ul>
+      </div>
+      <div class="col-block">
+        <div class="col-title">胡志明市场热点</div>
+        <ul>
+          <li><span class="li-h">8大重点工程</span><span class="li-d">总投资253万亿越盾</span></li>
+          <li><span class="li-h">芹耶—头顿跨海通道</span><span class="li-d">投资93万亿越盾</span></li>
+          <li><span class="li-h">盖梅下游综合港</span><span class="li-d">投资50.8万亿越盾</span></li>
+          <li><span class="li-h">西贡河人行天桥</span><span class="li-d">标志性城市工程</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="policy-bar fade">
+      <div class="pb-tag">政策红利</div>
+      <div class="pb-text">2026新《投资法》从 <strong>"严进宽管"</strong> 转向 <strong style="color:var(--red);">"宽进严管"</strong>。</div>
+    </div>
+
+    <div class="ch-label fade" style="margin-top:64px;">Foreign Competition / 外资竞争格局</div>
+    <table class="swiss fade">
+      <thead>
+        <tr><th style="width:18%;">国家</th><th style="width:42%;">投资特征</th><th>重点领域</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><span class="t-main">韩国</span></td><td>年均新增超100亿美元，累计952.3亿美元</td><td>交通基建、高端制造</td></tr>
+        <tr><td><span class="t-main">中国</span></td><td>中铁六局承建河内轻轨2号线</td><td>轨道交通、能源、钢结构</td></tr>
+        <tr><td><span class="t-main">日本</span></td><td>传统重要投资国</td><td>基建、制造业</td></tr>
+        <tr><td><span class="t-main">新加坡</span></td><td>活跃投资国</td><td>房地产、物流、金融</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- 三、大勇集团 -->
+<section class="chapter" id="ch3">
+  <div class="wrap">
+    <div class="ch-head fade">
+      <div class="ch-num">03</div>
+      <div class="ch-title-wrap">
+        <div class="ch-label">Dayong Group</div>
+        <h2 class="ch-title">大勇集团发展路径与技术实力</h2>
+      </div>
+    </div>
+
+    <div class="finding fade" style="border-color:var(--gray-line);">
+      <div class="tag" style="color:var(--gray-text);">Name Note / 名称说明</div>
+      <p style="color:#444;">越南语 <strong>"Dai Dung"</strong> 在中文媒体中存在"大勇"与"大东"两种音译，指向同一实体——董事长均为 <strong>郑进勇（Trinh Tien Dung）</strong>。</p>
+    </div>
+
+    <div class="mermaid-box fade">
+      <div class="mb-title">Development Path / 发展路径</div>
+      <div class="mermaid">
+graph LR
+    A["创立初期<br>钢结构制造"] --> B["国内扩张<br>越南地标项目"]
+    B --> C["多元化发展<br>造船+机械工程"]
+    C --> D["全球化布局<br>50+国家"]
+    D --> E["智能制造<br>机器人焊接产线"]
+    E --> F["当前阶段<br>越南钢结构龙头"]
+    style A fill:#fff,stroke:#000,stroke-width:1px,color:#000
+    style B fill:#fff,stroke:#000,stroke-width:1px,color:#000
+    style C fill:#fff,stroke:#000,stroke-width:1px,color:#000
+    style D fill:#fff,stroke:#000,stroke-width:1px,color:#000
+    style E fill:#fff,stroke:#000,stroke-width:1px,color:#000
+    style F fill:#fff,stroke:#e63946,stroke-width:2px,color:#e63946
+    linkStyle 0 stroke:#000,stroke-width:1px;
+    linkStyle 1 stroke:#000,stroke-width:1px;
+    linkStyle 2 stroke:#000,stroke-width:1px;
+    linkStyle 3 stroke:#000,stroke-width:1px;
+    linkStyle 4 stroke:#e63946,stroke-width:1.5px;
+      </div>
+    </div>
+
+    <div class="ch-label fade" style="margin-top:64px;">Landmark Projects / 核心地标项目</div>
+    <table class="swiss fade">
+      <thead>
+        <tr><th style="width:26%;">项目</th><th style="width:14%;">地点</th><th style="width:36%;">规模 / 特点</th><th>角色</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><span class="t-main">国家展览中心（金龟展览宫）</span></td><td>河内</td><td>穹顶直径360m，总用钢量约24,000吨</td><td>钢结构总承包</td></tr>
+        <tr><td><span class="t-main">铜鼓体育场穹顶</span></td><td>河内</td><td>总重数万吨，跨度超350m，高度约120m</td><td>金属结构专项承包商</td></tr>
+        <tr><td><span class="t-main">西贡河人行天桥</span></td><td>胡志明</td><td>象征水椰叶的空间钢拱，高80m</td><td>钢拱结构制造</td></tr>
+        <tr><td><span class="t-main">Paks核电站</span></td><td>匈牙利</td><td>国际重大能源项目</td><td>钢结构部件供应</td></tr>
+        <tr><td><span class="t-main">Lusail体育场</span></td><td>卡塔尔</td><td>2022世界杯主场馆</td><td>钢结构参与</td></tr>
+        <tr><td><span class="t-main">Nihonbashi Green Building</span></td><td>东京</td><td>日本地标建筑</td><td>钢结构供应</td></tr>
+        <tr><td><span class="t-main">Powerhouse Parramatta</span></td><td>澳大利亚</td><td>重要文化建筑</td><td>钢结构供应</td></tr>
+        <tr><td><span class="t-main">Misk Museum</span></td><td>沙特</td><td>沙特重要博物馆</td><td>钢结构供应</td></tr>
+        <tr><td><span class="t-main">丹德海底隧道</span></td><td>丹麦-德国</td><td>世界最长海底隧道</td><td>复杂部件制造</td></tr>
+        <tr><td><span class="t-main">21800吨油/化学品船</span></td><td>越南</td><td>越南最大型油/化学品船之一</td><td>自主建造</td></tr>
+      </tbody>
+    </table>
+
+    <div class="ch-label fade" style="margin-top:72px;">Technical Strength / 技术实力数据</div>
+    <div class="tech-stats fade">
+      <div class="tech-stat"><div class="ts-num">50+</div><div class="ts-lbl">国家覆盖</div></div>
+      <div class="tech-stat"><div class="ts-num">4</div><div class="ts-lbl">座制造基地</div></div>
+      <div class="tech-stat"><div class="ts-num">60+</div><div class="ts-lbl">台协作机器人</div></div>
+      <div class="tech-stat"><div class="ts-num">24,000</div><div class="ts-lbl">吨 / 单项目最大用钢量</div></div>
+    </div>
+
+    <div class="ch-label fade" style="margin-top:48px;">Tech Highlights / 技术亮点</div>
+    <div class="tags fade">
+      <span class="tag-pill">大跨度同步提升技术</span>
+      <span class="tag-pill">智能焊接产线（法奥FR5/FR10）</span>
+      <span class="tag-pill">ASTM A500 认证</span>
+      <span class="tag-pill">ISO 9001 / 14001 认证</span>
+      <span class="tag-pill red">全产业链能力</span>
+    </div>
+  </div>
+</section>
+
+<!-- 四、外资合作单位 -->
+<section class="chapter" id="ch4">
+  <div class="wrap">
+    <div class="ch-head fade">
+      <div class="ch-num">04</div>
+      <div class="ch-title-wrap">
+        <div class="ch-label">Partnerships</div>
+        <h2 class="ch-title">外资合作单位梳理</h2>
+      </div>
+    </div>
+
+    <div class="ch-label fade">China Partners / 中国合作伙伴</div>
+    <div class="two-col fade" style="margin-top:24px;">
+      <div class="col-block">
+        <ul>
+          <li><span class="li-h">中交疏浚</span><span class="li-d">2025年1月签订谅解备忘录，合作港航建设、市政设施、生态环保、海上风电等</span></li>
+          <li><span class="li-h">法奥机器人</span><span class="li-d">60台协作焊接机器人，2026年加购100台+</span></li>
+        </ul>
+      </div>
+      <div class="col-block">
+        <ul>
+          <li><span class="li-h">天意机械</span><span class="li-d">装配式建筑设备、绿色建材生产线战略合作</span></li>
+          <li><span class="li-h" style="color:var(--red);">越南本土关键方</span><span class="li-d">Vingroup集团（最大投资方）、Hoa Phat和发集团（70%钢材供应）</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="ch-label fade" style="margin-top:56px;">International Partners / 国际合作伙伴</div>
+    <table class="swiss fade">
+      <thead>
+        <tr><th style="width:34%;">合作方</th><th style="width:20%;">国家</th><th>合作内容</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><span class="t-main">美国数据中心 / 军事造船厂</span></td><td>美国</td><td>合同额6000万美元+</td></tr>
+        <tr><td><span class="t-main">科尼集团</span></td><td>芬兰</td><td>RTG龙门起重机系统</td></tr>
+        <tr><td><span class="t-main">日本业主</span></td><td>日本</td><td>Nihonbashi Green Building</td></tr>
+        <tr><td><span class="t-main">澳洲业主</span></td><td>澳大利亚</td><td>Powerhouse Parramatta</td></tr>
+        <tr><td><span class="t-main">沙特业主</span></td><td>沙特</td><td>Misk Museum</td></tr>
+        <tr><td><span class="t-main">海底隧道项目</span></td><td>丹麦 / 德国</td><td>世界最长海底隧道部件</td></tr>
+      </tbody>
+    </table>
+
+    <div class="mermaid-box fade">
+      <div class="mb-title">Partnership Network / 合作网络图谱</div>
+      <div class="mermaid">
+graph TD
+    DD["大勇集团"]
+    DD --> P1["中交疏浚"]
+    DD --> P2["法奥机器人"]
+    DD --> P3["天意机械"]
+    DD --> P4["Vingroup"]
+    DD --> P5["Hoa Phat"]
+    DD --> P6["美国客户"]
+    DD --> P7["科尼集团"]
+    DD --> P8["日本业主"]
+    DD --> P9["澳洲业主"]
+    DD --> P10["沙特业主"]
+    DD --> P11["海底隧道项目"]
+    style DD fill:#fff,stroke:#e63946,stroke-width:2px,color:#e63946
+    style P1 fill:#fff,stroke:#000,stroke-width:1px,color:#000
+    style P2 fill:#fff,stroke:#000,stroke-width:1px,color:#000
+    style P3 fill:#fff,stroke:#000,stroke-width:1px,color:#000
+    style P4 fill:#fff,stroke:#000,stroke-width:1px,color:#000
+    style P5 fill:#fff,stroke:#000,stroke-width:1px,color:#000
+    style P6 fill:#fff,stroke:#000,stroke-width:1px,color:#000
+    style P7 fill:#fff,stroke:#000,stroke-width:1px,color:#000
+    style P8 fill:#fff,stroke:#000,stroke-width:1px,color:#000
+    style P9 fill:#fff,stroke:#000,stroke-width:1px,color:#000
+    style P10 fill:#fff,stroke:#000,stroke-width:1px,color:#000
+    style P11 fill:#fff,stroke:#000,stroke-width:1px,color:#000
+    linkStyle 0 stroke:#000,stroke-width:1px;
+    linkStyle 1 stroke:#000,stroke-width:1px;
+    linkStyle 2 stroke:#000,stroke-width:1px;
+    linkStyle 3 stroke:#000,stroke-width:1px;
+    linkStyle 4 stroke:#000,stroke-width:1px;
+    linkStyle 5 stroke:#000,stroke-width:1px;
+    linkStyle 6 stroke:#000,stroke-width:1px;
+    linkStyle 7 stroke:#000,stroke-width:1px;
+    linkStyle 8 stroke:#000,stroke-width:1px;
+    linkStyle 9 stroke:#000,stroke-width:1px;
+    linkStyle 10 stroke:#000,stroke-width:1px;
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 五、精工钢构 -->
+<section class="chapter" id="ch5">
+  <div class="wrap">
+    <div class="ch-head fade">
+      <div class="ch-num">05</div>
+      <div class="ch-title-wrap">
+        <div class="ch-label">Jinggong Steel</div>
+        <h2 class="ch-title">精工钢构海外布局</h2>
+      </div>
+    </div>
+
+    <div class="stats-grid fade">
+      <div class="stat-cell">
+        <div class="stat-num">72亿</div>
+        <div class="stat-label">CNY / 海外新签订单</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">+195%</div>
+        <div class="stat-label">海外工业订单增长</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">10</div>
+        <div class="stat-label">个海外分支机构</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">30</div>
+        <div class="stat-label">国服务网络</div>
+      </div>
+    </div>
+
+    <div class="finding fade">
+      <div class="tag">Vietnam Breakthrough / 越南突破</div>
+      <p><strong>2026年7月</strong> 签约铜鼓体育场开合屋盖项目——全球最大足球场 <strong>13.5万座</strong>，直径 <strong>315米</strong> 穹顶。</p>
+    </div>
+
+    <div class="ch-label fade" style="margin-top:56px;">Going-Global Strategy / 出海战略</div>
+    <div class="tags fade" style="margin-top:24px;">
+      <span class="tag-pill">六大海外运营中心</span>
+      <span class="tag-pill">越南设立子公司（2025年10月批准）</span>
+      <span class="tag-pill">中国标准输出</span>
+      <span class="tag-pill">"精工云"数字化平台</span>
+      <span class="tag-pill red">三熟原则</span>
+    </div>
+
+    <div class="ch-label fade" style="margin-top:56px;">Benchmark Projects / 精工标杆项目</div>
+    <table class="swiss fade">
+      <thead>
+        <tr><th style="width:30%;">项目</th><th style="width:18%;">地点</th><th>技术亮点</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><span class="t-main" style="color:var(--red);">铜鼓体育场开合屋盖</span></td><td>越南河内</td><td>全球最大足球场开合屋顶，直径315m</td></tr>
+        <tr><td><span class="t-main">雅加达国际体育场</span></td><td>印尼</td><td>中国企业首个含开合屋盖钢结构体育场</td></tr>
+        <tr><td><span class="t-main">沙特帝王塔</span></td><td>沙特</td><td>超高层钢结构</td></tr>
+        <tr><td><span class="t-main">卡塔尔卢赛尔体育场</span></td><td>卡塔尔</td><td>2022世界杯主场馆</td></tr>
+        <tr><td><span class="t-main">阿尔及利亚巴哈吉体育场</span></td><td>阿尔及利亚</td><td>中国抗震标准输出</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- 六、合作可能性评估 -->
+<section class="chapter" id="ch6">
+  <div class="wrap">
+    <div class="ch-head fade">
+      <div class="ch-num">06</div>
+      <div class="ch-title-wrap">
+        <div class="ch-label">Cooperation Assessment</div>
+        <h2 class="ch-title">合作可能性评估</h2>
+      </div>
+    </div>
+
+    <div class="finding fade">
+      <div class="tag">Key Premise / 关键前提</div>
+      <p>铜鼓体育场项目中大勇集团是<strong>穹顶钢结构总承包商</strong>，精工钢构签约了<strong>开合屋盖项目</strong>，已形成<span class="hl">产业链上下游天然协作关系</span>。</p>
+    </div>
+
+    <div class="ch-label fade" style="margin-top:64px;">SWOT Analysis / SWOT分析</div>
+    <div class="swot fade">
+      <div class="swot-cell">
+        <div class="sc-head"><span class="sc-letter">S</span><span class="sc-name">优势 Strengths</span></div>
+        <ul>
+          <li>大勇本地制造能力 + 政府关系</li>
+          <li>精工高端技术全球领先 + 越南子公司已设立</li>
+          <li>铜鼓项目初步协作基础</li>
+        </ul>
+      </div>
+      <div class="swot-cell">
+        <div class="sc-head"><span class="sc-letter">W</span><span class="sc-name">劣势 Weaknesses</span></div>
+        <ul>
+          <li>大勇高端开合屋盖技术依赖外部</li>
+          <li>95%高强钢进口</li>
+          <li>精工本地产能有限</li>
+        </ul>
+      </div>
+      <div class="swot-cell">
+        <div class="sc-head"><span class="sc-letter">O</span><span class="sc-name">机会 Opportunities</span></div>
+        <ul>
+          <li>越南基建大年</li>
+          <li>2026新投资法放开</li>
+          <li>大勇对华合作意愿明确</li>
+          <li>精工技术 + 大勇实施 = 轻资产模式</li>
+        </ul>
+      </div>
+      <div class="swot-cell">
+        <div class="sc-head"><span class="sc-letter">T</span><span class="sc-name">威胁 Threats</span></div>
+        <ul>
+          <li>韩日企业竞争</li>
+          <li>大勇技术实力提升减少依赖</li>
+          <li>本土保护政策风险</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mermaid-box fade">
+      <div class="mb-title">Recommended Model / 推荐合作模式</div>
+      <div class="mermaid">
+graph TB
+    JG["精工钢构<br>技术输出"]
+    JG --> R1["结构设计"]
+    JG --> R2["机械系统设计"]
+    JG --> R3["智慧运维"]
+    JG --> R4["标准培训"]
+    R1 --> DD["大勇集团<br>本地实施"]
+    R2 --> DD
+    R3 --> DD
+    R4 --> DD
+    DD --> D1["钢结构制造"]
+    DD --> D2["现场吊装"]
+    DD --> D3["供应链整合"]
+    DD --> D4["政府合规"]
+    D1 --> PROJ["越南高端地标项目"]
+    D2 --> PROJ
+    D3 --> PROJ
+    D4 --> PROJ
+    style JG fill:#fff,stroke:#e63946,stroke-width:2px,color:#e63946
+    style DD fill:#fff,stroke:#000,stroke-width:2px,color:#000
+    style PROJ fill:#fff,stroke:#e63946,stroke-width:2px,color:#e63946
+    style R1 fill:#fff,stroke:#000,stroke-width:1px,color:#000
+    style R2 fill:#fff,stroke:#000,stroke-width:1px,color:#000
+    style R3 fill:#fff,stroke:#000,stroke-width:1px,color:#000
+    style R4 fill:#fff,stroke:#000,stroke-width:1px,color:#000
+    style D1 fill:#fff,stroke:#000,stroke-width:1px,color:#000
+    style D2 fill:#fff,stroke:#000,stroke-width:1px,color:#000
+    style D3 fill:#fff,stroke:#000,stroke-width:1px,color:#000
+    style D4 fill:#fff,stroke:#000,stroke-width:1px,color:#000
+    linkStyle 0 stroke:#000,stroke-width:1px;
+    linkStyle 1 stroke:#000,stroke-width:1px;
+    linkStyle 2 stroke:#000,stroke-width:1px;
+    linkStyle 3 stroke:#000,stroke-width:1px;
+    linkStyle 4 stroke:#000,stroke-width:1px;
+    linkStyle 5 stroke:#000,stroke-width:1px;
+    linkStyle 6 stroke:#000,stroke-width:1px;
+    linkStyle 7 stroke:#000,stroke-width:1px;
+    linkStyle 8 stroke:#e63946,stroke-width:1.5px;
+    linkStyle 9 stroke:#e63946,stroke-width:1.5px;
+    linkStyle 10 stroke:#e63946,stroke-width:1.5px;
+    linkStyle 11 stroke:#e63946,stroke-width:1.5px;
+      </div>
+    </div>
+
+    <div class="ch-label fade" style="margin-top:56px;">Cooperation Path / 合作路径</div>
+    <div class="path-table fade">
+    <table class="swiss">
+      <thead>
+        <tr><th style="width:14%;">阶段</th><th style="width:16%;">时间</th><th style="width:38%;">行动</th><th>目标</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><span class="stage red">短期</span></td><td>0-6个月</td><td>以铜鼓项目为纽带建立联合工作组</td><td>建立信任</td></tr>
+        <tr><td><span class="stage">中期</span></td><td>6-18个月</td><td>签订战略合作协议，建立联合技术团队</td><td>联合投标案例</td></tr>
+        <tr><td><span class="stage">长期</span></td><td>18-36个月</td><td>探索合资或技术授权，设联合技术中心</td><td>占30%+市场份额</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <div class="conclusion fade">
+      <div class="c-label">Conclusion / 结论</div>
+      <div class="c-main">合作可行性中等偏高 <span class="c-stars">★★★★☆</span></div>
+      <ul class="c-list">
+        <li><span class="idx">01</span><span>产业链互补性强</span></li>
+        <li><span class="idx">02</span><span>合作基础已具备</span></li>
+        <li><span class="idx">03</span><span>大勇对华合作意愿明确</span></li>
+        <li><span class="idx">04</span><span>市场窗口期宝贵</span></li>
+      </ul>
+      <div class="key-action">
+        <div class="ka-tag">Key Action / 关键行动</div>
+        <div class="ka-text">借<b>铜鼓项目</b>契机建立联合工作组，以<b>技术换市场</b>，以<b>合作降风险</b>。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 页脚 -->
+<footer>
+  <div class="wrap">
+    <div class="foot-inner">
+      <div>本报告由调研系统生成</div>
+      <div><span class="f-red">时间戳: 2607231713</span> ｜ 信息截至 2026-07-23</div>
+      <div>基于公开信息整理，仅供参考</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Mermaid 初始化 — 极简风格
+  mermaid.initialize({
+    startOnLoad: true,
+    theme: 'base',
+    themeVariables: {
+      primaryColor: '#ffffff',
+      primaryTextColor: '#000000',
+      primaryBorderColor: '#000000',
+      lineColor: '#000000',
+      secondaryColor: '#f5f5f5',
+      tertiaryColor: '#ffffff',
+      fontSize: '13px',
+      fontFamily: 'Helvetica Neue, Arial, Noto Sans SC, sans-serif'
+    },
+    flowchart: {
+      nodeSpacing: 40,
+      rankSpacing: 50,
+      curve: 'basis'
+    }
+  });
+
+  // IntersectionObserver — 仅 opacity 淡入，无位移
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.08,
+    rootMargin: '0px 0px -40px 0px'
+  });
+
+  document.querySelectorAll('.fade').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

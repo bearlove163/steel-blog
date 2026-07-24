@@ -1,0 +1,1573 @@
+<!-- 时间戳: 2607231713 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>越南建筑市场调研报告 | Bold Modern</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --red:#e63946;
+  --red-dark:#c1121f;
+  --blue:#1d3557;
+  --blue-dark:#0d1b2a;
+  --cream:#f1faee;
+  --cream-dark:#e8ecef;
+  --green:#2a9d8f;
+  --yellow:#f4a261;
+  --gold:#e9c46a;
+  --white:#ffffff;
+  --shadow:0 10px 40px rgba(29,53,87,0.15);
+  --shadow-lg:0 20px 60px rgba(29,53,87,0.25);
+  --tilt-transition:transform 0.4s cubic-bezier(0.23,1,0.32,1),box-shadow 0.4s ease;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'Inter','Noto Sans SC',sans-serif;
+  background:var(--cream);
+  color:var(--blue);
+  overflow-x:hidden;
+  line-height:1.6;
+}
+::selection{background:var(--red);color:var(--white);}
+
+/* ===== Scrollbar ===== */
+::-webkit-scrollbar{width:10px;}
+::-webkit-scrollbar-track{background:var(--cream-dark);}
+::-webkit-scrollbar-thumb{background:var(--red);border-radius:5px;}
+::-webkit-scrollbar-thumb:hover{background:var(--red-dark);}
+
+/* ===== HERO ===== */
+.hero{
+  position:relative;
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:flex-start;
+  padding:0 6vw 4vh;
+  background:linear-gradient(135deg,var(--blue) 0%,var(--blue-dark) 60%,#000 100%);
+  overflow:hidden;
+}
+.hero::before{
+  content:'';
+  position:absolute;
+  top:-20%;right:-10%;
+  width:70vw;height:70vw;
+  background:radial-gradient(circle,var(--red) 0%,transparent 70%);
+  opacity:0.35;
+  border-radius:50%;
+  animation:floatBlob 8s ease-in-out infinite alternate;
+}
+.hero::after{
+  content:'';
+  position:absolute;
+  bottom:-15%;left:-5%;
+  width:50vw;height:50vw;
+  background:radial-gradient(circle,var(--red-dark) 0%,transparent 70%);
+  opacity:0.25;
+  border-radius:50%;
+  animation:floatBlob 10s ease-in-out infinite alternate-reverse;
+}
+@keyframes floatBlob{
+  0%{transform:translate(0,0) scale(1);}
+  100%{transform:translate(40px,30px) scale(1.1);}
+}
+.hero-tag{
+  position:relative;z-index:2;
+  display:inline-flex;align-items:center;gap:10px;
+  background:rgba(230,57,70,0.2);
+  border:2px solid var(--red);
+  color:var(--red);
+  padding:8px 24px;
+  border-radius:50px;
+  font-size:14px;font-weight:700;
+  letter-spacing:3px;text-transform:uppercase;
+  margin-bottom:24px;
+  animation:fadeDown 1s ease 0.2s both;
+}
+.hero-tag::before{content:'';width:8px;height:8px;background:var(--red);border-radius:50%;animation:pulse 1.5s infinite;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.3;}}
+.hero h1{
+  position:relative;z-index:2;
+  font-size:clamp(48px,9vw,120px);
+  font-weight:900;
+  line-height:0.95;
+  letter-spacing:-2px;
+  color:var(--white);
+  margin-bottom:20px;
+  animation:fadeUp 1s ease 0.4s both;
+}
+.hero h1 .accent{
+  color:var(--red);
+  display:inline-block;
+  position:relative;
+}
+.hero h1 .accent::after{
+  content:'';
+  position:absolute;
+  bottom:5px;left:0;right:0;
+  height:12px;
+  background:var(--red);
+  opacity:0.3;
+  z-index:-1;
+}
+.hero-sub{
+  position:relative;z-index:2;
+  font-size:clamp(16px,2vw,24px);
+  font-weight:500;
+  color:rgba(241,250,238,0.8);
+  max-width:680px;
+  margin-bottom:40px;
+  animation:fadeUp 1s ease 0.6s both;
+}
+.hero-sub strong{color:var(--red);font-weight:700;}
+.hero-meta{
+  position:relative;z-index:2;
+  display:flex;flex-wrap:wrap;gap:16px;
+  animation:fadeUp 1s ease 0.8s both;
+}
+.hero-meta-item{
+  background:rgba(255,255,255,0.08);
+  backdrop-filter:blur(10px);
+  border:1px solid rgba(255,255,255,0.15);
+  padding:16px 28px;
+  border-radius:16px;
+}
+.hero-meta-item .num{font-size:32px;font-weight:900;color:var(--red);display:block;}
+.hero-meta-item .lbl{font-size:12px;color:rgba(241,250,238,0.6);text-transform:uppercase;letter-spacing:2px;}
+.hero-scroll{
+  position:absolute;bottom:30px;left:50%;transform:translateX(-50%);
+  z-index:2;
+  color:rgba(241,250,238,0.5);
+  font-size:13px;letter-spacing:3px;text-transform:uppercase;
+  display:flex;flex-direction:column;align-items:center;gap:8px;
+  animation:fadeUp 1s ease 1s both;
+}
+.hero-scroll .line{width:1px;height:40px;background:var(--red);animation:scrollLine 2s infinite;}
+@keyframes scrollLine{0%{transform:scaleY(0);transform-origin:top;}50%{transform:scaleY(1);transform-origin:top;}50.1%{transform-origin:bottom;}100%{transform:scaleY(0);transform-origin:bottom;}}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(60px) scale(0.95);}to{opacity:1;transform:translateY(0) scale(1);}}
+@keyframes fadeDown{from{opacity:0;transform:translateY(-30px);}to{opacity:1;transform:translateY(0);}}
+
+/* ===== SECTION DIVIDERS ===== */
+.section-divider{
+  height:8px;
+  background:linear-gradient(90deg,var(--red),var(--blue));
+  width:100%;
+}
+.divider-skew{
+  position:relative;
+  height:80px;
+  overflow:hidden;
+}
+.divider-skew::before{
+  content:'';
+  position:absolute;
+  top:0;left:-5%;width:110%;height:100%;
+  background:linear-gradient(90deg,var(--blue),var(--red));
+  transform:skewY(-3deg);
+  box-shadow:0 4px 20px rgba(0,0,0,0.15);
+}
+
+/* ===== SECTIONS ===== */
+.section{
+  padding:80px 6vw;
+  position:relative;
+}
+.section-alt{
+  background:var(--white);
+}
+.section-dark{
+  background:var(--blue);
+  color:var(--cream);
+}
+.section-dark h2,.section-dark h3{color:var(--white);}
+
+.section-num{
+  display:inline-block;
+  font-size:clamp(80px,12vw,160px);
+  font-weight:900;
+  color:var(--red);
+  opacity:0.12;
+  line-height:0.8;
+  position:absolute;
+  top:20px;right:6vw;
+  z-index:0;
+  pointer-events:none;
+}
+.section-header{
+  margin-bottom:50px;
+  position:relative;z-index:1;
+}
+.section-label{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:13px;font-weight:700;
+  letter-spacing:3px;text-transform:uppercase;
+  color:var(--red);
+  margin-bottom:12px;
+}
+.section-label::before{content:'';width:30px;height:3px;background:var(--red);}
+.section h2{
+  font-size:clamp(36px,6vw,72px);
+  font-weight:900;
+  line-height:1.05;
+  letter-spacing:-1px;
+  color:var(--blue);
+}
+.section h2 .hl{color:var(--red);}
+.section-dark h2{color:var(--white);}
+.section-dark h2 .hl{color:var(--red);}
+.section-intro{
+  font-size:clamp(15px,1.6vw,19px);
+  max-width:720px;
+  margin-top:16px;
+  color:rgba(29,53,87,0.7);
+}
+.section-dark .section-intro{color:rgba(241,250,238,0.7);}
+
+/* ===== BIG NUMBERS ===== */
+.big-num-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:24px;
+  margin:40px 0;
+}
+.big-num-card{
+  background:var(--white);
+  border-radius:20px;
+  padding:36px 28px;
+  box-shadow:var(--shadow);
+  position:relative;
+  overflow:hidden;
+  transform-style:preserve-3d;
+  transition:var(--tilt-transition);
+  border-top:6px solid var(--red);
+}
+.big-num-card:nth-child(2){border-top-color:var(--blue);}
+.big-num-card:nth-child(3){border-top-color:var(--green);}
+.big-num-card:nth-child(4){border-top-color:var(--yellow);}
+.big-num-card .num{
+  font-size:clamp(40px,5vw,64px);
+  font-weight:900;
+  line-height:1;
+  color:var(--red);
+  letter-spacing:-1px;
+}
+.big-num-card:nth-child(2) .num{color:var(--blue);}
+.big-num-card:nth-child(3) .num{color:var(--green);}
+.big-num-card:nth-child(4) .num{color:var(--yellow);}
+.big-num-card .num small{font-size:0.4em;font-weight:700;}
+.big-num-card .desc{
+  margin-top:12px;
+  font-size:14px;
+  color:rgba(29,53,87,0.6);
+  font-weight:600;
+  text-transform:uppercase;
+  letter-spacing:1px;
+}
+.big-num-card::after{
+  content:'';
+  position:absolute;
+  bottom:-30px;right:-30px;
+  width:100px;height:100px;
+  background:var(--red);
+  opacity:0.05;
+  border-radius:50%;
+  transition:transform 0.4s;
+}
+.big-num-card:hover::after{transform:scale(2);}
+
+/* ===== ASYMMETRIC GRID ===== */
+.grid-asym{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:30px;
+  align-items:start;
+}
+.grid-asym .offset{
+  margin-top:60px;
+}
+.grid-asym .offset-2{
+  margin-top:120px;
+}
+@media(max-width:768px){
+  .grid-asym{grid-template-columns:1fr;}
+  .grid-asym .offset,.grid-asym .offset-2{margin-top:0;}
+}
+
+/* ===== CARDS ===== */
+.card{
+  background:var(--white);
+  border-radius:20px;
+  padding:32px;
+  box-shadow:var(--shadow);
+  position:relative;
+  transform-style:preserve-3d;
+  transition:var(--tilt-transition);
+  overflow:hidden;
+}
+.card:hover{
+  box-shadow:var(--shadow-lg);
+}
+.card-accent-red{border-left:6px solid var(--red);}
+.card-accent-blue{border-left:6px solid var(--blue);}
+.card-accent-green{border-left:6px solid var(--green);}
+.card-accent-yellow{border-left:6px solid var(--yellow);}
+.card-icon{
+  width:56px;height:56px;
+  border-radius:16px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:28px;
+  margin-bottom:20px;
+  background:linear-gradient(135deg,var(--red),var(--red-dark));
+  color:var(--white);
+}
+.card-icon.blue{background:linear-gradient(135deg,var(--blue),var(--blue-dark));}
+.card-icon.green{background:linear-gradient(135deg,var(--green),#1d7268);}
+.card-icon.yellow{background:linear-gradient(135deg,var(--yellow),#e76f51);}
+.card h3{
+  font-size:22px;
+  font-weight:800;
+  color:var(--blue);
+  margin-bottom:12px;
+}
+.card p{
+  font-size:15px;
+  color:rgba(29,53,87,0.7);
+  line-height:1.7;
+}
+.card .tag{
+  display:inline-block;
+  background:rgba(230,57,70,0.1);
+  color:var(--red);
+  font-size:12px;font-weight:700;
+  padding:4px 14px;
+  border-radius:50px;
+  margin-bottom:14px;
+  letter-spacing:1px;
+}
+
+/* ===== TABLES ===== */
+.table-wrap{
+  overflow-x:auto;
+  border-radius:20px;
+  box-shadow:var(--shadow);
+  margin:30px 0;
+}
+table{
+  width:100%;
+  border-collapse:collapse;
+  background:var(--white);
+  border-radius:20px;
+  overflow:hidden;
+  font-size:14px;
+}
+thead{
+  background:linear-gradient(135deg,var(--blue),var(--blue-dark));
+  color:var(--white);
+}
+thead th{
+  padding:18px 20px;
+  text-align:left;
+  font-weight:700;
+  font-size:13px;
+  text-transform:uppercase;
+  letter-spacing:1px;
+}
+tbody tr{
+  border-bottom:1px solid rgba(29,53,87,0.06);
+  transition:background 0.3s;
+}
+tbody tr:hover{background:rgba(230,57,70,0.04);}
+tbody td{
+  padding:16px 20px;
+  color:rgba(29,53,87,0.8);
+  vertical-align:top;
+}
+tbody td:first-child{font-weight:700;color:var(--blue);}
+
+/* ===== MERMAID ===== */
+.mermaid-wrap{
+  background:var(--white);
+  border-radius:20px;
+  padding:40px;
+  box-shadow:var(--shadow);
+  margin:30px 0;
+  overflow-x:auto;
+}
+.mermaid{display:flex;justify-content:center;}
+.section-dark .mermaid-wrap{
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.1);
+}
+
+/* ===== SWOT ===== */
+.swot-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
+  margin:40px 0;
+}
+@media(max-width:768px){.swot-grid{grid-template-columns:1fr;}}
+.swot-block{
+  border-radius:20px;
+  padding:32px;
+  position:relative;
+  overflow:hidden;
+  transform-style:preserve-3d;
+  transition:var(--tilt-transition);
+  color:var(--white);
+}
+.swot-s{background:linear-gradient(135deg,var(--green),#1d7268);}
+.swot-w{background:linear-gradient(135deg,var(--yellow),#e76f51);}
+.swot-o{background:linear-gradient(135deg,var(--blue),var(--blue-dark));}
+.swot-t{background:linear-gradient(135deg,var(--red),var(--red-dark));}
+.swot-block .swot-label{
+  font-size:14px;font-weight:900;
+  letter-spacing:3px;text-transform:uppercase;
+  opacity:0.7;
+  margin-bottom:6px;
+}
+.swot-block .swot-title{
+  font-size:28px;font-weight:900;
+  margin-bottom:20px;
+}
+.swot-block ul{list-style:none;}
+.swot-block ul li{
+  padding:8px 0 8px 24px;
+  position:relative;
+  font-size:14px;
+  line-height:1.5;
+  border-bottom:1px solid rgba(255,255,255,0.15);
+}
+.swot-block ul li:last-child{border-bottom:none;}
+.swot-block ul li::before{
+  content:'';
+  position:absolute;
+  left:0;top:16px;
+  width:10px;height:3px;
+  background:var(--white);
+  border-radius:2px;
+}
+.swot-block .big-letter{
+  position:absolute;
+  top:-10px;right:10px;
+  font-size:120px;font-weight:900;
+  opacity:0.12;
+  line-height:1;
+}
+
+/* ===== CALLOUT ===== */
+.callout{
+  background:linear-gradient(135deg,var(--red),var(--red-dark));
+  border-radius:20px;
+  padding:40px;
+  color:var(--white);
+  margin:40px 0;
+  position:relative;
+  overflow:hidden;
+}
+.callout::before{
+  content:'';
+  position:absolute;
+  top:-50%;right:-20%;
+  width:400px;height:400px;
+  background:rgba(255,255,255,0.05);
+  border-radius:50%;
+}
+.callout .key-label{
+  font-size:13px;font-weight:700;
+  letter-spacing:3px;text-transform:uppercase;
+  opacity:0.7;
+  margin-bottom:12px;
+}
+.callout p{font-size:clamp(16px,1.8vw,22px);font-weight:600;line-height:1.6;position:relative;z-index:1;}
+.callout strong{text-decoration:underline;text-decoration-color:rgba(255,255,255,0.4);text-underline-offset:4px;}
+
+.callout-blue{
+  background:linear-gradient(135deg,var(--blue),var(--blue-dark));
+}
+
+/* ===== PARTNER CARDS ===== */
+.partner-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:24px;
+  margin:30px 0;
+}
+.partner-card{
+  background:var(--white);
+  border-radius:20px;
+  padding:28px;
+  box-shadow:var(--shadow);
+  transform-style:preserve-3d;
+  transition:var(--tilt-transition);
+  border-top:5px solid var(--red);
+  position:relative;
+}
+.partner-card:nth-child(2){border-top-color:var(--blue);}
+.partner-card:nth-child(3){border-top-color:var(--green);}
+.partner-card .flag{
+  font-size:36px;
+  margin-bottom:12px;
+  display:block;
+}
+.partner-card h4{
+  font-size:18px;font-weight:800;
+  color:var(--blue);
+  margin-bottom:8px;
+}
+.partner-card .meta{
+  font-size:12px;
+  color:var(--red);
+  font-weight:700;
+  margin-bottom:12px;
+  text-transform:uppercase;
+  letter-spacing:1px;
+}
+.partner-card p{font-size:14px;color:rgba(29,53,87,0.7);line-height:1.6;}
+
+/* ===== CONCLUSION ===== */
+.conclusion-box{
+  background:var(--white);
+  border-radius:24px;
+  padding:48px;
+  box-shadow:var(--shadow-lg);
+  margin:40px 0;
+  border:3px solid var(--red);
+  position:relative;
+  overflow:hidden;
+}
+.conclusion-box::before{
+  content:'';
+  position:absolute;
+  top:0;left:0;
+  width:100%;height:6px;
+  background:linear-gradient(90deg,var(--red),var(--blue),var(--green),var(--yellow));
+}
+.rating{
+  display:inline-flex;align-items:center;gap:4px;
+  font-size:28px;
+  margin-bottom:24px;
+}
+.rating .star-filled{color:var(--red);}
+.rating .star-empty{color:rgba(29,53,87,0.2);}
+.conclusion-list{list-style:none;counter-reset:item;}
+.conclusion-list li{
+  padding:16px 0 16px 56px;
+  position:relative;
+  font-size:16px;
+  line-height:1.6;
+  border-bottom:1px solid rgba(29,53,87,0.08);
+}
+.conclusion-list li:last-child{border-bottom:none;}
+.conclusion-list li::before{
+  counter-increment:item;
+  content:counter(item);
+  position:absolute;
+  left:0;top:14px;
+  width:36px;height:36px;
+  background:linear-gradient(135deg,var(--red),var(--red-dark));
+  color:var(--white);
+  border-radius:10px;
+  display:flex;align-items:center;justify-content:center;
+  font-weight:900;font-size:16px;
+}
+.conclusion-list li strong{color:var(--blue);font-weight:800;}
+
+.final-action{
+  background:linear-gradient(135deg,var(--blue),var(--blue-dark));
+  border-radius:16px;
+  padding:28px 32px;
+  margin-top:30px;
+  color:var(--white);
+}
+.final-action .label{
+  font-size:12px;font-weight:700;
+  letter-spacing:3px;text-transform:uppercase;
+  color:var(--red);
+  margin-bottom:8px;
+}
+.final-action p{font-size:16px;font-weight:600;line-height:1.6;}
+
+/* ===== PATH TABLE ===== */
+.path-table thead th{background:linear-gradient(135deg,var(--red),var(--red-dark));}
+.path-table td:first-child{white-space:nowrap;}
+
+/* ===== HIGHLIGHT BOX ===== */
+.highlight-box{
+  background:rgba(230,57,70,0.06);
+  border-left:5px solid var(--red);
+  border-radius:0 16px 16px 0;
+  padding:24px 28px;
+  margin:20px 0;
+}
+.highlight-box.blue{
+  background:rgba(29,53,87,0.06);
+  border-left-color:var(--blue);
+}
+.highlight-box h4{
+  font-size:16px;font-weight:800;
+  color:var(--blue);
+  margin-bottom:10px;
+}
+.highlight-box p{font-size:14px;color:rgba(29,53,87,0.7);line-height:1.7;}
+.highlight-box ul{margin-top:8px;padding-left:0;list-style:none;}
+.highlight-box ul li{
+  padding:6px 0 6px 20px;
+  position:relative;
+  font-size:14px;
+  color:rgba(29,53,87,0.75);
+}
+.highlight-box ul li::before{
+  content:'▶';
+  position:absolute;left:0;top:6px;
+  font-size:10px;
+  color:var(--red);
+}
+
+/* ===== TIMELINE ITEMS ===== */
+.timeline-item{
+  display:flex;
+  gap:20px;
+  margin-bottom:20px;
+  align-items:flex-start;
+}
+.timeline-badge{
+  flex-shrink:0;
+  width:60px;height:60px;
+  border-radius:16px;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  font-weight:900;
+  color:var(--white);
+  text-align:center;
+  line-height:1.1;
+}
+.timeline-badge.short{background:linear-gradient(135deg,var(--green),#1d7268);}
+.timeline-badge.mid{background:linear-gradient(135deg,var(--yellow),#e76f51);}
+.timeline-badge.long{background:linear-gradient(135deg,var(--red),var(--red-dark));}
+.timeline-badge .t-label{font-size:10px;font-weight:700;letter-spacing:1px;}
+.timeline-badge .t-time{font-size:11px;font-weight:600;opacity:0.8;}
+.timeline-content{
+  flex:1;
+  background:var(--white);
+  border-radius:16px;
+  padding:20px 24px;
+  box-shadow:var(--shadow);
+}
+.timeline-content h4{font-size:17px;font-weight:800;color:var(--blue);margin-bottom:6px;}
+.timeline-content p{font-size:14px;color:rgba(29,53,87,0.7);}
+
+/* ===== FOOTER ===== */
+.footer{
+  background:var(--blue-dark);
+  color:rgba(241,250,238,0.5);
+  padding:40px 6vw;
+  text-align:center;
+  font-size:13px;
+  line-height:1.8;
+}
+.footer strong{color:var(--red);}
+
+/* ===== ANIMATION CLASSES ===== */
+.animate{
+  opacity:0;
+  transform:translateY(60px) scale(0.92);
+  transition:opacity 0.8s cubic-bezier(0.23,1,0.32,1),transform 0.8s cubic-bezier(0.23,1,0.32,1);
+}
+.animate.visible{
+  opacity:1;
+  transform:translateY(0) scale(1);
+}
+.animate.delay-1{transition-delay:0.1s;}
+.animate.delay-2{transition-delay:0.2s;}
+.animate.delay-3{transition-delay:0.3s;}
+.animate.delay-4{transition-delay:0.4s;}
+
+/* ===== DECORATIVE ===== */
+.deco-shape{
+  position:absolute;
+  pointer-events:none;
+  z-index:0;
+}
+.deco-circle{
+  width:200px;height:200px;
+  border-radius:50%;
+  border:3px dashed rgba(230,57,70,0.15);
+}
+.deco-square{
+  width:120px;height:120px;
+  background:rgba(29,53,87,0.04);
+  transform:rotate(45deg);
+  border-radius:20px;
+}
+
+/* ===== MISC ===== */
+.text-red{color:var(--red);}
+.text-blue{color:var(--blue);}
+.text-cream{color:var(--cream);}
+.badge{
+  display:inline-block;
+  padding:4px 12px;
+  border-radius:50px;
+  font-size:11px;font-weight:700;
+  letter-spacing:1px;
+  text-transform:uppercase;
+}
+.badge-red{background:var(--red);color:var(--white);}
+.badge-blue{background:var(--blue);color:var(--white);}
+.badge-green{background:var(--green);color:var(--white);}
+</style>
+</head>
+<body>
+
+<!-- ==================== HERO ==================== -->
+<section class="hero">
+  <span class="hero-tag">Bold Modern · 越南活力</span>
+  <h1>越南建筑<br><span class="accent">市场调研</span>报告</h1>
+  <p class="hero-sub">聚焦<strong>河内</strong> · <strong>胡志明</strong>双核 ｜ 大勇钢构发展路径与精工钢构合作评估</p>
+  <div class="hero-meta">
+    <div class="hero-meta-item">
+      <span class="num">253.5<small>亿美元</small></span>
+      <span class="lbl">2024外资新增</span>
+    </div>
+    <div class="hero-meta-item">
+      <span class="num">670<small>亿美元</small></span>
+      <span class="lbl">高铁项目</span>
+    </div>
+    <div class="hero-meta-item">
+      <span class="num">50<small>+</small></span>
+      <span class="lbl">大勇覆盖国家</span>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span>Scroll</span>
+    <div class="line"></div>
+  </div>
+</section>
+
+<div class="divider-skew"></div>
+
+<!-- ==================== 一、执行摘要 ==================== -->
+<section class="section section-alt">
+  <span class="section-num">01</span>
+  <div class="section-header animate">
+    <span class="section-label">Executive Summary</span>
+    <h2>执行<span class="hl">摘要</span></h2>
+    <p class="section-intro">越南正处于"基建大年"，双核驱动，外资政策转向，中企迎来重大机遇。</p>
+  </div>
+
+  <div class="grid-asym">
+    <div class="animate">
+      <div class="highlight-box">
+        <h4>市场总览</h4>
+        <p>越南正处于<strong style="color:var(--red)">"基建大年"</strong>，2024年外商投资项目新增资金约<strong style="color:var(--red)">253.5亿美元</strong>，同比增长<strong style="color:var(--red)">9.4%</strong>。河内与胡志明市双核驱动，大规模地铁、跨海通道、体育城等项目密集上马。2026年新版《投资法》生效，外资准入从"严进宽管"转向<strong style="color:var(--red)">"宽进严管"</strong>，为中企带来重大机遇。</p>
+      </div>
+    </div>
+    <div class="offset animate delay-2">
+      <div class="highlight-box blue">
+        <h4>大勇集团定位</h4>
+        <p><strong style="color:var(--blue)">大勇（Dai Dung）集团</strong>是越南钢结构与重型工程领域的绝对龙头，业务遍及<strong style="color:var(--blue)">50余国</strong>，承担了河内国家展览中心、铜鼓体育场穹顶等国家级地标。其外资合作网络已覆盖中国（中交疏浚、法奥机器人、天意机械）、美国、日本、芬兰、澳大利亚等国企业。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout animate">
+    <div class="key-label">关键发现 · Key Finding</div>
+    <p><strong>精工钢构已于2026年7月签约越南铜鼓体育场开合屋盖项目</strong>——而该项目的穹顶钢结构总承包商正是大勇集团。两家企业已在同一超级工程中形成产业链上下游关系，为深度合作奠定了天然基础。</p>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ==================== 二、越南建筑市场动态 ==================== -->
+<section class="section">
+  <span class="section-num">02</span>
+  <div class="section-header animate">
+    <span class="section-label">Market Dynamics</span>
+    <h2>越南建筑<span class="hl">市场动态</span></h2>
+    <p class="section-intro">河内与胡志明双核驱动，千亿级基建项目密集上马，外资政策重大转向。</p>
+  </div>
+
+  <div class="big-num-grid">
+    <div class="big-num-card animate">
+      <div class="num">253.5<small>亿美元</small></div>
+      <div class="desc">2024年外资新增</div>
+    </div>
+    <div class="big-num-card animate delay-1">
+      <div class="num">+9.4<small>%</small></div>
+      <div class="desc">外资同比增长</div>
+    </div>
+    <div class="big-num-card animate delay-2">
+      <div class="num">670<small>亿美元</small></div>
+      <div class="desc">高铁项目批准</div>
+    </div>
+    <div class="big-num-card animate delay-3">
+      <div class="num">925<small>万亿越盾</small></div>
+      <div class="desc">奥林匹克体育城投资</div>
+    </div>
+  </div>
+
+  <div class="grid-asym">
+    <div class="animate">
+      <div class="card card-accent-red" data-tilt>
+        <div class="card-icon">🏛️</div>
+        <span class="tag">河内市场热点</span>
+        <h3>河内 · 国之心脏</h3>
+        <ul style="list-style:none;padding:0;">
+          <li style="padding:10px 0 10px 24px;position:relative;font-size:14px;color:rgba(29,53,87,0.75);border-bottom:1px solid rgba(29,53,87,0.06);">
+            <span style="position:absolute;left:0;color:var(--red);font-weight:900;">01</span>
+            一次性开建<strong style="color:var(--blue)">5条地铁+3个保障性住房</strong>项目，投入130万亿越盾
+          </li>
+          <li style="padding:10px 0 10px 24px;position:relative;font-size:14px;color:rgba(29,53,87,0.75);border-bottom:1px solid rgba(29,53,87,0.06);">
+            <span style="position:absolute;left:0;color:var(--red);font-weight:900;">02</span>
+            铜鼓体育场（Hung Vuong Stadium），容纳<strong style="color:var(--blue)">13.5万座</strong>，全球最大专业足球场
+          </li>
+          <li style="padding:10px 0 10px 24px;position:relative;font-size:14px;color:rgba(29,53,87,0.75);border-bottom:1px solid rgba(29,53,87,0.06);">
+            <span style="position:absolute;left:0;color:var(--red);font-weight:900;">03</span>
+            国家展览中心，总用钢量约<strong style="color:var(--blue)">24,000吨</strong>
+          </li>
+          <li style="padding:10px 0 10px 24px;position:relative;font-size:14px;color:rgba(29,53,87,0.75);">
+            <span style="position:absolute;left:0;color:var(--red);font-weight:900;">04</span>
+            国会批准<strong style="color:var(--blue)">670亿美元</strong>南北高铁项目
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="offset-2 animate delay-2">
+      <div class="card card-accent-blue" data-tilt>
+        <div class="card-icon blue">🌉</div>
+        <span class="tag" style="background:rgba(29,53,87,0.1);color:var(--blue);">胡志明市场热点</span>
+        <h3>胡志明 · 南方引擎</h3>
+        <ul style="list-style:none;padding:0;">
+          <li style="padding:10px 0 10px 24px;position:relative;font-size:14px;color:rgba(29,53,87,0.75);border-bottom:1px solid rgba(29,53,87,0.06);">
+            <span style="position:absolute;left:0;color:var(--blue);font-weight:900;">01</span>
+            启动<strong style="color:var(--red)">8大重点工程</strong>，总投资253万亿越盾
+          </li>
+          <li style="padding:10px 0 10px 24px;position:relative;font-size:14px;color:rgba(29,53,87,0.75);border-bottom:1px solid rgba(29,53,87,0.06);">
+            <span style="position:absolute;left:0;color:var(--blue);font-weight:900;">02</span>
+            芹耶—头顿跨海通道，投资<strong style="color:var(--red)">93万亿越盾</strong>
+          </li>
+          <li style="padding:10px 0 10px 24px;position:relative;font-size:14px;color:rgba(29,53,87,0.75);border-bottom:1px solid rgba(29,53,87,0.06);">
+            <span style="position:absolute;left:0;color:var(--blue);font-weight:900;">03</span>
+            盖梅下游综合港，投资<strong style="color:var(--red)">50.8万亿越盾</strong>
+          </li>
+          <li style="padding:10px 0 10px 24px;position:relative;font-size:14px;color:rgba(29,53,87,0.75);">
+            <span style="position:absolute;left:0;color:var(--blue);font-weight:900;">04</span>
+            西贡河人行天桥——象征<strong style="color:var(--red)">水椰叶</strong>的空间钢拱结构
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout callout-blue animate">
+    <div class="key-label">政策红利 · Policy Dividend</div>
+    <p><strong>2026新《投资法》</strong>从"严进宽管"转向<strong>"宽进严管"</strong>，带来流程简化、持股放开、税收优惠、资金安全四大红利，为中企进入越南市场打开窗口。</p>
+  </div>
+
+  <div class="section-header animate" style="margin-top:60px;">
+    <span class="section-label" style="color:var(--blue);"><span style="background:var(--blue);width:30px;height:3px;display:inline-block;margin-right:8px;"></span>Foreign Competition</span>
+    <h2 style="font-size:clamp(28px,4vw,48px);">外资<span class="hl">竞争格局</span></h2>
+  </div>
+
+  <div class="table-wrap animate">
+    <table>
+      <thead>
+        <tr>
+          <th>国家</th>
+          <th>投资特征</th>
+          <th>重点领域</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>🇰🇷 韩国</td>
+          <td>年均新增超100亿美元，累计952.3亿美元</td>
+          <td>交通基建、高端制造</td>
+        </tr>
+        <tr>
+          <td>🇨🇳 中国</td>
+          <td>中铁六局承建河内轻轨2号线；能源建设集团海阳电厂BOT</td>
+          <td>轨道交通、能源、钢结构</td>
+        </tr>
+        <tr>
+          <td>🇯🇵 日本</td>
+          <td>传统重要投资国</td>
+          <td>基建、制造业</td>
+        </tr>
+        <tr>
+          <td>🇸🇬 新加坡</td>
+          <td>活跃投资国</td>
+          <td>房地产、物流、金融</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<div class="divider-skew"></div>
+
+<!-- ==================== 三、大勇集团发展路径与技术实力 ==================== -->
+<section class="section section-alt">
+  <span class="section-num">03</span>
+  <div class="section-header animate">
+    <span class="section-label">Dai Dung Group</span>
+    <h2>大勇集团<span class="hl">发展路径</span></h2>
+    <p class="section-intro">从钢结构制造到全球化布局，大勇已成为越南钢结构与重型工程领域的绝对龙头。</p>
+  </div>
+
+  <div class="highlight-box animate" style="max-width:800px;">
+    <h4>名称说明</h4>
+    <p>"<strong style="color:var(--red)">Dai Dung</strong>"在中文中有"大勇"与"大东"两种音译，指向同一实体——董事长<strong style="color:var(--blue)">郑进勇（Trinh Tien Dung）</strong>。</p>
+  </div>
+
+  <div class="section-header animate" style="margin-top:50px;">
+    <span class="section-label" style="color:var(--blue);"><span style="background:var(--blue);width:30px;height:3px;display:inline-block;margin-right:8px;"></span>Growth Trajectory</span>
+    <h2 style="font-size:clamp(28px,4vw,48px);">发展<span class="hl">路径</span></h2>
+  </div>
+
+  <div class="mermaid-wrap animate">
+    <div class="mermaid">
+graph LR
+    A["<b>创立初期</b><br>钢结构制造"]:::start --> B["<b>国内扩张</b><br>越南地标项目"]:::phase
+    B --> C["<b>多元化发展</b><br>造船+机械工程"]:::phase
+    C --> D["<b>全球化布局</b><br>50+国家"]:::phase
+    D --> E["<b>智能制造</b><br>机器人焊接产线"]:::phase
+    E --> F["<b>当前阶段</b><br>越南钢结构龙头"]:::current
+
+    classDef start fill:#1d3557,color:#fff,stroke:#0d1b2a,stroke-width:3px;
+    classDef phase fill:#e63946,color:#fff,stroke:#c1121f,stroke-width:2px;
+    classDef current fill:#2a9d8f,color:#fff,stroke:#1d7268,stroke-width:4px;
+    </div>
+  </div>
+
+  <div class="section-header animate" style="margin-top:60px;">
+    <span class="section-label">Landmark Projects</span>
+    <h2 style="font-size:clamp(28px,4vw,48px);">核心<span class="hl">地标项目</span></h2>
+  </div>
+
+  <div class="table-wrap animate">
+    <table>
+      <thead>
+        <tr>
+          <th>项目</th>
+          <th>地点</th>
+          <th>规模 / 特点</th>
+          <th>角色</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>国家展览中心（金龟展览宫）</td>
+          <td>🇻🇳 河内</td>
+          <td>穹顶直径360m，总用钢量约<strong style="color:var(--red)">24,000吨</strong></td>
+          <td><span class="badge badge-red">钢结构总承包</span> 设计·制造·组装</td>
+        </tr>
+        <tr>
+          <td>铜鼓体育场穹顶</td>
+          <td>🇻🇳 河内</td>
+          <td>总重数万吨，跨度超350m，高度约120m</td>
+          <td><span class="badge badge-red">金属结构专项承包商</span></td>
+        </tr>
+        <tr>
+          <td>西贡河人行天桥</td>
+          <td>🇻🇳 胡志明</td>
+          <td>象征水椰叶的空间钢拱，高80m</td>
+          <td><span class="badge badge-blue">钢拱结构制造</span></td>
+        </tr>
+        <tr>
+          <td>Paks核电站</td>
+          <td>🇭🇺 匈牙利</td>
+          <td>国际重大能源项目</td>
+          <td><span class="badge badge-blue">钢结构部件供应</span></td>
+        </tr>
+        <tr>
+          <td>Lusail体育场</td>
+          <td>🇶🇦 卡塔尔</td>
+          <td>2022世界杯主场馆</td>
+          <td><span class="badge badge-blue">钢结构参与</span></td>
+        </tr>
+        <tr>
+          <td>Nihonbashi Green Building</td>
+          <td>🇯🇵 东京</td>
+          <td>日本地标建筑</td>
+          <td><span class="badge badge-blue">钢结构供应</span></td>
+        </tr>
+        <tr>
+          <td>Powerhouse Parramatta</td>
+          <td>🇦🇺 澳大利亚</td>
+          <td>澳大利亚重要文化建筑</td>
+          <td><span class="badge badge-blue">钢结构供应</span></td>
+        </tr>
+        <tr>
+          <td>Misk Museum</td>
+          <td>🇸🇦 沙特</td>
+          <td>沙特重要博物馆</td>
+          <td><span class="badge badge-blue">钢结构供应</span></td>
+        </tr>
+        <tr>
+          <td>丹德海底隧道</td>
+          <td>🇩🇰🇩🇪 丹麦-德国</td>
+          <td>世界最长海底隧道</td>
+          <td><span class="badge badge-green">复杂部件制造</span></td>
+        </tr>
+        <tr>
+          <td>21800吨油/化学品船</td>
+          <td>🇻🇳 越南</td>
+          <td>越南最大型油/化学品船之一</td>
+          <td><span class="badge badge-green">自主建造</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section-header animate" style="margin-top:60px;">
+    <span class="section-label">Tech Strength</span>
+    <h2 style="font-size:clamp(28px,4vw,48px);">技术<span class="hl">实力数据</span></h2>
+  </div>
+
+  <div class="big-num-grid">
+    <div class="big-num-card animate">
+      <div class="num">50<small>+</small></div>
+      <div class="desc">覆盖国家</div>
+    </div>
+    <div class="big-num-card animate delay-1">
+      <div class="num">4<small>座</small></div>
+      <div class="desc">制造基地</div>
+    </div>
+    <div class="big-num-card animate delay-2">
+      <div class="num">60<small>台+</small></div>
+      <div class="desc">协作机器人</div>
+    </div>
+    <div class="big-num-card animate delay-3">
+      <div class="num">24,000<small>吨</small></div>
+      <div class="desc">最大用钢量</div>
+    </div>
+  </div>
+
+  <div class="grid-asym" style="margin-top:40px;">
+    <div class="animate">
+      <div class="card card-accent-red" data-tilt>
+        <div class="card-icon">🏗️</div>
+        <h3>大跨度同步提升技术</h3>
+        <p>大吨位液压千斤顶群 + 高精度同步控制系统，实现超大跨度钢结构精准合龙。</p>
+      </div>
+    </div>
+    <div class="offset animate delay-1">
+      <div class="card card-accent-blue" data-tilt>
+        <div class="card-icon blue">🤖</div>
+        <h3>智能焊接产线</h3>
+        <p>2025年9月引入<strong style="color:var(--red)">法奥(FAIRINO)</strong>协作机器人，部署60台FR5与FR10，实现焊接自动化升级。</p>
+      </div>
+    </div>
+    <div class="offset-2 animate delay-2">
+      <div class="card card-accent-green" data-tilt>
+        <div class="card-icon green">📋</div>
+        <h3>国际标准认证</h3>
+        <p><strong style="color:var(--green)">ASTM A500 Grade B</strong>、ISO 9001:2015、ISO 14001:2015，全面对接国际工程标准。</p>
+      </div>
+    </div>
+    <div class="offset animate delay-3">
+      <div class="card card-accent-yellow" data-tilt>
+        <div class="card-icon yellow">🔗</div>
+        <h3>全产业链能力</h3>
+        <p>技术设计、材料采购、设备调度、现场吊装施工——一体化交付能力覆盖项目全生命周期。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ==================== 四、大勇集团外资合作单位梳理 ==================== -->
+<section class="section section-dark">
+  <span class="section-num" style="color:var(--red);opacity:0.15;">04</span>
+  <div class="section-header animate">
+    <span class="section-label">Foreign Partners</span>
+    <h2>外资合作<span class="hl">单位梳理</span></h2>
+    <p class="section-intro">大勇集团已构建覆盖中国、美国、日本、芬兰、澳大利亚等多国的全球化合作网络。</p>
+  </div>
+
+  <div class="section-header animate" style="margin-bottom:30px;">
+    <span class="section-label" style="color:var(--red);">China Partners · 中国合作伙伴</span>
+  </div>
+
+  <div class="partner-grid">
+    <div class="partner-card animate" data-tilt>
+      <span class="flag">🇨🇳</span>
+      <h4>中交疏浚（CCCC Dredging）</h4>
+      <div class="meta">2025年1月 · 谅解备忘录</div>
+      <p>合作领域：港航建设、市政设施、生态环保、海上风电、海洋工程、矿山开发、港口码头。</p>
+    </div>
+    <div class="partner-card animate delay-1" data-tilt>
+      <span class="flag">🇨🇳</span>
+      <h4>法奥机器人（FAIRINO）</h4>
+      <div class="meta">60台协作焊接机器人</div>
+      <p>已部署60台协作焊接机器人，<strong style="color:var(--red)">2026年预计加购100台+</strong>，推动智能制造升级。</p>
+    </div>
+    <div class="partner-card animate delay-2" data-tilt>
+      <span class="flag">🇨🇳</span>
+      <h4>天意机械</h4>
+      <div class="meta">战略合作</div>
+      <p>装配式建筑设备、绿色建材生产线战略合作，共同推进绿色制造。</p>
+    </div>
+  </div>
+
+  <div class="section-header animate" style="margin-top:60px;margin-bottom:30px;">
+    <span class="section-label" style="color:var(--red);">Local Partners · 越南本土战略伙伴</span>
+  </div>
+
+  <div class="partner-grid">
+    <div class="partner-card animate" data-tilt style="border-top-color:var(--green);">
+      <span class="flag">🇻🇳</span>
+      <h4>Vingroup集团</h4>
+      <div class="meta" style="color:var(--green);">越南最大多行业企业集团</div>
+      <p>国家展览中心、铜鼓体育场投资方，与大勇在多个国家级地标项目深度绑定。</p>
+    </div>
+    <div class="partner-card animate delay-1" data-tilt style="border-top-color:var(--green);">
+      <span class="flag">🇻🇳</span>
+      <h4>Hoa Phat（和发集团）</h4>
+      <div class="meta" style="color:var(--green);">越南最大钢铁企业</div>
+      <p><strong style="color:var(--green)">70%钢材</strong>战略合作供应，为大勇提供稳定的原材料保障。</p>
+    </div>
+  </div>
+
+  <div class="section-header animate" style="margin-top:60px;">
+    <span class="section-label" style="color:var(--red);">International Partners · 国际合作伙伴</span>
+  </div>
+
+  <div class="table-wrap animate">
+    <table>
+      <thead>
+        <tr>
+          <th>合作方</th>
+          <th>国家</th>
+          <th>合作内容</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>美国数据中心 / 军事造船厂客户</td>
+          <td>🇺🇸 美国</td>
+          <td>数据中心基础设施、军事造船厂项目，合同额<strong style="color:var(--red)">6000万美元+</strong></td>
+        </tr>
+        <tr>
+          <td>科尼集团（Konecranes）</td>
+          <td>🇫🇮 芬兰</td>
+          <td>RTG轮胎式龙门起重机系统</td>
+        </tr>
+        <tr>
+          <td>日本项目业主</td>
+          <td>🇯🇵 日本</td>
+          <td>Nihonbashi Green Building等</td>
+        </tr>
+        <tr>
+          <td>澳大利亚项目业主</td>
+          <td>🇦🇺 澳大利亚</td>
+          <td>Powerhouse Parramatta等</td>
+        </tr>
+        <tr>
+          <td>沙特项目业主</td>
+          <td>🇸🇦 沙特</td>
+          <td>Misk Museum等</td>
+        </tr>
+        <tr>
+          <td>丹德海底隧道项目</td>
+          <td>🇩🇰🇩🇪 丹麦/德国</td>
+          <td>世界最长海底隧道复杂部件</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section-header animate" style="margin-top:60px;">
+    <span class="section-label" style="color:var(--red);">Network Map · 合作网络图谱</span>
+  </div>
+
+  <div class="mermaid-wrap animate">
+    <div class="mermaid">
+graph TD
+    DD["<b>大勇集团</b><br>Dai Dung"]:::center
+
+    DD --> CN1["中交疏浚<br>CCCC Dredging"]:::china
+    DD --> CN2["法奥机器人<br>FAIRINO"]:::china
+    DD --> CN3["天意机械"]:::china
+    DD --> VN1["Vingroup集团"]:::vietnam
+    DD --> VN2["Hoa Phat 和发集团"]:::vietnam
+    DD --> US1["美国客户<br>6000万美元+"]:::intl
+    DD --> FI1["科尼集团 Konecranes"]:::intl
+    DD --> JP1["日本业主"]:::intl
+    DD --> AU1["澳洲业主"]:::intl
+    DD --> SA1["沙特业主"]:::intl
+    DD --> EU1["海底隧道项目<br>丹麦/德国"]:::intl
+
+    classDef center fill:#e63946,color:#fff,stroke:#c1121f,stroke-width:4px;
+    classDef china fill:#1d3557,color:#fff,stroke:#0d1b2a,stroke-width:2px;
+    classDef vietnam fill:#2a9d8f,color:#fff,stroke:#1d7268,stroke-width:2px;
+    classDef intl fill:#f4a261,color:#fff,stroke:#e76f51,stroke-width:2px;
+    </div>
+  </div>
+</section>
+
+<div class="divider-skew"></div>
+
+<!-- ==================== 五、精工钢构海外布局与越南市场进入 ==================== -->
+<section class="section section-alt">
+  <span class="section-num">05</span>
+  <div class="section-header animate">
+    <span class="section-label">Jinggong Steel</span>
+    <h2>精工钢构<span class="hl">海外布局</span></h2>
+    <p class="section-intro">海外订单爆发式增长，越南市场突破性签约，精工正加速全球化战略。</p>
+  </div>
+
+  <div class="big-num-grid">
+    <div class="big-num-card animate">
+      <div class="num">72<small>亿元</small></div>
+      <div class="desc">2025年海外新签订单</div>
+    </div>
+    <div class="big-num-card animate delay-1">
+      <div class="num">+195<small>%</small></div>
+      <div class="desc">2025H1海外工业订单增长</div>
+    </div>
+    <div class="big-num-card animate delay-2">
+      <div class="num">10<small>个</small></div>
+      <div class="desc">海外分支机构</div>
+    </div>
+    <div class="big-num-card animate delay-3">
+      <div class="num">30<small>国</small></div>
+      <div class="desc">服务网络覆盖</div>
+    </div>
+  </div>
+
+  <div class="callout animate">
+    <div class="key-label">越南突破 · Vietnam Breakthrough</div>
+    <p><strong>2026年7月</strong>签约越南<strong>铜鼓体育场开合屋盖项目</strong>——全球最大专业足球体育场（13.5万座），直径315米钢铁穹顶 + 可开合屋顶。全生命周期解决方案：前期结构复核 + 中期机械系统精密设计 + 后期智慧运维。</p>
+  </div>
+
+  <div class="section-header animate" style="margin-top:60px;">
+    <span class="section-label" style="color:var(--blue);"><span style="background:var(--blue);width:30px;height:3px;display:inline-block;margin-right:8px;"></span>Go-Global Strategy</span>
+    <h2 style="font-size:clamp(28px,4vw,48px);">出海<span class="hl">战略</span></h2>
+  </div>
+
+  <div class="grid-asym">
+    <div class="animate">
+      <div class="card card-accent-red" data-tilt>
+        <div class="card-icon">🌍</div>
+        <h3>六大海外运营中心</h3>
+        <p>覆盖东南亚（越南胡志明）、中东（沙特利雅得）等核心区域，构建全球化运营网络。</p>
+      </div>
+    </div>
+    <div class="offset animate delay-1">
+      <div class="card card-accent-blue" data-tilt>
+        <div class="card-icon blue">🏢</div>
+        <h3>越南子公司设立</h3>
+        <p><strong style="color:var(--red)">2025年10月</strong>设立精工工业建筑（越南）有限公司，标志着越南本地化战略正式落地。</p>
+      </div>
+    </div>
+    <div class="offset-2 animate delay-2">
+      <div class="card card-accent-green" data-tilt>
+        <div class="card-icon green">📐</div>
+        <h3>主导制定海外技术标准</h3>
+        <p>主导制定<strong style="color:var(--green)">《装配式钢结构建筑海外工程技术标准》</strong>，掌握行业话语权。</p>
+      </div>
+    </div>
+    <div class="offset animate delay-3">
+      <div class="card card-accent-yellow" data-tilt>
+        <div class="card-icon yellow">☁️</div>
+        <h3>"精工云"数字化平台</h3>
+        <p>数字化平台赋能项目管理，实现全流程可视化与智慧运维。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="highlight-box blue animate" style="margin-top:40px;">
+    <h4>"三熟"原则</h4>
+    <p><strong style="color:var(--blue)">先做熟国家</strong> → <strong style="color:var(--blue)">先做熟项目</strong> → <strong style="color:var(--blue)">先做熟标准</strong>——稳扎稳打的全球化进入策略。</p>
+  </div>
+
+  <div class="section-header animate" style="margin-top:60px;">
+    <span class="section-label">Benchmark Projects</span>
+    <h2 style="font-size:clamp(28px,4vw,48px);">精工<span class="hl">标杆项目</span></h2>
+  </div>
+
+  <div class="table-wrap animate">
+    <table>
+      <thead>
+        <tr>
+          <th>项目</th>
+          <th>地点</th>
+          <th>技术亮点</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>铜鼓体育场开合屋盖</td>
+          <td>🇻🇳 越南河内</td>
+          <td>全球最大足球场开合屋顶，直径<strong style="color:var(--red)">315m</strong></td>
+        </tr>
+        <tr>
+          <td>雅加达国际体育场</td>
+          <td>🇮🇩 印尼</td>
+          <td>中国企业首个含开合屋盖钢结构体育场</td>
+        </tr>
+        <tr>
+          <td>沙特帝王塔</td>
+          <td>🇸🇦 沙特</td>
+          <td>超高层钢结构</td>
+        </tr>
+        <tr>
+          <td>卡塔尔卢赛尔体育场</td>
+          <td>🇶🇦 卡塔尔</td>
+          <td>2022世界杯主场馆</td>
+        </tr>
+        <tr>
+          <td>阿尔及利亚巴哈吉体育场</td>
+          <td>🇩🇿 阿尔及利亚</td>
+          <td>中国抗震标准输出</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<div class="divider-skew"></div>
+
+<!-- ==================== 六、精工钢构×大勇集团合作可能性评估 ==================== -->
+<section class="section">
+  <span class="section-num">06</span>
+  <div class="section-header animate">
+    <span class="section-label">Cooperation Assessment</span>
+    <h2>合作可能性<span class="hl">评估</span></h2>
+    <p class="section-intro">铜鼓体育场项目天然纽带 + 产业链深度互补 = 高价值合作机遇。</p>
+  </div>
+
+  <div class="callout animate">
+    <div class="key-label">关键前提 · Key Premise</div>
+    <p>铜鼓体育场项目中，<strong>大勇集团</strong>是穹顶钢结构总承包商，<strong>精工钢构</strong>签约了开合屋盖项目，已形成产业链上下游天然协作关系。</p>
+  </div>
+
+  <div class="section-header animate" style="margin-top:60px;">
+    <span class="section-label">SWOT Analysis</span>
+    <h2 style="font-size:clamp(28px,4vw,48px);"><span class="hl">SWOT</span> 分析</h2>
+  </div>
+
+  <div class="swot-grid">
+    <div class="swot-block swot-s animate" data-tilt>
+      <div class="big-letter">S</div>
+      <div class="swot-label">Strengths</div>
+      <div class="swot-title">优势</div>
+      <ul>
+        <li><strong>大勇：</strong>本地制造能力（胡志明2座现代化工厂+多地基地）</li>
+        <li><strong>大勇：</strong>丰富的政府关系与本地项目经验</li>
+        <li><strong>精工：</strong>开合屋盖、大跨度预应力结构等高端技术全球领先</li>
+        <li><strong>精工：</strong>已在越南设立子公司，本地化基础已具备</li>
+        <li><strong>双方：</strong>铜鼓体育场项目已形成初步协作基础</li>
+      </ul>
+    </div>
+    <div class="swot-block swot-w animate delay-1" data-tilt>
+      <div class="big-letter">W</div>
+      <div class="swot-label">Weaknesses</div>
+      <div class="swot-title">劣势</div>
+      <ul>
+        <li><strong>大勇：</strong>高端开合屋盖、复杂机械系统技术依赖外部输入</li>
+        <li><strong>大勇：</strong>95%高强钢材仍依赖进口</li>
+        <li><strong>精工：</strong>在越南本地制造产能有限</li>
+        <li><strong>精工：</strong>对大勇集团内部决策机制了解不足</li>
+      </ul>
+    </div>
+    <div class="swot-block swot-o animate delay-2" data-tilt>
+      <div class="big-letter">O</div>
+      <div class="swot-label">Opportunities</div>
+      <div class="swot-title">机会</div>
+      <ul>
+        <li>越南"基建大年"：大量体育场馆、会展中心、交通枢纽上马</li>
+        <li>2026新《投资法》：外资持股放开、流程简化</li>
+        <li>大勇已与中国企业有成功合作先例</li>
+        <li>越南本土企业缺乏高端开合屋盖等尖端技术</li>
+        <li>精工输出技术+大勇本地实施=轻资产高附加值模式</li>
+      </ul>
+    </div>
+    <div class="swot-block swot-t animate delay-3" data-tilt>
+      <div class="big-letter">T</div>
+      <div class="swot-label">Threats</div>
+      <div class="swot-title">威胁</div>
+      <ul>
+        <li>韩国、日本钢构企业也在积极布局越南</li>
+        <li>大勇集团技术实力快速提升，未来可能减少对外技术依赖</li>
+        <li>越南本土保护政策潜在风险</li>
+        <li>双方在铜鼓项目中存在业务边界划分问题</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section-header animate" style="margin-top:60px;">
+    <span class="section-label">Recommended Model</span>
+    <h2 style="font-size:clamp(28px,4vw,48px);">推荐<span class="hl">合作模式</span></h2>
+  </div>
+
+  <div class="mermaid-wrap animate">
+    <div class="mermaid">
+graph TB
+    JG["<b>精工钢构</b><br>技术输出方"]:::jg
+
+    JG --> |结构设计与复核| DD["<b>大勇集团</b><br>本地实施方"]:::dd
+    JG --> |开合屋盖机械系统设计| DD
+    JG --> |智慧运维平台| DD
+    JG --> |技术标准与培训| DD
+
+    DD --> |钢结构制造| VN["<b>越南高端地标项目</b>"]:::vn
+    DD --> |现场吊装与安装| VN
+    DD --> |本地供应链整合| VN
+    DD --> |政府关系与合规| VN
+
+    classDef jg fill:#e63946,color:#fff,stroke:#c1121f,stroke-width:3px;
+    classDef dd fill:#1d3557,color:#fff,stroke:#0d1b2a,stroke-width:3px;
+    classDef vn fill:#2a9d8f,color:#fff,stroke:#1d7268,stroke-width:3px;
+    </div>
+  </div>
+
+  <div class="section-header animate" style="margin-top:60px;">
+    <span class="section-label">Cooperation Path</span>
+    <h2 style="font-size:clamp(28px,4vw,48px);">合作<span class="hl">路径建议</span></h2>
+  </div>
+
+  <div style="margin:30px 0;">
+    <div class="timeline-item animate">
+      <div class="timeline-badge short">
+        <span class="t-label">短期</span>
+        <span class="t-time">0-6月</span>
+      </div>
+      <div class="timeline-content" data-tilt>
+        <h4>以铜鼓体育场项目为纽带，建立高层互访与项目级联合工作组</h4>
+        <p>目标：建立信任，摸清双方能力边界</p>
+      </div>
+    </div>
+    <div class="timeline-item animate delay-1">
+      <div class="timeline-badge mid">
+        <span class="t-label">中期</span>
+        <span class="t-time">6-18月</span>
+      </div>
+      <div class="timeline-content" data-tilt>
+        <h4>签订战略合作协议，针对开合屋盖、大跨度空间结构建立联合技术团队</h4>
+        <p>目标：形成1-2个联合投标案例</p>
+      </div>
+    </div>
+    <div class="timeline-item animate delay-2">
+      <div class="timeline-badge long">
+        <span class="t-label">长期</span>
+        <span class="t-time">18-36月</span>
+      </div>
+      <div class="timeline-content" data-tilt>
+        <h4>探索合资或技术授权模式，在越南设立联合技术中心</h4>
+        <p>目标：占据越南高端钢结构市场<strong style="color:var(--red)">30%+</strong>份额</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-header animate" style="margin-top:60px;">
+    <span class="section-label">Conclusion</span>
+    <h2 style="font-size:clamp(28px,4vw,48px);">结论</h2>
+  </div>
+
+  <div class="conclusion-box animate">
+    <div class="rating">
+      <span style="font-size:14px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(29,53,87,0.5);margin-right:12px;">合作可行性评级</span>
+      <span class="star-filled">★</span>
+      <span class="star-filled">★</span>
+      <span class="star-filled">★</span>
+      <span class="star-filled">★</span>
+      <span class="star-empty">★</span>
+      <span style="font-size:18px;font-weight:800;color:var(--red);margin-left:8px;">中等偏高</span>
+    </div>
+
+    <ol class="conclusion-list">
+      <li><strong>产业链互补性强：</strong>精工高端技术全球领先，大勇本地根基深厚</li>
+      <li><strong>合作基础已具备：</strong>铜鼓体育场项目提供天然切入点</li>
+      <li><strong>大勇对华合作意愿明确：</strong>已与中交疏浚、法奥、天意等中国企业建立合作关系</li>
+      <li><strong>市场窗口期宝贵：</strong>越南基建大年+2026新投资法带来3-5年黄金窗口期</li>
+    </ol>
+
+    <div class="final-action">
+      <div class="label">关键行动 · Key Action</div>
+      <p>借铜鼓项目契机建立联合工作组，以<strong style="color:var(--red)">技术换市场</strong>，以<strong style="color:var(--red)">合作降风险</strong>，快速切入越南高端钢结构市场。</p>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ==================== FOOTER ==================== -->
+<footer class="footer">
+  <p>本报告由调研系统生成 ｜ <strong>时间戳: 2607231713</strong> ｜ 信息截至 2026-07-23</p>
+  <p>基于公开信息整理，仅供参考</p>
+</footer>
+
+<script>
+/* ===== IntersectionObserver 入场动画 ===== */
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, {
+  threshold: 0.1,
+  rootMargin: '0px 0px -60px 0px'
+});
+
+document.querySelectorAll('.animate').forEach(el => {
+  observer.observe(el);
+});
+
+/* ===== 卡片3D倾斜效果 ===== */
+document.querySelectorAll('[data-tilt]').forEach(card => {
+  card.addEventListener('mousemove', (e) => {
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    const rotateX = ((y - centerY) / centerY) * -8;
+    const rotateY = ((x - centerX) / centerX) * 8;
+    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.03)`;
+  });
+
+  card.addEventListener('mouseleave', () => {
+    card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale(1)';
+  });
+});
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>
+mermaid.initialize({
+  startOnLoad: true,
+  theme: 'base',
+  themeVariables: {
+    primaryColor: '#e63946',
+    primaryTextColor: '#ffffff',
+    primaryBorderColor: '#c1121f',
+    lineColor: '#1d3557',
+    secondaryColor: '#1d3557',
+    tertiaryColor: '#f1faee',
+    fontFamily: 'Inter, Noto Sans SC, sans-serif',
+    fontSize: '14px'
+  },
+  flowchart: {
+    curve: 'basis',
+    padding: 20,
+    nodeSpacing: 50,
+    rankSpacing: 60
+  }
+});
+</script>
+</body>
+</html>
