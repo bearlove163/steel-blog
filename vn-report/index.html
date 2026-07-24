@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>🌏 越南建筑市场调研报告 | 手机浏览导航</title>
+<style>
+:root{
+  --bg:#0f1117;
+  --card:#1a1d28;
+  --card-hover:#232736;
+  --gold:#d4a849;
+  --gold-soft:#e6c178;
+  --blue:#4a9eff;
+  --green:#3ecf8e;
+  --red:#ff6b6b;
+  --text:#e8eaf0;
+  --text-dim:#9ca3af;
+  --border:rgba(255,255,255,0.08);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans SC','PingFang SC','Microsoft YaHei',sans-serif;
+  font-size:13px;
+  line-height:1.6;
+  min-height:100vh;
+}
+.container{max-width:680px;margin:0 auto;padding:16px 14px 40px;}
+.header{
+  text-align:center;
+  padding:28px 16px 20px;
+  background:linear-gradient(135deg,rgba(212,168,73,0.08),rgba(74,158,255,0.05));
+  border-radius:16px;
+  margin-bottom:20px;
+  border:1px solid var(--border);
+}
+.header h1{
+  font-size:20px;
+  font-weight:700;
+  margin-bottom:6px;
+  background:linear-gradient(135deg,var(--gold),var(--gold-soft));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.header p{font-size:12px;color:var(--text-dim);}
+.badge{
+  display:inline-block;
+  padding:3px 10px;
+  border-radius:20px;
+  font-size:11px;
+  font-weight:600;
+  margin-top:8px;
+  background:rgba(62,207,142,0.12);
+  color:var(--green);
+  border:1px solid rgba(62,207,142,0.25);
+}
+.report-card{
+  background:var(--card);
+  border-radius:14px;
+  padding:16px;
+  margin-bottom:14px;
+  border:1px solid var(--border);
+  transition:all 0.25s ease;
+  overflow:hidden;
+}
+.report-card:hover{background:var(--card-hover);border-color:rgba(212,168,73,0.3);}
+.card-header{display:flex;align-items:center;gap:10px;margin-bottom:10px;}
+.card-emoji{font-size:28px;flex-shrink:0;}
+.card-title{font-size:15px;font-weight:700;color:var(--text);}
+.card-tag{font-size:10px;color:var(--text-dim);font-weight:400;margin-top:2px;}
+.card-desc{font-size:12px;color:var(--text-dim);margin-bottom:12px;line-height:1.5;}
+.card-body{display:flex;gap:14px;align-items:center;}
+.qr-section{flex-shrink:0;text-align:center;}
+.qr-section img{
+  width:110px;height:110px;
+  border-radius:8px;
+  background:#fff;
+  padding:4px;
+}
+.qr-label{font-size:10px;color:var(--text-dim);margin-top:4px;}
+.link-section{flex:1;display:flex;flex-direction:column;gap:8px;}
+.open-btn{
+  display:block;
+  text-align:center;
+  padding:10px 14px;
+  border-radius:10px;
+  font-size:13px;
+  font-weight:600;
+  text-decoration:none;
+  transition:all 0.2s ease;
+}
+.open-btn.primary{
+  background:linear-gradient(135deg,var(--gold),var(--gold-soft));
+  color:#0f1117;
+}
+.open-btn.primary:hover{opacity:0.9;transform:translateY(-1px);}
+.open-btn.secondary{
+  background:rgba(74,158,255,0.12);
+  color:var(--blue);
+  border:1px solid rgba(74,158,255,0.25);
+}
+.open-btn.secondary:hover{background:rgba(74,158,255,0.2);}
+.copy-btn{
+  display:block;
+  text-align:center;
+  padding:7px 14px;
+  border-radius:8px;
+  font-size:11px;
+  font-weight:500;
+  background:rgba(255,255,255,0.05);
+  color:var(--text-dim);
+  border:1px solid var(--border);
+  cursor:pointer;
+  transition:all 0.2s ease;
+  text-decoration:none;
+}
+.copy-btn:hover{background:rgba(255,255,255,0.1);color:var(--text);}
+.url-text{
+  font-size:10px;
+  color:var(--text-dim);
+  word-break:break-all;
+  line-height:1.4;
+  padding:6px 8px;
+  background:rgba(0,0,0,0.2);
+  border-radius:6px;
+  margin-bottom:6px;
+  font-family:'SF Mono','Fira Code',monospace;
+}
+.tip-box{
+  margin-top:20px;
+  padding:14px;
+  background:rgba(74,158,255,0.06);
+  border-radius:12px;
+  border:1px solid rgba(74,158,255,0.15);
+}
+.tip-box h3{
+  font-size:13px;
+  color:var(--blue);
+  margin-bottom:6px;
+  display:flex;
+  align-items:center;
+  gap:6px;
+}
+.tip-box p{font-size:11px;color:var(--text-dim);line-height:1.6;}
+.tip-box ul{list-style:none;padding:0;margin-top:6px;}
+.tip-box li{font-size:11px;color:var(--text-dim);padding:2px 0;padding-left:16px;position:relative;}
+.tip-box li::before{content:'▸';position:absolute;left:0;color:var(--green);}
+.footer{
+  text-align:center;
+  margin-top:24px;
+  padding:16px;
+  font-size:11px;
+  color:var(--text-dim);
+}
+.footer a{color:var(--gold);text-decoration:none;}
+@media(max-width:380px){
+  .card-body{flex-direction:column;text-align:center;}
+  .qr-section img{width:130px;height:130px;}
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>🌏 越南建筑市场调研报告</h1>
+    <p>📱 手机扫码或点击链接，直接浏览完整报告</p>
+    <span class="badge">✅ 手机端已适配</span>
+  </div>
+
+  <!-- Style 1: Dark Editorial -->
+  <div class="report-card">
+    <div class="card-header">
+      <span class="card-emoji">🌙</span>
+      <div>
+        <div class="card-title">Dark Editorial 暗色编辑风</div>
+        <div class="card-tag">深色背景 · 金色点缀 · 衬线字体</div>
+      </div>
+    </div>
+    <div class="card-desc">沉浸式暗色主题，金色高亮关键数据，滚动触发动画效果，适合夜间阅读。</div>
+    <div class="card-body">
+      <div class="qr-section">
+        <img src="qr_style1.png" alt="QR Code">
+        <div class="qr-label">📱 扫码查看</div>
+      </div>
+      <div class="link-section">
+        <a class="open-btn primary" href="style1_dark_editorial.html">🚀 打开报告</a>
+        <a class="copy-btn" href="https://bearlove163.github.io/steel-blog/vn-report/style1_dark_editorial.html" target="_blank">🔗 在新窗口打开</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Style 2: Minimal Swiss -->
+  <div class="report-card">
+    <div class="card-header">
+      <span class="card-emoji">⚪</span>
+      <div>
+        <div class="card-title">Minimal Swiss 极简瑞士风</div>
+        <div class="card-tag">白底 · 红色点缀 · 严格网格</div>
+      </div>
+    </div>
+    <div class="card-desc">极简主义设计，瑞士国际主义风格，红黑白三色，信息层次分明。</div>
+    <div class="card-body">
+      <div class="qr-section">
+        <img src="qr_style2.png" alt="QR Code">
+        <div class="qr-label">📱 扫码查看</div>
+      </div>
+      <div class="link-section">
+        <a class="open-btn primary" href="style2_minimal_swiss.html">🚀 打开报告</a>
+        <a class="copy-btn" href="https://bearlove163.github.io/steel-blog/vn-report/style2_minimal_swiss.html" target="_blank">🔗 在新窗口打开</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Style 3: Bold Modern -->
+  <div class="report-card">
+    <div class="card-header">
+      <span class="card-emoji">🔥</span>
+      <div>
+        <div class="card-title">Bold Modern 大胆现代风</div>
+        <div class="card-tag">红蓝撞色 · 大字号 · 非对称布局</div>
+      </div>
+    </div>
+    <div class="card-desc">大胆的色彩对比，超大标题排版，卡片式信息展示，现代感十足。</div>
+    <div class="card-body">
+      <div class="qr-section">
+        <img src="qr_style3.png" alt="QR Code">
+        <div class="qr-label">📱 扫码查看</div>
+      </div>
+      <div class="link-section">
+        <a class="open-btn primary" href="style3_bold_modern.html">🚀 打开报告</a>
+        <a class="copy-btn" href="https://bearlove163.github.io/steel-blog/vn-report/style3_bold_modern.html" target="_blank">🔗 在新窗口打开</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Original Report -->
+  <div class="report-card">
+    <div class="card-header">
+      <span class="card-emoji">📋</span>
+      <div>
+        <div class="card-title">原始完整调研报告</div>
+        <div class="card-tag">越南建筑市场调研报告 · 2607231713</div>
+      </div>
+    </div>
+    <div class="card-desc">包含全部调研内容的完整报告，涵盖大勇钢构分析、外资合作梳理、精工合作评估。</div>
+    <div class="card-body">
+      <div class="qr-section">
+        <img src="qr_original.png" alt="QR Code">
+        <div class="qr-label">📱 扫码查看</div>
+      </div>
+      <div class="link-section">
+        <a class="open-btn primary" href="%E8%B6%8A%E5%8D%97%E5%BB%BA%E7%AD%91%E5%B8%82%E5%9C%BA%E8%B0%83%E7%A0%94%E6%8A%A5%E5%91%8A_2607231713.html">🚀 打开报告</a>
+        <a class="copy-btn" href="https://bearlove163.github.io/steel-blog/vn-report/%E8%B6%8A%E5%8D%97%E5%BB%BA%E7%AD%91%E5%B8%82%E5%9C%BA%E8%B0%83%E7%A0%94%E6%8A%A5%E5%91%8A_2607231713.html" target="_blank">🔗 在新窗口打开</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="tip-box">
+    <h3>💡 使用说明</h3>
+    <ul>
+      <li><b>扫码访问</b>：用手机相机或微信扫一扫，直接打开报告</li>
+      <li><b>点击访问</b>：点击「打开报告」按钮，在当前页面浏览</li>
+      <li><b>收藏链接</b>：打开报告后点击浏览器星标，方便日后查看</li>
+      <li><b>分享他人</b>：可将二维码截图发送给同事扫码查看</li>
+    </ul>
+  </div>
+
+  <div class="footer">
+    <p>📦 托管于 GitHub Pages · 永久有效链接</p>
+    <p>⏰ 报告生成时间：2026-07-23 17:13 · 导航页：2607241228</p>
+  </div>
+</div>
+</body>
+</html>
