@@ -1,0 +1,126 @@
+<h2>🎧 英语复读机 App：播放页布局三选一</h2>
+<p class="subtitle">请选一个最接近你设想的整体结构，后续会据此精调</p>
+
+<div class="options">
+  <div class="option" data-choice="a" onclick="toggleSelect(this)">
+    <div class="letter">A</div>
+    <div class="content">
+      <h3>轻听英语式 · 三段式</h3>
+      <div class="mockup" style="margin-top:0.75rem">
+        <div class="mockup-header">播放页 · 课程：The Future of AI</div>
+        <div class="mockup-body">
+          <div style="background:#f3f4f6;padding:0.5rem;border-radius:6px;margin-bottom:0.5rem;height:120px;overflow:hidden;font-size:0.75rem;line-height:1.4;color:#374151">
+            <p><strong>01</strong> In recent years, artificial intelligence has moved...</p>
+            <p><strong>02</strong> from research labs into everyday applications.</p>
+            <p><strong>03</strong> This shift brings both opportunities and risks.</p>
+          </div>
+          <div style="background:#e5e7eb;height:50px;border-radius:6px;margin-bottom:0.5rem;display:flex;align-items:center;justify-content:center;gap:0.5rem">
+            <span class="mock-button">A</span>
+            <span class="mock-button">⏮</span>
+            <span class="mock-button">▶</span>
+            <span class="mock-button">⏭</span>
+            <span class="mock-button">B</span>
+          </div>
+          <div style="background:#fef3c7;padding:0.4rem;border-radius:6px;font-size:0.7rem">
+            <strong>关键词</strong> artificial intelligence · research labs · opportunities
+          </div>
+        </div>
+      </div>
+      <p><strong>结构：</strong>文章在上 → 控制面板在中 → 重点短语/词汇在下</p>
+    </div>
+  </div>
+
+  <div class="option" data-choice="b" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="content">
+      <h3>分屏式 · 控制区 heavier</h3>
+      <div class="mockup" style="margin-top:0.75rem">
+        <div class="mockup-header">播放页 · 课程：The Future of AI</div>
+        <div class="mockup-body">
+          <div style="display:flex;gap:0.5rem;height:90px;margin-bottom:0.5rem">
+            <div style="flex:1;background:#f3f4f6;padding:0.4rem;border-radius:6px;font-size:0.7rem">文章 + 逐句字幕</div>
+            <div style="width:80px;background:#e0e7ff;padding:0.4rem;border-radius:6px;font-size:0.65rem">重点词列表</div>
+          </div>
+          <div style="background:#e5e7eb;height:90px;border-radius:6px;padding:0.5rem;display:flex;flex-direction:column;gap:0.4rem">
+            <div style="height:8px;background:#9ca3af;border-radius:4px"></div>
+            <div style="display:flex;justify-content:center;gap:0.5rem">
+              <span class="mock-button">A</span>
+              <span class="mock-button">⏮</span>
+              <span class="mock-button">▶</span>
+              <span class="mock-button">⏭</span>
+              <span class="mock-button">B</span>
+            </div>
+            <div style="display:flex;justify-content:center;gap:0.5rem;font-size:0.65rem">
+              <span class="mock-button">0.8x</span>
+              <span class="mock-button">1.0x</span>
+              <span class="mock-button">1.25x</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p><strong>结构：</strong>上半部分文章+侧边词汇 → 下半大控制面板</p>
+    </div>
+  </div>
+
+  <div class="option" data-choice="c" onclick="toggleSelect(this)">
+    <div class="letter">C</div>
+    <div class="content">
+      <h3>沉浸式 · 浮动控制</h3>
+      <div class="mockup" style="margin-top:0.75rem">
+        <div class="mockup-header">播放页 · 课程：The Future of AI</div>
+        <div class="mockup-body" style="position:relative;min-height:180px">
+          <div style="background:#f3f4f6;padding:0.5rem;border-radius:6px;height:140px;overflow:hidden;font-size:0.75rem;line-height:1.5;color:#374151">
+            <p><strong>01</strong> In recent years, artificial intelligence has moved...</p>
+            <p><strong>02</strong> from research labs into everyday applications.</p>
+            <p><strong>03</strong> This shift brings both opportunities and risks.</p>
+          </div>
+          <div style="position:absolute;bottom:0;left:5%;right:5%;background:rgba(255,255,255,0.95);border-radius:12px;padding:0.5rem;box-shadow:0 2px 8px rgba(0,0,0,0.1);display:flex;justify-content:center;gap:0.5rem">
+            <span class="mock-button">A</span>
+            <span class="mock-button">⏮</span>
+            <span class="mock-button">▶</span>
+            <span class="mock-button">⏭</span>
+            <span class="mock-button">B</span>
+          </div>
+        </div>
+      </div>
+      <p><strong>结构：</strong>文章占主要空间 → 底部浮动控制条 → 词汇做成可上滑抽屉</p>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h3>📊 方案对比</h3>
+  <table style="width:100%;border-collapse:collapse;font-size:0.85rem;margin-top:0.5rem">
+    <tr style="background:#f3f4f6">
+      <th style="padding:0.5rem;text-align:left">维度</th>
+      <th style="padding:0.5rem;text-align:left">A 三段式</th>
+      <th style="padding:0.5rem;text-align:left">B 分屏式</th>
+      <th style="padding:0.5rem;text-align:left">C 沉浸式</th>
+    </tr>
+    <tr>
+      <td style="padding:0.5rem;border-bottom:1px solid #e5e7eb">文章可读性</td>
+      <td style="padding:0.5rem;border-bottom:1px solid #e5e7eb">⭐⭐⭐ 最开阔</td>
+      <td style="padding:0.5rem;border-bottom:1px solid #e5e7eb">⭐⭐ 共享空间</td>
+      <td style="padding:0.5rem;border-bottom:1px solid #e5e7eb">⭐⭐⭐ 最开阔</td>
+    </tr>
+    <tr>
+      <td style="padding:0.5rem;border-bottom:1px solid #e5e7eb">A-B 复读操作</td>
+      <td style="padding:0.5rem;border-bottom:1px solid #e5e7eb">⭐⭐ 按钮集中</td>
+      <td style="padding:0.5rem;border-bottom:1px solid #e5e7eb">⭐⭐⭐ 大面板，最易点</td>
+      <td style="padding:0.5rem;border-bottom:1px solid #e5e7eb">⭐⭐ 浮动条可收起</td>
+    </tr>
+    <tr>
+      <td style="padding:0.5rem;border-bottom:1px solid #e5e7eb">关键词可见性</td>
+      <td style="padding:0.5rem;border-bottom:1px solid #e5e7eb">⭐⭐ 固定底部</td>
+      <td style="padding:0.5rem;border-bottom:1px solid #e5e7eb">⭐⭐⭐ 常驻侧边</td>
+      <td style="padding:0.5rem;border-bottom:1px solid #e5e7eb">⭐ 抽屉内</td>
+    </tr>
+    <tr>
+      <td style="padding:0.5rem;border-bottom:1px solid #e5e7eb">页面复杂度</td>
+      <td style="padding:0.5rem;border-bottom:1px solid #e5e7eb">低</td>
+      <td style="padding:0.5rem;border-bottom:1px solid #e5e7eb">中</td>
+      <td style="padding:0.5rem;border-bottom:1px solid #e5e7eb">低但需手势</td>
+    </tr>
+  </table>
+  <p class="subtitle" style="margin-top:0.5rem">💡 我的推荐：若用户主要场景是“边读文章边反复听句段”，选 <strong>A</strong>；若操作效率优先，选 <strong>B</strong>；若追求极简阅读体验，选 <strong>C</strong>。</p>
+</div>
