@@ -9,6 +9,7 @@ const blog = defineCollection({
     category: z.string().default('地标建筑'),
     description: z.string().default(''),
     source: z.string().optional().default(''),
+    infographic: z.string().optional().default(''),
   }),
 });
 
