@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import topics from '../data/topics.json';
 import fs from 'node:fs';
 import path from 'node:path';
 
@@ -72,6 +73,53 @@ const candidates = [
         </div>
       </div>
     </div>
+
+    <!-- Step 0: Daily 3-Topic Planner -->
+    <section class="mb-8 p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+        <div>
+          <span class="text-[11px] font-mono uppercase tracking-wider text-sky-600 dark:text-sky-400">STEP 0 · DAILY TOPIC PLANNER</span>
+          <h2 class="text-lg font-bold text-slate-900 dark:text-white">今日 3 大精选选题规划（点选后一键启动 Swarm 深度调研）</h2>
+        </div>
+        <span id="topic-status" class="text-xs text-slate-500 dark:text-slate-400">点击任意选题卡片即可复制 Swarm 创作指令</span>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-4">
+        {topics.map((t) => (
+          <div class="topic-card group rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50/70 dark:bg-slate-950/60 overflow-hidden flex flex-col justify-between hover:border-sky-400 transition-all">
+            <div>
+              <div class="aspect-video bg-white dark:bg-slate-900 overflow-hidden border-b border-slate-200 dark:border-slate-800">
+                <img src={`${base}${t.image}`} alt={t.title} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+              </div>
+              <div class="p-4">
+                <span class="inline-block px-2 py-0.5 rounded-full text-[11px] font-medium bg-sky-50 dark:bg-sky-950 text-sky-700 dark:text-sky-300 mb-2">
+                  {t.tag}
+                </span>
+                <h3 class="font-bold text-sm text-slate-900 dark:text-white">{t.title}</h3>
+                <p class="mt-1.5 text-xs text-slate-600 dark:text-slate-400 leading-relaxed line-clamp-3">{t.summary}</p>
+                <div class="mt-2.5 flex flex-wrap gap-1">
+                  {t.highlights.map((h) => (
+                    <span class="px-1.5 py-0.5 rounded bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-[10px] text-slate-600 dark:text-slate-300">
+                      {h}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+            <div class="px-4 pb-4">
+              <button
+                type="button"
+                data-topic-title={t.title}
+                data-topic-id={t.id}
+                class="btn-pick-topic w-full py-2 rounded-lg bg-slate-900 hover:bg-sky-600 dark:bg-sky-600 dark:hover:bg-sky-500 text-white text-xs font-medium cursor-pointer transition-colors"
+              >
+                选定此选题 · 启动 Swarm 调研
+              </button>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
 
     <div class="grid lg:grid-cols-12 gap-6">
       <!-- Left: Candidate Image Picker (4 cols) -->
@@ -475,6 +523,22 @@ const candidates = [
       a.href = URL.createObjectURL(blob);
       a.download = 'index.md';
       a.click();
+    });
+
+    document.querySelectorAll('.btn-pick-topic').forEach((btn) => {
+      btn.addEventListener('click', async () => {
+        const title = btn.getAttribute('data-topic-title');
+        const id = btn.getAttribute('data-topic-id');
+        const promptText = `请使用 steel-blog-workflow 工作流，针对选题【${title}】（目录：${id}）启动 3 路 Swarm 深度调研，生成白底中文信息图与本地候选图库，并撰写 1 万字科普长文放入 /studio/ 供我审稿。`;
+        try {
+          await navigator.clipboard.writeText(promptText);
+        } catch {}
+        const statusEl = document.getElementById('topic-status');
+        if (statusEl) {
+          statusEl.textContent = `已选定「${title}」并复制 Swarm 指令！直接粘贴发给 Antigravity 即可开始。`;
+          statusEl.className = 'text-xs font-semibold text-emerald-600 dark:text-emerald-400';
+        }
+      });
     });
 
     updateAll();
