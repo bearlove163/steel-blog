@@ -1,0 +1,100 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+const repos = [
+  {
+    name: 'steel-section-calculator',
+    title: '钢结构截面特性计算软件',
+    desc: '支持 H 型钢、箱型、圆管、L/T/Z 截面特性计算，内置中国、欧洲、美国标准截面库，辅助结构选型与验算。',
+    stack: ['工程计算', '标准截面库', 'Web App'],
+    url: 'https://github.com/bearlove163/steel-section-calculator',
+  },
+  {
+    name: 'steel-landmark-docs',
+    title: '全球钢结构地标工程文档库',
+    desc: '基于 Docsify 构建的钢结构地标知识库，系统梳理世界顶级体育场馆、会展中心与空间结构的体系特点。',
+    stack: ['Docsify', 'GitHub Pages', '地标案例'],
+    url: 'https://github.com/bearlove163/steel-landmark-docs',
+  },
+  {
+    name: 'steel-structrue-assistant',
+    title: '钢结构工程 AI 助手',
+    desc: '结合工程规范、报价清单与 AI 工作流，探索钢结构行业智能化辅助决策与文档处理。',
+    stack: ['AI Agent', '工程规范', '效率工具'],
+    url: 'https://github.com/bearlove163/steel-structrue-assistant',
+  },
+  {
+    name: 'commerical-quotation',
+    title: '商业报价系统探索',
+    desc: '面向工程与制造报价场景的自动化报价模板与计算工具研究。',
+    stack: ['报价系统', '自动化'],
+    url: 'https://github.com/bearlove163/commerical-quotation',
+  },
+];
+---
+
+<BaseLayout title="项目与专题 | 钢结构研究院" description="个人开源项目与行业专题研究报告。">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 py-12">
+    <div class="max-w-2xl mb-10">
+      <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white">项目与专题</h1>
+      <p class="mt-2 text-slate-600 dark:text-slate-400">
+        聚焦钢结构工程数字化工具、标准计算软件与海外建筑市场调研。
+      </p>
+    </div>
+
+    <!-- Special Report Banner -->
+    <div class="mb-12 p-6 sm:p-8 rounded-2xl bg-gradient-to-r from-amber-50 to-orange-50 dark:from-amber-950/30 dark:to-orange-950/20 border border-amber-200/80 dark:border-amber-800/50 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+      <div>
+        <span class="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-amber-100 text-amber-800 dark:bg-amber-900/60 dark:text-amber-300">
+          专题调研报告
+        </span>
+        <h2 class="mt-2 text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">
+          越南建筑与钢结构市场深度调研报告
+        </h2>
+        <p class="mt-1.5 text-sm text-slate-600 dark:text-slate-300 max-w-2xl">
+          保留了原有的多风格交互式调研报告专题页（包含 Dark Editorial、Minimal Swiss、Bold Modern 三种排版风格预览）。
+        </p>
+      </div>
+      <a
+        href={`${base}/vn-report/index.html`}
+        class="px-5 py-2.5 rounded-xl bg-amber-600 hover:bg-amber-700 text-white font-medium text-sm shrink-0 transition-colors"
+      >
+        打开专题报告 →
+      </a>
+    </div>
+
+    <!-- GitHub Projects -->
+    <h2 class="text-xl font-bold text-slate-900 dark:text-white mb-5">GitHub 开源项目</h2>
+    <div class="grid md:grid-cols-2 gap-5">
+      {repos.map((r) => (
+        <a
+          href={r.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="group p-6 rounded-2xl bg-white dark:bg-slate-900/70 border border-slate-200/80 dark:border-slate-800 hover:border-sky-400 dark:hover:border-sky-600 transition-all shadow-sm hover:shadow-md flex flex-col justify-between"
+        >
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <h3 class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors">
+                {r.title}
+              </h3>
+              <span class="text-xs text-slate-400 group-hover:text-sky-500">↗</span>
+            </div>
+            <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+              {r.desc}
+            </p>
+          </div>
+          <div class="mt-5 flex flex-wrap gap-2">
+            {r.stack.map((t) => (
+              <span class="px-2.5 py-0.5 rounded-md text-xs bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">
+                {t}
+              </span>
+            ))}
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</BaseLayout>

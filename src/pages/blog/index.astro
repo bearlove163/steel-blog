@@ -1,0 +1,124 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const allPosts = (await getCollection('blog')).sort(
+  (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+);
+
+const categories = ['全部', ...Array.from(new Set(allPosts.map((p) => p.data.category)))];
+---
+
+<BaseLayout title="专栏博客 | 钢结构研究院" description="钢结构工程、地标建筑、参数化与AI设计专栏文章。">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 py-12">
+    <div class="max-w-2xl mb-10">
+      <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white">专栏博客</h1>
+      <p class="mt-2 text-slate-600 dark:text-slate-400">
+        共收录 {allPosts.length} 篇深度观察与工程案例，涵盖全球地标场馆、参数化设计、AI 建造与市场洞察。
+      </p>
+    </div>
+
+    <!-- Search & Filter -->
+    <div class="flex flex-col sm:flex-row gap-4 justify-between items-start sm:items-center mb-8">
+      <div class="flex flex-wrap gap-2" id="category-filters">
+        {categories.map((cat, idx) => (
+          <button
+            type="button"
+            data-cat={cat}
+            class={`cat-btn px-3.5 py-1.5 rounded-lg text-sm font-medium transition-colors cursor-pointer ${
+              idx === 0
+                ? 'bg-sky-600 text-white'
+                : 'bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-800 hover:border-sky-400'
+            }`}
+          >
+            {cat}
+          </button>
+        ))}
+      </div>
+
+      <div class="w-full sm:w-72">
+        <input
+          id="blog-search"
+          type="search"
+          placeholder="搜索文章标题或关键词..."
+          class="w-full px-4 py-2 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-sm text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-sky-500"
+        />
+      </div>
+    </div>
+
+    <!-- Posts Grid -->
+    <div id="posts-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+      {allPosts.map((post) => (
+        <a
+          href={`${base}/blog/${post.id}`}
+          data-category={post.data.category}
+          data-search={`${post.data.title} ${post.data.description} ${post.data.category}`.toLowerCase()}
+          class="post-card group p-6 rounded-2xl bg-white dark:bg-slate-900/70 border border-slate-200/80 dark:border-slate-800 hover:border-sky-400 dark:hover:border-sky-600 transition-all shadow-sm hover:shadow-md flex flex-col justify-between"
+        >
+          <div>
+            <div class="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 mb-3">
+              <span class="px-2.5 py-0.5 rounded-full bg-sky-50 dark:bg-sky-950/60 text-sky-700 dark:text-sky-300 font-medium">
+                {post.data.category}
+              </span>
+              <time datetime={post.data.date}>{post.data.date}</time>
+            </div>
+            <h2 class="text-base font-bold text-slate-900 dark:text-white group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors line-clamp-2">
+              {post.data.title}
+            </h2>
+            <p class="mt-2 text-sm text-slate-600 dark:text-slate-400 line-clamp-3 leading-relaxed">
+              {post.data.description}
+            </p>
+          </div>
+          <div class="mt-4 text-xs font-medium text-sky-600 dark:text-sky-400">
+            阅读全文 →
+          </div>
+        </a>
+      ))}
+    </div>
+
+    <div id="empty-state" class="hidden text-center py-16 text-slate-500 dark:text-slate-400">
+      没有找到匹配的文章，请尝试更换关键词或分类。
+    </div>
+  </div>
+
+  <script is:inline>
+    const buttons = document.querySelectorAll('.cat-btn');
+    const cards = document.querySelectorAll('.post-card');
+    const searchInput = document.getElementById('blog-search');
+    const emptyState = document.getElementById('empty-state');
+
+    let activeCat = '全部';
+
+    function filterPosts() {
+      const q = (searchInput?.value || '').trim().toLowerCase();
+      let visibleCount = 0;
+      cards.forEach((card) => {
+        const cat = card.getAttribute('data-category');
+        const text = card.getAttribute('data-search') || '';
+        const matchCat = activeCat === '全部' || cat === activeCat;
+        const matchQuery = !q || text.includes(q);
+        if (matchCat && matchQuery) {
+          card.classList.remove('hidden');
+          visibleCount++;
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+      emptyState?.classList.toggle('hidden', visibleCount > 0);
+    }
+
+    buttons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        activeCat = btn.getAttribute('data-cat') || '全部';
+        buttons.forEach((b) => {
+          b.className = 'cat-btn px-3.5 py-1.5 rounded-lg text-sm font-medium transition-colors cursor-pointer bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-800 hover:border-sky-400';
+        });
+        btn.className = 'cat-btn px-3.5 py-1.5 rounded-lg text-sm font-medium transition-colors cursor-pointer bg-sky-600 text-white';
+        filterPosts();
+      });
+    });
+
+    searchInput?.addEventListener('input', filterPosts);
+  </script>
+</BaseLayout>

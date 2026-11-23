@@ -1,0 +1,37 @@
+name: Daily Project Publish
+
+on:
+  schedule:
+    # 每天北京时间 09:00 (UTC 01:00) 自动从 content-queue 发布一个项目
+    - cron: '0 1 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  publish-next:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Publish next queued project
+        run: node scripts/daily-publish.mjs
+
+      - name: Commit and push if changed
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            git config user.name "steel-blog-bot"
+            git config user.email "actions@users.noreply.github.com"
+            git add -A
+            git commit -m "chore: daily publish project $(date +'%Y-%m-%d')"
+            git push
+          else
+            echo "No new project in queue today."
+          fi

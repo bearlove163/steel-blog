@@ -1,0 +1,11 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', system-ui, sans-serif;
+  }
+}

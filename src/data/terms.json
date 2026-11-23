@@ -1,0 +1,1283 @@
+[
+  {
+    "id": 1,
+    "en": "Space Frame",
+    "zh": "网架结构",
+    "category": "结构",
+    "example": "Space Frame is widely used in civil engineering.\n网架结构在土木工程中广泛应用。"
+  },
+  {
+    "id": 2,
+    "en": "Truss",
+    "zh": "桁架",
+    "category": "结构",
+    "example": "Truss is widely used in civil engineering.\n桁架在土木工程中广泛应用。"
+  },
+  {
+    "id": 3,
+    "en": "Cable Dome",
+    "zh": "索穹顶",
+    "category": "结构",
+    "example": "Cable Dome is widely used in civil engineering.\n索穹顶在土木工程中广泛应用。"
+  },
+  {
+    "id": 4,
+    "en": "Tensile Structure",
+    "zh": "张拉结构",
+    "category": "结构",
+    "example": "Tensile Structure is widely used in civil engineering.\n张拉结构在土木工程中广泛应用。"
+  },
+  {
+    "id": 5,
+    "en": "Cable-Stayed",
+    "zh": "斜拉结构",
+    "category": "结构",
+    "example": "Cable-Stayed is widely used in civil engineering.\n斜拉结构在土木工程中广泛应用。"
+  },
+  {
+    "id": 6,
+    "en": "Suspension",
+    "zh": "悬索结构",
+    "category": "结构",
+    "example": "Suspension is widely used in civil engineering.\n悬索结构在土木工程中广泛应用。"
+  },
+  {
+    "id": 7,
+    "en": "Prestressed",
+    "zh": "预应力",
+    "category": "结构",
+    "example": "Prestressed is widely used in civil engineering.\n预应力在土木工程中广泛应用。"
+  },
+  {
+    "id": 8,
+    "en": "Frame Structure",
+    "zh": "框架结构",
+    "category": "结构",
+    "example": "Frame Structure is widely used in civil engineering.\n框架结构在土木工程中广泛应用。"
+  },
+  {
+    "id": 9,
+    "en": "Braced Frame",
+    "zh": "支撑框架",
+    "category": "结构",
+    "example": "Braced Frame is widely used in civil engineering.\n支撑框架在土木工程中广泛应用。"
+  },
+  {
+    "id": 10,
+    "en": "Rigid Frame",
+    "zh": "刚架",
+    "category": "结构",
+    "example": "Rigid Frame is widely used in civil engineering.\n刚架在土木工程中广泛应用。"
+  },
+  {
+    "id": 11,
+    "en": "Arch Structure",
+    "zh": "拱结构",
+    "category": "结构",
+    "example": "Arch Structure is widely used in civil engineering.\n拱结构在土木工程中广泛应用。"
+  },
+  {
+    "id": 12,
+    "en": "Shell Structure",
+    "zh": "壳结构",
+    "category": "结构",
+    "example": "Shell Structure is widely used in civil engineering.\n壳结构在土木工程中广泛应用。"
+  },
+  {
+    "id": 13,
+    "en": "Membrane Structure",
+    "zh": "膜结构",
+    "category": "结构",
+    "example": "Membrane Structure is widely used in civil engineering.\n膜结构在土木工程中广泛应用。"
+  },
+  {
+    "id": 14,
+    "en": "Grid Structure",
+    "zh": "网格结构",
+    "category": "结构",
+    "example": "Grid Structure is widely used in civil engineering.\n网格结构在土木工程中广泛应用。"
+  },
+  {
+    "id": 15,
+    "en": "Dome",
+    "zh": "穹顶",
+    "category": "结构",
+    "example": "Dome is widely used in civil engineering.\n穹顶在土木工程中广泛应用。"
+  },
+  {
+    "id": 16,
+    "en": "Vault",
+    "zh": "穹窿",
+    "category": "结构",
+    "example": "Vault is widely used in civil engineering.\n穹窿在土木工程中广泛应用。"
+  },
+  {
+    "id": 17,
+    "en": "Beam",
+    "zh": "梁",
+    "category": "结构",
+    "example": "Beam is widely used in civil engineering.\n梁在土木工程中广泛应用。"
+  },
+  {
+    "id": 18,
+    "en": "Girder",
+    "zh": "主梁",
+    "category": "结构",
+    "example": "Girder is widely used in civil engineering.\n主梁在土木工程中广泛应用。"
+  },
+  {
+    "id": 19,
+    "en": "Column",
+    "zh": "柱",
+    "category": "结构",
+    "example": "Column is widely used in civil engineering.\n柱在土木工程中广泛应用。"
+  },
+  {
+    "id": 20,
+    "en": "Wall",
+    "zh": "墙",
+    "category": "结构",
+    "example": "Wall is widely used in civil engineering.\n墙在土木工程中广泛应用。"
+  },
+  {
+    "id": 21,
+    "en": "Welded Connection",
+    "zh": "Welded Connection",
+    "category": "连接",
+    "example": "Welded Connection is widely used in civil engineering.\nWelded Connection在土木工程中广泛应用。"
+  },
+  {
+    "id": 22,
+    "en": "Bolted Connection",
+    "zh": "Bolted Connection",
+    "category": "连接",
+    "example": "Bolted Connection is widely used in civil engineering.\nBolted Connection在土木工程中广泛应用。"
+  },
+  {
+    "id": 23,
+    "en": "Rivet",
+    "zh": "Rivet",
+    "category": "连接",
+    "example": "Rivet is widely used in civil engineering.\nRivet在土木工程中广泛应用。"
+  },
+  {
+    "id": 24,
+    "en": "Moment Connection",
+    "zh": "Moment Connection",
+    "category": "连接",
+    "example": "Moment Connection is widely used in civil engineering.\nMoment Connection在土木工程中广泛应用。"
+  },
+  {
+    "id": 25,
+    "en": "Pinned Connection",
+    "zh": "Pinned Connection",
+    "category": "连接",
+    "example": "Pinned Connection is widely used in civil engineering.\nPinned Connection在土木工程中广泛应用。"
+  },
+  {
+    "id": 26,
+    "en": "Anchor Bolt",
+    "zh": "Anchor Bolt",
+    "category": "连接",
+    "example": "Anchor Bolt is widely used in civil engineering.\nAnchor Bolt在土木工程中广泛应用。"
+  },
+  {
+    "id": 27,
+    "en": "Column Base",
+    "zh": "Column Base",
+    "category": "连接",
+    "example": "Column Base is widely used in civil engineering.\nColumn Base在土木工程中广泛应用。"
+  },
+  {
+    "id": 28,
+    "en": "High-strength Bolt",
+    "zh": "High-strength Bolt",
+    "category": "连接",
+    "example": "High-strength Bolt is widely used in civil engineering.\nHigh-strength Bolt在土木工程中广泛应用。"
+  },
+  {
+    "id": 29,
+    "en": "Shear Stud",
+    "zh": "Shear Stud",
+    "category": "连接",
+    "example": "Shear Stud is widely used in civil engineering.\nShear Stud在土木工程中广泛应用。"
+  },
+  {
+    "id": 30,
+    "en": "Base Plate",
+    "zh": "Base Plate",
+    "category": "连接",
+    "example": "Base Plate is widely used in civil engineering.\nBase Plate在土木工程中广泛应用。"
+  },
+  {
+    "id": 31,
+    "en": "End Plate",
+    "zh": "End Plate",
+    "category": "连接",
+    "example": "End Plate is widely used in civil engineering.\nEnd Plate在土木工程中广泛应用。"
+  },
+  {
+    "id": 32,
+    "en": "Fin Plate",
+    "zh": "Fin Plate",
+    "category": "连接",
+    "example": "Fin Plate is widely used in civil engineering.\nFin Plate在土木工程中广泛应用。"
+  },
+  {
+    "id": 33,
+    "en": "Seismic Bolt",
+    "zh": "Seismic Bolt",
+    "category": "连接",
+    "example": "Seismic Bolt is widely used in civil engineering.\nSeismic Bolt在土木工程中广泛应用。"
+  },
+  {
+    "id": 34,
+    "en": "Structural Steel",
+    "zh": "Structural Steel",
+    "category": "材料",
+    "example": "Structural Steel is widely used in civil engineering.\nStructural Steel在土木工程中广泛应用。"
+  },
+  {
+    "id": 35,
+    "en": "H-Beam",
+    "zh": "H-Beam",
+    "category": "材料",
+    "example": "H-Beam is widely used in civil engineering.\nH-Beam在土木工程中广泛应用。"
+  },
+  {
+    "id": 36,
+    "en": "I-Beam",
+    "zh": "I-Beam",
+    "category": "材料",
+    "example": "I-Beam is widely used in civil engineering.\nI-Beam在土木工程中广泛应用。"
+  },
+  {
+    "id": 37,
+    "en": "Box Section",
+    "zh": "Box Section",
+    "category": "材料",
+    "example": "Box Section is widely used in civil engineering.\nBox Section在土木工程中广泛应用。"
+  },
+  {
+    "id": 38,
+    "en": "Steel Tube",
+    "zh": "Steel Tube",
+    "category": "材料",
+    "example": "Steel Tube is widely used in civil engineering.\nSteel Tube在土木工程中广泛应用。"
+  },
+  {
+    "id": 39,
+    "en": "Stainless Steel",
+    "zh": "Stainless Steel",
+    "category": "材料",
+    "example": "Stainless Steel is widely used in civil engineering.\nStainless Steel在土木工程中广泛应用。"
+  },
+  {
+    "id": 40,
+    "en": "Carbon Steel",
+    "zh": "Carbon Steel",
+    "category": "材料",
+    "example": "Carbon Steel is widely used in civil engineering.\nCarbon Steel在土木工程中广泛应用。"
+  },
+  {
+    "id": 41,
+    "en": "Alloy Steel",
+    "zh": "Alloy Steel",
+    "category": "材料",
+    "example": "Alloy Steel is widely used in civil engineering.\nAlloy Steel在土木工程中广泛应用。"
+  },
+  {
+    "id": 42,
+    "en": "Rebar",
+    "zh": "Rebar",
+    "category": "材料",
+    "example": "Rebar is widely used in civil engineering.\nRebar在土木工程中广泛应用。"
+  },
+  {
+    "id": 43,
+    "en": "Concrete",
+    "zh": "Concrete",
+    "category": "材料",
+    "example": "Concrete is widely used in civil engineering.\nConcrete在土木工程中广泛应用。"
+  },
+  {
+    "id": 44,
+    "en": "Timber",
+    "zh": "Timber",
+    "category": "材料",
+    "example": "Timber is widely used in civil engineering.\nTimber在土木工程中广泛应用。"
+  },
+  {
+    "id": 45,
+    "en": "Aluminum",
+    "zh": "Aluminum",
+    "category": "材料",
+    "example": "Aluminum is widely used in civil engineering.\nAluminum在土木工程中广泛应用。"
+  },
+  {
+    "id": 46,
+    "en": "Glass",
+    "zh": "Glass",
+    "category": "材料",
+    "example": "Glass is widely used in civil engineering.\nGlass在土木工程中广泛应用。"
+  },
+  {
+    "id": 47,
+    "en": "Masonry",
+    "zh": "Masonry",
+    "category": "材料",
+    "example": "Masonry is widely used in civil engineering.\nMasonry在土木工程中广泛应用。"
+  },
+  {
+    "id": 48,
+    "en": "Composite Material",
+    "zh": "Composite Material",
+    "category": "材料",
+    "example": "Composite Material is widely used in civil engineering.\nComposite Material在土木工程中广泛应用。"
+  },
+  {
+    "id": 49,
+    "en": "Finite Element",
+    "zh": "Finite Element",
+    "category": "设计",
+    "example": "Finite Element is widely used in civil engineering.\nFinite Element在土木工程中广泛应用。"
+  },
+  {
+    "id": 50,
+    "en": "Buckling",
+    "zh": "Buckling",
+    "category": "设计",
+    "example": "Buckling is widely used in civil engineering.\nBuckling在土木工程中广泛应用。"
+  },
+  {
+    "id": 51,
+    "en": "Deflection",
+    "zh": "Deflection",
+    "category": "设计",
+    "example": "Deflection is widely used in civil engineering.\nDeflection在土木工程中广泛应用。"
+  },
+  {
+    "id": 52,
+    "en": "Yield Strength",
+    "zh": "Yield Strength",
+    "category": "设计",
+    "example": "Yield Strength is widely used in civil engineering.\nYield Strength在土木工程中广泛应用。"
+  },
+  {
+    "id": 53,
+    "en": "Shear Force",
+    "zh": "Shear Force",
+    "category": "设计",
+    "example": "Shear Force is widely used in civil engineering.\nShear Force在土木工程中广泛应用。"
+  },
+  {
+    "id": 54,
+    "en": "Bending Moment",
+    "zh": "Bending Moment",
+    "category": "设计",
+    "example": "Bending Moment is widely used in civil engineering.\nBending Moment在土木工程中广泛应用。"
+  },
+  {
+    "id": 55,
+    "en": "Stress",
+    "zh": "Stress",
+    "category": "设计",
+    "example": "Stress is widely used in civil engineering.\nStress在土木工程中广泛应用。"
+  },
+  {
+    "id": 56,
+    "en": "Strain",
+    "zh": "Strain",
+    "category": "设计",
+    "example": "Strain is widely used in civil engineering.\nStrain在土木工程中广泛应用。"
+  },
+  {
+    "id": 57,
+    "en": "Span",
+    "zh": "Span",
+    "category": "设计",
+    "example": "Span is widely used in civil engineering.\nSpan在土木工程中广泛应用。"
+  },
+  {
+    "id": 58,
+    "en": "Lateral Load",
+    "zh": "Lateral Load",
+    "category": "设计",
+    "example": "Lateral Load is widely used in civil engineering.\nLateral Load在土木工程中广泛应用。"
+  },
+  {
+    "id": 59,
+    "en": "Seismic Design",
+    "zh": "Seismic Design",
+    "category": "设计",
+    "example": "Seismic Design is widely used in civil engineering.\nSeismic Design在土木工程中广泛应用。"
+  },
+  {
+    "id": 60,
+    "en": "Wind Load",
+    "zh": "Wind Load",
+    "category": "设计",
+    "example": "Wind Load is widely used in civil engineering.\nWind Load在土木工程中广泛应用。"
+  },
+  {
+    "id": 61,
+    "en": "Snow Load",
+    "zh": "Snow Load",
+    "category": "设计",
+    "example": "Snow Load is widely used in civil engineering.\nSnow Load在土木工程中广泛应用。"
+  },
+  {
+    "id": 62,
+    "en": "Dynamic Analysis",
+    "zh": "Dynamic Analysis",
+    "category": "设计",
+    "example": "Dynamic Analysis is widely used in civil engineering.\nDynamic Analysis在土木工程中广泛应用。"
+  },
+  {
+    "id": 63,
+    "en": "Static Analysis",
+    "zh": "Static Analysis",
+    "category": "设计",
+    "example": "Static Analysis is widely used in civil engineering.\nStatic Analysis在土木工程中广泛应用。"
+  },
+  {
+    "id": 64,
+    "en": "Erection",
+    "zh": "Erection",
+    "category": "施工",
+    "example": "Erection is widely used in civil engineering.\nErection在土木工程中广泛应用。"
+  },
+  {
+    "id": 65,
+    "en": "Welding",
+    "zh": "Welding",
+    "category": "施工",
+    "example": "Welding is widely used in civil engineering.\nWelding在土木工程中广泛应用。"
+  },
+  {
+    "id": 66,
+    "en": "Foundation",
+    "zh": "Foundation",
+    "category": "施工",
+    "example": "Foundation is widely used in civil engineering.\nFoundation在土木工程中广泛应用。"
+  },
+  {
+    "id": 67,
+    "en": "Crane",
+    "zh": "Crane",
+    "category": "施工",
+    "example": "Crane is widely used in civil engineering.\nCrane在土木工程中广泛应用。"
+  },
+  {
+    "id": 68,
+    "en": "Scaffolding",
+    "zh": "Scaffolding",
+    "category": "施工",
+    "example": "Scaffolding is widely used in civil engineering.\nScaffolding在土木工程中广泛应用。"
+  },
+  {
+    "id": 69,
+    "en": "Formwork",
+    "zh": "Formwork",
+    "category": "施工",
+    "example": "Formwork is widely used in civil engineering.\nFormwork在土木工程中广泛应用。"
+  },
+  {
+    "id": 70,
+    "en": "Grouting",
+    "zh": "Grouting",
+    "category": "施工",
+    "example": "Grouting is widely used in civil engineering.\nGrouting在土木工程中广泛应用。"
+  },
+  {
+    "id": 71,
+    "en": "Pile Driving",
+    "zh": "Pile Driving",
+    "category": "施工",
+    "example": "Pile Driving is widely used in civil engineering.\nPile Driving在土木工程中广泛应用。"
+  },
+  {
+    "id": 72,
+    "en": "Excavation",
+    "zh": "Excavation",
+    "category": "施工",
+    "example": "Excavation is widely used in civil engineering.\nExcavation在土木工程中广泛应用。"
+  },
+  {
+    "id": 73,
+    "en": "Concrete Pouring",
+    "zh": "Concrete Pouring",
+    "category": "施工",
+    "example": "Concrete Pouring is widely used in civil engineering.\nConcrete Pouring在土木工程中广泛应用。"
+  },
+  {
+    "id": 74,
+    "en": "Steel Fixing",
+    "zh": "Steel Fixing",
+    "category": "施工",
+    "example": "Steel Fixing is widely used in civil engineering.\nSteel Fixing在土木工程中广泛应用。"
+  },
+  {
+    "id": 75,
+    "en": "Waterproofing",
+    "zh": "Waterproofing",
+    "category": "施工",
+    "example": "Waterproofing is widely used in civil engineering.\nWaterproofing在土木工程中广泛应用。"
+  },
+  {
+    "id": 76,
+    "en": "Fireproofing",
+    "zh": "Fireproofing",
+    "category": "施工",
+    "example": "Fireproofing is widely used in civil engineering.\nFireproofing在土木工程中广泛应用。"
+  },
+  {
+    "id": 77,
+    "en": "Finishing",
+    "zh": "Finishing",
+    "category": "施工",
+    "example": "Finishing is widely used in civil engineering.\nFinishing在土木工程中广泛应用。"
+  },
+  {
+    "id": 78,
+    "en": "Tender",
+    "zh": "Tender",
+    "category": "合同",
+    "example": "Tender is widely used in civil engineering.\nTender在土木工程中广泛应用。"
+  },
+  {
+    "id": 79,
+    "en": "Contract",
+    "zh": "Contract",
+    "category": "合同",
+    "example": "Contract is widely used in civil engineering.\nContract在土木工程中广泛应用。"
+  },
+  {
+    "id": 80,
+    "en": "Employer",
+    "zh": "Employer",
+    "category": "合同",
+    "example": "Employer is widely used in civil engineering.\nEmployer在土木工程中广泛应用。"
+  },
+  {
+    "id": 81,
+    "en": "Contractor",
+    "zh": "Contractor",
+    "category": "合同",
+    "example": "Contractor is widely used in civil engineering.\nContractor在土木工程中广泛应用。"
+  },
+  {
+    "id": 82,
+    "en": "Engineer",
+    "zh": "Engineer",
+    "category": "合同",
+    "example": "Engineer is widely used in civil engineering.\nEngineer在土木工程中广泛应用。"
+  },
+  {
+    "id": 83,
+    "en": "Variation Order",
+    "zh": "Variation Order",
+    "category": "合同",
+    "example": "Variation Order is widely used in civil engineering.\nVariation Order在土木工程中广泛应用。"
+  },
+  {
+    "id": 84,
+    "en": "Claim",
+    "zh": "Claim",
+    "category": "合同",
+    "example": "Claim is widely used in civil engineering.\nClaim在土木工程中广泛应用。"
+  },
+  {
+    "id": 85,
+    "en": "Retention Money",
+    "zh": "Retention Money",
+    "category": "合同",
+    "example": "Retention Money is widely used in civil engineering.\nRetention Money在土木工程中广泛应用。"
+  },
+  {
+    "id": 86,
+    "en": "Performance Bond",
+    "zh": "Performance Bond",
+    "category": "合同",
+    "example": "Performance Bond is widely used in civil engineering.\nPerformance Bond在土木工程中广泛应用。"
+  },
+  {
+    "id": 87,
+    "en": "Advance Payment",
+    "zh": "Advance Payment",
+    "category": "合同",
+    "example": "Advance Payment is widely used in civil engineering.\nAdvance Payment在土木工程中广泛应用。"
+  },
+  {
+    "id": 88,
+    "en": "Progress Payment",
+    "zh": "Progress Payment",
+    "category": "合同",
+    "example": "Progress Payment is widely used in civil engineering.\nProgress Payment在土木工程中广泛应用。"
+  },
+  {
+    "id": 89,
+    "en": "Final Account",
+    "zh": "Final Account",
+    "category": "合同",
+    "example": "Final Account is widely used in civil engineering.\nFinal Account在土木工程中广泛应用。"
+  },
+  {
+    "id": 90,
+    "en": "Dispute",
+    "zh": "Dispute",
+    "category": "合同",
+    "example": "Dispute is widely used in civil engineering.\nDispute在土木工程中广泛应用。"
+  },
+  {
+    "id": 91,
+    "en": "Arbitration",
+    "zh": "Arbitration",
+    "category": "合同",
+    "example": "Arbitration is widely used in civil engineering.\nArbitration在土木工程中广泛应用。"
+  },
+  {
+    "id": 92,
+    "en": "Suspension Bridge",
+    "zh": "Suspension Bridge",
+    "category": "桥梁",
+    "example": "Suspension Bridge is widely used in civil engineering.\nSuspension Bridge在土木工程中广泛应用。"
+  },
+  {
+    "id": 93,
+    "en": "Cable-stayed Bridge",
+    "zh": "Cable-stayed Bridge",
+    "category": "桥梁",
+    "example": "Cable-stayed Bridge is widely used in civil engineering.\nCable-stayed Bridge在土木工程中广泛应用。"
+  },
+  {
+    "id": 94,
+    "en": "Arch Bridge",
+    "zh": "Arch Bridge",
+    "category": "桥梁",
+    "example": "Arch Bridge is widely used in civil engineering.\nArch Bridge在土木工程中广泛应用。"
+  },
+  {
+    "id": 95,
+    "en": "Beam Bridge",
+    "zh": "Beam Bridge",
+    "category": "桥梁",
+    "example": "Beam Bridge is widely used in civil engineering.\nBeam Bridge在土木工程中广泛应用。"
+  },
+  {
+    "id": 96,
+    "en": "Truss Bridge",
+    "zh": "Truss Bridge",
+    "category": "桥梁",
+    "example": "Truss Bridge is widely used in civil engineering.\nTruss Bridge在土木工程中广泛应用。"
+  },
+  {
+    "id": 97,
+    "en": "Box Girder Bridge",
+    "zh": "Box Girder Bridge",
+    "category": "桥梁",
+    "example": "Box Girder Bridge is widely used in civil engineering.\nBox Girder Bridge在土木工程中广泛应用。"
+  },
+  {
+    "id": 98,
+    "en": "Segmental Bridge",
+    "zh": "Segmental Bridge",
+    "category": "桥梁",
+    "example": "Segmental Bridge is widely used in civil engineering.\nSegmental Bridge在土木工程中广泛应用。"
+  },
+  {
+    "id": 99,
+    "en": "Cable Bridge",
+    "zh": "Cable Bridge",
+    "category": "桥梁",
+    "example": "Cable Bridge is widely used in civil engineering.\nCable Bridge在土木工程中广泛应用。"
+  },
+  {
+    "id": 100,
+    "en": "Viaduct",
+    "zh": "Viaduct",
+    "category": "桥梁",
+    "example": "Viaduct is widely used in civil engineering.\nViaduct在土木工程中广泛应用。"
+  },
+  {
+    "id": 101,
+    "en": "Flyover",
+    "zh": "Flyover",
+    "category": "桥梁",
+    "example": "Flyover is widely used in civil engineering.\nFlyover在土木工程中广泛应用。"
+  },
+  {
+    "id": 102,
+    "en": "Overpass",
+    "zh": "Overpass",
+    "category": "桥梁",
+    "example": "Overpass is widely used in civil engineering.\nOverpass在土木工程中广泛应用。"
+  },
+  {
+    "id": 103,
+    "en": "Underpass",
+    "zh": "Underpass",
+    "category": "桥梁",
+    "example": "Underpass is widely used in civil engineering.\nUnderpass在土木工程中广泛应用。"
+  },
+  {
+    "id": 104,
+    "en": "Bridge Deck",
+    "zh": "Bridge Deck",
+    "category": "桥梁",
+    "example": "Bridge Deck is widely used in civil engineering.\nBridge Deck在土木工程中广泛应用。"
+  },
+  {
+    "id": 105,
+    "en": "Pier",
+    "zh": "Pier",
+    "category": "桥梁",
+    "example": "Pier is widely used in civil engineering.\nPier在土木工程中广泛应用。"
+  },
+  {
+    "id": 106,
+    "en": "Soil Mechanics",
+    "zh": "Soil Mechanics",
+    "category": "岩土",
+    "example": "Soil Mechanics is widely used in civil engineering.\nSoil Mechanics在土木工程中广泛应用。"
+  },
+  {
+    "id": 107,
+    "en": "Rock Mechanics",
+    "zh": "Rock Mechanics",
+    "category": "岩土",
+    "example": "Rock Mechanics is widely used in civil engineering.\nRock Mechanics在土木工程中广泛应用。"
+  },
+  {
+    "id": 108,
+    "en": "Foundation Engineering",
+    "zh": "Foundation Engineering",
+    "category": "岩土",
+    "example": "Foundation Engineering is widely used in civil engineering.\nFoundation Engineering在土木工程中广泛应用。"
+  },
+  {
+    "id": 109,
+    "en": "Deep Foundation",
+    "zh": "Deep Foundation",
+    "category": "岩土",
+    "example": "Deep Foundation is widely used in civil engineering.\nDeep Foundation在土木工程中广泛应用。"
+  },
+  {
+    "id": 110,
+    "en": "Shallow Foundation",
+    "zh": "Shallow Foundation",
+    "category": "岩土",
+    "example": "Shallow Foundation is widely used in civil engineering.\nShallow Foundation在土木工程中广泛应用。"
+  },
+  {
+    "id": 111,
+    "en": "Pile Foundation",
+    "zh": "Pile Foundation",
+    "category": "岩土",
+    "example": "Pile Foundation is widely used in civil engineering.\nPile Foundation在土木工程中广泛应用。"
+  },
+  {
+    "id": 112,
+    "en": "Caisson",
+    "zh": "Caisson",
+    "category": "岩土",
+    "example": "Caisson is widely used in civil engineering.\nCaisson在土木工程中广泛应用。"
+  },
+  {
+    "id": 113,
+    "en": "Cofferdam",
+    "zh": "Cofferdam",
+    "category": "岩土",
+    "example": "Cofferdam is widely used in civil engineering.\nCofferdam在土木工程中广泛应用。"
+  },
+  {
+    "id": 114,
+    "en": "Slope",
+    "zh": "Slope",
+    "category": "岩土",
+    "example": "Slope is widely used in civil engineering.\nSlope在土木工程中广泛应用。"
+  },
+  {
+    "id": 115,
+    "en": "Retaining Wall",
+    "zh": "Retaining Wall",
+    "category": "岩土",
+    "example": "Retaining Wall is widely used in civil engineering.\nRetaining Wall在土木工程中广泛应用。"
+  },
+  {
+    "id": 116,
+    "en": "Ground Improvement",
+    "zh": "Ground Improvement",
+    "category": "岩土",
+    "example": "Ground Improvement is widely used in civil engineering.\nGround Improvement在土木工程中广泛应用。"
+  },
+  {
+    "id": 117,
+    "en": "Soil Stabilization",
+    "zh": "Soil Stabilization",
+    "category": "岩土",
+    "example": "Soil Stabilization is widely used in civil engineering.\nSoil Stabilization在土木工程中广泛应用。"
+  },
+  {
+    "id": 118,
+    "en": "Dewatering",
+    "zh": "Dewatering",
+    "category": "岩土",
+    "example": "Dewatering is widely used in civil engineering.\nDewatering在土木工程中广泛应用。"
+  },
+  {
+    "id": 119,
+    "en": "Soil Mechanics",
+    "zh": "土力学",
+    "category": "岩土",
+    "example": "Soil Mechanics is widely used in civil engineering.\n土力学在土木工程中广泛应用。"
+  },
+  {
+    "id": 120,
+    "en": "Rock Mechanics",
+    "zh": "岩石力学",
+    "category": "岩土",
+    "example": "Rock Mechanics is widely used in civil engineering.\n岩石力学在土木工程中广泛应用。"
+  },
+  {
+    "id": 121,
+    "en": "Foundation Engineering",
+    "zh": "基础工程",
+    "category": "岩土",
+    "example": "Foundation Engineering is widely used in civil engineering.\n基础工程在土木工程中广泛应用。"
+  },
+  {
+    "id": 122,
+    "en": "Deep Foundation",
+    "zh": "深基础",
+    "category": "岩土",
+    "example": "Deep Foundation is widely used in civil engineering.\n深基础在土木工程中广泛应用。"
+  },
+  {
+    "id": 123,
+    "en": "Shallow Foundation",
+    "zh": "浅基础",
+    "category": "岩土",
+    "example": "Shallow Foundation is widely used in civil engineering.\n浅基础在土木工程中广泛应用。"
+  },
+  {
+    "id": 124,
+    "en": "Pile Foundation",
+    "zh": "桩基础",
+    "category": "岩土",
+    "example": "Pile Foundation is widely used in civil engineering.\n桩基础在土木工程中广泛应用。"
+  },
+  {
+    "id": 125,
+    "en": "Caisson",
+    "zh": "沉井",
+    "category": "岩土",
+    "example": "Caisson is widely used in civil engineering.\n沉井在土木工程中广泛应用。"
+  },
+  {
+    "id": 126,
+    "en": "Cofferdam",
+    "zh": "围堰",
+    "category": "岩土",
+    "example": "Cofferdam is widely used in civil engineering.\n围堰在土木工程中广泛应用。"
+  },
+  {
+    "id": 127,
+    "en": "Slope",
+    "zh": "边坡",
+    "category": "岩土",
+    "example": "Slope is widely used in civil engineering.\n边坡在土木工程中广泛应用。"
+  },
+  {
+    "id": 128,
+    "en": "Retaining Wall",
+    "zh": "挡土墙",
+    "category": "岩土",
+    "example": "Retaining Wall is widely used in civil engineering.\n挡土墙在土木工程中广泛应用。"
+  },
+  {
+    "id": 129,
+    "en": "Highway Engineering",
+    "zh": "公路工程",
+    "category": "道路",
+    "example": "Highway Engineering is widely used in civil engineering.\n公路工程在土木工程中广泛应用。"
+  },
+  {
+    "id": 130,
+    "en": "Pavement",
+    "zh": "路面",
+    "category": "道路",
+    "example": "Pavement is widely used in civil engineering.\n路面在土木工程中广泛应用。"
+  },
+  {
+    "id": 131,
+    "en": "Asphalt",
+    "zh": "沥青",
+    "category": "道路",
+    "example": "Asphalt is widely used in civil engineering.\n沥青在土木工程中广泛应用。"
+  },
+  {
+    "id": 132,
+    "en": "Concrete Pavement",
+    "zh": "混凝土路面",
+    "category": "道路",
+    "example": "Concrete Pavement is widely used in civil engineering.\n混凝土路面在土木工程中广泛应用。"
+  },
+  {
+    "id": 133,
+    "en": "Subgrade",
+    "zh": "路基",
+    "category": "道路",
+    "example": "Subgrade is widely used in civil engineering.\n路基在土木工程中广泛应用。"
+  },
+  {
+    "id": 134,
+    "en": "Bridge Engineering",
+    "zh": "桥梁工程",
+    "category": "道路",
+    "example": "Bridge Engineering is widely used in civil engineering.\n桥梁工程在土木工程中广泛应用。"
+  },
+  {
+    "id": 135,
+    "en": "Culvert",
+    "zh": "涵洞",
+    "category": "道路",
+    "example": "Culvert is widely used in civil engineering.\n涵洞在土木工程中广泛应用。"
+  },
+  {
+    "id": 136,
+    "en": "Tunnel",
+    "zh": "隧道",
+    "category": "道路",
+    "example": "Tunnel is widely used in civil engineering.\n隧道在土木工程中广泛应用。"
+  },
+  {
+    "id": 137,
+    "en": "Excavation",
+    "zh": "开挖",
+    "category": "道路",
+    "example": "Excavation is widely used in civil engineering.\n开挖在土木工程中广泛应用。"
+  },
+  {
+    "id": 138,
+    "en": "Embankment",
+    "zh": "路堤",
+    "category": "道路",
+    "example": "Embankment is widely used in civil engineering.\n路堤在土木工程中广泛应用。"
+  },
+  {
+    "id": 139,
+    "en": "Pavement",
+    "zh": "路面",
+    "category": "道路",
+    "example": "Pavement is widely used in civil engineering.\n路面在土木工程中广泛应用。"
+  },
+  {
+    "id": 140,
+    "en": "Subgrade",
+    "zh": "路基",
+    "category": "道路",
+    "example": "Subgrade is widely used in civil engineering.\n路基在土木工程中广泛应用。"
+  },
+  {
+    "id": 141,
+    "en": "Embankment",
+    "zh": "路堤",
+    "category": "道路",
+    "example": "Embankment is widely used in civil engineering.\n路堤在土木工程中广泛应用。"
+  },
+  {
+    "id": 142,
+    "en": "Culvert",
+    "zh": "涵洞",
+    "category": "道路",
+    "example": "Culvert is widely used in civil engineering.\n涵洞在土木工程中广泛应用。"
+  },
+  {
+    "id": 143,
+    "en": "Asphalt Concrete",
+    "zh": "沥青混凝土",
+    "category": "道路",
+    "example": "Asphalt Concrete is widely used in civil engineering.\n沥青混凝土在土木工程中广泛应用。"
+  },
+  {
+    "id": 144,
+    "en": "Base Course",
+    "zh": "基层",
+    "category": "道路",
+    "example": "Base Course is widely used in civil engineering.\n基层在土木工程中广泛应用。"
+  },
+  {
+    "id": 145,
+    "en": "Subbase",
+    "zh": "底基层",
+    "category": "道路",
+    "example": "Subbase is widely used in civil engineering.\n底基层在土木工程中广泛应用。"
+  },
+  {
+    "id": 146,
+    "en": "Guardrail",
+    "zh": "护栏",
+    "category": "道路",
+    "example": "Guardrail is widely used in civil engineering.\n护栏在土木工程中广泛应用。"
+  },
+  {
+    "id": 147,
+    "en": "Bridge Deck",
+    "zh": "桥面板",
+    "category": "桥梁",
+    "example": "Bridge Deck is widely used in civil engineering.\n桥面板在土木工程中广泛应用。"
+  },
+  {
+    "id": 148,
+    "en": "Pier",
+    "zh": "桥墩",
+    "category": "桥梁",
+    "example": "Pier is widely used in civil engineering.\n桥墩在土木工程中广泛应用。"
+  },
+  {
+    "id": 149,
+    "en": "Abutment",
+    "zh": "桥台",
+    "category": "桥梁",
+    "example": "Abutment is widely used in civil engineering.\n桥台在土木工程中广泛应用。"
+  },
+  {
+    "id": 150,
+    "en": "Span",
+    "zh": "跨度",
+    "category": "桥梁",
+    "example": "Span is widely used in civil engineering.\n跨度在土木工程中广泛应用。"
+  },
+  {
+    "id": 151,
+    "en": "Arch Bridge",
+    "zh": "拱桥",
+    "category": "桥梁",
+    "example": "Arch Bridge is widely used in civil engineering.\n拱桥在土木工程中广泛应用。"
+  },
+  {
+    "id": 152,
+    "en": "Suspension Bridge",
+    "zh": "悬索桥",
+    "category": "桥梁",
+    "example": "Suspension Bridge is widely used in civil engineering.\n悬索桥在土木工程中广泛应用。"
+  },
+  {
+    "id": 153,
+    "en": "Cable-Stayed Bridge",
+    "zh": "斜拉桥",
+    "category": "桥梁",
+    "example": "Cable-Stayed Bridge is widely used in civil engineering.\n斜拉桥在土木工程中广泛应用。"
+  },
+  {
+    "id": 154,
+    "en": "Girder",
+    "zh": "主梁",
+    "category": "桥梁",
+    "example": "Girder is widely used in civil engineering.\n主梁在土木工程中广泛应用。"
+  },
+  {
+    "id": 155,
+    "en": "Box Girder",
+    "zh": "箱梁",
+    "category": "桥梁",
+    "example": "Box Girder is widely used in civil engineering.\n箱梁在土木工程中广泛应用。"
+  },
+  {
+    "id": 156,
+    "en": "Prestressed Concrete",
+    "zh": "预应力混凝土",
+    "category": "桥梁",
+    "example": "Prestressed Concrete is widely used in civil engineering.\n预应力混凝土在土木工程中广泛应用。"
+  },
+  {
+    "id": 157,
+    "en": "Welded Joint",
+    "zh": "焊接接头",
+    "category": "连接",
+    "example": "Welded Joint is widely used in civil engineering.\n焊接接头在土木工程中广泛应用。"
+  },
+  {
+    "id": 158,
+    "en": "Bolted Connection",
+    "zh": "螺栓连接",
+    "category": "连接",
+    "example": "Bolted Connection is widely used in civil engineering.\n螺栓连接在土木工程中广泛应用。"
+  },
+  {
+    "id": 159,
+    "en": "High Strength Bolt",
+    "zh": "高强螺栓",
+    "category": "连接",
+    "example": "High Strength Bolt is widely used in civil engineering.\n高强螺栓在土木工程中广泛应用。"
+  },
+  {
+    "id": 160,
+    "en": "Engineer",
+    "zh": "工程师",
+    "category": "合同",
+    "example": "Engineer is widely used in civil engineering.\n工程师在土木工程中广泛应用。"
+  },
+  {
+    "id": 161,
+    "en": "Variation Order",
+    "zh": "变更令",
+    "category": "合同",
+    "example": "Variation Order is widely used in civil engineering.\n变更令在土木工程中广泛应用。"
+  },
+  {
+    "id": 162,
+    "en": "Certificate of Completion",
+    "zh": "竣工证书",
+    "category": "合同",
+    "example": "Certificate of Completion is widely used in civil engineering.\n竣工证书在土木工程中广泛应用。"
+  },
+  {
+    "id": 163,
+    "en": "Retention Money",
+    "zh": "保留金",
+    "category": "合同",
+    "example": "Retention Money is widely used in civil engineering.\n保留金在土木工程中广泛应用。"
+  },
+  {
+    "id": 164,
+    "en": "Provisional Sum",
+    "zh": "暂列金额",
+    "category": "合同",
+    "example": "Provisional Sum is widely used in civil engineering.\n暂列金额在土木工程中广泛应用。"
+  },
+  {
+    "id": 165,
+    "en": "Daywork",
+    "zh": "计日工",
+    "category": "合同",
+    "example": "Daywork is widely used in civil engineering.\n计日工在土木工程中广泛应用。"
+  },
+  {
+    "id": 166,
+    "en": "Soil Nailing",
+    "zh": "土钉支护",
+    "category": "岩土",
+    "example": "Soil Nailing is widely used in civil engineering.\n土钉支护在土木工程中广泛应用。"
+  },
+  {
+    "id": 167,
+    "en": "Diaphragm Wall",
+    "zh": "地下连续墙",
+    "category": "岩土",
+    "example": "Diaphragm Wall is widely used in civil engineering.\n地下连续墙在土木工程中广泛应用。"
+  },
+  {
+    "id": 168,
+    "en": "Compaction",
+    "zh": "压实",
+    "category": "岩土",
+    "example": "Compaction is widely used in civil engineering.\n压实在土木工程中广泛应用。"
+  },
+  {
+    "id": 169,
+    "en": "Shear Strength",
+    "zh": "抗剪强度",
+    "category": "岩土",
+    "example": "Shear Strength is widely used in civil engineering.\n抗剪强度在土木工程中广泛应用。"
+  },
+  {
+    "id": 170,
+    "en": "Bearing Capacity",
+    "zh": "承载力",
+    "category": "岩土",
+    "example": "Bearing Capacity is widely used in civil engineering.\n承载力在土木工程中广泛应用。"
+  },
+  {
+    "id": 171,
+    "en": "Cantilever",
+    "zh": "悬臂",
+    "category": "结构",
+    "example": "Cantilever is a beam supported only on one end, common in stadium roof design.\n悬臂是一端支撑的梁，广泛用于体育场屋顶设计。"
+  },
+  {
+    "id": 172,
+    "en": "Retractable Roof",
+    "zh": "可伸缩屋顶",
+    "category": "结构",
+    "example": "Retractable Roof can open or close to allow natural light or protect from weather.\n可伸缩屋顶可开合，让自然光进入或遮风挡雨。"
+  },
+  {
+    "id": 173,
+    "en": "Space Frame",
+    "zh": "空间框架/网架",
+    "category": "结构",
+    "example": "Space Frame is a lightweight, rigid structure based on triangular patterns.\n空间框架是基于三角形模式的轻质刚性结构。"
+  },
+  {
+    "id": 174,
+    "en": "Bowl Seating",
+    "zh": "碗式看台",
+    "category": "建筑",
+    "example": "Bowl Seating surrounds the playing field in a curved arrangement for optimal views.\n碗式看台环绕场地，提供最佳观赛视野。"
+  },
+  {
+    "id": 175,
+    "en": "Cantilevered Roof",
+    "zh": "悬挑屋顶",
+    "category": "结构",
+    "example": "Cantilevered Roof extends horizontally beyond its support, common in stadium design.\n悬挑屋顶水平延伸出支撑点，广泛用于体育场设计。"
+  },
+  {
+    "id": 176,
+    "en": "Foundation Caisson",
+    "zh": "基础沉箱",
+    "category": "岩土",
+    "example": "Foundation Caisson is a watertight retaining structure used in underwater foundations.\n基础沉箱是用于水下基础的水密挡土结构。"
+  },
+  {
+    "id": 177,
+    "en": "Spiral花瓣结构",
+    "zh": "螺旋式花瓣结构",
+    "category": "结构",
+    "example": "Spiral Petal Structure refers to a design with overlapping petal-like elements, used in Aramco Stadium.\n螺旋式花瓣结构指重叠的花瓣状设计元素，应用于沙特阿美体育场。"
+  },
+  {
+    "id": 178,
+    "en": "Membrane Roof",
+    "zh": "膜结构屋面",
+    "category": "结构",
+    "example": "Membrane Roof uses ETFE or PTFE membrane for lightweight roof covering.\n膜结构屋面使用ETFE或PTFE膜材实现轻质屋面覆盖。"
+  },
+  {
+    "id": 179,
+    "en": "Prefabricated Assembly",
+    "zh": "装配式施工",
+    "category": "施工",
+    "example": "Prefabricated Assembly is a construction method where components are manufactured off-site.\n装配式施工是一种在工厂预制构件、现场组装的施工方法。"
+  },
+  {
+    "id": 180,
+    "en": "Solar Photovoltaic",
+    "zh": "太阳能光伏",
+    "category": "可持续",
+    "example": "Solar Photovoltaic systems convert sunlight into electricity for sustainable energy.\n太阳能光伏系统将阳光转化为电能，实现可持续能源。"
+  },
+  {
+    "id": 181,
+    "en": "Field Erection",
+    "zh": "现场安装",
+    "category": "施工",
+    "example": "Field Erection refers to the on-site assembly of steel structures.\n现场安装是指在工地现场组装钢结构构件。"
+  },
+  {
+    "id": 182,
+    "en": "UEFA Standards",
+    "zh": "UEFA标准",
+    "category": "建筑",
+    "example": "UEFA Standards are the requirements set by UEFA for stadium certification.\nUEFA标准是欧足联对体育场认证的要求。"
+  },
+  {
+    "id": 183,
+    "en": "Heated Pitch",
+    "zh": "加热草坪",
+    "category": "建筑",
+    "example": "Heated Pitch is a grass field with underground heating system for year-round play.\n加热草坪是带有地下加热系统的草皮场地，可全年使用。"
+  }
+]
