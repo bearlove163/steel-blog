@@ -1,54 +1,116 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import topics from '../data/topics.json';
+import rawTopics from '../data/topics.json';
 import fs from 'node:fs';
 import path from 'node:path';
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
-const draftSlug = '2026-11-24-santiago-bernabeu';
 
-// Look in content-queue first, fallback to src/content/blog so Studio always has the active draft
-let rawDraft = '';
-const queuePath = path.resolve(`content-queue/${draftSlug}/index.md`);
-const blogPath = path.resolve(`src/content/blog/${draftSlug}/index.md`);
-const activePath = fs.existsSync(queuePath) ? queuePath : blogPath;
-if (fs.existsSync(activePath)) {
-  rawDraft = fs.readFileSync(activePath, 'utf-8');
-}
+// Auto-sync topic status against actual filesystem (content-queue & src/content/blog)
+const topicBank = rawTopics.map((t) => {
+  const inBlog = fs.existsSync(path.resolve(`src/content/blog/${t.id}/index.md`));
+  const inQueue = fs.existsSync(path.resolve(`content-queue/${t.id}/index.md`));
+  const resolvedStatus = inBlog ? 'published' : inQueue ? 'drafting' : t.status || 'pending';
+  return {
+    ...t,
+    resolvedStatus,
+    publishedSlug: inBlog ? t.id : t.publishedSlug || '',
+  };
+});
 
-const fmMatch = rawDraft.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
-const fmText = fmMatch ? fmMatch[1] : '';
-const initialBody = fmMatch ? fmMatch[2].trim() : rawDraft;
-
-function getFm(key: string, fallback = '') {
-  const m = fmText.match(new RegExp(`^${key}:\\s*"(.*)"`, 'm'));
-  return m ? m[1] : fallback;
-}
-
-const initialMeta = {
-  title: getFm('title', '未命名文章'),
-  date: getFm('date', '2026-11-24'),
-  category: getFm('category', '地标建筑'),
-  description: getFm('description', ''),
-  source: getFm('source', ''),
-  infographic: getFm('infographic', `/projects/${draftSlug}/candidates/01-infographic.jpg`),
+const counts = {
+  all: topicBank.length,
+  pending: topicBank.filter((t) => t.resolvedStatus === 'pending').length,
+  drafting: topicBank.filter((t) => t.resolvedStatus === 'drafting').length,
+  published: topicBank.filter((t) => t.resolvedStatus === 'published').length,
 };
 
-const candidates = [
-  { file: '01-infographic.jpg', label: '图1 · 白底中文结构全景信息图（定制生成）', desc: '定制生成：83,186座、176m巨桁架、8000㎡可开合屋盖与地下草坪' },
-  { file: '02-sbp-night.jpg', label: '图2 · 夜间外立面全景实拍（来源：sbp / Marcus Bredt）', desc: 'sbp 官方摄影：不锈钢百叶与夜间灯光效果' },
-  { file: '03-facade-louvers.jpg', label: '图3 · 7500片V形不锈钢百叶特写（来源：ArchDaily / gmp）', desc: 'ArchDaily / gmp：漫反射防眩光与自然通风缝隙' },
-  { file: '04-archdaily-exterior.jpg', label: '图4 · 城市街道视角与21米主入口（来源：ArchDaily / gmp）', desc: 'ArchDaily / gmp：卡斯蒂利亚大道城市界面' },
-  { file: '05-archdaily-lobby.jpg', label: '图5 · 内部高挑门厅与钢构细节（来源：ArchDaily / gmp）', desc: 'ArchDaily / gmp：悬挑外立面形成的公共空间' },
-  { file: '06-ines-structural-model.jpg', label: '图6 · 空间钢结构分析模型（来源：INES 结构工程）', desc: 'INES 结构工程：四巨桁架与既有看台关系' },
-  { file: '07-cross-section.jpg', label: '图7 · 官方建筑横剖面图（来源：gmp 建筑事务所）', desc: 'gmp 建筑事务所：屋盖、看台与地下空间关系' },
-  { file: '08-talat-hypogeum.jpg', label: '图8 · 地下30米六层草坪温室内部（来源：TALAT）', desc: 'TALAT：地下多层控制环境与生长灯阵' },
-  { file: '09-hypogeum-pitch.jpg', label: '图9 · 可伸缩草坪分段托盘机制（来源：Sener）', desc: 'Sener 工程图：6块×1500吨草皮横向滑移机制' },
-  { file: '10-hypogeum-infographic.jpg', label: '图10 · 地下六层草坪温室白底信息图（定制生成）', desc: '定制生成：30米深洞库、24台台车、450/660nm植物工厂解析' },
+// Build selectable drafts/articles map for the Studio editor
+const candidateDirs = [
+  '2026-11-24-santiago-bernabeu',
+  '2026-11-25-beijing-daxing-airport',
+  '2026-11-23-sofi-stadium',
 ];
+
+type ProjectDoc = {
+  slug: string;
+  label: string;
+  stage: string;
+  title: string;
+  date: string;
+  category: string;
+  description: string;
+  source: string;
+  infographic: string;
+  body: string;
+  images: { file: string; url: string; label: string }[];
+};
+
+function parseDoc(slug: string): ProjectDoc | null {
+  const qPath = path.resolve(`content-queue/${slug}/index.md`);
+  const bPath = path.resolve(`src/content/blog/${slug}/index.md`);
+  const activePath = fs.existsSync(qPath) ? qPath : fs.existsSync(bPath) ? bPath : '';
+  if (!activePath) return null;
+
+  const stage = fs.existsSync(qPath) ? '待发布队列' : '已发布';
+  const raw = fs.readFileSync(activePath, 'utf-8');
+  const fmMatch = raw.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
+  const fmText = fmMatch ? fmMatch[1] : '';
+  const body = fmMatch ? fmMatch[2].trim() : raw;
+
+  const getFm = (k: string, fb = '') => {
+    const m = fmText.match(new RegExp(`^${k}:\\s*"(.*)"`, 'm'));
+    return m ? m[1] : fb;
+  };
+
+  // Scan local images under public/projects/<slug>/candidates or public/projects/<slug>/
+  const candDir = path.resolve(`public/projects/${slug}/candidates`);
+  const rootAssetDir = path.resolve(`public/projects/${slug}`);
+  const images: { file: string; url: string; label: string }[] = [];
+
+  if (fs.existsSync(candDir)) {
+    for (const f of fs.readdirSync(candDir).sort()) {
+      if (/\.(jpg|jpeg|png|webp)$/i.test(f)) {
+        images.push({
+          file: f,
+          url: `${base}/projects/${slug}/candidates/${f}`,
+          label: f.replace(/\.\w+$/, ''),
+        });
+      }
+    }
+  } else if (fs.existsSync(rootAssetDir)) {
+    for (const f of fs.readdirSync(rootAssetDir).sort()) {
+      if (/\.(jpg|jpeg|png|webp)$/i.test(f)) {
+        images.push({
+          file: f,
+          url: `${base}/projects/${slug}/${f}`,
+          label: f.replace(/\.\w+$/, ''),
+        });
+      }
+    }
+  }
+
+  const title = getFm('title', slug);
+  return {
+    slug,
+    label: `[${stage}] ${title}`,
+    stage,
+    title,
+    date: getFm('date', '2026-11-24'),
+    category: getFm('category', '地标建筑'),
+    description: getFm('description', ''),
+    source: getFm('source', ''),
+    infographic: getFm('infographic', images[0]?.url.replace(base, '') || ''),
+    body,
+    images,
+  };
+}
+
+const projectDocs = candidateDirs.map(parseDoc).filter((d): d is ProjectDoc => Boolean(d));
+const defaultDoc = projectDocs[0];
 ---
 
-<BaseLayout title="创作后台 · 稿件编辑与整体效果预览 | 钢结构研究院" description="选择配图、按规范格式编辑长文、实时查看Markdown与最终整体排版效果。">
+<BaseLayout title="创作后台 · 选题累积库与稿件预览 | 钢结构研究院" description="每日3选题规划与历史选题累积回溯，支持Swarm指令生成、配图筛选与Markdown整体效果预览。">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 py-8">
     <!-- Top Bar -->
     <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-5 border-b border-slate-200 dark:border-slate-800 mb-6">
@@ -56,9 +118,9 @@ const candidates = [
         <div class="inline-flex items-center gap-2 text-xs font-mono text-sky-600 dark:text-sky-400 mb-1">
           <span>EDITORIAL STUDIO</span>
           <span>·</span>
-          <span>当前项目：{draftSlug}</span>
+          <span>选题累积池 + 万字稿件工作台</span>
         </div>
-        <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">稿件编辑与整体效果预览后台</h1>
+        <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">选题规划与稿件编辑后台</h1>
       </div>
 
       <div class="flex flex-wrap items-center gap-2.5">
@@ -74,58 +136,125 @@ const candidates = [
       </div>
     </div>
 
-    <!-- Step 0: Daily 3-Topic Planner -->
+    <!-- Step 0: Persistent Cumulative Topic Bank -->
     <section class="mb-8 p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
-      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+      <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-3 mb-4">
         <div>
-          <span class="text-[11px] font-mono uppercase tracking-wider text-sky-600 dark:text-sky-400">STEP 0 · DAILY TOPIC PLANNER</span>
-          <h2 class="text-lg font-bold text-slate-900 dark:text-white">今日 3 大精选选题规划（点选后一键启动 Swarm 深度调研）</h2>
+          <span class="text-[11px] font-mono uppercase tracking-wider text-sky-600 dark:text-sky-400">STEP 0 · PERSISTENT TOPIC BANK</span>
+          <h2 class="text-lg font-bold text-slate-900 dark:text-white">选题累积库（每日新增 3 选题 · 历史选题可回溯）</h2>
         </div>
-        <span id="topic-status" class="text-xs text-slate-500 dark:text-slate-400">点击任意选题卡片即可复制 Swarm 创作指令</span>
+
+        <div class="flex flex-wrap items-center gap-2">
+          <button type="button" data-status-filter="all" class="topic-filter-btn px-3 py-1 rounded-lg text-xs font-medium bg-sky-600 text-white cursor-pointer">
+            全部 ({counts.all})
+          </button>
+          <button type="button" data-status-filter="pending" class="topic-filter-btn px-3 py-1 rounded-lg text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 cursor-pointer">
+            待创作 ({counts.pending})
+          </button>
+          <button type="button" data-status-filter="drafting" class="topic-filter-btn px-3 py-1 rounded-lg text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 cursor-pointer">
+            审稿中 ({counts.drafting})
+          </button>
+          <button type="button" data-status-filter="published" class="topic-filter-btn px-3 py-1 rounded-lg text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 cursor-pointer">
+            已发布 ({counts.published})
+          </button>
+          <button
+            id="btn-new-daily-topics"
+            type="button"
+            class="px-3 py-1 rounded-lg text-xs font-semibold bg-indigo-600 hover:bg-indigo-700 text-white cursor-pointer transition-colors"
+          >
+            + 复制「生成今日3新选题」指令
+          </button>
+        </div>
       </div>
 
-      <div class="grid md:grid-cols-3 gap-4">
-        {topics.map((t) => (
-          <div class="topic-card group rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50/70 dark:bg-slate-950/60 overflow-hidden flex flex-col justify-between hover:border-sky-400 transition-all">
-            <div>
-              <div class="aspect-video bg-white dark:bg-slate-900 overflow-hidden border-b border-slate-200 dark:border-slate-800">
-                <img src={`${base}${t.image}`} alt={t.title} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
-              </div>
-              <div class="p-4">
-                <span class="inline-block px-2 py-0.5 rounded-full text-[11px] font-medium bg-sky-50 dark:bg-sky-950 text-sky-700 dark:text-sky-300 mb-2">
-                  {t.tag}
-                </span>
-                <h3 class="font-bold text-sm text-slate-900 dark:text-white">{t.title}</h3>
-                <p class="mt-1.5 text-xs text-slate-600 dark:text-slate-400 leading-relaxed line-clamp-3">{t.summary}</p>
-                <div class="mt-2.5 flex flex-wrap gap-1">
-                  {t.highlights.map((h) => (
-                    <span class="px-1.5 py-0.5 rounded bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-[10px] text-slate-600 dark:text-slate-300">
-                      {h}
+      <p id="topic-status" class="mb-4 text-xs text-slate-500 dark:text-slate-400">
+        提示：选定任意「待创作」选题可一键复制 Swarm 深度调研指令；已发布项目可直接回溯文章或切入下方编辑器二次精修。
+      </p>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4" id="topic-grid">
+        {topicBank.map((t) => {
+          const statusLabel =
+            t.resolvedStatus === 'published'
+              ? '已发布'
+              : t.resolvedStatus === 'drafting'
+              ? '审稿中'
+              : '待创作';
+          const statusClass =
+            t.resolvedStatus === 'published'
+              ? 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300'
+              : t.resolvedStatus === 'drafting'
+              ? 'bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300'
+              : 'bg-sky-100 text-sky-800 dark:bg-sky-950 dark:text-sky-300';
+          return (
+            <div
+              data-topic-status={t.resolvedStatus}
+              class="topic-card group rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50/70 dark:bg-slate-950/60 overflow-hidden flex flex-col justify-between hover:border-sky-400 transition-all"
+            >
+              <div>
+                <div class="aspect-video bg-white dark:bg-slate-900 overflow-hidden border-b border-slate-200 dark:border-slate-800">
+                  <img src={`${base}${t.image}`} alt={t.title} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+                </div>
+                <div class="p-4">
+                  <div class="flex items-center justify-between gap-2 mb-2">
+                    <span class={`px-2 py-0.5 rounded-full text-[11px] font-semibold ${statusClass}`}>
+                      {statusLabel}
                     </span>
-                  ))}
+                    <span class="text-[11px] font-mono text-slate-400">入库 {t.addedDate}</span>
+                  </div>
+                  <div class="text-[11px] text-sky-700 dark:text-sky-400 font-medium mb-1">{t.tag}</div>
+                  <h3 class="font-bold text-sm text-slate-900 dark:text-white">{t.title}</h3>
+                  <p class="mt-1.5 text-xs text-slate-600 dark:text-slate-400 leading-relaxed line-clamp-3">{t.summary}</p>
+                  <div class="mt-2.5 flex flex-wrap gap-1">
+                    {t.highlights.map((h) => (
+                      <span class="px-1.5 py-0.5 rounded bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-[10px] text-slate-600 dark:text-slate-300">
+                        {h}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </div>
+              <div class="px-4 pb-4 flex gap-2">
+                {t.resolvedStatus === 'published' && t.publishedSlug ? (
+                  <a
+                    href={`${base}/blog/${t.publishedSlug}/`}
+                    class="flex-1 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-medium text-center transition-colors"
+                  >
+                    查看已发布文章
+                  </a>
+                ) : (
+                  <button
+                    type="button"
+                    data-topic-title={t.title}
+                    data-topic-id={t.id}
+                    class="btn-pick-topic flex-1 py-2 rounded-lg bg-slate-900 hover:bg-sky-600 dark:bg-sky-600 dark:hover:bg-sky-500 text-white text-xs font-medium cursor-pointer transition-colors"
+                  >
+                    选定选题 · 启动 Swarm 调研
+                  </button>
+                )}
+              </div>
             </div>
-            <div class="px-4 pb-4">
-              <button
-                type="button"
-                data-topic-title={t.title}
-                data-topic-id={t.id}
-                class="btn-pick-topic w-full py-2 rounded-lg bg-slate-900 hover:bg-sky-600 dark:bg-sky-600 dark:hover:bg-sky-500 text-white text-xs font-medium cursor-pointer transition-colors"
-              >
-                选定此选题 · 启动 Swarm 调研
-              </button>
-            </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </section>
+
+    <!-- Project Switcher for Editor -->
+    <div class="mb-4 p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+      <div class="text-sm font-bold text-slate-900 dark:text-white">
+        切换正在编辑的稿件 / 项目文件夹：
+      </div>
+      <select id="project-switcher" class="px-3 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 text-xs sm:text-sm font-medium">
+        {projectDocs.map((doc) => (
+          <option value={doc.slug}>{doc.label}</option>
+        ))}
+      </select>
+    </div>
 
     <div class="grid lg:grid-cols-12 gap-6">
       <!-- Left: Candidate Image Picker (4 cols) -->
       <div class="lg:col-span-4 space-y-3">
         <div class="flex items-center justify-between">
-          <h2 class="text-sm font-bold text-slate-900 dark:text-white">1. 候选配图库 ({candidates.length} 张)</h2>
+          <h2 class="text-sm font-bold text-slate-900 dark:text-white">1. 本项目本地配图库 (<span id="cand-count">{defaultDoc?.images.length || 0}</span> 张)</h2>
           <button
             id="btn-auto-insert"
             type="button"
@@ -135,55 +264,7 @@ const candidates = [
           </button>
         </div>
 
-        <div class="space-y-2.5 max-h-[860px] overflow-y-auto pr-1">
-          {candidates.map((c, idx) => {
-            const imgSrc = `${base}/projects/${draftSlug}/candidates/${c.file}`;
-            return (
-              <div class="p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm flex gap-3 items-start">
-                <a href={imgSrc} target="_blank" class="shrink-0 block w-24 h-18 rounded-lg overflow-hidden border border-slate-200 dark:border-slate-700 bg-slate-100">
-                  <img src={imgSrc} alt={c.label} class="w-full h-full object-cover hover:scale-105 transition-transform" />
-                </a>
-                <div class="flex-1 min-w-0">
-                  <label class="flex items-center gap-1.5 text-xs font-bold text-slate-900 dark:text-white cursor-pointer">
-                    <input
-                      type="checkbox"
-                      class="cand-check rounded border-slate-300 text-sky-600 focus:ring-sky-500"
-                      value={imgSrc}
-                      data-caption={c.label}
-                      checked={idx < 6}
-                    />
-                    <span class="truncate">{c.label}</span>
-                  </label>
-                  <p class="mt-1 text-[11px] text-slate-500 dark:text-slate-400 line-clamp-2">{c.desc}</p>
-                  <div class="mt-2 flex flex-wrap gap-1.5">
-                    <button
-                      type="button"
-                      data-insert-src={imgSrc}
-                      data-insert-cap={c.label}
-                      class="btn-insert-one px-2 py-0.5 rounded bg-slate-100 hover:bg-sky-100 dark:bg-slate-800 dark:hover:bg-sky-900 text-slate-700 dark:text-slate-200 text-[11px] cursor-pointer"
-                    >
-                      + 插入正文
-                    </button>
-                    <button
-                      type="button"
-                      data-cover-src={`/projects/${draftSlug}/candidates/${c.file}`}
-                      class="btn-set-cover px-2 py-0.5 rounded bg-slate-100 hover:bg-amber-100 dark:bg-slate-800 dark:hover:bg-amber-900 text-slate-700 dark:text-slate-200 text-[11px] cursor-pointer"
-                    >
-                      设为顶部主图
-                    </button>
-                    <a
-                      href={imgSrc}
-                      download={c.file}
-                      class="px-2 py-0.5 rounded bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-[11px]"
-                    >
-                      下载
-                    </a>
-                  </div>
-                </div>
-              </div>
-            );
-          })}
-        </div>
+        <div id="cand-list" class="space-y-2.5 max-h-[860px] overflow-y-auto pr-1"></div>
       </div>
 
       <!-- Right: Frontmatter + Dual Mode Editor & Live Preview (8 cols) -->
@@ -204,34 +285,34 @@ const candidates = [
           <div class="grid sm:grid-cols-2 gap-2.5 text-xs">
             <label class="block">
               <span class="text-slate-500">文章标题</span>
-              <input id="fm-title" type="text" value={initialMeta.title} class="mt-1 w-full px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950" />
+              <input id="fm-title" type="text" value={defaultDoc?.title || ''} class="mt-1 w-full px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950" />
             </label>
             <div class="grid grid-cols-2 gap-2">
               <label class="block">
                 <span class="text-slate-500">发布日期</span>
-                <input id="fm-date" type="text" value={initialMeta.date} class="mt-1 w-full px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950" />
+                <input id="fm-date" type="text" value={defaultDoc?.date || ''} class="mt-1 w-full px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950" />
               </label>
               <label class="block">
                 <span class="text-slate-500">专栏分类</span>
                 <select id="fm-category" class="mt-1 w-full px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950">
-                  <option value="地标建筑" selected={initialMeta.category === '地标建筑'}>地标建筑</option>
-                  <option value="超级工程" selected={initialMeta.category === '超级工程'}>超级工程</option>
-                  <option value="参数化与AI" selected={initialMeta.category === '参数化与AI'}>参数化与AI</option>
-                  <option value="行业洞察" selected={initialMeta.category === '行业洞察'}>行业洞察</option>
+                  <option value="地标建筑">地标建筑</option>
+                  <option value="超级工程">超级工程</option>
+                  <option value="参数化与AI">参数化与AI</option>
+                  <option value="行业洞察">行业洞察</option>
                 </select>
               </label>
             </div>
             <label class="block sm:col-span-2">
               <span class="text-slate-500">文章摘要（description）</span>
-              <input id="fm-desc" type="text" value={initialMeta.description} class="mt-1 w-full px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950" />
+              <input id="fm-desc" type="text" value={defaultDoc?.description || ''} class="mt-1 w-full px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950" />
             </label>
             <label class="block">
               <span class="text-slate-500">资料来源（source）</span>
-              <input id="fm-source" type="text" value={initialMeta.source} class="mt-1 w-full px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950" />
+              <input id="fm-source" type="text" value={defaultDoc?.source || ''} class="mt-1 w-full px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950" />
             </label>
             <label class="block">
               <span class="text-slate-500">顶部主图 / 信息图（infographic）</span>
-              <input id="fm-infographic" type="text" value={initialMeta.infographic} class="mt-1 w-full px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 font-mono" />
+              <input id="fm-infographic" type="text" value={defaultDoc?.infographic || ''} class="mt-1 w-full px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 font-mono" />
             </label>
           </div>
         </div>
@@ -253,9 +334,7 @@ const candidates = [
             </div>
           </div>
 
-          <!-- Color-coded Image Anchor Map -->
-          <div id="img-anchor-map" class="mb-3 p-2.5 rounded-xl bg-amber-50/70 dark:bg-amber-950/30 border border-amber-200/80 dark:border-amber-800/60 flex flex-wrap gap-2">
-          </div>
+          <div id="img-anchor-map" class="mb-3 p-2.5 rounded-xl bg-amber-50/70 dark:bg-amber-950/30 border border-amber-200/80 dark:border-amber-800/60 flex flex-wrap gap-2"></div>
 
           <div id="editor-container" class="grid grid-cols-1 lg:grid-cols-2 gap-4">
             <div id="pane-edit">
@@ -263,7 +342,7 @@ const candidates = [
                 id="md-editor"
                 rows={26}
                 class="w-full p-3.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 text-xs sm:text-sm font-mono leading-relaxed focus:outline-none focus:ring-2 focus:ring-sky-500"
-              >{initialBody}</textarea>
+              >{defaultDoc?.body || ''}</textarea>
             </div>
 
             <div id="pane-preview" class="rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-950/60 p-5 max-h-[650px] overflow-y-auto">
@@ -277,10 +356,13 @@ const candidates = [
     </div>
   </div>
 
+  <script id="studio-docs-data" type="application/json" set:html={JSON.stringify(projectDocs)}></script>
+
   <script>
     import { marked } from 'marked';
 
     const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+    const docsData = JSON.parse(document.getElementById('studio-docs-data')?.textContent || '[]');
     const editor = document.getElementById('md-editor') as HTMLTextAreaElement;
     const statChars = document.getElementById('stat-chars')!;
     const statImgs = document.getElementById('stat-imgs')!;
@@ -289,6 +371,71 @@ const candidates = [
     const previewHeader = document.getElementById('preview-header')!;
     const previewTopImg = document.getElementById('preview-top-img')!;
     const previewBody = document.getElementById('preview-body')!;
+    const candList = document.getElementById('cand-list')!;
+    const candCount = document.getElementById('cand-count')!;
+    const switcher = document.getElementById('project-switcher') as HTMLSelectElement;
+
+    function renderCandidates(doc: any) {
+      const imgs = doc?.images || [];
+      candCount.textContent = String(imgs.length);
+      if (imgs.length === 0) {
+        candList.innerHTML = '<div class="p-4 rounded-xl border border-slate-200 dark:border-slate-800 text-xs text-slate-400">当前项目尚无本地候选图，请先选定选题并运行 Swarm 调研抓取。</div>';
+        return;
+      }
+      candList.innerHTML = imgs
+        .map(
+          (c: any, idx: number) => `
+          <div class="p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm flex gap-3 items-start">
+            <a href="${c.url}" target="_blank" class="shrink-0 block w-24 h-18 rounded-lg overflow-hidden border border-slate-200 dark:border-slate-700 bg-slate-100">
+              <img src="${c.url}" alt="${c.label}" class="w-full h-full object-cover hover:scale-105 transition-transform" />
+            </a>
+            <div class="flex-1 min-w-0">
+              <label class="flex items-center gap-1.5 text-xs font-bold text-slate-900 dark:text-white cursor-pointer">
+                <input type="checkbox" class="cand-check rounded border-slate-300 text-sky-600" value="${c.url}" data-caption="${c.label}" ${idx < 6 ? 'checked' : ''} />
+                <span class="truncate">${c.label}</span>
+              </label>
+              <div class="mt-2 flex flex-wrap gap-1.5">
+                <button type="button" data-insert-src="${c.url}" data-insert-cap="${c.label}" class="btn-insert-one px-2 py-0.5 rounded bg-slate-100 hover:bg-sky-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 text-[11px] cursor-pointer">+ 插入正文</button>
+                <button type="button" data-cover-src="${c.url.replace(base, '')}" class="btn-set-cover px-2 py-0.5 rounded bg-slate-100 hover:bg-amber-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 text-[11px] cursor-pointer">设为顶部主图</button>
+                <a href="${c.url}" download="${c.file}" class="px-2 py-0.5 rounded bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-[11px]">下载</a>
+              </div>
+            </div>
+          </div>`
+        )
+        .join('');
+
+      candList.querySelectorAll('.btn-insert-one').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const src = btn.getAttribute('data-insert-src');
+          const cap = btn.getAttribute('data-insert-cap');
+          const snippet = `\n\n![${cap}](${src})\n\n`;
+          const pos = editor.selectionStart || editor.value.length;
+          editor.value = editor.value.slice(0, pos) + snippet + editor.value.slice(pos);
+          updateAll();
+        });
+      });
+
+      candList.querySelectorAll('.btn-set-cover').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          (document.getElementById('fm-infographic') as HTMLInputElement).value = btn.getAttribute('data-cover-src') || '';
+          updateAll();
+        });
+      });
+    }
+
+    function loadDoc(slug: string) {
+      const doc = docsData.find((d: any) => d.slug === slug) || docsData[0];
+      if (!doc) return;
+      (document.getElementById('fm-title') as HTMLInputElement).value = doc.title;
+      (document.getElementById('fm-date') as HTMLInputElement).value = doc.date;
+      (document.getElementById('fm-category') as HTMLSelectElement).value = doc.category;
+      (document.getElementById('fm-desc') as HTMLInputElement).value = doc.description;
+      (document.getElementById('fm-source') as HTMLInputElement).value = doc.source;
+      (document.getElementById('fm-infographic') as HTMLInputElement).value = doc.infographic;
+      editor.value = doc.body;
+      renderCandidates(doc);
+      updateAll();
+    }
 
     function renderPreview() {
       const title = (document.getElementById('fm-title') as HTMLInputElement).value;
@@ -324,7 +471,6 @@ const candidates = [
 
       previewBody.innerHTML = marked.parse(editor.value || '') as string;
 
-      // Center & caption inline images in preview
       let idx = 1;
       previewBody.querySelectorAll('p > img').forEach((img) => {
         const p = img.parentElement;
@@ -421,6 +567,47 @@ const candidates = [
       }
     }
 
+    // Topic Bank Filtering
+    const topicCards = document.querySelectorAll('.topic-card');
+    document.querySelectorAll('.topic-filter-btn').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const f = btn.getAttribute('data-status-filter');
+        document.querySelectorAll('.topic-filter-btn').forEach((b) => {
+          b.className = 'topic-filter-btn px-3 py-1 rounded-lg text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 cursor-pointer';
+        });
+        btn.className = 'topic-filter-btn px-3 py-1 rounded-lg text-xs font-medium bg-sky-600 text-white cursor-pointer';
+        topicCards.forEach((c) => {
+          const st = c.getAttribute('data-topic-status');
+          c.classList.toggle('hidden', f !== 'all' && st !== f);
+        });
+      });
+    });
+
+    // Generate new 3 daily topics prompt
+    document.getElementById('btn-new-daily-topics')?.addEventListener('click', async () => {
+      const cmd = '请使用 steel-blog-workflow 工作流，联网检索今天全球钢结构与超级工程热点，为我增量追加 3 个全新选题到 src/data/topics.json，并为每个选题生成白底中文信息图。';
+      try { await navigator.clipboard.writeText(cmd); } catch {}
+      const statusEl = document.getElementById('topic-status');
+      if (statusEl) {
+        statusEl.textContent = '已复制「生成今日 3 新选题」指令！直接粘贴发给 Antigravity，即可联网生成并追加保留到选题库。';
+        statusEl.className = 'mb-4 text-xs font-semibold text-indigo-600 dark:text-indigo-400';
+      }
+    });
+
+    document.querySelectorAll('.btn-pick-topic').forEach((btn) => {
+      btn.addEventListener('click', async () => {
+        const title = btn.getAttribute('data-topic-title');
+        const id = btn.getAttribute('data-topic-id');
+        const promptText = `请使用 steel-blog-workflow 工作流，针对选题【${title}】（目录：${id}）启动 3 路 Swarm 深度调研，抓取高清配图与生成白底信息图，并撰写 1 万字科普长文放入 /studio/ 供我审稿。`;
+        try { await navigator.clipboard.writeText(promptText); } catch {}
+        const statusEl = document.getElementById('topic-status');
+        if (statusEl) {
+          statusEl.textContent = `已选定「${title}」并复制 Swarm 指令！直接粘贴发给 Antigravity 即可开始。`;
+          statusEl.className = 'mb-4 text-xs font-semibold text-emerald-600 dark:text-emerald-400';
+        }
+      });
+    });
+
     // View mode switching
     const paneEdit = document.getElementById('pane-edit')!;
     const panePreview = document.getElementById('pane-preview')!;
@@ -432,7 +619,6 @@ const candidates = [
           b.className = 'view-mode-btn px-2.5 py-1 rounded-md font-medium cursor-pointer text-slate-600 dark:text-slate-300';
         });
         btn.className = 'view-mode-btn px-2.5 py-1 rounded-md font-medium cursor-pointer bg-white dark:bg-slate-800 text-sky-600 dark:text-sky-400 shadow-sm';
-
         if (mode === 'edit') {
           paneEdit.classList.remove('hidden');
           panePreview.classList.add('hidden');
@@ -449,29 +635,13 @@ const candidates = [
       });
     });
 
+    switcher?.addEventListener('change', () => loadDoc(switcher.value));
+
     ['fm-title', 'fm-date', 'fm-category', 'fm-desc', 'fm-source', 'fm-infographic'].forEach((id) => {
       document.getElementById(id)?.addEventListener('input', updateAll);
       document.getElementById(id)?.addEventListener('change', updateAll);
     });
     editor.addEventListener('input', updateAll);
-
-    document.querySelectorAll('.btn-insert-one').forEach((btn) => {
-      btn.addEventListener('click', () => {
-        const src = btn.getAttribute('data-insert-src');
-        const cap = btn.getAttribute('data-insert-cap');
-        const snippet = `\n\n![${cap}](${src})\n\n`;
-        const pos = editor.selectionStart || editor.value.length;
-        editor.value = editor.value.slice(0, pos) + snippet + editor.value.slice(pos);
-        updateAll();
-      });
-    });
-
-    document.querySelectorAll('.btn-set-cover').forEach((btn) => {
-      btn.addEventListener('click', () => {
-        (document.getElementById('fm-infographic') as HTMLInputElement).value = btn.getAttribute('data-cover-src') || '';
-        updateAll();
-      });
-    });
 
     document.getElementById('btn-auto-insert')?.addEventListener('click', () => {
       const checked = Array.from(document.querySelectorAll('.cand-check:checked')).map((el) => ({
@@ -525,22 +695,8 @@ const candidates = [
       a.click();
     });
 
-    document.querySelectorAll('.btn-pick-topic').forEach((btn) => {
-      btn.addEventListener('click', async () => {
-        const title = btn.getAttribute('data-topic-title');
-        const id = btn.getAttribute('data-topic-id');
-        const promptText = `请使用 steel-blog-workflow 工作流，针对选题【${title}】（目录：${id}）启动 3 路 Swarm 深度调研，生成白底中文信息图与本地候选图库，并撰写 1 万字科普长文放入 /studio/ 供我审稿。`;
-        try {
-          await navigator.clipboard.writeText(promptText);
-        } catch {}
-        const statusEl = document.getElementById('topic-status');
-        if (statusEl) {
-          statusEl.textContent = `已选定「${title}」并复制 Swarm 指令！直接粘贴发给 Antigravity 即可开始。`;
-          statusEl.className = 'text-xs font-semibold text-emerald-600 dark:text-emerald-400';
-        }
-      });
-    });
-
-    updateAll();
+    if (defaultDoc) {
+      loadDoc(defaultDoc.slug);
+    }
   </script>
 </BaseLayout>

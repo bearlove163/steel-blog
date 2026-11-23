@@ -1,26 +1,57 @@
 [
   {
     "id": "2026-11-25-beijing-daxing-airport",
+    "addedDate": "2026-11-23",
     "title": "北京大兴国际机场航站楼",
     "tag": "综合交通枢纽 · 隔震奇迹",
     "summary": "Zaha Hadid + ADP + BIAD + Arup 联袂打造。单体建面超 60 万㎡、180m 无柱跨度、30,000 吨自由曲面钢屋盖，地下布置 1,124 个隔震支座 + 144 套阻尼器，构成世界最大单体层间隔震建筑。",
-    "highlights": ["60万㎡单体航站楼", "30,000吨自由曲面屋盖", "1,124套隔震支座 + 600mm机电补偿"],
-    "image": "/projects/topics/daxing-airport.jpg"
+    "highlights": ["60万㎡单体航站楼", "30,000吨自由曲面屋盖", "1,124套隔震支座 + 600mm补偿"],
+    "image": "/projects/topics/daxing-airport.jpg",
+    "status": "pending",
+    "publishedSlug": ""
   },
   {
     "id": "2026-11-26-kai-tak-stadium",
+    "addedDate": "2026-11-23",
     "title": "香港启德体育园主场馆",
     "tag": "2025全运会 · 静音可开合",
     "summary": "Populous + Arup 设计，“东方之珠” 50,000 座主场馆。4 榀 150-180m 巨型桁架锚固于四角无支座混凝土巨塔，4,800 吨可开合屋盖 30 分钟静音开合，实现高密度住宅区低频隔声密封。",
     "highlights": ["180m 主桁架无柱遮挡", "4,800吨铁路级静音开合", "15,000吨屋盖用钢"],
-    "image": "/projects/2026-11-23-sofi-stadium/infographic.jpg"
+    "image": "/projects/topics/kai-tak-stadium.jpg",
+    "status": "pending",
+    "publishedSlug": ""
   },
   {
     "id": "2026-11-27-mercedes-benz-stadium",
+    "addedDate": "2026-11-23",
     "title": "亚特兰大梅赛德斯-奔驰体育场",
     "tag": "2026世界杯 · 花瓣穹顶",
-    "summary": "HOK 设计，71,000 座 LEED 铂金级场馆。灵感源自罗马万神殿穹顶，8 片 67 米长钢桁架花瓣沿 16 条直线轨道 8 分钟内同步开合，双向跨越 220 米，屋盖用钢 17,000 吨。",
+    "summary": "HOK + Canam 设计，71,000 座 LEED 铂金级场馆。灵感源自罗马万神殿穹顶，8 片 67 米长钢桁架花瓣沿 16 条直线轨道 8 分钟内同步开合，双向跨越 220 米，屋盖用钢 17,000 吨。",
     "highlights": ["220m 双向大跨度", "8片花瓣8分钟开合", "17,000吨屋盖 + 85万颗螺栓"],
-    "image": "/projects/2026-11-24-santiago-bernabeu/candidates/01-infographic.jpg"
+    "image": "/projects/topics/mercedes-benz-stadium.jpg",
+    "status": "pending",
+    "publishedSlug": ""
+  },
+  {
+    "id": "2026-11-24-santiago-bernabeu",
+    "addedDate": "2026-11-23",
+    "title": "圣地亚哥·伯纳乌球场深度改造",
+    "tag": "城市更新 · 176m巨桁架",
+    "summary": "gmp + L35 + sbp 联袂打造。在闹市地铁正上方不停赛改造，S690QL1 高强钢四巨桁架空中滑移 + 复合材料可开合屋盖 + 30 米深地下六层草坪温室。",
+    "highlights": ["83,186座", "176m S690巨桁架", "30m深地下草坪温室"],
+    "image": "/projects/2026-11-24-santiago-bernabeu/candidates/01-infographic.jpg",
+    "status": "published",
+    "publishedSlug": "2026-11-24-santiago-bernabeu"
+  },
+  {
+    "id": "2026-11-23-sofi-stadium",
+    "addedDate": "2026-11-23",
+    "title": "洛杉矶 SoFi 体育场",
+    "tag": "2026世界杯 · 双层索网",
+    "summary": "HKS + Thornton Tomasetti 打造。70,240 座下沉式场馆，全球最大双层正交钢索网 + 302 块 ETFE 气枕屋盖，距活动地震断层 457 米采用三套独立抗震解耦体系。",
+    "highlights": ["20,000吨用钢 / 1,450吨索网", "12.1万㎡ ETFE屋盖", "三套独立抗震解耦"],
+    "image": "/projects/2026-11-23-sofi-stadium/infographic.jpg",
+    "status": "published",
+    "publishedSlug": "2026-11-23-sofi-stadium"
   }
 ]
