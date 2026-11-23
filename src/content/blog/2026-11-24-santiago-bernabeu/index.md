@@ -24,7 +24,7 @@ infographic: "/projects/2026-11-24-santiago-bernabeu/candidates/01-infographic.j
 ---
 
 
-![图4 · 卡斯蒂利亚大道城市界面与21米主入口](/steel-blog/projects/2026-11-24-santiago-bernabeu/candidates/04-archdaily-exterior.jpg)
+![卡斯蒂利亚大道城市界面与21米主入口（来源：ArchDaily / gmp）](/steel-blog/projects/2026-11-24-santiago-bernabeu/candidates/04-archdaily-exterior.jpg)
 
 ## 第一章：城市心脏里的极限约束——不拆老骨头，如何长出新肌肉？
 
@@ -54,7 +54,7 @@ infographic: "/projects/2026-11-24-santiago-bernabeu/candidates/01-infographic.j
 ---
 
 
-![图3 · 7500片V形不锈钢百叶幕墙特写](/steel-blog/projects/2026-11-24-santiago-bernabeu/candidates/03-facade-louvers.jpg)
+![7500片V形不锈钢百叶幕墙特写（来源：ArchDaily / gmp）](/steel-blog/projects/2026-11-24-santiago-bernabeu/candidates/03-facade-louvers.jpg)
 
 ## 第二章：给钢铁巨人穿上“流动的银甲”——7,500 片不锈钢百叶的光学与流体力学
 
@@ -81,7 +81,7 @@ infographic: "/projects/2026-11-24-santiago-bernabeu/candidates/01-infographic.j
 ---
 
 
-![图6 · 空间钢结构分析模型（四巨桁架与既有看台关系）](/steel-blog/projects/2026-11-24-santiago-bernabeu/candidates/06-ines-structural-model.jpg)
+![空间钢结构分析模型：四巨桁架与既有看台关系（来源：INES 结构工程）](/steel-blog/projects/2026-11-24-santiago-bernabeu/candidates/06-ines-structural-model.jpg)
 
 ## 第三章：屋顶上的结构变阵——从“车辐索网”到 176 米 S690 高强钢巨桁架
 
@@ -126,7 +126,7 @@ infographic: "/projects/2026-11-24-santiago-bernabeu/candidates/01-infographic.j
 ---
 
 
-![图7 · gmp官方建筑横剖面图（屋盖、看台与地下空间）](/steel-blog/projects/2026-11-24-santiago-bernabeu/candidates/07-cross-section.jpg)
+![官方建筑横剖面图：屋盖、看台与地下空间（来源：gmp 建筑事务所）](/steel-blog/projects/2026-11-24-santiago-bernabeu/candidates/07-cross-section.jpg)
 
 ## 第四章：15 分钟开合的“轻质天幕”与 360° 环形巨幕
 
@@ -152,7 +152,7 @@ infographic: "/projects/2026-11-24-santiago-bernabeu/candidates/01-infographic.j
 ---
 
 
-![图2 · 夜间外立面全景实拍（sbp官方摄影）](/steel-blog/projects/2026-11-24-santiago-bernabeu/candidates/02-sbp-night.jpg)
+![夜间外立面全景实拍（来源：sbp / Marcus Bredt）](/steel-blog/projects/2026-11-24-santiago-bernabeu/candidates/02-sbp-night.jpg)
 
 ## 第五章：地下 30 米的“六层草坪温室”——9,000 吨绿茵如何 5 小时隐身？
 
@@ -182,7 +182,7 @@ infographic: "/projects/2026-11-24-santiago-bernabeu/candidates/01-infographic.j
 ---
 
 
-![图10 · 伯纳乌地下黑科技：30米深六层草坪温室白底信息图](/steel-blog/projects/2026-11-24-santiago-bernabeu/candidates/10-hypogeum-infographic.jpg)
+![伯纳乌地下黑科技：30米深六层草坪温室白底信息图（来源：钢结构研究院定制生成）](/steel-blog/projects/2026-11-24-santiago-bernabeu/candidates/10-hypogeum-infographic.jpg)
 
 ## 结语：现代体育场馆的“城市基础设施化”
 

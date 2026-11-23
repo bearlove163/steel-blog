@@ -23,52 +23,62 @@ const infographicUrl = post.data.infographic ? `${base}${post.data.infographic}`
 ---
 
 <BaseLayout title={`${post.data.title} | 钢结构研究院`} description={post.data.description}>
-  <article class="max-w-3xl mx-auto px-4 sm:px-6 py-12">
-    <a href={`${base}/blog`} class="inline-flex items-center gap-1.5 text-sm text-slate-500 hover:text-sky-600 dark:text-slate-400 dark:hover:text-sky-400 mb-8 transition-colors">
+  <article class="max-w-4xl mx-auto px-4 sm:px-6 py-10">
+    <a href={`${base}/blog`} class="inline-flex items-center gap-1.5 text-sm text-slate-500 hover:text-sky-600 dark:text-slate-400 dark:hover:text-sky-400 mb-6 transition-colors">
       ← 返回专栏列表
     </a>
 
-    <header class="mb-8 pb-8 border-b border-slate-200 dark:border-slate-800">
-      <div class="flex flex-wrap items-center gap-3 text-xs text-slate-500 dark:text-slate-400 mb-4">
-        <span class="px-2.5 py-1 rounded-full bg-sky-50 dark:bg-sky-950/60 text-sky-700 dark:text-sky-300 font-medium">
+    <header class="mb-7 pb-6 border-b border-slate-200 dark:border-slate-800">
+      <div class="flex flex-wrap items-center gap-2.5 text-xs text-slate-500 dark:text-slate-400 mb-3">
+        <span class="px-2.5 py-0.5 rounded-full bg-sky-50 dark:bg-sky-950/60 text-sky-700 dark:text-sky-300 font-medium">
           {post.data.category}
         </span>
         <time datetime={post.data.date}>{post.data.date}</time>
         {post.data.source && (
-          <span>· 来源：{post.data.source}</span>
+          <span>· 参考来源：{post.data.source}</span>
         )}
       </div>
-      <h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-tight">
+      <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-snug">
         {post.data.title}
       </h1>
+      {post.data.description && (
+        <p class="mt-3 text-sm sm:text-base text-slate-600 dark:text-slate-400 leading-relaxed bg-slate-100/70 dark:bg-slate-900/60 p-3.5 rounded-xl border-l-4 border-sky-500">
+          {post.data.description}
+        </p>
+      )}
     </header>
 
     {infographicUrl && (
-      <div class="mb-10 p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+      <figure class="article-figure mb-8">
         <img
           src={infographicUrl}
           alt={post.data.title}
-          class="w-full rounded-xl border border-slate-100 dark:border-slate-800"
         />
-        <div class="mt-3 flex items-center justify-between text-xs text-slate-500 dark:text-slate-400">
-          <span>项目工程信息图（白底高清版）</span>
+        <figcaption class="article-figcaption flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div>
+            <span class="font-bold text-sky-700 dark:text-sky-400">【项目全景工程信息图】</span>
+            <span>{post.data.title}</span>
+            {post.data.source && (
+              <span class="block text-xs text-slate-400 mt-0.5">资料来源：{post.data.source}</span>
+            )}
+          </div>
           <a
             href={infographicUrl}
             download={`${post.id}-infographic.jpg`}
-            class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-sky-600 hover:bg-sky-700 text-white font-medium transition-colors"
+            class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-sky-600 hover:bg-sky-700 text-white text-xs font-medium shrink-0 transition-colors"
           >
-            📥 下载高清信息图
+            下载高清信息图
           </a>
-        </div>
-      </div>
+        </figcaption>
+      </figure>
     )}
 
-    <div class="prose prose-slate dark:prose-invert prose-headings:font-bold prose-a:text-sky-600 dark:prose-a:text-sky-400 max-w-none leading-relaxed">
+    <div id="article-body" class="prose prose-slate dark:prose-invert prose-editorial prose-headings:font-bold prose-a:text-sky-600 dark:prose-a:text-sky-400 max-w-none">
       <Content />
     </div>
 
     <!-- Prev / Next Navigation -->
-    <nav class="mt-16 pt-8 border-t border-slate-200 dark:border-slate-800 grid sm:grid-cols-2 gap-4">
+    <nav class="mt-14 pt-6 border-t border-slate-200 dark:border-slate-800 grid sm:grid-cols-2 gap-4">
       {prevPost ? (
         <a
           href={`${base}/blog/${prevPost.id}`}
@@ -90,4 +100,30 @@ const infographicUrl = post.data.infographic ? `${base}${post.data.infographic}`
       ) : <div />}
     </nav>
   </article>
+
+  <script is:inline>
+    // Enhance all inline article images into centered figures with prominent captions
+    const bodyEl = document.getElementById('article-body');
+    if (bodyEl) {
+      let idx = 1;
+      bodyEl.querySelectorAll('p > img').forEach((img) => {
+        const p = img.parentElement;
+        if (!p || p.childNodes.length > 1) return;
+        const fig = document.createElement('figure');
+        fig.className = 'article-figure not-prose';
+        const clonedImg = img.cloneNode(true);
+        fig.appendChild(clonedImg);
+
+        const alt = (img.getAttribute('alt') || '').trim();
+        if (alt) {
+          const cap = document.createElement('figcaption');
+          cap.className = 'article-figcaption';
+          cap.innerHTML = `<span class="font-bold text-sky-700 dark:text-sky-400 mr-1.5">配图 ${idx}</span><span>${alt}</span>`;
+          fig.appendChild(cap);
+        }
+        idx++;
+        p.replaceWith(fig);
+      });
+    }
+  </script>
 </BaseLayout>

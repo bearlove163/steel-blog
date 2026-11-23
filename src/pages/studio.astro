@@ -6,14 +6,15 @@ import path from 'node:path';
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const draftSlug = '2026-11-24-santiago-bernabeu';
 
-// Read queued draft
+// Look in content-queue first, fallback to src/content/blog so Studio always has the active draft
 let rawDraft = '';
-const draftPath = path.resolve(`content-queue/${draftSlug}/index.md`);
-if (fs.existsSync(draftPath)) {
-  rawDraft = fs.readFileSync(draftPath, 'utf-8');
+const queuePath = path.resolve(`content-queue/${draftSlug}/index.md`);
+const blogPath = path.resolve(`src/content/blog/${draftSlug}/index.md`);
+const activePath = fs.existsSync(queuePath) ? queuePath : blogPath;
+if (fs.existsSync(activePath)) {
+  rawDraft = fs.readFileSync(activePath, 'utf-8');
 }
 
-// Parse frontmatter & body
 const fmMatch = rawDraft.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
 const fmText = fmMatch ? fmMatch[1] : '';
 const initialBody = fmMatch ? fmMatch[2].trim() : rawDraft;
@@ -33,104 +34,101 @@ const initialMeta = {
 };
 
 const candidates = [
-  { file: '01-infographic.jpg', label: '图1 · 白底中文结构全景信息图', desc: '定制生成：83,186座、176m巨桁架、8000㎡可开合屋盖与地下草坪' },
-  { file: '02-sbp-night.jpg', label: '图2 · 夜间外立面全景实拍 (sbp)', desc: 'sbp 官方摄影：不锈钢百叶与夜间灯光效果' },
-  { file: '03-facade-louvers.jpg', label: '图3 · 7500片V形不锈钢百叶特写', desc: 'ArchDaily / gmp：漫反射防眩光与自然通风缝隙' },
-  { file: '04-archdaily-exterior.jpg', label: '图4 · 城市街道视角与21米主入口', desc: 'ArchDaily / gmp：卡斯蒂利亚大道城市界面' },
-  { file: '05-archdaily-lobby.jpg', label: '图5 · 内部高挑门厅与钢构细节', desc: 'ArchDaily / gmp：悬挑外立面形成的公共空间' },
-  { file: '06-ines-structural-model.jpg', label: '图6 · 空间钢结构分析模型', desc: 'INES 结构工程：四巨桁架与既有看台关系' },
-  { file: '07-cross-section.jpg', label: '图7 · gmp 官方建筑横剖面图', desc: 'gmp 建筑事务所：屋盖、看台与地下空间关系' },
-  { file: '08-talat-hypogeum.jpg', label: '图8 · 地下30米六层草坪温室内部', desc: 'TALAT：地下多层控制环境与生长灯阵' },
-  { file: '09-hypogeum-pitch.jpg', label: '图9 · Sener 可伸缩草坪分段托盘', desc: 'Sener 工程图：6块×1500吨草皮横向滑移机制' },
-  { file: '10-hypogeum-infographic.jpg', label: '图10 · 地下六层草坪温室白底信息图', desc: '定制生成：30米深洞库、24台台车、450/660nm植物工厂解析' },
+  { file: '01-infographic.jpg', label: '图1 · 白底中文结构全景信息图（定制生成）', desc: '定制生成：83,186座、176m巨桁架、8000㎡可开合屋盖与地下草坪' },
+  { file: '02-sbp-night.jpg', label: '图2 · 夜间外立面全景实拍（来源：sbp / Marcus Bredt）', desc: 'sbp 官方摄影：不锈钢百叶与夜间灯光效果' },
+  { file: '03-facade-louvers.jpg', label: '图3 · 7500片V形不锈钢百叶特写（来源：ArchDaily / gmp）', desc: 'ArchDaily / gmp：漫反射防眩光与自然通风缝隙' },
+  { file: '04-archdaily-exterior.jpg', label: '图4 · 城市街道视角与21米主入口（来源：ArchDaily / gmp）', desc: 'ArchDaily / gmp：卡斯蒂利亚大道城市界面' },
+  { file: '05-archdaily-lobby.jpg', label: '图5 · 内部高挑门厅与钢构细节（来源：ArchDaily / gmp）', desc: 'ArchDaily / gmp：悬挑外立面形成的公共空间' },
+  { file: '06-ines-structural-model.jpg', label: '图6 · 空间钢结构分析模型（来源：INES 结构工程）', desc: 'INES 结构工程：四巨桁架与既有看台关系' },
+  { file: '07-cross-section.jpg', label: '图7 · 官方建筑横剖面图（来源：gmp 建筑事务所）', desc: 'gmp 建筑事务所：屋盖、看台与地下空间关系' },
+  { file: '08-talat-hypogeum.jpg', label: '图8 · 地下30米六层草坪温室内部（来源：TALAT）', desc: 'TALAT：地下多层控制环境与生长灯阵' },
+  { file: '09-hypogeum-pitch.jpg', label: '图9 · 可伸缩草坪分段托盘机制（来源：Sener）', desc: 'Sener 工程图：6块×1500吨草皮横向滑移机制' },
+  { file: '10-hypogeum-infographic.jpg', label: '图10 · 地下六层草坪温室白底信息图（定制生成）', desc: '定制生成：30米深洞库、24台台车、450/660nm植物工厂解析' },
 ];
 ---
 
-<BaseLayout title="创作后台 · 稿件编辑与配图工作台 | 钢结构研究院" description="选择配图、按规范格式编辑长文并实时检查字数与配图密度。">
+<BaseLayout title="创作后台 · 稿件编辑与整体效果预览 | 钢结构研究院" description="选择配图、按规范格式编辑长文、实时查看Markdown与最终整体排版效果。">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 py-8">
     <!-- Top Bar -->
-    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-slate-200 dark:border-slate-800 mb-6">
+    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-5 border-b border-slate-200 dark:border-slate-800 mb-6">
       <div>
         <div class="inline-flex items-center gap-2 text-xs font-mono text-sky-600 dark:text-sky-400 mb-1">
           <span>EDITORIAL STUDIO</span>
           <span>·</span>
-          <span>当前草稿：{draftSlug}</span>
+          <span>当前项目：{draftSlug}</span>
         </div>
-        <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">稿件编辑与配图挑选后台</h1>
+        <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">稿件编辑与整体效果预览后台</h1>
       </div>
 
-      <!-- Quality Metrics -->
-      <div class="flex flex-wrap items-center gap-3">
-        <div class="px-3.5 py-2 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-xs">
+      <div class="flex flex-wrap items-center gap-2.5">
+        <div class="px-3 py-1.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-xs">
           字数：<strong id="stat-chars" class="text-sky-600 dark:text-sky-400 text-sm">0</strong> 字
         </div>
-        <div class="px-3.5 py-2 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-xs">
+        <div class="px-3 py-1.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-xs">
           已配图：<strong id="stat-imgs" class="text-emerald-600 dark:text-emerald-400 text-sm">0</strong> 张
         </div>
-        <div id="stat-density" class="px-3.5 py-2 rounded-xl bg-amber-50 dark:bg-amber-950/50 border border-amber-200 dark:border-amber-800 text-xs font-medium text-amber-800 dark:text-amber-300">
+        <div id="stat-density" class="px-3 py-1.5 rounded-xl bg-sky-50 dark:bg-sky-950/50 border border-sky-200 dark:border-sky-800 text-xs font-medium text-sky-800 dark:text-sky-300">
           密度检测中...
         </div>
       </div>
     </div>
 
     <div class="grid lg:grid-cols-12 gap-6">
-      <!-- Left: Candidate Image Picker (5 cols) -->
-      <div class="lg:col-span-5 space-y-4">
+      <!-- Left: Candidate Image Picker (4 cols) -->
+      <div class="lg:col-span-4 space-y-3">
         <div class="flex items-center justify-between">
-          <h2 class="text-base font-bold text-slate-900 dark:text-white">1. 候选配图库（已本地缓存 {candidates.length} 张）</h2>
+          <h2 class="text-sm font-bold text-slate-900 dark:text-white">1. 候选配图库 ({candidates.length} 张)</h2>
           <button
             id="btn-auto-insert"
             type="button"
-            class="px-3 py-1.5 rounded-lg bg-sky-600 hover:bg-sky-700 text-white text-xs font-medium cursor-pointer transition-colors"
+            class="px-2.5 py-1.5 rounded-lg bg-sky-600 hover:bg-sky-700 text-white text-xs font-medium cursor-pointer transition-colors"
           >
-            ✨ 将勾选图片自动插入各章节
+            自动插入各章节
           </button>
         </div>
 
-        <div class="grid sm:grid-cols-2 lg:grid-cols-1 gap-3 max-h-[820px] overflow-y-auto pr-1">
+        <div class="space-y-2.5 max-h-[860px] overflow-y-auto pr-1">
           {candidates.map((c, idx) => {
             const imgSrc = `${base}/projects/${draftSlug}/candidates/${c.file}`;
             return (
               <div class="p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm flex gap-3 items-start">
-                <a href={imgSrc} target="_blank" class="shrink-0 block w-28 h-20 rounded-lg overflow-hidden border border-slate-200 dark:border-slate-700 bg-slate-100">
+                <a href={imgSrc} target="_blank" class="shrink-0 block w-24 h-18 rounded-lg overflow-hidden border border-slate-200 dark:border-slate-700 bg-slate-100">
                   <img src={imgSrc} alt={c.label} class="w-full h-full object-cover hover:scale-105 transition-transform" />
                 </a>
                 <div class="flex-1 min-w-0">
-                  <div class="flex items-start justify-between gap-2">
-                    <label class="flex items-center gap-1.5 text-xs font-bold text-slate-900 dark:text-white cursor-pointer">
-                      <input
-                        type="checkbox"
-                        class="cand-check rounded border-slate-300 text-sky-600 focus:ring-sky-500"
-                        value={imgSrc}
-                        data-caption={c.label}
-                        checked={idx < 6}
-                      />
-                      <span class="truncate">{c.label}</span>
-                    </label>
-                  </div>
-                  <p class="mt-1 text-xs text-slate-500 dark:text-slate-400 line-clamp-2">{c.desc}</p>
+                  <label class="flex items-center gap-1.5 text-xs font-bold text-slate-900 dark:text-white cursor-pointer">
+                    <input
+                      type="checkbox"
+                      class="cand-check rounded border-slate-300 text-sky-600 focus:ring-sky-500"
+                      value={imgSrc}
+                      data-caption={c.label}
+                      checked={idx < 6}
+                    />
+                    <span class="truncate">{c.label}</span>
+                  </label>
+                  <p class="mt-1 text-[11px] text-slate-500 dark:text-slate-400 line-clamp-2">{c.desc}</p>
                   <div class="mt-2 flex flex-wrap gap-1.5">
                     <button
                       type="button"
                       data-insert-src={imgSrc}
                       data-insert-cap={c.label}
-                      class="btn-insert-one px-2 py-1 rounded bg-slate-100 hover:bg-sky-100 dark:bg-slate-800 dark:hover:bg-sky-900 text-slate-700 dark:text-slate-200 text-[11px] cursor-pointer"
+                      class="btn-insert-one px-2 py-0.5 rounded bg-slate-100 hover:bg-sky-100 dark:bg-slate-800 dark:hover:bg-sky-900 text-slate-700 dark:text-slate-200 text-[11px] cursor-pointer"
                     >
-                      + 插入光标处
+                      + 插入正文
                     </button>
                     <button
                       type="button"
                       data-cover-src={`/projects/${draftSlug}/candidates/${c.file}`}
-                      class="btn-set-cover px-2 py-1 rounded bg-slate-100 hover:bg-amber-100 dark:bg-slate-800 dark:hover:bg-amber-900 text-slate-700 dark:text-slate-200 text-[11px] cursor-pointer"
+                      class="btn-set-cover px-2 py-0.5 rounded bg-slate-100 hover:bg-amber-100 dark:bg-slate-800 dark:hover:bg-amber-900 text-slate-700 dark:text-slate-200 text-[11px] cursor-pointer"
                     >
-                      ⭐ 设为顶部主图
+                      设为顶部主图
                     </button>
                     <a
                       href={imgSrc}
                       download={c.file}
-                      class="px-2 py-1 rounded bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-[11px]"
+                      class="px-2 py-0.5 rounded bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-[11px]"
                     >
-                      📥 下载
+                      下载
                     </a>
                   </div>
                 </div>
@@ -140,34 +138,34 @@ const candidates = [
         </div>
       </div>
 
-      <!-- Right: Structured Editor & Export (7 cols) -->
-      <div class="lg:col-span-7 space-y-4">
-        <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm space-y-3">
-          <div class="flex items-center justify-between">
-            <h2 class="text-base font-bold text-slate-900 dark:text-white">2. 规范格式元数据（Frontmatter）</h2>
+      <!-- Right: Frontmatter + Dual Mode Editor & Live Preview (8 cols) -->
+      <div class="lg:col-span-8 space-y-4">
+        <div class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm space-y-3">
+          <div class="flex flex-wrap items-center justify-between gap-2">
+            <h2 class="text-sm font-bold text-slate-900 dark:text-white">2. 规范格式元数据（Frontmatter）</h2>
             <div class="flex gap-2">
               <button id="btn-copy-md" type="button" class="px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 text-xs font-medium cursor-pointer">
-                📋 复制完整 Markdown
+                复制完整 Markdown
               </button>
               <button id="btn-download-md" type="button" class="px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-medium cursor-pointer">
-                📥 导出 index.md
+                导出 index.md
               </button>
             </div>
           </div>
 
-          <div class="grid sm:grid-cols-2 gap-3 text-xs">
+          <div class="grid sm:grid-cols-2 gap-2.5 text-xs">
             <label class="block">
               <span class="text-slate-500">文章标题</span>
-              <input id="fm-title" type="text" value={initialMeta.title} class="mt-1 w-full px-3 py-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950" />
+              <input id="fm-title" type="text" value={initialMeta.title} class="mt-1 w-full px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950" />
             </label>
             <div class="grid grid-cols-2 gap-2">
               <label class="block">
                 <span class="text-slate-500">发布日期</span>
-                <input id="fm-date" type="text" value={initialMeta.date} class="mt-1 w-full px-3 py-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950" />
+                <input id="fm-date" type="text" value={initialMeta.date} class="mt-1 w-full px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950" />
               </label>
               <label class="block">
                 <span class="text-slate-500">专栏分类</span>
-                <select id="fm-category" class="mt-1 w-full px-3 py-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950">
+                <select id="fm-category" class="mt-1 w-full px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950">
                   <option value="地标建筑" selected={initialMeta.category === '地标建筑'}>地标建筑</option>
                   <option value="超级工程" selected={initialMeta.category === '超级工程'}>超级工程</option>
                   <option value="参数化与AI" selected={initialMeta.category === '参数化与AI'}>参数化与AI</option>
@@ -177,50 +175,131 @@ const candidates = [
             </div>
             <label class="block sm:col-span-2">
               <span class="text-slate-500">文章摘要（description）</span>
-              <input id="fm-desc" type="text" value={initialMeta.description} class="mt-1 w-full px-3 py-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950" />
+              <input id="fm-desc" type="text" value={initialMeta.description} class="mt-1 w-full px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950" />
             </label>
             <label class="block">
               <span class="text-slate-500">资料来源（source）</span>
-              <input id="fm-source" type="text" value={initialMeta.source} class="mt-1 w-full px-3 py-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950" />
+              <input id="fm-source" type="text" value={initialMeta.source} class="mt-1 w-full px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950" />
             </label>
             <label class="block">
               <span class="text-slate-500">顶部主图 / 信息图（infographic）</span>
-              <input id="fm-infographic" type="text" value={initialMeta.infographic} class="mt-1 w-full px-3 py-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 font-mono" />
+              <input id="fm-infographic" type="text" value={initialMeta.infographic} class="mt-1 w-full px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 font-mono" />
             </label>
           </div>
         </div>
 
-        <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
-          <div class="flex items-center justify-between mb-2">
-            <h2 class="text-base font-bold text-slate-900 dark:text-white">3. 正文 Markdown 编辑器（含配图位置颜色高亮）</h2>
-            <span class="text-xs text-slate-400">点击下方彩色配图标签，可直接跳转到对应段落</span>
+        <!-- Editor + Preview Panel -->
+        <div class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+            <h2 class="text-sm font-bold text-slate-900 dark:text-white">3. 正文编辑与整体效果实时预览</h2>
+            <div class="inline-flex rounded-lg border border-slate-200 dark:border-slate-700 p-0.5 bg-slate-100 dark:bg-slate-950 text-xs">
+              <button type="button" data-mode="edit" class="view-mode-btn px-2.5 py-1 rounded-md font-medium cursor-pointer text-slate-600 dark:text-slate-300">
+                Markdown 编辑
+              </button>
+              <button type="button" data-mode="split" class="view-mode-btn px-2.5 py-1 rounded-md font-medium cursor-pointer bg-white dark:bg-slate-800 text-sky-600 dark:text-sky-400 shadow-sm">
+                左右分栏对照
+              </button>
+              <button type="button" data-mode="preview" class="view-mode-btn px-2.5 py-1 rounded-md font-medium cursor-pointer text-slate-600 dark:text-slate-300">
+                整体效果预览
+              </button>
+            </div>
           </div>
 
           <!-- Color-coded Image Anchor Map -->
-          <div id="img-anchor-map" class="mb-3 p-3 rounded-xl bg-amber-50/70 dark:bg-amber-950/30 border border-amber-200/80 dark:border-amber-800/60 flex flex-wrap gap-2">
+          <div id="img-anchor-map" class="mb-3 p-2.5 rounded-xl bg-amber-50/70 dark:bg-amber-950/30 border border-amber-200/80 dark:border-amber-800/60 flex flex-wrap gap-2">
           </div>
 
-          <textarea
-            id="md-editor"
-            rows={24}
-            class="w-full p-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 text-sm font-mono leading-relaxed focus:outline-none focus:ring-2 focus:ring-sky-500"
-          >{initialBody}</textarea>
+          <div id="editor-container" class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+            <div id="pane-edit">
+              <textarea
+                id="md-editor"
+                rows={26}
+                class="w-full p-3.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 text-xs sm:text-sm font-mono leading-relaxed focus:outline-none focus:ring-2 focus:ring-sky-500"
+              >{initialBody}</textarea>
+            </div>
+
+            <div id="pane-preview" class="rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-950/60 p-5 max-h-[650px] overflow-y-auto">
+              <div id="preview-header" class="mb-5 pb-4 border-b border-slate-200 dark:border-slate-800"></div>
+              <div id="preview-top-img"></div>
+              <div id="preview-body" class="prose prose-slate dark:prose-invert prose-editorial max-w-none"></div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 
-  <script is:inline>
-    const editor = document.getElementById('md-editor');
-    const statChars = document.getElementById('stat-chars');
-    const statImgs = document.getElementById('stat-imgs');
-    const statDensity = document.getElementById('stat-density');
-    const anchorMap = document.getElementById('img-anchor-map');
+  <script>
+    import { marked } from 'marked';
 
-    function renderAnchorMap(text) {
+    const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+    const editor = document.getElementById('md-editor') as HTMLTextAreaElement;
+    const statChars = document.getElementById('stat-chars')!;
+    const statImgs = document.getElementById('stat-imgs')!;
+    const statDensity = document.getElementById('stat-density')!;
+    const anchorMap = document.getElementById('img-anchor-map')!;
+    const previewHeader = document.getElementById('preview-header')!;
+    const previewTopImg = document.getElementById('preview-top-img')!;
+    const previewBody = document.getElementById('preview-body')!;
+
+    function renderPreview() {
+      const title = (document.getElementById('fm-title') as HTMLInputElement).value;
+      const date = (document.getElementById('fm-date') as HTMLInputElement).value;
+      const cat = (document.getElementById('fm-category') as HTMLSelectElement).value;
+      const desc = (document.getElementById('fm-desc') as HTMLInputElement).value;
+      const src = (document.getElementById('fm-source') as HTMLInputElement).value;
+      const info = (document.getElementById('fm-infographic') as HTMLInputElement).value.trim();
+
+      previewHeader.innerHTML = `
+        <div class="flex flex-wrap gap-2 text-xs text-slate-500 mb-2">
+          <span class="px-2 py-0.5 rounded-full bg-sky-100 text-sky-700 font-medium">${cat}</span>
+          <span>${date}</span>
+          ${src ? `<span>· 来源：${src}</span>` : ''}
+        </div>
+        <h1 class="text-xl font-extrabold text-slate-900 dark:text-white leading-snug">${title}</h1>
+        ${desc ? `<p class="mt-2 text-xs text-slate-600 dark:text-slate-400 bg-white dark:bg-slate-900 p-2.5 rounded-lg border-l-4 border-sky-500">${desc}</p>` : ''}
+      `;
+
+      if (info) {
+        const fullInfoUrl = info.startsWith('http') || info.startsWith(base) ? info : `${base}${info}`;
+        previewTopImg.innerHTML = `
+          <figure class="article-figure mb-6">
+            <img src="${fullInfoUrl}" alt="${title}" />
+            <figcaption class="article-figcaption">
+              <span class="font-bold text-sky-700 dark:text-sky-400">【项目全景工程信息图】</span> ${title}
+            </figcaption>
+          </figure>
+        `;
+      } else {
+        previewTopImg.innerHTML = '';
+      }
+
+      previewBody.innerHTML = marked.parse(editor.value || '') as string;
+
+      // Center & caption inline images in preview
+      let idx = 1;
+      previewBody.querySelectorAll('p > img').forEach((img) => {
+        const p = img.parentElement;
+        if (!p || p.childNodes.length > 1) return;
+        const fig = document.createElement('figure');
+        fig.className = 'article-figure not-prose';
+        fig.appendChild(img.cloneNode(true));
+        const alt = (img.getAttribute('alt') || '').trim();
+        if (alt) {
+          const cap = document.createElement('figcaption');
+          cap.className = 'article-figcaption';
+          cap.innerHTML = `<span class="font-bold text-sky-700 dark:text-sky-400 mr-1.5">配图 ${idx}</span><span>${alt}</span>`;
+          fig.appendChild(cap);
+        }
+        idx++;
+        p.replaceWith(fig);
+      });
+    }
+
+    function renderAnchorMap(text: string) {
       const lines = text.split('\n');
       let currentSection = '引言';
-      const anchors = [];
+      const anchors: { caption: string; section: string; lineNum: number; charPos: number }[] = [];
       let offset = 0;
 
       for (let i = 0; i < lines.length; i++) {
@@ -232,7 +311,6 @@ const candidates = [
         if (m) {
           anchors.push({
             caption: m[1] || '未命名图片',
-            src: m[2],
             section: currentSection,
             lineNum: i + 1,
             charPos: offset,
@@ -242,7 +320,7 @@ const candidates = [
       }
 
       if (anchors.length === 0) {
-        anchorMap.innerHTML = '<span class="text-xs text-amber-700 dark:text-amber-300">暂无正文插图，可从左侧勾选后点击「✨ 自动插入各章节」</span>';
+        anchorMap.innerHTML = '<span class="text-xs text-amber-700 dark:text-amber-300">暂无正文插图，可从左侧勾选后点击「自动插入各章节」</span>';
         return;
       }
 
@@ -257,7 +335,7 @@ const candidates = [
           >
             <span class="w-4 h-4 rounded-full bg-amber-500 text-white text-[10px] font-bold flex items-center justify-center">${idx + 1}</span>
             <span>[${a.section}]</span>
-            <span class="max-w-[140px] truncate">${a.caption}</span>
+            <span class="max-w-[130px] truncate">${a.caption}</span>
           </button>`
         )
         .join('');
@@ -273,31 +351,62 @@ const candidates = [
       });
     }
 
-    function updateStats() {
+    function updateAll() {
       const text = editor.value || '';
       const chars = text.replace(/\s+/g, '').length;
       const bodyImgs = (text.match(/!\[[^\]]*\]\([^)]+\)/g) || []).length;
-      const hasTopInfo = Boolean(document.getElementById('fm-infographic').value.trim());
+      const hasTopInfo = Boolean((document.getElementById('fm-infographic') as HTMLInputElement).value.trim());
       const totalImgs = bodyImgs + (hasTopInfo ? 1 : 0);
 
       statChars.textContent = chars.toLocaleString();
-      statImgs.textContent = totalImgs;
+      statImgs.textContent = String(totalImgs);
       renderAnchorMap(text);
+      renderPreview();
 
       const required = Math.max(5, Math.ceil(chars / 2000));
       if (totalImgs >= required) {
-        statDensity.textContent = `✅ 配图达标（需 ≥${required} 张，当前 ${totalImgs} 张）`;
-        statDensity.className = 'px-3.5 py-2 rounded-xl bg-emerald-50 dark:bg-emerald-950/50 border border-emerald-200 dark:border-emerald-800 text-xs font-medium text-emerald-700 dark:text-emerald-300';
+        statDensity.textContent = `配图达标（需 ≥${required} 张，当前 ${totalImgs} 张）`;
+        statDensity.className = 'px-3 py-1.5 rounded-xl bg-emerald-50 dark:bg-emerald-950/50 border border-emerald-200 dark:border-emerald-800 text-xs font-medium text-emerald-700 dark:text-emerald-300';
       } else {
-        statDensity.textContent = `⚠️ 建议再配 ${required - totalImgs} 张图（每2000字1张，需 ≥${required} 张）`;
-        statDensity.className = 'px-3.5 py-2 rounded-xl bg-amber-50 dark:bg-amber-950/50 border border-amber-200 dark:border-amber-800 text-xs font-medium text-amber-800 dark:text-amber-300';
+        statDensity.textContent = `建议再配 ${required - totalImgs} 张图（每2000字1张，需 ≥${required} 张）`;
+        statDensity.className = 'px-3 py-1.5 rounded-xl bg-amber-50 dark:bg-amber-950/50 border border-amber-200 dark:border-amber-800 text-xs font-medium text-amber-800 dark:text-amber-300';
       }
     }
 
-    editor.addEventListener('input', updateStats);
-    document.getElementById('fm-infographic').addEventListener('input', updateStats);
+    // View mode switching
+    const paneEdit = document.getElementById('pane-edit')!;
+    const panePreview = document.getElementById('pane-preview')!;
+    const container = document.getElementById('editor-container')!;
+    document.querySelectorAll('.view-mode-btn').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const mode = btn.getAttribute('data-mode');
+        document.querySelectorAll('.view-mode-btn').forEach((b) => {
+          b.className = 'view-mode-btn px-2.5 py-1 rounded-md font-medium cursor-pointer text-slate-600 dark:text-slate-300';
+        });
+        btn.className = 'view-mode-btn px-2.5 py-1 rounded-md font-medium cursor-pointer bg-white dark:bg-slate-800 text-sky-600 dark:text-sky-400 shadow-sm';
 
-    // Insert single image at cursor
+        if (mode === 'edit') {
+          paneEdit.classList.remove('hidden');
+          panePreview.classList.add('hidden');
+          container.className = 'grid grid-cols-1 gap-4';
+        } else if (mode === 'preview') {
+          paneEdit.classList.add('hidden');
+          panePreview.classList.remove('hidden');
+          container.className = 'grid grid-cols-1 gap-4';
+        } else {
+          paneEdit.classList.remove('hidden');
+          panePreview.classList.remove('hidden');
+          container.className = 'grid grid-cols-1 lg:grid-cols-2 gap-4';
+        }
+      });
+    });
+
+    ['fm-title', 'fm-date', 'fm-category', 'fm-desc', 'fm-source', 'fm-infographic'].forEach((id) => {
+      document.getElementById(id)?.addEventListener('input', updateAll);
+      document.getElementById(id)?.addEventListener('change', updateAll);
+    });
+    editor.addEventListener('input', updateAll);
+
     document.querySelectorAll('.btn-insert-one').forEach((btn) => {
       btn.addEventListener('click', () => {
         const src = btn.getAttribute('data-insert-src');
@@ -305,31 +414,29 @@ const candidates = [
         const snippet = `\n\n![${cap}](${src})\n\n`;
         const pos = editor.selectionStart || editor.value.length;
         editor.value = editor.value.slice(0, pos) + snippet + editor.value.slice(pos);
-        updateStats();
+        updateAll();
       });
     });
 
-    // Set cover infographic
     document.querySelectorAll('.btn-set-cover').forEach((btn) => {
       btn.addEventListener('click', () => {
-        document.getElementById('fm-infographic').value = btn.getAttribute('data-cover-src');
-        updateStats();
+        (document.getElementById('fm-infographic') as HTMLInputElement).value = btn.getAttribute('data-cover-src') || '';
+        updateAll();
       });
     });
 
-    // Auto-insert checked images into chapters (## ...)
-    document.getElementById('btn-auto-insert').addEventListener('click', () => {
+    document.getElementById('btn-auto-insert')?.addEventListener('click', () => {
       const checked = Array.from(document.querySelectorAll('.cand-check:checked')).map((el) => ({
-        src: el.value,
-        cap: el.getAttribute('data-caption'),
+        src: (el as HTMLInputElement).value,
+        cap: el.getAttribute('data-caption') || '',
       }));
       if (checked.length === 0) {
         alert('请先在左侧勾选至少 1 张图片');
         return;
       }
-      let lines = editor.value.split('\n');
+      const lines = editor.value.split('\n');
       let imgIdx = 0;
-      const out = [];
+      const out: string[] = [];
       for (let i = 0; i < lines.length; i++) {
         out.push(lines[i]);
         if (lines[i].startsWith('## ') && imgIdx < checked.length) {
@@ -344,25 +451,25 @@ const candidates = [
         imgIdx++;
       }
       editor.value = out.join('\n');
-      updateStats();
+      updateAll();
     });
 
     function buildFullMarkdown() {
-      const title = document.getElementById('fm-title').value;
-      const date = document.getElementById('fm-date').value;
-      const cat = document.getElementById('fm-category').value;
-      const desc = document.getElementById('fm-desc').value;
-      const src = document.getElementById('fm-source').value;
-      const info = document.getElementById('fm-infographic').value;
+      const title = (document.getElementById('fm-title') as HTMLInputElement).value;
+      const date = (document.getElementById('fm-date') as HTMLInputElement).value;
+      const cat = (document.getElementById('fm-category') as HTMLSelectElement).value;
+      const desc = (document.getElementById('fm-desc') as HTMLInputElement).value;
+      const src = (document.getElementById('fm-source') as HTMLInputElement).value;
+      const info = (document.getElementById('fm-infographic') as HTMLInputElement).value;
       return `---\ntitle: "${title}"\ndate: "${date}"\ncategory: "${cat}"\ndescription: "${desc}"\nsource: "${src}"\ninfographic: "${info}"\n---\n\n${editor.value}\n`;
     }
 
-    document.getElementById('btn-copy-md').addEventListener('click', async () => {
+    document.getElementById('btn-copy-md')?.addEventListener('click', async () => {
       await navigator.clipboard.writeText(buildFullMarkdown());
-      alert('已复制完整标准格式 Markdown，可直接粘贴或发给我发布！');
+      alert('已复制完整标准格式 Markdown！');
     });
 
-    document.getElementById('btn-download-md').addEventListener('click', () => {
+    document.getElementById('btn-download-md')?.addEventListener('click', () => {
       const blob = new Blob([buildFullMarkdown()], { type: 'text/markdown;charset=utf-8' });
       const a = document.createElement('a');
       a.href = URL.createObjectURL(blob);
@@ -370,6 +477,6 @@ const candidates = [
       a.click();
     });
 
-    updateStats();
+    updateAll();
   </script>
 </BaseLayout>
