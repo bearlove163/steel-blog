@@ -1,0 +1,175 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const allPosts = (await getCollection('blog')).sort(
+  (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+);
+const latestPosts = allPosts.slice(0, 6);
+
+const projects = [
+  {
+    name: 'steel-section-calculator',
+    title: '钢结构截面特性计算器',
+    desc: '支持 H 型钢、箱型、圆管、L/T/Z 截面特性计算，内置中欧美标准截面库。',
+    tag: '工程工具',
+    url: 'https://github.com/bearlove163/steel-section-calculator',
+  },
+  {
+    name: 'steel-landmark-docs',
+    title: '全球钢结构地标文档库',
+    desc: '系统整理世界知名大跨度体育场馆、超高层与空间网架结构案例技术文档。',
+    tag: '知识库',
+    url: 'https://github.com/bearlove163/steel-landmark-docs',
+  },
+  {
+    name: 'steel-structrue-assistant',
+    title: '钢结构工程 AI 助手',
+    desc: '探索大语言模型与参数化设计工作流在钢结构深化与报价中的应用。',
+    tag: 'AI × 工程',
+    url: 'https://github.com/bearlove163/steel-structrue-assistant',
+  },
+];
+---
+
+<BaseLayout>
+  <!-- Hero -->
+  <section class="relative overflow-hidden border-b border-slate-200/80 dark:border-slate-800/80 bg-white dark:bg-slate-950">
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-sky-100/60 via-transparent to-transparent dark:from-sky-950/40 pointer-events-none"></div>
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-20 sm:py-28 relative">
+      <div class="max-w-3xl">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium bg-sky-50 text-sky-700 border border-sky-200/80 dark:bg-sky-950/60 dark:text-sky-300 dark:border-sky-800/60 mb-6">
+          <span class="w-2 h-2 rounded-full bg-sky-500 animate-pulse"></span>
+          Steel Structure × Digital Engineering × AI
+        </div>
+        <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-tight">
+          探索现代钢结构与<br />
+          <span class="bg-gradient-to-r from-sky-600 to-indigo-600 dark:from-sky-400 dark:to-indigo-400 bg-clip-text text-transparent">
+            数字建造的工程边界
+          </span>
+        </h1>
+        <p class="mt-6 text-lg text-slate-600 dark:text-slate-400 leading-relaxed">
+          你好，我是 <strong class="text-slate-900 dark:text-slate-200">bearlove163</strong>。这里是「钢结构研究院」——我的个人博客与数字工程实验室，记录全球地标钢结构案例、参数化与生成式 AI 实践、海外市场观察，以及钢结构双语学习工具。
+        </p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a
+            href={`${base}/blog`}
+            class="px-5 py-2.5 rounded-xl bg-sky-600 hover:bg-sky-700 text-white font-medium text-sm shadow-sm transition-colors"
+          >
+            阅读专栏博客 ({allPosts.length})
+          </a>
+          <a
+            href={`${base}/lab`}
+            class="px-5 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-900 dark:hover:bg-slate-800 text-slate-800 dark:text-slate-200 font-medium text-sm border border-slate-200 dark:border-slate-800 transition-colors"
+          >
+            打开工程实验室 (术语 / 闪卡 / 语音听力)
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Projects -->
+  <section class="max-w-6xl mx-auto px-4 sm:px-6 py-16">
+    <div class="flex items-end justify-between mb-8">
+      <div>
+        <h2 class="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">开源项目与专题</h2>
+        <p class="mt-1 text-sm text-slate-500 dark:text-slate-400">围绕钢结构计算、地标知识库与 AI 辅助工具的持续实践</p>
+      </div>
+      <a href={`${base}/projects`} class="text-sm font-medium text-sky-600 dark:text-sky-400 hover:underline">
+        查看全部 →
+      </a>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-5">
+      {projects.map((p) => (
+        <a
+          href={p.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="group p-6 rounded-2xl bg-white dark:bg-slate-900/70 border border-slate-200/80 dark:border-slate-800 hover:border-sky-400 dark:hover:border-sky-600 transition-all shadow-sm hover:shadow-md flex flex-col justify-between"
+        >
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span class="px-2.5 py-0.5 rounded-md text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">
+                {p.tag}
+              </span>
+              <span class="text-xs text-slate-400 group-hover:text-sky-500 transition-colors">GitHub ↗</span>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors">
+              {p.title}
+            </h3>
+            <p class="mt-2 text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+              {p.desc}
+            </p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800/80 text-xs font-mono text-slate-400">
+            bearlove163/{p.name}
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <!-- Latest Blog Posts -->
+  <section class="max-w-6xl mx-auto px-4 sm:px-6 py-8">
+    <div class="flex items-end justify-between mb-8">
+      <div>
+        <h2 class="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">最新专栏文章</h2>
+        <p class="mt-1 text-sm text-slate-500 dark:text-slate-400">全球大跨度场馆、桥梁工程、BIM 与生成式设计前沿观察</p>
+      </div>
+      <a href={`${base}/blog`} class="text-sm font-medium text-sky-600 dark:text-sky-400 hover:underline">
+        全部 {allPosts.length} 篇文章 →
+      </a>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+      {latestPosts.map((post) => (
+        <a
+          href={`${base}/blog/${post.id}`}
+          class="group p-6 rounded-2xl bg-white dark:bg-slate-900/70 border border-slate-200/80 dark:border-slate-800 hover:border-sky-400 dark:hover:border-sky-600 transition-all shadow-sm hover:shadow-md flex flex-col justify-between"
+        >
+          <div>
+            <div class="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 mb-3">
+              <span class="px-2.5 py-0.5 rounded-full bg-sky-50 dark:bg-sky-950/60 text-sky-700 dark:text-sky-300 font-medium">
+                {post.data.category}
+              </span>
+              <time datetime={post.data.date}>{post.data.date}</time>
+            </div>
+            <h3 class="text-base font-bold text-slate-900 dark:text-white group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors line-clamp-2">
+              {post.data.title}
+            </h3>
+            <p class="mt-2 text-sm text-slate-600 dark:text-slate-400 line-clamp-3 leading-relaxed">
+              {post.data.description}
+            </p>
+          </div>
+          <div class="mt-4 text-xs font-medium text-sky-600 dark:text-sky-400 group-hover:translate-x-0.5 transition-transform">
+            阅读全文 →
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <!-- Interactive Lab Banner -->
+  <section class="max-w-6xl mx-auto px-4 sm:px-6 py-12">
+    <div class="rounded-3xl bg-gradient-to-br from-slate-900 via-sky-950 to-indigo-950 text-white p-8 sm:p-12 border border-slate-800 shadow-lg flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+      <div class="max-w-2xl">
+        <span class="text-xs font-mono uppercase tracking-wider text-sky-400">Interactive Engineering Lab</span>
+        <h2 class="mt-2 text-2xl sm:text-3xl font-bold">钢结构双语术语库 & 语音听力实验室</h2>
+        <p class="mt-3 text-slate-300 text-sm sm:text-base leading-relaxed">
+          整合 183 个钢结构核心中英术语、翻转闪卡记忆（支持本地进度保存），以及 23 节工程英语听力训练（支持浏览器原声 TTS 朗读与语速调节）。
+        </p>
+      </div>
+      <div class="flex flex-wrap gap-3 shrink-0">
+        <a
+          href={`${base}/lab`}
+          class="px-5 py-3 rounded-xl bg-sky-500 hover:bg-sky-400 text-slate-950 font-semibold text-sm transition-colors"
+        >
+          立即进入实验室 →
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
