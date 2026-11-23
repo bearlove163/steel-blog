@@ -42,6 +42,7 @@ const candidates = [
   { file: '07-cross-section.jpg', label: '图7 · gmp 官方建筑横剖面图', desc: 'gmp 建筑事务所：屋盖、看台与地下空间关系' },
   { file: '08-talat-hypogeum.jpg', label: '图8 · 地下30米六层草坪温室内部', desc: 'TALAT：地下多层控制环境与生长灯阵' },
   { file: '09-hypogeum-pitch.jpg', label: '图9 · Sener 可伸缩草坪分段托盘', desc: 'Sener 工程图：6块×1500吨草皮横向滑移机制' },
+  { file: '10-hypogeum-infographic.jpg', label: '图10 · 地下六层草坪温室白底信息图', desc: '定制生成：30米深洞库、24台台车、450/660nm植物工厂解析' },
 ];
 ---
 
@@ -191,9 +192,14 @@ const candidates = [
 
         <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
           <div class="flex items-center justify-between mb-2">
-            <h2 class="text-base font-bold text-slate-900 dark:text-white">3. 正文 Markdown 编辑器</h2>
-            <span class="text-xs text-slate-400">支持直接修改文字、插入图片并实时统计字数</span>
+            <h2 class="text-base font-bold text-slate-900 dark:text-white">3. 正文 Markdown 编辑器（含配图位置颜色高亮）</h2>
+            <span class="text-xs text-slate-400">点击下方彩色配图标签，可直接跳转到对应段落</span>
           </div>
+
+          <!-- Color-coded Image Anchor Map -->
+          <div id="img-anchor-map" class="mb-3 p-3 rounded-xl bg-amber-50/70 dark:bg-amber-950/30 border border-amber-200/80 dark:border-amber-800/60 flex flex-wrap gap-2">
+          </div>
+
           <textarea
             id="md-editor"
             rows={24}
@@ -209,6 +215,63 @@ const candidates = [
     const statChars = document.getElementById('stat-chars');
     const statImgs = document.getElementById('stat-imgs');
     const statDensity = document.getElementById('stat-density');
+    const anchorMap = document.getElementById('img-anchor-map');
+
+    function renderAnchorMap(text) {
+      const lines = text.split('\n');
+      let currentSection = '引言';
+      const anchors = [];
+      let offset = 0;
+
+      for (let i = 0; i < lines.length; i++) {
+        const line = lines[i];
+        if (line.startsWith('## ')) {
+          currentSection = line.replace(/^##\s+/, '').slice(0, 14);
+        }
+        const m = line.match(/^!\[([^\]]*)\]\(([^)]+)\)/);
+        if (m) {
+          anchors.push({
+            caption: m[1] || '未命名图片',
+            src: m[2],
+            section: currentSection,
+            lineNum: i + 1,
+            charPos: offset,
+          });
+        }
+        offset += line.length + 1;
+      }
+
+      if (anchors.length === 0) {
+        anchorMap.innerHTML = '<span class="text-xs text-amber-700 dark:text-amber-300">暂无正文插图，可从左侧勾选后点击「✨ 自动插入各章节」</span>';
+        return;
+      }
+
+      anchorMap.innerHTML = anchors
+        .map(
+          (a, idx) => `
+          <button
+            type="button"
+            data-jump="${a.charPos}"
+            class="jump-anchor-btn inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-amber-500/15 hover:bg-amber-500/25 border border-amber-400/60 text-amber-900 dark:text-amber-200 text-xs font-medium cursor-pointer transition-colors"
+            title="点击跳转到第 ${a.lineNum} 行"
+          >
+            <span class="w-4 h-4 rounded-full bg-amber-500 text-white text-[10px] font-bold flex items-center justify-center">${idx + 1}</span>
+            <span>[${a.section}]</span>
+            <span class="max-w-[140px] truncate">${a.caption}</span>
+          </button>`
+        )
+        .join('');
+
+      document.querySelectorAll('.jump-anchor-btn').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const pos = Number(btn.getAttribute('data-jump'));
+          editor.focus();
+          editor.setSelectionRange(pos, pos + 4);
+          const ratio = pos / Math.max(1, editor.value.length);
+          editor.scrollTop = Math.max(0, ratio * editor.scrollHeight - 80);
+        });
+      });
+    }
 
     function updateStats() {
       const text = editor.value || '';
@@ -219,6 +282,7 @@ const candidates = [
 
       statChars.textContent = chars.toLocaleString();
       statImgs.textContent = totalImgs;
+      renderAnchorMap(text);
 
       const required = Math.max(5, Math.ceil(chars / 2000));
       if (totalImgs >= required) {

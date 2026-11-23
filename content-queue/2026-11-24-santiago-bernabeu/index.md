@@ -23,6 +23,9 @@ infographic: "/projects/2026-11-24-santiago-bernabeu/candidates/01-infographic.j
 
 ---
 
+
+![图4 · 卡斯蒂利亚大道城市界面与21米主入口](/steel-blog/projects/2026-11-24-santiago-bernabeu/candidates/04-archdaily-exterior.jpg)
+
 ## 第一章：城市心脏里的极限约束——不拆老骨头，如何长出新肌肉？
 
 ### 1.1 为什么“包裹”比“推倒”难十倍？
@@ -50,6 +53,9 @@ infographic: "/projects/2026-11-24-santiago-bernabeu/candidates/01-infographic.j
 
 ---
 
+
+![图3 · 7500片V形不锈钢百叶幕墙特写](/steel-blog/projects/2026-11-24-santiago-bernabeu/candidates/03-facade-louvers.jpg)
+
 ## 第二章：给钢铁巨人穿上“流动的银甲”——7,500 片不锈钢百叶的光学与流体力学
 
 从远处看，新伯纳乌最抓人眼球的，是那层包裹着整座球场的银白色流线型“金属皮肤”。它既不像鸟巢那样把粗壮的钢构直接暴露在外，也不像传统玻璃幕墙那样死板反光，而是像一块被风吹拂的液态金属。
@@ -73,6 +79,9 @@ infographic: "/projects/2026-11-24-santiago-bernabeu/candidates/01-infographic.j
 最绝的是，他们利用参数化算法，**微调了每一片 V 形百叶的倾斜角度与安装方位**。也就是说，这 7,500 片不锈钢百叶看似浑然一体，实则每一片的“尺寸、曲率和倾角”几乎都是独一无二的。通过这种精密计算，阳光照在球场上只会呈现柔和流动的金属光泽，而不会向周边住宅区集中反射刺眼眩光。到了夜晚，百叶背后的动态 LED 投光系统亮起，整座幕墙还能化身巨型城市媒体屏，向外投射球队配色、文字与动态影像。
 
 ---
+
+
+![图6 · 空间钢结构分析模型（四巨桁架与既有看台关系）](/steel-blog/projects/2026-11-24-santiago-bernabeu/candidates/06-ines-structural-model.jpg)
 
 ## 第三章：屋顶上的结构变阵——从“车辐索网”到 176 米 S690 高强钢巨桁架
 
@@ -116,6 +125,9 @@ infographic: "/projects/2026-11-24-santiago-bernabeu/candidates/01-infographic.j
 
 ---
 
+
+![图7 · gmp官方建筑横剖面图（屋盖、看台与地下空间）](/steel-blog/projects/2026-11-24-santiago-bernabeu/candidates/07-cross-section.jpg)
+
 ## 第四章：15 分钟开合的“轻质天幕”与 360° 环形巨幕
 
 ### 4.1 为什么可开合屋盖的桁架里要塞“木头”和“碳纤维”？
@@ -138,6 +150,9 @@ infographic: "/projects/2026-11-24-santiago-bernabeu/candidates/01-infographic.j
 而在球场最高层的第 10 层外环，建筑师利用一座高达 **16.5 米** 的空间网架“巨型门廊”，开辟了一条全天候开放的 **Skywalk 360 空中观景步道** 与总面积达 **1,200 平方米** 的 **Skybar**。即便在没有比赛的日子里，游客也能登上 57 米高空，一边俯瞰马德里天际线，一边透过玻璃俯瞰脚下的传奇绿茵场。
 
 ---
+
+
+![图2 · 夜间外立面全景实拍（sbp官方摄影）](/steel-blog/projects/2026-11-24-santiago-bernabeu/candidates/02-sbp-night.jpg)
 
 ## 第五章：地下 30 米的“六层草坪温室”——9,000 吨绿茵如何 5 小时隐身？
 
@@ -165,6 +180,9 @@ infographic: "/projects/2026-11-24-santiago-bernabeu/candidates/01-infographic.j
 - **CO₂ 注入与防霉变**：地下空间密闭，草坪光合作用会迅速消耗二氧化碳并释放湿气。**TALAT** 设计的智能楼宇管理系统（BMS）实时监测每一层的温湿度与气体浓度，自动注入 **CO₂** 维持光合效率，并通过强力新风循环与工业除湿机防止真菌病害爆发。整套地下系统光电缆就铺设了约 **90 公里**，各类给排水与消防管网超过 **5 公里**。
 
 ---
+
+
+![图10 · 伯纳乌地下黑科技：30米深六层草坪温室白底信息图](/steel-blog/projects/2026-11-24-santiago-bernabeu/candidates/10-hypogeum-infographic.jpg)
 
 ## 结语：现代体育场馆的“城市基础设施化”
 
