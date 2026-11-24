@@ -12,7 +12,7 @@ source: "Jinhuan Steel"
 📰 来源：Jinhuan Steel
 🏗️ 类型：技术解析
 
-**导语：**2026年，体育场馆钢结构系统迎来技术革新。本文深度解析六大主流结构体系：双层/三层网架、巨型桁架、索穹顶、张拉结构、可开合屋顶等，附详细数据对比和经典案例。
+<strong>导语：</strong>2026年，体育场馆钢结构系统迎来技术革新。本文深度解析六大主流结构体系：双层/三层网架、巨型桁架、索穹顶、张拉结构、可开合屋顶等，附详细数据对比和经典案例。
 
 ## 📊 六大主流钢结构系统
 
@@ -104,15 +104,15 @@ source: "Jinhuan Steel"
 
 ## 💡 术语卡片
 
-- **Space Frame / 空间网架** - 由钢杆件组成的空间受力体系
+- <strong>Space Frame / 空间网架</strong> - 由钢杆件组成的空间受力体系
 
-- **Mega-Truss / 巨型桁架** - 用于超大跨度的主受力桁架
+- <strong>Mega-Truss / 巨型桁架</strong> - 用于超大跨度的主受力桁架
 
-- **Cable Dome / 索穹顶** - 全张力体系，索膜协同工作
+- <strong>Cable Dome / 索穹顶</strong> - 全张力体系，索膜协同工作
 
-- **Retractable Roof / 可开合屋顶** - 机械驱动的可动屋盖系统
+- <strong>Retractable Roof / 可开合屋顶</strong> - 机械驱动的可动屋盖系统
 
-- **Sightline / 视线** - 观众观赛的 unobstructed 视线
+- <strong>Sightline / 视线</strong> - 观众观赛的 unobstructed 视线
 
 ### 📚 参考来源
 

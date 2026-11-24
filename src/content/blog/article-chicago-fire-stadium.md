@@ -18,19 +18,19 @@ source: ""
 
 芝加哥火焰FC的新球场是美国职业足球大联盟(MLS)中备受瞩目的里程碑项目。该球场将位于芝加哥南Loop区的"The 78"综合开发项目内，是芝加哥30多年来首个新建的专业足球场。
 
-- **$7.5亿**
+- <strong>$7.5亿</strong>
 
 总投资
 
-- **100+年**
+- <strong>100+年</strong>
 
 Mansueto投资
 
-- **2026**
+- <strong>2026</strong>
 
 开工年份
 
-- **私人**
+- <strong>私人</strong>
 
 投资方式
 
@@ -38,13 +38,13 @@ Mansueto投资
 
 该球场由芝加哥火焰FC老板Joe Mansueto全资投入。自2019年收购俱乐部全部股权以来，Mansueto已向芝加哥火焰FC的长期转型投入超过10亿美元，包括：
 
-- **1亿美元** - Endeavor Health性能中心
+- <strong>1亿美元</strong> - Endeavor Health性能中心
 
-- **青训投入** - 加大Academy投资
+- <strong>青训投入</strong> - 加大Academy投资
 
-- **办公扩张** - 总部规模扩大
+- <strong>办公扩张</strong> - 总部规模扩大
 
-- **体验中心** - 位于Wrigley Building的9000平方英尺沉浸式空间
+- <strong>体验中心</strong> - 位于Wrigley Building的9000平方英尺沉浸式空间
 
 ## 📍 地理位置
 
@@ -52,7 +52,7 @@ Mansueto投资
 
 ## 🏟️ 建筑特色
 
-**MLS首个私人资助的专业足球场**
+<strong>MLS首个私人资助的专业足球场</strong>
 
 该球场将成为美国职业足球大联盟的标杆项目，展示私人资本对体育基础设施的投入潜力。
 
@@ -66,7 +66,7 @@ Mansueto投资
 
 - 为芝加哥南Loop区带来新的经济活力
 
-**📖 参考来源：**
+<strong>📖 参考来源：</strong>
 
 [Chicago Fire FC Official News](https://www.chicagofirefc.com/news/historic-day-for-the-city-chicago-fire-fc-breaks-ground-on-privately-funded-soccer-stadium-at-the-78)
 
