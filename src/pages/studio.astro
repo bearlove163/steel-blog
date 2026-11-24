@@ -222,6 +222,14 @@ const defaultDoc = projectDocs[0];
                   >
                     查看已发布文章
                   </a>
+                ) : t.resolvedStatus === 'drafting' ? (
+                  <button
+                    type="button"
+                    data-edit-slug={t.id}
+                    class="btn-edit-draft flex-1 py-2 rounded-lg bg-amber-600 hover:bg-amber-700 text-white text-xs font-medium cursor-pointer transition-colors"
+                  >
+                    进入下方审稿编辑 ↓
+                  </button>
                 ) : (
                   <button
                     type="button"
@@ -609,6 +617,17 @@ const defaultDoc = projectDocs[0];
       });
     });
 
+    document.querySelectorAll('.btn-edit-draft').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const slug = btn.getAttribute('data-edit-slug');
+        if (slug && switcher) {
+          switcher.value = slug;
+          loadDoc(slug);
+          switcher.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
     // View mode switching
     const paneEdit = document.getElementById('pane-edit')!;
     const panePreview = document.getElementById('pane-preview')!;
@@ -696,8 +715,8 @@ const defaultDoc = projectDocs[0];
       a.click();
     });
 
-    if (defaultDoc) {
-      loadDoc(defaultDoc.slug);
+    if (docsData.length > 0) {
+      loadDoc(docsData[0].slug);
     }
   </script>
 </BaseLayout>
