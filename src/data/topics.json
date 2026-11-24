@@ -1,5 +1,50 @@
 [
   {
+    "id": "2026-12-01-canakkale-1915-bridge",
+    "addedDate": "2026-11-24",
+    "title": "土耳其 1915 恰纳卡莱大桥",
+    "tag": "超级桥梁 · 2,023m世界第一跨",
+    "summary": "COWI 设计、Arup 独立校核。主跨 2,023 米超越明石海峡大桥成为世界第一跨径悬索桥，318 米全球最高红色钢塔，采用分体式双箱钢梁留出中央空气通道破解涡振颤振难题。",
+    "highlights": [
+      "2,023m世界第一主跨",
+      "318m全球最高钢塔",
+      "分体式双箱抗风钢梁"
+    ],
+    "image": "/projects/topics/1915-canakkale-bridge.jpg",
+    "status": "pending",
+    "publishedSlug": ""
+  },
+  {
+    "id": "2026-12-02-gardens-by-the-bay",
+    "addedDate": "2026-11-24",
+    "title": "新加坡滨海湾花园冷室穹顶",
+    "tag": "生态地标 · 无柱钢网壳",
+    "summary": "WilkinsonEyre + Atelier One 打造，吉尼斯世界最大无柱玻璃温室（1.28 公顷、3,332 块玻璃）。单层双曲面钢网壳搭配外部放射状主钢拱承担推力，并联动银色擎天树实现赤道零柱温带冷室。",
+    "highlights": [
+      "1.28公顷无柱温室",
+      "单层钢网壳 + 外置钢拱",
+      "RIBA 2013 卢贝特金奖"
+    ],
+    "image": "/projects/topics/gardens-by-the-bay.jpg",
+    "status": "pending",
+    "publishedSlug": ""
+  },
+  {
+    "id": "2026-12-03-tottenham-hotspur-stadium",
+    "addedDate": "2026-11-24",
+    "title": "伦敦托特纳姆热刺球场",
+    "tag": "顶级场馆 · 三段式伸缩草坪",
+    "summary": "Populous + sbp + SCX 打造。62,850 座英超与 NFL 双栖球场，720 米受压环车辐式索网屋盖搭配 4,801 块可开合穿孔金属板，9,000 吨天然草坪分三段（99 块钢托盘）25 分钟滑入南看台下方。",
+    "highlights": [
+      "720m车辐索网 / 62,850座",
+      "9,000吨三段式伸缩草坪",
+      "4,801块呼吸式金属表皮"
+    ],
+    "image": "/projects/topics/tottenham-hotspur-stadium.jpg",
+    "status": "pending",
+    "publishedSlug": ""
+  },
+  {
     "id": "2026-11-28-jewel-changi-airport",
     "addedDate": "2026-11-23",
     "title": "新加坡星耀樟宜（Jewel Changi）",
