@@ -111,17 +111,17 @@ const projectDocs = candidateDirs.map(parseDoc).filter((d): d is ProjectDoc => B
 const defaultDoc = projectDocs[0];
 ---
 
-<BaseLayout title="创作后台 · 选题累积库与稿件预览 | 钢结构研究院" description="每日3选题规划与历史选题累积回溯，支持Swarm指令生成、配图筛选与Markdown整体效果预览。">
+<BaseLayout title="创作后台 · 选题累积库与稿件预览 | 钢结构研究院" description="私人创作后台" noindex={true}>
   <div class="max-w-7xl mx-auto px-4 sm:px-6 py-8">
     <!-- Top Bar -->
     <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-5 border-b border-slate-200 dark:border-slate-800 mb-6">
       <div>
         <div class="inline-flex items-center gap-2 text-xs font-mono text-sky-600 dark:text-sky-400 mb-1">
-          <span>EDITORIAL STUDIO</span>
+          <span>PRIVATE EDITORIAL STUDIO</span>
           <span>·</span>
-          <span>选题累积池 + 万字稿件工作台</span>
+          <span>仅后台直达（已从公开导航隐藏）</span>
         </div>
-        <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">选题规划与稿件编辑后台</h1>
+        <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">选题累积库与稿件编辑后台</h1>
       </div>
 
       <div class="flex flex-wrap items-center gap-2.5">
@@ -137,12 +137,12 @@ const defaultDoc = projectDocs[0];
       </div>
     </div>
 
-    <!-- Step 0: Persistent Cumulative Topic Bank -->
+    <!-- Step 0: Compact Horizontal Topic Bank -->
     <section class="mb-8 p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
       <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-3 mb-4">
         <div>
           <span class="text-[11px] font-mono uppercase tracking-wider text-sky-600 dark:text-sky-400">STEP 0 · PERSISTENT TOPIC BANK</span>
-          <h2 class="text-lg font-bold text-slate-900 dark:text-white">选题累积库（每日新增 3 选题 · 历史选题可回溯）</h2>
+          <h2 class="text-lg font-bold text-slate-900 dark:text-white">选题累积库（紧凑横栏视图 · 点击任意行查看详情与信息图）</h2>
         </div>
 
         <div class="flex flex-wrap items-center gap-2">
@@ -158,21 +158,11 @@ const defaultDoc = projectDocs[0];
           <button type="button" data-status-filter="published" class="topic-filter-btn px-3 py-1 rounded-lg text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 cursor-pointer">
             已发布 ({counts.published})
           </button>
-          <button
-            id="btn-new-daily-topics"
-            type="button"
-            class="px-3 py-1 rounded-lg text-xs font-semibold bg-indigo-600 hover:bg-indigo-700 text-white cursor-pointer transition-colors"
-          >
-            + 复制「生成今日3新选题」指令
-          </button>
         </div>
       </div>
 
-      <p id="topic-status" class="mb-4 text-xs text-slate-500 dark:text-slate-400">
-        提示：选定任意「待创作」选题可一键复制 Swarm 深度调研指令；已发布项目可直接回溯文章或切入下方编辑器二次精修。
-      </p>
-
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4" id="topic-grid">
+      <!-- Compact Horizontal List -->
+      <div class="divide-y divide-slate-100 dark:divide-slate-800 border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden" id="topic-grid">
         {topicBank.map((t) => {
           const statusLabel =
             t.resolvedStatus === 'published'
@@ -189,63 +179,88 @@ const defaultDoc = projectDocs[0];
           return (
             <div
               data-topic-status={t.resolvedStatus}
-              class="topic-card group rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50/70 dark:bg-slate-950/60 overflow-hidden flex flex-col justify-between hover:border-sky-400 transition-all"
+              data-topic-json={JSON.stringify({ ...t, imgUrl: `${base}${t.image}`, statusLabel, statusClass, blogUrl: t.publishedSlug ? `${base}/blog/${t.publishedSlug}/` : '' })}
+              class="topic-card group flex flex-col sm:flex-row sm:items-center gap-3.5 p-3 bg-white dark:bg-slate-950/40 hover:bg-slate-50 dark:hover:bg-slate-900/80 transition-colors cursor-pointer"
             >
-              <div>
-                <div class="aspect-video bg-white dark:bg-slate-900 overflow-hidden border-b border-slate-200 dark:border-slate-800">
-                  <img src={`${base}${t.image}`} alt={t.title} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
-                </div>
-                <div class="p-4">
-                  <div class="flex items-center justify-between gap-2 mb-2">
-                    <span class={`px-2 py-0.5 rounded-full text-[11px] font-semibold ${statusClass}`}>
-                      {statusLabel}
-                    </span>
-                    <span class="text-[11px] font-mono text-slate-400">入库 {t.addedDate}</span>
-                  </div>
-                  <div class="text-[11px] text-sky-700 dark:text-sky-400 font-medium mb-1">{t.tag}</div>
-                  <h3 class="font-bold text-sm text-slate-900 dark:text-white">{t.title}</h3>
-                  <p class="mt-1.5 text-xs text-slate-600 dark:text-slate-400 leading-relaxed line-clamp-3">{t.summary}</p>
-                  <div class="mt-2.5 flex flex-wrap gap-1">
-                    {t.highlights.map((h) => (
-                      <span class="px-1.5 py-0.5 rounded bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-[10px] text-slate-600 dark:text-slate-300">
-                        {h}
-                      </span>
-                    ))}
-                  </div>
-                </div>
+              <!-- Compact Thumbnail -->
+              <div class="shrink-0 w-full sm:w-28 h-24 sm:h-16 rounded-lg overflow-hidden border border-slate-200 dark:border-slate-700 bg-white">
+                <img src={`${base}${t.image}`} alt={t.title} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-200" />
               </div>
-              <div class="px-4 pb-4 flex gap-2">
+
+              <!-- Middle Info -->
+              <div class="flex-1 min-w-0">
+                <div class="flex flex-wrap items-center gap-2 mb-1">
+                  <span class={`px-2 py-0.5 rounded-full text-[11px] font-semibold ${statusClass}`}>
+                    {statusLabel}
+                  </span>
+                  <span class="text-[11px] font-mono text-slate-400">{t.addedDate}</span>
+                  <span class="text-[11px] text-sky-700 dark:text-sky-400 font-medium">{t.tag}</span>
+                </div>
+                <h3 class="font-bold text-sm text-slate-900 dark:text-white truncate group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors">
+                  {t.title}
+                </h3>
+                <p class="text-xs text-slate-500 dark:text-slate-400 truncate mt-0.5">
+                  {t.summary}
+                </p>
+              </div>
+
+              <!-- Right Quick Action -->
+              <div class="shrink-0 flex items-center gap-2" onclick="event.stopPropagation()">
                 {t.resolvedStatus === 'published' && t.publishedSlug ? (
                   <a
                     href={`${base}/blog/${t.publishedSlug}/`}
-                    class="flex-1 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-medium text-center transition-colors"
+                    class="px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-medium transition-colors"
                   >
-                    查看已发布文章
+                    查看文章
                   </a>
                 ) : t.resolvedStatus === 'drafting' ? (
                   <button
                     type="button"
                     data-edit-slug={t.id}
-                    class="btn-edit-draft flex-1 py-2 rounded-lg bg-amber-600 hover:bg-amber-700 text-white text-xs font-medium cursor-pointer transition-colors"
+                    class="btn-edit-draft px-3 py-1.5 rounded-lg bg-amber-600 hover:bg-amber-700 text-white text-xs font-medium cursor-pointer transition-colors"
                   >
-                    进入下方审稿编辑 ↓
+                    审稿编辑 ↓
                   </button>
-                ) : (
-                  <button
-                    type="button"
-                    data-topic-title={t.title}
-                    data-topic-id={t.id}
-                    class="btn-pick-topic flex-1 py-2 rounded-lg bg-slate-900 hover:bg-sky-600 dark:bg-sky-600 dark:hover:bg-sky-500 text-white text-xs font-medium cursor-pointer transition-colors"
-                  >
-                    选定选题 · 启动 Swarm 调研
-                  </button>
-                )}
+                ) : null}
+                <button
+                  type="button"
+                  class="btn-open-modal px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 hover:border-sky-400 text-slate-600 dark:text-slate-300 text-xs font-medium cursor-pointer transition-colors"
+                >
+                  详情 / 图谱
+                </button>
               </div>
             </div>
           );
         })}
       </div>
     </section>
+
+    <!-- Topic Detail Modal -->
+    <div id="topic-modal" class="hidden fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-sm flex items-center justify-center p-4">
+      <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto shadow-2xl p-6">
+        <div class="flex items-start justify-between gap-4 mb-4">
+          <div>
+            <div class="flex items-center gap-2 mb-1">
+              <span id="modal-status" class="px-2.5 py-0.5 rounded-full text-xs font-semibold"></span>
+              <span id="modal-date" class="text-xs font-mono text-slate-400"></span>
+              <span id="modal-tag" class="text-xs text-sky-600 dark:text-sky-400 font-medium"></span>
+            </div>
+            <h3 id="modal-title" class="text-xl font-extrabold text-slate-900 dark:text-white"></h3>
+          </div>
+          <button id="modal-close" type="button" class="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-500 hover:text-slate-900 dark:hover:text-white text-sm cursor-pointer">
+            ✕
+          </button>
+        </div>
+
+        <div class="rounded-xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-white mb-4">
+          <img id="modal-img" src="" alt="" class="w-full h-auto" />
+        </div>
+
+        <p id="modal-summary" class="text-sm text-slate-700 dark:text-slate-300 leading-relaxed mb-4"></p>
+        <div id="modal-highlights" class="flex flex-wrap gap-2 mb-4"></div>
+        <div id="modal-actions" class="flex justify-end gap-2 pt-3 border-t border-slate-200 dark:border-slate-800"></div>
+      </div>
+    </div>
 
     <!-- Project Switcher for Editor -->
     <div class="mb-4 p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
@@ -592,29 +607,44 @@ const defaultDoc = projectDocs[0];
       });
     });
 
-    // Generate new 3 daily topics prompt
-    document.getElementById('btn-new-daily-topics')?.addEventListener('click', async () => {
-      const cmd = '请使用 steel-blog-workflow 工作流，联网检索今天全球钢结构与超级工程热点，为我增量追加 3 个全新选题到 src/data/topics.json，并为每个选题生成白底中文信息图。';
-      try { await navigator.clipboard.writeText(cmd); } catch {}
-      const statusEl = document.getElementById('topic-status');
-      if (statusEl) {
-        statusEl.textContent = '已复制「生成今日 3 新选题」指令！直接粘贴发给 Antigravity，即可联网生成并追加保留到选题库。';
-        statusEl.className = 'mb-4 text-xs font-semibold text-indigo-600 dark:text-indigo-400';
+    // Topic Detail Modal
+    const modal = document.getElementById('topic-modal')!;
+    const modalClose = document.getElementById('modal-close')!;
+
+    function openTopicModal(data: any) {
+      (document.getElementById('modal-status') as HTMLElement).className = `px-2.5 py-0.5 rounded-full text-xs font-semibold ${data.statusClass}`;
+      (document.getElementById('modal-status') as HTMLElement).textContent = data.statusLabel;
+      (document.getElementById('modal-date') as HTMLElement).textContent = `入库 ${data.addedDate}`;
+      (document.getElementById('modal-tag') as HTMLElement).textContent = data.tag;
+      (document.getElementById('modal-title') as HTMLElement).textContent = data.title;
+      (document.getElementById('modal-img') as HTMLImageElement).src = data.imgUrl;
+      (document.getElementById('modal-img') as HTMLImageElement).alt = data.title;
+      (document.getElementById('modal-summary') as HTMLElement).textContent = data.summary;
+      (document.getElementById('modal-highlights') as HTMLElement).innerHTML = (data.highlights || [])
+        .map((h: string) => `<span class="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-xs text-slate-700 dark:text-slate-300">${h}</span>`)
+        .join('');
+
+      const actionsEl = document.getElementById('modal-actions')!;
+      if (data.blogUrl) {
+        actionsEl.innerHTML = `<a href="${data.blogUrl}" class="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold">打开已发布文章 →</a>`;
+      } else {
+        actionsEl.innerHTML = `<span class="text-xs text-slate-400">如需对此选题深度创作，直接在对话中告诉我「${data.title}，启动 Swarm 调研」即可。</span>`;
       }
+      modal.classList.remove('hidden');
+    }
+
+    topicCards.forEach((card) => {
+      const openFn = () => {
+        const raw = card.getAttribute('data-topic-json');
+        if (raw) openTopicModal(JSON.parse(raw));
+      };
+      card.addEventListener('click', openFn);
+      card.querySelector('.btn-open-modal')?.addEventListener('click', openFn);
     });
 
-    document.querySelectorAll('.btn-pick-topic').forEach((btn) => {
-      btn.addEventListener('click', async () => {
-        const title = btn.getAttribute('data-topic-title');
-        const id = btn.getAttribute('data-topic-id');
-        const promptText = `请使用 steel-blog-workflow 工作流，针对选题【${title}】（目录：${id}）启动 3 路 Swarm 深度调研，抓取高清配图与生成白底信息图，并撰写 1 万字科普长文放入 /studio/ 供我审稿。`;
-        try { await navigator.clipboard.writeText(promptText); } catch {}
-        const statusEl = document.getElementById('topic-status');
-        if (statusEl) {
-          statusEl.textContent = `已选定「${title}」并复制 Swarm 指令！直接粘贴发给 Antigravity 即可开始。`;
-          statusEl.className = 'mb-4 text-xs font-semibold text-emerald-600 dark:text-emerald-400';
-        }
-      });
+    modalClose?.addEventListener('click', () => modal.classList.add('hidden'));
+    modal?.addEventListener('click', (e) => {
+      if (e.target === modal) modal.classList.add('hidden');
     });
 
     document.querySelectorAll('.btn-edit-draft').forEach((btn) => {
