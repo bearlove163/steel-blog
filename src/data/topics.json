@@ -5,7 +5,11 @@
     "title": "新加坡星耀樟宜（Jewel Changi）",
     "tag": "交通枢纽 · 受弯钢网壳",
     "summary": "Safdie Architects + BuroHappold + MERO 联袂打造。13.57 万㎡室内雨林商业枢纽，200 米跨度非对称受弯钢网壳用钢 6,000 吨，由 14,000+ 根变截面钢杆件与 5,000 个 CNC 节点精密拼装，偏心天窗承托 40 米雨漩涡并避让机场轻轨。",
-    "highlights": ["200m跨度 / 6,000吨网壳", "5,000个德国CNC节点", "40m雨漩涡 + 轻轨避让"],
+    "highlights": [
+      "200m跨度 / 6,000吨网壳",
+      "5,000个德国CNC节点",
+      "40m雨漩涡 + 轻轨避让"
+    ],
     "image": "/projects/topics/jewel-changi-airport.jpg",
     "status": "pending",
     "publishedSlug": ""
@@ -16,7 +20,11 @@
     "title": "卡塔尔卢赛尔体育场（Lusail Stadium）",
     "tag": "2022世界杯 · 307m车辐索网",
     "summary": "Foster + Partners + Populous + Arup 设计、中国铁建联合承建的 88,966 座决赛圣殿。直径 307 米车辐式张力索网实现内部零立柱遮挡，金色斜交钢网架外衣兼具沙漠遮阳，上层看台采用可拆卸模块化设计赛后缩容至 4 万座社区中心。",
-    "highlights": ["307m车辐索网 / 88,966座", "斜交钢网架 + 沙漠光伏制冷", "赛后可拆卸缩容至4万座"],
+    "highlights": [
+      "307m车辐索网 / 88,966座",
+      "斜交钢网架 + 沙漠光伏制冷",
+      "赛后可拆卸缩容至4万座"
+    ],
     "image": "/projects/topics/lusail-stadium.jpg",
     "status": "pending",
     "publishedSlug": ""
@@ -27,10 +35,14 @@
     "title": "深中通道深中大桥（原伶仃洋大桥）",
     "tag": "超级桥梁 · 1,666m海中悬索桥",
     "summary": "2024 年乔治·理查德森大奖得主。主跨 1,666 米世界最大跨径全离岸海中钢箱梁悬索桥，270 米主塔 + 76.5 米超高通航净空，213 节钢箱梁用钢约 10 万吨，气动优化实现 88 m/s 全球最高颤振临界风速。",
-    "highlights": ["1,666m主跨 / 10万吨钢箱梁", "88 m/s全球最高颤振风速", "76.5m通航净空 / 270m主塔"],
+    "highlights": [
+      "1,666m主跨 / 10万吨钢箱梁",
+      "88 m/s全球最高颤振风速",
+      "76.5m通航净空 / 270m主塔"
+    ],
     "image": "/projects/topics/shenzhen-zhongshan-bridge.jpg",
-    "status": "drafting",
-    "publishedSlug": ""
+    "status": "published",
+    "publishedSlug": "2026-11-30-shenzhen-zhongshan-bridge"
   },
   {
     "id": "2026-11-25-beijing-daxing-airport",
@@ -38,7 +50,11 @@
     "title": "北京大兴国际机场航站楼",
     "tag": "综合交通枢纽 · 隔震奇迹",
     "summary": "Zaha Hadid + ADP + BIAD + Arup 联袂打造。单体建面超 60 万㎡、180m 无柱跨度、30,000 吨自由曲面钢屋盖，地下布置 1,124 个隔震支座 + 144 套阻尼器，构成世界最大单体层间隔震建筑。",
-    "highlights": ["60万㎡单体航站楼", "30,000吨自由曲面屋盖", "1,124套隔震支座 + 600mm补偿"],
+    "highlights": [
+      "60万㎡单体航站楼",
+      "30,000吨自由曲面屋盖",
+      "1,124套隔震支座 + 600mm补偿"
+    ],
     "image": "/projects/topics/daxing-airport.jpg",
     "status": "pending",
     "publishedSlug": ""
@@ -49,7 +65,11 @@
     "title": "香港启德体育园主场馆",
     "tag": "2025全运会 · 静音可开合",
     "summary": "Populous + Arup 设计，“东方之珠” 50,000 座主场馆。4 榀 150-180m 巨型桁架锚固于四角无支座混凝土巨塔，4,800 吨可开合屋盖 30 分钟静音开合，实现高密度住宅区低频隔声密封。",
-    "highlights": ["180m 主桁架无柱遮挡", "4,800吨铁路级静音开合", "15,000吨屋盖用钢"],
+    "highlights": [
+      "180m 主桁架无柱遮挡",
+      "4,800吨铁路级静音开合",
+      "15,000吨屋盖用钢"
+    ],
     "image": "/projects/topics/kai-tak-stadium.jpg",
     "status": "pending",
     "publishedSlug": ""
@@ -60,7 +80,11 @@
     "title": "亚特兰大梅赛德斯-奔驰体育场",
     "tag": "2026世界杯 · 花瓣穹顶",
     "summary": "HOK + Canam 设计，71,000 座 LEED 铂金级场馆。灵感源自罗马万神殿穹顶，8 片 67 米长钢桁架花瓣沿 16 条直线轨道 8 分钟内同步开合，双向跨越 220 米，屋盖用钢 17,000 吨。",
-    "highlights": ["220m 双向大跨度", "8片花瓣8分钟开合", "17,000吨屋盖 + 85万颗螺栓"],
+    "highlights": [
+      "220m 双向大跨度",
+      "8片花瓣8分钟开合",
+      "17,000吨屋盖 + 85万颗螺栓"
+    ],
     "image": "/projects/topics/mercedes-benz-stadium.jpg",
     "status": "pending",
     "publishedSlug": ""
@@ -71,7 +95,11 @@
     "title": "圣地亚哥·伯纳乌球场深度改造",
     "tag": "城市更新 · 176m巨桁架",
     "summary": "gmp + L35 + sbp 联袂打造。在闹市地铁正上方不停赛改造，S690QL1 高强钢四巨桁架空中滑移 + 复合材料可开合屋盖 + 30 米深地下六层草坪温室。",
-    "highlights": ["83,186座", "176m S690巨桁架", "30m深地下草坪温室"],
+    "highlights": [
+      "83,186座",
+      "176m S690巨桁架",
+      "30m深地下草坪温室"
+    ],
     "image": "/projects/2026-11-24-santiago-bernabeu/candidates/01-infographic.jpg",
     "status": "published",
     "publishedSlug": "2026-11-24-santiago-bernabeu"
@@ -82,7 +110,11 @@
     "title": "洛杉矶 SoFi 体育场",
     "tag": "2026世界杯 · 双层索网",
     "summary": "HKS + Thornton Tomasetti 打造。70,240 座下沉式场馆，全球最大双层正交钢索网 + 302 块 ETFE 气枕屋盖，距活动地震断层 457 米采用三套独立抗震解耦体系。",
-    "highlights": ["20,000吨用钢 / 1,450吨索网", "12.1万㎡ ETFE屋盖", "三套独立抗震解耦"],
+    "highlights": [
+      "20,000吨用钢 / 1,450吨索网",
+      "12.1万㎡ ETFE屋盖",
+      "三套独立抗震解耦"
+    ],
     "image": "/projects/2026-11-23-sofi-stadium/infographic.jpg",
     "status": "published",
     "publishedSlug": "2026-11-23-sofi-stadium"
