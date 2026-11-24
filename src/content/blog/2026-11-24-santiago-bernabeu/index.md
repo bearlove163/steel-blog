@@ -6,7 +6,6 @@ description: "万字硬核科普：皇马主场如何在不拆老看台、不断
 source: "gmp / L35 / sbp / FCC / Sener / Arup / Hormigón y Acero"
 infographic: "/projects/2026-11-24-santiago-bernabeu/candidates/01-infographic.jpg"
 ---
-
 ## 引言：为什么一座足球场，要花掉 14 亿欧元去“带电手术”？
 
 如果你在 2019 年之前站在西班牙马德里著名的卡斯蒂利亚大道（Paseo de la Castellana）旁，抬头看一眼皇家马德里队的主场——圣地亚哥·伯纳乌球场，你会发现一个有趣的反差：它是全世界最吸金、最具传奇色彩的足球圣殿之一，但从建筑学角度看，它却像一件“打满补丁的旧风衣”。
@@ -21,12 +20,9 @@ infographic: "/projects/2026-11-24-santiago-bernabeu/candidates/01-infographic.j
 
 这篇文章，我们就用最通俗的语言，把这座新伯纳乌从外到内、从天上到地下拆解一遍，看看那些隐藏在炫酷银色外衣背后的空间钢结构密码。
 
----
-
+## 第一章：城市心脏里的极限约束——不拆老骨头，如何长出新肌肉？
 
 ![卡斯蒂利亚大道城市界面与21米主入口（来源：ArchDaily / gmp）](/steel-blog/projects/2026-11-24-santiago-bernabeu/candidates/04-archdaily-exterior.jpg)
-
-## 第一章：城市心脏里的极限约束——不拆老骨头，如何长出新肌肉？
 
 ### 1.1 为什么“包裹”比“推倒”难十倍？
 
@@ -51,12 +47,9 @@ infographic: "/projects/2026-11-24-santiago-bernabeu/candidates/01-infographic.j
 
 更惊险的是东侧地下重型货运车辆通道的开挖。为了在现有建筑底部硬生生掏出一条大货车通道（用于演唱会舞台设备进场），工程师对 5 根既有核心柱实施了<strong>主动托换（Active Underpinning）</strong>：先用微型桩支撑托换梁，再安放 <strong>17 台液压千斤顶</strong> 协同顶升 <strong>11 兆牛（约 1,120 吨）</strong> 的既有上部荷载，边顶升边开挖，全程将老结构的沉降严格控制在 <strong>1 毫米以内</strong>。
 
----
-
+## 第二章：给钢铁巨人穿上“流动的银甲”——7,500 片不锈钢百叶的光学与流体力学
 
 ![7500片V形不锈钢百叶幕墙特写（来源：ArchDaily / gmp）](/steel-blog/projects/2026-11-24-santiago-bernabeu/candidates/03-facade-louvers.jpg)
-
-## 第二章：给钢铁巨人穿上“流动的银甲”——7,500 片不锈钢百叶的光学与流体力学
 
 从远处看，新伯纳乌最抓人眼球的，是那层包裹着整座球场的银白色流线型“金属皮肤”。它既不像鸟巢那样把粗壮的钢构直接暴露在外，也不像传统玻璃幕墙那样死板反光，而是像一块被风吹拂的液态金属。
 
@@ -78,12 +71,9 @@ infographic: "/projects/2026-11-24-santiago-bernabeu/candidates/01-infographic.j
 
 最绝的是，他们利用参数化算法，<strong>微调了每一片 V 形百叶的倾斜角度与安装方位</strong>。也就是说，这 7,500 片不锈钢百叶看似浑然一体，实则每一片的“尺寸、曲率和倾角”几乎都是独一无二的。通过这种精密计算，阳光照在球场上只会呈现柔和流动的金属光泽，而不会向周边住宅区集中反射刺眼眩光。到了夜晚，百叶背后的动态 LED 投光系统亮起，整座幕墙还能化身巨型城市媒体屏，向外投射球队配色、文字与动态影像。
 
----
-
+## 第三章：屋顶上的结构变阵——从“车辐索网”到 176 米 S690 高强钢巨桁架
 
 ![空间钢结构分析模型：四巨桁架与既有看台关系（来源：INES 结构工程）](/steel-blog/projects/2026-11-24-santiago-bernabeu/candidates/06-ines-structural-model.jpg)
-
-## 第三章：屋顶上的结构变阵——从“车辐索网”到 176 米 S690 高强钢巨桁架
 
 如果说外立面是伯纳乌的“颜值”，那么头顶那片总重超过 <strong>15,000 吨</strong>、悬在地面 <strong>50 米高空</strong> 的大跨度钢屋盖，才是整座球场真正的技术心脏。
 
@@ -123,12 +113,9 @@ infographic: "/projects/2026-11-24-santiago-bernabeu/candidates/01-infographic.j
 
 拼好之后怎么放上去？先用 <strong>4 台同步液压提升千斤顶（Strand Jacks）</strong>（每台最多带 42 根钢绞线）把 700 吨重的巨桁架垂直吊升到 50 米高空，放到预先架设在 176 米主桁架上的<strong>两台移动台车（Bogies）</strong>上；随后启动电动滑移装置（*Ripado*），像推天车一样把巨桁架水平滑移到东侧预定位置就位！整套过程行云流水，甚至在 2020–2021 年疫情空场期间，施工团队趁着没有观众干扰，更是把施工效率拉到了极致。
 
----
-
+## 第四章：15 分钟开合的“轻质天幕”与 360° 环形巨幕
 
 ![官方建筑横剖面图：屋盖、看台与地下空间（来源：gmp 建筑事务所）](/steel-blog/projects/2026-11-24-santiago-bernabeu/candidates/07-cross-section.jpg)
-
-## 第四章：15 分钟开合的“轻质天幕”与 360° 环形巨幕
 
 ### 4.1 为什么可开合屋盖的桁架里要塞“木头”和“碳纤维”？
 
@@ -149,12 +136,9 @@ infographic: "/projects/2026-11-24-santiago-bernabeu/candidates/01-infographic.j
 
 而在球场最高层的第 10 层外环，建筑师利用一座高达 <strong>16.5 米</strong> 的空间网架“巨型门廊”，开辟了一条全天候开放的 <strong>Skywalk 360 空中观景步道</strong> 与总面积达 <strong>1,200 平方米</strong> 的 <strong>Skybar</strong>。即便在没有比赛的日子里，游客也能登上 57 米高空，一边俯瞰马德里天际线，一边透过玻璃俯瞰脚下的传奇绿茵场。
 
----
-
+## 第五章：地下 30 米的“六层草坪温室”——9,000 吨绿茵如何 5 小时隐身？
 
 ![夜间外立面全景实拍（来源：sbp / Marcus Bredt）](/steel-blog/projects/2026-11-24-santiago-bernabeu/candidates/02-sbp-night.jpg)
-
-## 第五章：地下 30 米的“六层草坪温室”——9,000 吨绿茵如何 5 小时隐身？
 
 如果说屋盖和外立面是伯纳乌的“上半身革命”，那么藏在球场草皮正下方的 <strong>Hypogeum（地下草坪收纳系统）</strong>，就是让全世界土木与机械工程师拍案叫绝的“下半身黑科技”。
 
@@ -179,12 +163,9 @@ infographic: "/projects/2026-11-24-santiago-bernabeu/candidates/01-infographic.j
 - <strong>层间自动巡检小车</strong>：每两层之间留有空隙，一台可沿轨道行走的三角桁架维护小车穿梭其间，自动完成精准滴灌、水肥一体化循环回收、甚至草坪修剪。
 - <strong>CO₂ 注入与防霉变</strong>：地下空间密闭，草坪光合作用会迅速消耗二氧化碳并释放湿气。<strong>TALAT</strong> 设计的智能楼宇管理系统（BMS）实时监测每一层的温湿度与气体浓度，自动注入 <strong>CO₂</strong> 维持光合效率，并通过强力新风循环与工业除湿机防止真菌病害爆发。整套地下系统光电缆就铺设了约 <strong>90 公里</strong>，各类给排水与消防管网超过 <strong>5 公里</strong>。
 
----
-
+## 结语：现代体育场馆的“城市基础设施化”
 
 ![伯纳乌地下黑科技：30米深六层草坪温室白底信息图（来源：钢结构研究院定制生成）](/steel-blog/projects/2026-11-24-santiago-bernabeu/candidates/10-hypogeum-infographic.jpg)
-
-## 结语：现代体育场馆的“城市基础设施化”
 
 截至 2024–2026 年全面投入运营，新伯纳乌不仅让皇马的比赛日与非比赛日收入实现几何级增长，更重要的是它为全球老旧大型场馆提供了一份极具含金量的<strong>“极限城市更新样本”</strong>：
 
