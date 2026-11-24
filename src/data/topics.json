@@ -1,5 +1,38 @@
 [
   {
+    "id": "2026-11-28-jewel-changi-airport",
+    "addedDate": "2026-11-23",
+    "title": "新加坡星耀樟宜（Jewel Changi）",
+    "tag": "交通枢纽 · 受弯钢网壳",
+    "summary": "Safdie Architects + BuroHappold + MERO 联袂打造。13.57 万㎡室内雨林商业枢纽，200 米跨度非对称受弯钢网壳用钢 6,000 吨，由 14,000+ 根变截面钢杆件与 5,000 个 CNC 节点精密拼装，偏心天窗承托 40 米雨漩涡并避让机场轻轨。",
+    "highlights": ["200m跨度 / 6,000吨网壳", "5,000个德国CNC节点", "40m雨漩涡 + 轻轨避让"],
+    "image": "/projects/topics/jewel-changi-airport.jpg",
+    "status": "pending",
+    "publishedSlug": ""
+  },
+  {
+    "id": "2026-11-29-lusail-stadium",
+    "addedDate": "2026-11-23",
+    "title": "卡塔尔卢赛尔体育场（Lusail Stadium）",
+    "tag": "2022世界杯 · 307m车辐索网",
+    "summary": "Foster + Partners + Populous + Arup 设计、中国铁建联合承建的 88,966 座决赛圣殿。直径 307 米车辐式张力索网实现内部零立柱遮挡，金色斜交钢网架外衣兼具沙漠遮阳，上层看台采用可拆卸模块化设计赛后缩容至 4 万座社区中心。",
+    "highlights": ["307m车辐索网 / 88,966座", "斜交钢网架 + 沙漠光伏制冷", "赛后可拆卸缩容至4万座"],
+    "image": "/projects/topics/lusail-stadium.jpg",
+    "status": "pending",
+    "publishedSlug": ""
+  },
+  {
+    "id": "2026-11-30-shenzhen-zhongshan-bridge",
+    "addedDate": "2026-11-23",
+    "title": "深中通道深中大桥（原伶仃洋大桥）",
+    "tag": "超级桥梁 · 1,666m海中悬索桥",
+    "summary": "2024 年乔治·理查德森大奖得主。主跨 1,666 米世界最大跨径全离岸海中钢箱梁悬索桥，270 米主塔 + 76.5 米超高通航净空，213 节钢箱梁用钢约 10 万吨，气动优化实现 88 m/s 全球最高颤振临界风速。",
+    "highlights": ["1,666m主跨 / 10万吨钢箱梁", "88 m/s全球最高颤振风速", "76.5m通航净空 / 270m主塔"],
+    "image": "/projects/topics/shenzhen-zhongshan-bridge.jpg",
+    "status": "pending",
+    "publishedSlug": ""
+  },
+  {
     "id": "2026-11-25-beijing-daxing-airport",
     "addedDate": "2026-11-23",
     "title": "北京大兴国际机场航站楼",
